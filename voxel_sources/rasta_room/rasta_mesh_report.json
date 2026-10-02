@@ -1,0 +1,1320 @@
+{
+  "schema": "rasta-room-mesh-v1",
+  "assets": [
+    {
+      "name": "oak_floor",
+      "dimensions_voxels": [
+        144,
+        120,
+        4
+      ],
+      "filled_voxels": 69120,
+      "exposed_unit_faces": 36672,
+      "greedy_quads": 246,
+      "triangles": 492,
+      "vertices": 447,
+      "ordinary_quads": 246,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        144,
+        120,
+        4
+      ],
+      "mesh_dimensions_meters": [
+        7.2,
+        6.0,
+        0.2
+      ],
+      "ground_pivot_source_voxels": [
+        72.0,
+        60.0,
+        0
+      ],
+      "colors_used": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "surface_area_by_palette_index": {
+        "6": 7885,
+        "7": 3132,
+        "8": 3182,
+        "9": 21681,
+        "10": 792
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "room_architecture",
+        "room_dimensions_meters": [
+          7.2,
+          6.0,
+          3.2
+        ],
+        "original_authored": true
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "back_wall_window",
+      "dimensions_voxels": [
+        144,
+        7,
+        60
+      ],
+      "filled_voxels": 35001,
+      "exposed_unit_faces": 20552,
+      "greedy_quads": 299,
+      "triangles": 598,
+      "vertices": 484,
+      "ordinary_quads": 295,
+      "emissive_quads": 4,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        144,
+        7,
+        60
+      ],
+      "mesh_dimensions_meters": [
+        7.2,
+        0.35000000000000003,
+        3.0
+      ],
+      "ground_pivot_source_voxels": [
+        72.0,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        3,
+        5,
+        9,
+        10,
+        11,
+        16,
+        24,
+        28,
+        34,
+        35,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "1": 525,
+        "3": 12675,
+        "5": 2478,
+        "9": 909,
+        "10": 1148,
+        "11": 32,
+        "16": 5,
+        "24": 471,
+        "28": 726,
+        "34": 259,
+        "35": 721,
+        "36": 603
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "room_architecture",
+        "original_authored": true,
+        "flag_design_reference": "https://jis.gov.jm/symbols/jamaica-national-flag/",
+        "flag_art": "Original finite-thickness cube rendering of the national flag; no copied image"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "left_wall_door",
+      "dimensions_voxels": [
+        5,
+        117,
+        60
+      ],
+      "filled_voxels": 22901,
+      "exposed_unit_faces": 15402,
+      "greedy_quads": 100,
+      "triangles": 200,
+      "vertices": 170,
+      "ordinary_quads": 100,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        5,
+        117,
+        60
+      ],
+      "mesh_dimensions_meters": [
+        0.25,
+        5.8500000000000005,
+        3.0
+      ],
+      "ground_pivot_source_voxels": [
+        2.5,
+        58.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        4,
+        5,
+        9,
+        10,
+        11,
+        34,
+        35,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "1": 126,
+        "4": 11709,
+        "5": 1779,
+        "9": 1066,
+        "10": 326,
+        "11": 227,
+        "34": 15,
+        "35": 122,
+        "36": 32
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "room_architecture",
+        "original_authored": true,
+        "decor": "Original abstract vinyl poster"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "right_wall_optional",
+      "dimensions_voxels": [
+        3,
+        117,
+        60
+      ],
+      "filled_voxels": 21060,
+      "exposed_unit_faces": 15102,
+      "greedy_quads": 16,
+      "triangles": 32,
+      "vertices": 20,
+      "ordinary_quads": 16,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        3,
+        117,
+        60
+      ],
+      "mesh_dimensions_meters": [
+        0.15000000000000002,
+        5.8500000000000005,
+        3.0
+      ],
+      "ground_pivot_source_voxels": [
+        1.5,
+        58.5,
+        0
+      ],
+      "colors_used": [
+        3,
+        5
+      ],
+      "surface_area_by_palette_index": {
+        "3": 13198,
+        "5": 1904
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {},
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "front_wall_optional",
+      "dimensions_voxels": [
+        138,
+        3,
+        60
+      ],
+      "filled_voxels": 24840,
+      "exposed_unit_faces": 17748,
+      "greedy_quads": 16,
+      "triangles": 32,
+      "vertices": 20,
+      "ordinary_quads": 16,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        138,
+        3,
+        60
+      ],
+      "mesh_dimensions_meters": [
+        6.9,
+        0.15000000000000002,
+        3.0
+      ],
+      "ground_pivot_source_voxels": [
+        69.0,
+        1.5,
+        0
+      ],
+      "colors_used": [
+        3,
+        5
+      ],
+      "surface_area_by_palette_index": {
+        "3": 15508,
+        "5": 2240
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {},
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "teal_single_bed",
+      "dimensions_voxels": [
+        29,
+        44,
+        26
+      ],
+      "filled_voxels": 14132,
+      "exposed_unit_faces": 5478,
+      "greedy_quads": 138,
+      "triangles": 276,
+      "vertices": 200,
+      "ordinary_quads": 138,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        29,
+        44,
+        26
+      ],
+      "mesh_dimensions_meters": [
+        1.4500000000000002,
+        2.2,
+        1.3
+      ],
+      "ground_pivot_source_voxels": [
+        14.5,
+        22.0,
+        0
+      ],
+      "colors_used": [
+        9,
+        10,
+        11,
+        26,
+        34,
+        35,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "9": 1404,
+        "10": 2108,
+        "11": 543,
+        "26": 178,
+        "34": 445,
+        "35": 355,
+        "36": 445
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "theme": "Red/gold/green quilt",
+        "original_shape_preserved": true
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "woven_rug",
+      "dimensions_voxels": [
+        64,
+        39,
+        1
+      ],
+      "filled_voxels": 2432,
+      "exposed_unit_faces": 5194,
+      "greedy_quads": 672,
+      "triangles": 1344,
+      "vertices": 1056,
+      "ordinary_quads": 672,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        64,
+        39,
+        1
+      ],
+      "mesh_dimensions_meters": [
+        3.2,
+        1.9500000000000002,
+        0.05
+      ],
+      "ground_pivot_source_voxels": [
+        32.0,
+        19.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        11,
+        34,
+        35,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "1": 752,
+        "11": 320,
+        "34": 1664,
+        "35": 1132,
+        "36": 1326
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "woven_rug",
+        "original_authored": true,
+        "theme": "Rasta palette with original geometric weaving"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "slippers",
+      "dimensions_voxels": [
+        8,
+        7,
+        3
+      ],
+      "filled_voxels": 90,
+      "exposed_unit_faces": 180,
+      "greedy_quads": 22,
+      "triangles": 44,
+      "vertices": 28,
+      "ordinary_quads": 22,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        8,
+        7,
+        3
+      ],
+      "mesh_dimensions_meters": [
+        0.4,
+        0.35000000000000003,
+        0.15000000000000002
+      ],
+      "ground_pivot_source_voxels": [
+        4.0,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        28,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "28": 100,
+        "36": 80
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {},
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "desk",
+      "dimensions_voxels": [
+        26,
+        14,
+        29
+      ],
+      "filled_voxels": 1566,
+      "exposed_unit_faces": 1990,
+      "greedy_quads": 186,
+      "triangles": 372,
+      "vertices": 271,
+      "ordinary_quads": 167,
+      "emissive_quads": 19,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        26,
+        14,
+        29
+      ],
+      "mesh_dimensions_meters": [
+        1.3,
+        0.7000000000000001,
+        1.4500000000000002
+      ],
+      "ground_pivot_source_voxels": [
+        13.0,
+        7.0,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        5,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        26,
+        28,
+        31,
+        32
+      ],
+      "surface_area_by_palette_index": {
+        "1": 254,
+        "2": 155,
+        "5": 37,
+        "9": 986,
+        "10": 335,
+        "11": 18,
+        "12": 9,
+        "13": 5,
+        "14": 40,
+        "15": 4,
+        "26": 6,
+        "28": 18,
+        "31": 38,
+        "32": 85
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "front_axis": "-Y",
+        "ground_z": 0,
+        "description": "Wood desk, monitor, keyboard, mouse, and three books.",
+        "tabletop_z": 17,
+        "recommended_clearance_front": 12
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "chair",
+      "dimensions_voxels": [
+        10,
+        10,
+        17
+      ],
+      "filled_voxels": 480,
+      "exposed_unit_faces": 740,
+      "greedy_quads": 76,
+      "triangles": 152,
+      "vertices": 96,
+      "ordinary_quads": 76,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        10,
+        10,
+        17
+      ],
+      "mesh_dimensions_meters": [
+        0.5,
+        0.5,
+        0.8500000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        5.0,
+        5.0,
+        0
+      ],
+      "colors_used": [
+        2,
+        9,
+        10,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "2": 48,
+        "9": 424,
+        "10": 44,
+        "36": 224
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "front_axis": "-Y",
+        "ground_z": 0,
+        "description": "Small teal chair with wood legs and a raised back.",
+        "seat_z": 10
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "bedside_table",
+      "dimensions_voxels": [
+        10,
+        10,
+        23
+      ],
+      "filled_voxels": 1132,
+      "exposed_unit_faces": 960,
+      "greedy_quads": 140,
+      "triangles": 280,
+      "vertices": 192,
+      "ordinary_quads": 104,
+      "emissive_quads": 36,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        10,
+        10,
+        23
+      ],
+      "mesh_dimensions_meters": [
+        0.5,
+        0.5,
+        1.1500000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        5.0,
+        5.0,
+        0
+      ],
+      "colors_used": [
+        2,
+        9,
+        10,
+        11,
+        16,
+        31
+      ],
+      "surface_area_by_palette_index": {
+        "2": 76,
+        "9": 476,
+        "10": 138,
+        "11": 112,
+        "16": 132,
+        "31": 26
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "front_axis": "-Y",
+        "ground_z": 0,
+        "description": "Wood bedside drawer unit with a warm stepped lampshade.",
+        "tabletop_z": 12,
+        "light_anchor_xyz": [
+          5,
+          5,
+          18
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "watering_can",
+      "dimensions_voxels": [
+        16,
+        8,
+        13
+      ],
+      "filled_voxels": 448,
+      "exposed_unit_faces": 544,
+      "greedy_quads": 130,
+      "triangles": 260,
+      "vertices": 171,
+      "ordinary_quads": 130,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        16,
+        8,
+        13
+      ],
+      "mesh_dimensions_meters": [
+        0.8,
+        0.4,
+        0.65
+      ],
+      "ground_pivot_source_voxels": [
+        8.0,
+        4.0,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        13,
+        24,
+        25,
+        31
+      ],
+      "surface_area_by_palette_index": {
+        "1": 4,
+        "2": 74,
+        "13": 160,
+        "24": 268,
+        "25": 6,
+        "31": 32
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "front_axis": "-Y",
+        "ground_z": 0,
+        "description": "Blue watering can with an open arched handle and rising spout.",
+        "spout_tip_xyz": [
+          15,
+          4,
+          10
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "grow_light_rack",
+      "dimensions_voxels": [
+        38,
+        22,
+        49
+      ],
+      "filled_voxels": 2808,
+      "exposed_unit_faces": 4620,
+      "greedy_quads": 201,
+      "triangles": 402,
+      "vertices": 274,
+      "ordinary_quads": 179,
+      "emissive_quads": 22,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        38,
+        22,
+        49
+      ],
+      "mesh_dimensions_meters": [
+        1.9000000000000001,
+        1.1,
+        2.45
+      ],
+      "ground_pivot_source_voxels": [
+        19.0,
+        11.0,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        14,
+        15,
+        26,
+        31,
+        32,
+        33
+      ],
+      "surface_area_by_palette_index": {
+        "1": 94,
+        "2": 1784,
+        "14": 104,
+        "15": 105,
+        "26": 281,
+        "31": 2144,
+        "32": 4,
+        "33": 104
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "front_axis": "-Y",
+        "ground_z": 0,
+        "description": "Open metal rack supporting two LED boards with pink/violet strips.",
+        "clear_plant_region_xyz": [
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            34,
+            20,
+            42
+          ]
+        ],
+        "led_underside_z": 42,
+        "recommended_plant_centers_xy": [
+          [
+            10,
+            11
+          ],
+          [
+            28,
+            11
+          ]
+        ],
+        "light_anchors_xyz": [
+          [
+            10,
+            11,
+            42
+          ],
+          [
+            28,
+            11,
+            42
+          ]
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "small_fan",
+      "dimensions_voxels": [
+        10,
+        7,
+        17
+      ],
+      "filled_voxels": 514,
+      "exposed_unit_faces": 618,
+      "greedy_quads": 152,
+      "triangles": 304,
+      "vertices": 201,
+      "ordinary_quads": 151,
+      "emissive_quads": 1,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        10,
+        7,
+        17
+      ],
+      "mesh_dimensions_meters": [
+        0.5,
+        0.35000000000000003,
+        0.8500000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        5.0,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        13,
+        15,
+        27,
+        28,
+        31
+      ],
+      "surface_area_by_palette_index": {
+        "1": 17,
+        "2": 186,
+        "13": 3,
+        "15": 1,
+        "27": 8,
+        "28": 188,
+        "31": 215
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "front_axis": "-Y",
+        "ground_z": 0,
+        "description": "Compact standing fan with a circular housing and visible grille.",
+        "fan_center_xyz": [
+          5,
+          1,
+          11
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "water_reservoir",
+      "dimensions_voxels": [
+        12,
+        12,
+        15
+      ],
+      "filled_voxels": 1748,
+      "exposed_unit_faces": 908,
+      "greedy_quads": 95,
+      "triangles": 190,
+      "vertices": 129,
+      "ordinary_quads": 95,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        12,
+        12,
+        15
+      ],
+      "mesh_dimensions_meters": [
+        0.6000000000000001,
+        0.6000000000000001,
+        0.75
+      ],
+      "ground_pivot_source_voxels": [
+        6.0,
+        6.0,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        12,
+        13,
+        25,
+        26,
+        31
+      ],
+      "surface_area_by_palette_index": {
+        "1": 14,
+        "2": 314,
+        "12": 434,
+        "13": 4,
+        "25": 67,
+        "26": 3,
+        "31": 72
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "front_axis": "-Y",
+        "ground_z": 0,
+        "description": "Teal water tank with a cyan stripe, gauge, and short front nozzle.",
+        "nozzle_anchor_xyz": [
+          6,
+          0,
+          3
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "stereo_corner",
+      "dimensions_voxels": [
+        24,
+        13,
+        18
+      ],
+      "filled_voxels": 3652,
+      "exposed_unit_faces": 1694,
+      "greedy_quads": 159,
+      "triangles": 318,
+      "vertices": 222,
+      "ordinary_quads": 159,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        24,
+        13,
+        18
+      ],
+      "mesh_dimensions_meters": [
+        1.2000000000000002,
+        0.65,
+        0.9
+      ],
+      "ground_pivot_source_voxels": [
+        12.0,
+        6.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        9,
+        10,
+        31,
+        34,
+        35,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "1": 183,
+        "2": 188,
+        "9": 144,
+        "10": 1046,
+        "31": 111,
+        "34": 6,
+        "35": 10,
+        "36": 6
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "stereo_console",
+        "original_authored": true,
+        "decor": "Original record player with twin speaker fronts; no logos or borrowed audio"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "pot_empty",
+      "dimensions_voxels": [
+        11,
+        11,
+        9
+      ],
+      "filled_voxels": 351,
+      "exposed_unit_faces": 776,
+      "greedy_quads": 339,
+      "triangles": 678,
+      "vertices": 412,
+      "ordinary_quads": 339,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        11,
+        11,
+        9
+      ],
+      "mesh_dimensions_meters": [
+        0.55,
+        0.55,
+        0.45
+      ],
+      "ground_pivot_source_voxels": [
+        5.5,
+        5.5,
+        0
+      ],
+      "colors_used": [
+        9,
+        21,
+        22,
+        23
+      ],
+      "surface_area_by_palette_index": {
+        "9": 2,
+        "21": 104,
+        "22": 582,
+        "23": 88
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "starter_soil_pot",
+        "soil_top_meters": 0.4,
+        "authoring": "Original cubic prop for this project",
+        "mesh_pivot_source_voxels": [
+          5.5,
+          5.5,
+          0
+        ],
+        "connected_components": 1,
+        "voxel_pitch_meters": 0.05
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "lamp_budget",
+      "dimensions_voxels": [
+        22,
+        13,
+        44
+      ],
+      "filled_voxels": 909,
+      "exposed_unit_faces": 1200,
+      "greedy_quads": 75,
+      "triangles": 150,
+      "vertices": 114,
+      "ordinary_quads": 70,
+      "emissive_quads": 5,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        22,
+        13,
+        44
+      ],
+      "mesh_dimensions_meters": [
+        1.1,
+        0.65,
+        2.2
+      ],
+      "ground_pivot_source_voxels": [
+        11.0,
+        6.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        14,
+        15,
+        16,
+        26,
+        31
+      ],
+      "surface_area_by_palette_index": {
+        "1": 29,
+        "2": 518,
+        "14": 2,
+        "15": 42,
+        "16": 68,
+        "26": 152,
+        "31": 389
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "budget_standing_lamp",
+        "authoring": "Original cubic fixture",
+        "aesthetic_emission": true,
+        "emitter_height_meters": 2.05,
+        "pivot_exception": "Ground point directly below shade center, for placement at pot center; stand offset sideways",
+        "minimum_stand_side_clearance_meters": 0.3,
+        "gameplay_note": "Decorative game prop; no real equipment specification",
+        "mesh_pivot_source_voxels": [
+          16,
+          6.5,
+          0
+        ],
+        "connected_components": 1,
+        "voxel_pitch_meters": 0.05,
+        "native_rotation_degrees_z": 180
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "home_grower_character",
+      "dimensions_voxels": [
+        14,
+        11,
+        34
+      ],
+      "filled_voxels": 2007,
+      "exposed_unit_faces": 1820,
+      "greedy_quads": 404,
+      "triangles": 808,
+      "vertices": 532,
+      "ordinary_quads": 404,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        14,
+        11,
+        34
+      ],
+      "mesh_dimensions_meters": [
+        0.7000000000000001,
+        0.55,
+        1.7000000000000002
+      ],
+      "ground_pivot_source_voxels": [
+        7.0,
+        5.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        5,
+        11,
+        26,
+        28,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "surface_area_by_palette_index": {
+        "1": 108,
+        "2": 28,
+        "5": 12,
+        "11": 302,
+        "26": 100,
+        "28": 244,
+        "34": 123,
+        "35": 143,
+        "36": 200,
+        "37": 224,
+        "38": 284,
+        "39": 52
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original true-cube avatar for this project; no external likeness reference",
+        "design": "Warm brown skin; knitted red/gold/green tam; visible dark locs; cream striped tee; dark jeans and sneakers",
+        "voxel_pitch_meters": 0.05,
+        "source_axes": "X/Y horizontal, Z up; faces native -Y",
+        "glb_axes": "Y up; forward +Z; root body-centered on the ground",
+        "source_root_pivot": [
+          8.0,
+          5.5,
+          0.0
+        ],
+        "connected_components": 1,
+        "part_overlap_cells": 0,
+        "part_contact_faces": "Separate rigid pieces meet at torso/head, shoulder and hip joints; their hidden contact faces remain for animation",
+        "mesh_pivot_source_voxels": [
+          7.0,
+          5.5,
+          0.0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    }
+  ],
+  "voxel_pitch_meters": 0.05,
+  "glb_validation": {
+    "bytes": 366176,
+    "nodes": 14,
+    "unique_meshes": 14,
+    "materials": 2,
+    "emissive_material_count": 1,
+    "triangles_unique_mesh_data": 5232,
+    "source_palette_png_embedded_exactly": true,
+    "max_surface_primitives_per_mesh": 2,
+    "nearest_palette_sampling": true,
+    "preview_objects_excluded": true
+  },
+  "palette_sha256": "9dc96be25a83da891cd7d2952a90b6be20f5e394d4779df091f9f45fe49c3bc9",
+  "shared_material_count": 2,
+  "actual_geometry_preview": true,
+  "original_bedroom_preserved": true,
+  "source_axes": "Z up",
+  "game_axes": "Y up",
+  "game_mesh_node_count": 14,
+  "game_export_nodes": [
+    "oak_floor",
+    "back_wall_window",
+    "left_wall_door",
+    "teal_single_bed",
+    "woven_rug",
+    "slippers",
+    "desk",
+    "chair",
+    "bedside_table",
+    "watering_can",
+    "grow_light_rack",
+    "small_fan",
+    "water_reservoir",
+    "stereo_corner"
+  ],
+  "total_game_triangles": 5232,
+  "preview_lights": [
+    {
+      "fixture": "back_wall_window",
+      "kind": "room lamp accent",
+      "position_meters": [
+        2.6549999713897705,
+        5.775000095367432,
+        2.2850000858306885
+      ],
+      "watts_preview": 35,
+      "aesthetic_only": true
+    },
+    {
+      "fixture": "desk",
+      "kind": "room lamp accent",
+      "position_meters": [
+        6.058928489685059,
+        1.4249999523162842,
+        1.3991072177886963
+      ],
+      "watts_preview": 35,
+      "aesthetic_only": true
+    },
+    {
+      "fixture": "bedside_table",
+      "kind": "room lamp accent",
+      "position_meters": [
+        2.25,
+        5.300000190734863,
+        1.0500000715255737
+      ],
+      "watts_preview": 35,
+      "aesthetic_only": true
+    },
+    {
+      "fixture": "lamp_budget",
+      "kind": "room lamp accent",
+      "position_meters": [
+        4.599999904632568,
+        4.625,
+        2.2250001430511475
+      ],
+      "watts_preview": 35,
+      "aesthetic_only": true
+    }
+  ]
+}

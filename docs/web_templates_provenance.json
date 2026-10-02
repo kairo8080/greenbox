@@ -1,0 +1,112 @@
+{
+  "version": "4.7.2.stable",
+  "official_source": "https://godot-releases.nbg1.your-objectstorage.com/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz",
+  "resolved_url": "https://godot-releases.nbg1.your-objectstorage.com/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz",
+  "etag": "\"903b0d205b37bf78c8f48a68cfdce322\"",
+  "archive_bytes": 1281349702,
+  "downloaded_bytes": 20567298,
+  "method": "Strict HTTP Range ZIP entry extraction; no full download fallback",
+  "matched_verified_windows_archive": true,
+  "archive_entries": 35,
+  "nonthreaded_templates": true,
+  "templates": [
+    {
+      "entry": "templates/web_nothreads_debug.zip",
+      "file": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\work\\apps\\Godot\\web_nothreads_debug.zip",
+      "compressed_bytes": 10210682,
+      "bytes": 10232720,
+      "crc32": "964423d9",
+      "sha256": "08962aefef811b603541d7951ac67ef00413aad2d978855183c28adee98f626a",
+      "nested_zip_all_entry_CRCs_valid": true,
+      "wasm_header_version_valid": true,
+      "wasm_sha256": "11ea19645368f8e73cf337b59cfd7ceeb4ebb51f7a3bbf77d1a5c3ddfedbc522",
+      "files": [
+        {
+          "name": "godot.js",
+          "bytes": 315645,
+          "crc32": "c63a8fd3"
+        },
+        {
+          "name": "godot.wasm",
+          "bytes": 37902138,
+          "crc32": "85e67eb2"
+        },
+        {
+          "name": "godot.audio.worklet.js",
+          "bytes": 7298,
+          "crc32": "3749fc87"
+        },
+        {
+          "name": "godot.audio.position.worklet.js",
+          "bytes": 2973,
+          "crc32": "64f6bc52"
+        },
+        {
+          "name": "godot.html",
+          "bytes": 5088,
+          "crc32": "13134811"
+        },
+        {
+          "name": "godot.service.worker.js",
+          "bytes": 5739,
+          "crc32": "f6e44b49"
+        },
+        {
+          "name": "godot.offline.html",
+          "bytes": 971,
+          "crc32": "8eb10976"
+        }
+      ]
+    },
+    {
+      "entry": "templates/web_nothreads_release.zip",
+      "file": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\work\\apps\\Godot\\web_nothreads_release.zip",
+      "compressed_bytes": 10221796,
+      "bytes": 10245903,
+      "crc32": "795d38e9",
+      "sha256": "d3ee2f08cef0cf3cf6678a6355a92a8db48ccdd35cbd2e8bfd5f0e8a0b4032a0",
+      "nested_zip_all_entry_CRCs_valid": true,
+      "wasm_header_version_valid": true,
+      "wasm_sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "files": [
+        {
+          "name": "godot.js",
+          "bytes": 279815,
+          "crc32": "313ef2f2"
+        },
+        {
+          "name": "godot.wasm",
+          "bytes": 39514754,
+          "crc32": "7590194d"
+        },
+        {
+          "name": "godot.audio.worklet.js",
+          "bytes": 7298,
+          "crc32": "3749fc87"
+        },
+        {
+          "name": "godot.audio.position.worklet.js",
+          "bytes": 2973,
+          "crc32": "64f6bc52"
+        },
+        {
+          "name": "godot.html",
+          "bytes": 5088,
+          "crc32": "13134811"
+        },
+        {
+          "name": "godot.service.worker.js",
+          "bytes": 5739,
+          "crc32": "f6e44b49"
+        },
+        {
+          "name": "godot.offline.html",
+          "bytes": 971,
+          "crc32": "8eb10976"
+        }
+      ]
+    }
+  ],
+  "executed": false,
+  "TLS_verification": "Python default certificate verification; unchanged"
+}

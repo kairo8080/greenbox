@@ -1,0 +1,316 @@
+{
+  "source": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\work\\game\\rasta_character.json",
+  "asset": "home_grower_character",
+  "dimensions_voxels": [
+    14,
+    11,
+    34
+  ],
+  "voxel_count": 2007,
+  "palette_used": [
+    1,
+    2,
+    5,
+    11,
+    26,
+    28,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "first_33_palette_colors_preserved": true,
+  "appended_palette": {
+    "rasta_red": {
+      "index": 34,
+      "rgba": [
+        201,
+        47,
+        43,
+        255
+      ]
+    },
+    "rasta_gold": {
+      "index": 35,
+      "rgba": [
+        242,
+        194,
+        54,
+        255
+      ]
+    },
+    "rasta_green": {
+      "index": 36,
+      "rgba": [
+        39,
+        130,
+        73,
+        255
+      ]
+    },
+    "skin": {
+      "index": 37,
+      "rgba": [
+        142,
+        88,
+        52,
+        255
+      ]
+    },
+    "locs": {
+      "index": 38,
+      "rgba": [
+        39,
+        28,
+        23,
+        255
+      ]
+    },
+    "skin_light": {
+      "index": 39,
+      "rgba": [
+        175,
+        115,
+        73,
+        255
+      ]
+    }
+  },
+  "metadata": {
+    "authoring": "Original true-cube avatar for this project; no external likeness reference",
+    "design": "Warm brown skin; knitted red/gold/green tam; visible dark locs; cream striped tee; dark jeans and sneakers",
+    "voxel_pitch_meters": 0.05,
+    "source_axes": "X/Y horizontal, Z up; faces native -Y",
+    "glb_axes": "Y up; forward +Z; root body-centered on the ground",
+    "source_root_pivot": [
+      8.0,
+      5.5,
+      0.0
+    ],
+    "connected_components": 1,
+    "part_overlap_cells": 0,
+    "part_contact_faces": "Separate rigid pieces meet at torso/head, shoulder and hip joints; their hidden contact faces remain for animation",
+    "mesh_pivot_source_voxels": [
+      7.0,
+      5.5,
+      0.0
+    ]
+  },
+  "parts": [
+    {
+      "name": "torso",
+      "dimensions": [
+        8,
+        6,
+        10
+      ],
+      "normalization_offset": [
+        4,
+        2,
+        13
+      ],
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "torso",
+        "joint_source_voxels": [
+          8.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          4.0,
+          3.5,
+          0.0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      }
+    },
+    {
+      "name": "head",
+      "dimensions": [
+        12,
+        11,
+        14
+      ],
+      "normalization_offset": [
+        2,
+        0,
+        20
+      ],
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "head",
+        "joint_source_voxels": [
+          8.0,
+          5.5,
+          23.0
+        ],
+        "mesh_pivot_source_voxels": [
+          6.0,
+          5.5,
+          3.0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          1.1500000000000001,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      }
+    },
+    {
+      "name": "arm_left",
+      "dimensions": [
+        3,
+        5,
+        11
+      ],
+      "normalization_offset": [
+        1,
+        2,
+        12
+      ],
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "arm_left",
+        "joint_source_voxels": [
+          3.5,
+          5.5,
+          22.0
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          3.5,
+          10.0
+        ],
+        "joint_glb_translation_meters": [
+          -0.225,
+          1.1,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      }
+    },
+    {
+      "name": "arm_right",
+      "dimensions": [
+        3,
+        5,
+        11
+      ],
+      "normalization_offset": [
+        12,
+        2,
+        12
+      ],
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "arm_right",
+        "joint_source_voxels": [
+          12.5,
+          5.5,
+          22.0
+        ],
+        "mesh_pivot_source_voxels": [
+          0.5,
+          3.5,
+          10.0
+        ],
+        "joint_glb_translation_meters": [
+          0.225,
+          1.1,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      }
+    },
+    {
+      "name": "leg_left",
+      "dimensions": [
+        4,
+        7,
+        13
+      ],
+      "normalization_offset": [
+        3,
+        1,
+        0
+      ],
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "leg_left",
+        "joint_source_voxels": [
+          6.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          3.0,
+          4.5,
+          13.0
+        ],
+        "joint_glb_translation_meters": [
+          -0.1,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      }
+    },
+    {
+      "name": "leg_right",
+      "dimensions": [
+        4,
+        7,
+        13
+      ],
+      "normalization_offset": [
+        9,
+        1,
+        0
+      ],
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "leg_right",
+        "joint_source_voxels": [
+          10.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          1.0,
+          4.5,
+          13.0
+        ],
+        "joint_glb_translation_meters": [
+          0.1,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      }
+    }
+  ],
+  "vox_sha256": {
+    "arm_left.vox": "bd24728eafac5d8aec16619a4813a43e2978e276780b113c05e9f1c0421b390a",
+    "arm_right.vox": "bd24728eafac5d8aec16619a4813a43e2978e276780b113c05e9f1c0421b390a",
+    "head.vox": "5631a5bcb9e8b8e49f06d1476e64ff90abe00ec222e823ec418a6457afc1ea6f",
+    "home_grower_character.vox": "d591ab9b6c064fac50f2f4f0c491927e3184a4482715146e4ace3b1beae5ec7e",
+    "leg_left.vox": "b26c13af1f9976be5552e5da0f3d70e6abe125bd8a6417a638a3b784f32ee79c",
+    "leg_right.vox": "da5611278c88d391c78e22bf5afdfc82b1d9ec2b59245a0decd112263a3d46b5",
+    "torso.vox": "0f2bebc10547eafa1248a601510a6f233eeed7b7d2928fbc70ee4392c042188f"
+  }
+}

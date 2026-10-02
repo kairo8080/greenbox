@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bedroom Roots: a playable voxel grow-and-upgrade game. Start in your first room, care for plants, earn XP, and build up your setup.">
+  <meta name="theme-color" content="#14241f">
+  <title>Greenbox · Bedroom Roots</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #111b18; color: #eee7d2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+    header, footer { flex: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 18px; }
+    header { border-bottom: 1px solid #34483c; }
+    .brand { font-weight: 800; letter-spacing: .15em; font-size: 13px; }
+    .brand::before { content: ''; display: inline-block; width: 30px; height: 5px; margin-right: 10px; vertical-align: middle; background: linear-gradient(to right, #c94b46 33%, #ecc457 33% 66%, #68ab78 66%); }
+    button { font: inherit; color: #eee7d2; background: #23372c; border: 1px solid #56725d; border-radius: 6px; padding: 7px 13px; cursor: pointer; }
+    button:hover { background: #324b3b; }
+    button:focus-visible, a:focus-visible { outline: 2px solid #ecc457; outline-offset: 3px; }
+    #frame { flex: 1; position: relative; min-height: 0; display: grid; place-items: center; background: #14241f; }
+    #canvas { width: min(100%, calc((100dvh - 88px) * 1.6)); height: auto; max-height: 100%; aspect-ratio: 8 / 5; display: block; outline: none; touch-action: none; }
+    #frame:fullscreen #canvas { width: min(100%, calc(100dvh * 1.6)); }
+    #welcome { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; background: radial-gradient(ellipse at top, #355548, #14241f 70%); }
+    #welcome[hidden] { display: none; }
+    .card { max-width: 550px; width: 100%; text-align: center; padding: 36px 28px; border: 1px solid #617a63; border-radius: 14px; background: #17241eee; box-shadow: 0 16px 60px #0005; }
+    .stripe { height: 4px; background: linear-gradient(to right, #c94b46 33%, #ecc457 33% 66%, #68ab78 66%); margin-bottom: 26px; }
+    .eyebrow { color: #92cba1; font-size: 12px; letter-spacing: .18em; font-weight: 700; }
+    h1 { margin: 10px 0 12px; font-size: clamp(30px, 5vw, 48px); letter-spacing: -.04em; }
+    .intro { color: #c8ceb9; line-height: 1.6; margin: 0 auto 24px; max-width: 370px; }
+    #play { font-weight: 750; padding: 13px 26px; background: #76b989; color: #12231a; border-color: #a7d1a9; }
+    #play:hover { background: #97d1a6; }
+    #play:disabled { cursor: wait; opacity: .7; }
+    #progress { width: 100%; height: 7px; accent-color: #ecc457; margin-top: 20px; }
+    #notice { color: #f3ce88; font-size: 13px; line-height: 1.5; white-space: pre-wrap; }
+    .controls { margin-top: 22px; color: #aebba8; font-size: 12px; line-height: 1.8; }
+    footer { font-size: 11px; color: #adbaa8; min-height: 32px; }
+    a { color: #adcfb1; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 620px) { header, footer { padding: 8px 12px; } footer .hint { display: none; } .card { padding: 24px 18px; } }
+  </style>
+  $GODOT_HEAD_INCLUDE
+</head>
+<body>
+  <header><span class="brand">GREENBOX</span><button id="fullscreen" type="button">Fullscreen</button></header>
+  <main id="frame" data-state="idle">
+    <canvas id="canvas" width="1280" height="800" tabindex="0" aria-label="Bedroom Roots voxel game"></canvas>
+    <section id="welcome" aria-label="Start the game">
+      <div class="card">
+        <div class="stripe"></div>
+        <div class="eyebrow">YOUR FIRST ROOM. BIG PLANS.</div>
+        <h1>Bedroom Roots</h1>
+        <p class="intro">Start small. Care for your plants, earn XP, and turn your bedroom into a setup of your own.</p>
+        <button id="play" type="button">Play Bedroom Roots</button>
+        <progress id="progress" hidden></progress>
+        <p id="notice" role="status" aria-live="polite"></p>
+        <p class="controls">WASD to move · Click a pot to walk there<br>E to plant, water, or harvest · Space to pause</p>
+      </div>
+    </section>
+    <noscript>Enable JavaScript to play Bedroom Roots.</noscript>
+  </main>
+  <footer><span>Progress saves in this browser.</span><span class="hint">Best played with a mouse and keyboard.</span><a href="/credits.txt" target="_blank" rel="noopener">Credits</a><a href="https://github.com/kairo8080/greenbox" target="_blank" rel="noopener">Source on GitHub ↗</a></footer>
+  <script src="$GODOT_URL"></script>
+  <script>
+    const engine = new Engine($GODOT_CONFIG);
+    const frame = document.getElementById('frame');
+    const canvas = document.getElementById('canvas');
+    const play = document.getElementById('play');
+    const progress = document.getElementById('progress');
+    const notice = document.getElementById('notice');
+    const missing = Engine.getMissingFeatures({threads: $GODOT_THREADS_ENABLED});
+    if (missing.length) {
+      play.disabled = true;
+      notice.textContent = 'This browser needs ' + missing.join(', ') + ' to play. Try a current browser with graphics acceleration enabled.';
+      frame.dataset.state = 'unsupported';
+    }
+    play.addEventListener('click', async () => {
+      play.disabled = true;
+      play.textContent = 'Loading your room…';
+      progress.hidden = false;
+      frame.dataset.state = 'loading';
+      try {
+        await engine.startGame({canvas, onProgress(current, total) {
+          if (total > 0) { progress.max = total; progress.value = current; }
+          else { progress.removeAttribute('value'); }
+        }});
+        document.getElementById('welcome').hidden = true;
+        frame.dataset.state = 'ready';
+        canvas.focus();
+      } catch (error) {
+        frame.dataset.state = 'error';
+        progress.hidden = true;
+        notice.textContent = error instanceof Error ? error.message : String(error);
+        play.textContent = 'Reload to try again';
+        play.disabled = false;
+        play.onclick = () => location.reload();
+        console.error(error);
+      }
+    }, {once: true});
+    document.getElementById('fullscreen').addEventListener('click', async () => {
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else await frame.requestFullscreen();
+        canvas.focus();
+      } catch (error) { console.warn('Fullscreen unavailable', error); }
+    });
+  </script>
+</body>
+</html>

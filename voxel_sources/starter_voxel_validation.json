@@ -1,0 +1,67 @@
+{
+  "assets": [
+    {
+      "name": "pot_empty",
+      "sha256": "9ef83d1596a7a20db4806210ff53b255189fecc8e9db14f77524f553bcc3e227",
+      "cells": 351,
+      "source_roundtrip": "exact coordinates/indices/dimensions and all 255 occupied-slot RGBA colors"
+    },
+    {
+      "name": "foliage_seedling",
+      "sha256": "b014cbd090d8db90508262f4c04e36617849961f88539b48150766708e51928d",
+      "cells": 58,
+      "source_roundtrip": "exact coordinates/indices/dimensions and all 255 occupied-slot RGBA colors"
+    },
+    {
+      "name": "foliage_small",
+      "sha256": "ed3de416f403ff48e28a64f4c111691f613a2f9f40378f7cc61b3c56104d2bfd",
+      "cells": 224,
+      "source_roundtrip": "exact coordinates/indices/dimensions and all 255 occupied-slot RGBA colors"
+    },
+    {
+      "name": "foliage_medium",
+      "sha256": "cba7cd6de47010c56906b99eb463fe38648a29af87a6c6e4752b5baa4c51f1a2",
+      "cells": 431,
+      "source_roundtrip": "exact coordinates/indices/dimensions and all 255 occupied-slot RGBA colors"
+    },
+    {
+      "name": "foliage_bushy",
+      "sha256": "cc91b0e48c6370954daa7aa4c93062d23b14a90d7ac16b97e0853d0616dc1712",
+      "cells": 673,
+      "source_roundtrip": "exact coordinates/indices/dimensions and all 255 occupied-slot RGBA colors"
+    },
+    {
+      "name": "lamp_budget",
+      "sha256": "5b666c3d9cac7cf642f85144cc1f4049aa906cee5dcb9dd50bc563990cf299b4",
+      "cells": 909,
+      "source_roundtrip": "exact coordinates/indices/dimensions and all 255 occupied-slot RGBA colors"
+    },
+    {
+      "name": "seed_packet",
+      "sha256": "96e654c5dfd60e1ef8e881ebcb448da8da864551edaba58951f4dbc02abc2322",
+      "cells": 54,
+      "source_roundtrip": "exact coordinates/indices/dimensions and all 255 occupied-slot RGBA colors"
+    }
+  ],
+  "unique_in_bounds_occupied_cells": true,
+  "all_simple_VOX_roundtrips_exact": true,
+  "palette_air_index_zero": true,
+  "source_axes": "Z up",
+  "game_axes": "Y up",
+  "starter_room_models": 15,
+  "starter_room_exact_model_roundtrip": true,
+  "starter_room_vox_sha256": "1e81eb7437d5feb3286cd0fa7ef735c733c269b1bdeb6e3acfa1f15aa54ec9d3",
+  "starter_room_overlap_cells": 0,
+  "assembled_growth_stage_intersection_half_cells": {
+    "lamp_vs_pot": 0,
+    "foliage_seedling_vs_lamp": 0,
+    "foliage_seedling_vs_pot": 0,
+    "foliage_small_vs_lamp": 0,
+    "foliage_small_vs_pot": 0,
+    "foliage_medium_vs_lamp": 0,
+    "foliage_medium_vs_pot": 0,
+    "foliage_bushy_vs_lamp": 0,
+    "foliage_bushy_vs_pot": 0
+  },
+  "assembly_validation": "Exact cubic occupancy tested at half-cell resolution; pot/lamp share ground origin, foliage at soil top .4m"
+}

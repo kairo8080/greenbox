@@ -1,0 +1,553 @@
+{
+  "source_json_sha256": "c2c39311ee7d60a641dfd23b817d27154144a4795fc07d2e89dead384958c2a5",
+  "source": {
+    "authoring": "Original true-cube avatar for this project; no external likeness reference",
+    "design": "Warm brown skin; knitted red/gold/green tam; visible dark locs; cream striped tee; dark jeans and sneakers",
+    "voxel_pitch_meters": 0.05,
+    "source_axes": "X/Y horizontal, Z up; faces native -Y",
+    "glb_axes": "Y up; forward +Z; root body-centered on the ground",
+    "source_root_pivot": [
+      8.0,
+      5.5,
+      0.0
+    ],
+    "connected_components": 1,
+    "part_overlap_cells": 0,
+    "part_contact_faces": "Separate rigid pieces meet at torso/head, shoulder and hip joints; their hidden contact faces remain for animation",
+    "mesh_pivot_source_voxels": [
+      7.0,
+      5.5,
+      0.0
+    ]
+  },
+  "palette_sha256": "9dc96be25a83da891cd7d2952a90b6be20f5e394d4779df091f9f45fe49c3bc9",
+  "parts": [
+    {
+      "name": "torso",
+      "dimensions_voxels": [
+        8,
+        6,
+        10
+      ],
+      "filled_voxels": 424,
+      "exposed_unit_faces": 362,
+      "greedy_quads": 34,
+      "triangles": 68,
+      "vertices": 48,
+      "ordinary_quads": 34,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        8,
+        6,
+        10
+      ],
+      "mesh_dimensions_meters": [
+        0.4,
+        0.30000000000000004,
+        0.5
+      ],
+      "ground_pivot_source_voxels": [
+        4.0,
+        3.0,
+        0
+      ],
+      "colors_used": [
+        5,
+        11,
+        34,
+        35,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "5": 12,
+        "11": 230,
+        "34": 18,
+        "35": 84,
+        "36": 18
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "torso",
+        "joint_source_voxels": [
+          8.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          4.0,
+          3.5,
+          0.0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "joint_glb_translation_meters": [
+        0.0,
+        0.65,
+        -0.0
+      ],
+      "local_pivot_source_voxels": [
+        4.0,
+        3.5,
+        0.0
+      ]
+    },
+    {
+      "name": "head",
+      "dimensions_voxels": [
+        12,
+        11,
+        14
+      ],
+      "filled_voxels": 899,
+      "exposed_unit_faces": 806,
+      "greedy_quads": 277,
+      "triangles": 554,
+      "vertices": 357,
+      "ordinary_quads": 277,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        12,
+        11,
+        14
+      ],
+      "mesh_dimensions_meters": [
+        0.6000000000000001,
+        0.55,
+        0.7000000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        6.0,
+        5.5,
+        0
+      ],
+      "colors_used": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "surface_area_by_palette_index": {
+        "34": 105,
+        "35": 59,
+        "36": 174,
+        "37": 164,
+        "38": 284,
+        "39": 20
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "head",
+        "joint_source_voxels": [
+          8.0,
+          5.5,
+          23.0
+        ],
+        "mesh_pivot_source_voxels": [
+          6.0,
+          5.5,
+          3.0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          1.1500000000000001,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "joint_glb_translation_meters": [
+        0.0,
+        1.1500000000000001,
+        -0.0
+      ],
+      "local_pivot_source_voxels": [
+        6.0,
+        5.5,
+        3.0
+      ]
+    },
+    {
+      "name": "arm_left",
+      "dimensions_voxels": [
+        3,
+        5,
+        11
+      ],
+      "filled_voxels": 138,
+      "exposed_unit_faces": 188,
+      "greedy_quads": 27,
+      "triangles": 54,
+      "vertices": 34,
+      "ordinary_quads": 27,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        3,
+        5,
+        11
+      ],
+      "mesh_dimensions_meters": [
+        0.15000000000000002,
+        0.25,
+        0.55
+      ],
+      "ground_pivot_source_voxels": [
+        1.5,
+        2.5,
+        0
+      ],
+      "colors_used": [
+        11,
+        35,
+        36,
+        37,
+        39
+      ],
+      "surface_area_by_palette_index": {
+        "11": 105,
+        "35": 14,
+        "36": 5,
+        "37": 48,
+        "39": 16
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "arm_left",
+        "joint_source_voxels": [
+          3.5,
+          5.5,
+          22.0
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          3.5,
+          10.0
+        ],
+        "joint_glb_translation_meters": [
+          -0.225,
+          1.1,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "joint_glb_translation_meters": [
+        -0.225,
+        1.1,
+        -0.0
+      ],
+      "local_pivot_source_voxels": [
+        2.5,
+        3.5,
+        10.0
+      ]
+    },
+    {
+      "name": "arm_right",
+      "dimensions_voxels": [
+        3,
+        5,
+        11
+      ],
+      "filled_voxels": 138,
+      "exposed_unit_faces": 188,
+      "greedy_quads": 27,
+      "triangles": 54,
+      "vertices": 34,
+      "ordinary_quads": 27,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        3,
+        5,
+        11
+      ],
+      "mesh_dimensions_meters": [
+        0.15000000000000002,
+        0.25,
+        0.55
+      ],
+      "ground_pivot_source_voxels": [
+        1.5,
+        2.5,
+        0
+      ],
+      "colors_used": [
+        11,
+        35,
+        36,
+        37,
+        39
+      ],
+      "surface_area_by_palette_index": {
+        "11": 105,
+        "35": 14,
+        "36": 5,
+        "37": 48,
+        "39": 16
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "arm_right",
+        "joint_source_voxels": [
+          12.5,
+          5.5,
+          22.0
+        ],
+        "mesh_pivot_source_voxels": [
+          0.5,
+          3.5,
+          10.0
+        ],
+        "joint_glb_translation_meters": [
+          0.225,
+          1.1,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "joint_glb_translation_meters": [
+        0.225,
+        1.1,
+        -0.0
+      ],
+      "local_pivot_source_voxels": [
+        0.5,
+        3.5,
+        10.0
+      ]
+    },
+    {
+      "name": "leg_left",
+      "dimensions_voxels": [
+        4,
+        7,
+        13
+      ],
+      "filled_voxels": 204,
+      "exposed_unit_faces": 262,
+      "greedy_quads": 28,
+      "triangles": 56,
+      "vertices": 40,
+      "ordinary_quads": 28,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        7,
+        13
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.35000000000000003,
+        0.65
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        26,
+        28,
+        35
+      ],
+      "surface_area_by_palette_index": {
+        "1": 54,
+        "2": 14,
+        "26": 50,
+        "28": 138,
+        "35": 6
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "leg_left",
+        "joint_source_voxels": [
+          6.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          3.0,
+          4.5,
+          13.0
+        ],
+        "joint_glb_translation_meters": [
+          -0.1,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "joint_glb_translation_meters": [
+        -0.1,
+        0.65,
+        -0.0
+      ],
+      "local_pivot_source_voxels": [
+        3.0,
+        4.5,
+        13.0
+      ]
+    },
+    {
+      "name": "leg_right",
+      "dimensions_voxels": [
+        4,
+        7,
+        13
+      ],
+      "filled_voxels": 204,
+      "exposed_unit_faces": 262,
+      "greedy_quads": 28,
+      "triangles": 56,
+      "vertices": 40,
+      "ordinary_quads": 28,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        7,
+        13
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.35000000000000003,
+        0.65
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        26,
+        28,
+        35
+      ],
+      "surface_area_by_palette_index": {
+        "1": 54,
+        "2": 14,
+        "26": 50,
+        "28": 138,
+        "35": 6
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "leg_right",
+        "joint_source_voxels": [
+          10.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          1.0,
+          4.5,
+          13.0
+        ],
+        "joint_glb_translation_meters": [
+          0.1,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "joint_glb_translation_meters": [
+        0.1,
+        0.65,
+        -0.0
+      ],
+      "local_pivot_source_voxels": [
+        1.0,
+        4.5,
+        13.0
+      ]
+    }
+  ],
+  "glb": {
+    "sha256": "4ea0dd6e3829f31f67f3f1029d1020eba6c79651c1a323b526e40e886a946d9c",
+    "bytes": 62896,
+    "nodes": 7,
+    "meshes": 6,
+    "materials": 1,
+    "triangles": 842,
+    "palette_embedded_exactly": true,
+    "nearest_sampling": true,
+    "joint_translations_verified": true,
+    "root_direct_children": [
+      "arm_left",
+      "arm_right",
+      "head",
+      "leg_left",
+      "leg_right",
+      "torso"
+    ]
+  },
+  "preview": "Rendered from exact occupied voxel cubes; camera/ground/lights excluded from GLB",
+  "blender": "5.1.2",
+  "outputs": {
+    "glb": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\outputs\\bedroom-grow-simulator\\assets\\rasta_character.glb",
+    "blend": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\outputs\\bedroom-grow-simulator\\voxel_sources\\rasta_character\\rasta_character.blend",
+    "front_preview": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\outputs\\bedroom-grow-simulator\\voxel_sources\\rasta_character\\rasta_character_preview.png",
+    "back_preview": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\outputs\\bedroom-grow-simulator\\voxel_sources\\rasta_character\\rasta_character_back_preview.png"
+  }
+}

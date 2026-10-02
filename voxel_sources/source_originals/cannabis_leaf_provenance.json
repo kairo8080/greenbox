@@ -1,0 +1,65 @@
+{
+  "asset": "cannabis_leaf",
+  "source_type": "Existing CC0 3D plant asset, alpha-textured mesh foliage card; converted to voxels",
+  "title": "Cannabis plants",
+  "author": "Yughues / Nobiax",
+  "source_page": "https://opengameart.org/content/cannabis-plants",
+  "download_url": "https://opengameart.org/sites/default/files/Cannabis.7z",
+  "license": "CC0 1.0 Universal",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "license_evidence": "Public source page and archive readme.txt explicitly state CC0. Internal readme links Nobiax and Yughues as author aliases.",
+  "original_archive": "work/third-party/cannabis/Cannabis.7z",
+  "original_archive_sha256": "da4a5ae4c3a93a041bde4342e94fa8b78ac6da7ae11152a7beaee1116f95b109",
+  "source_texture": "diffuse.tga",
+  "source_texture_sha256": "63db72941a5c59fff005d7b3404719d3a4c695145221324693cd572dd9bc73b3",
+  "source_obj": "Cannabis.obj",
+  "source_obj_sha256": "9b53db93f274e4ca08ebccac5a00c41fe16ddf568f4dac6dff6b98b8037095b5",
+  "downloaded_date": "2026-10-01",
+  "transformation": {
+    "alpha_atlas_crop_xyxy": [
+      218,
+      308,
+      992,
+      1007
+    ],
+    "source_leaf_junction_uv": [
+      0.5876,
+      0.0881
+    ],
+    "source_obj_faces_using_leaf_uv_patch": 184,
+    "method": "Preserve original seven-leaflet alpha silhouette; box-filter cell coverage; occupy cells at >=30% coverage; extrude uniform 3-cell thickness. No procedural replacement of leaf silhouette.",
+    "color": "Alpha-weighted source texel averages, sRGB gamma 0.65 lift, deterministic RGB k-means into 8 leaf colors; stem color from source trunk atlas.",
+    "modification": "Added a straight two-cell-wide petiole at the original source UV junction for attachment; its color is sampled from the original stem atlas.",
+    "source_resampling": [
+      64,
+      58
+    ],
+    "omitted_disconnected_tip_cells": 12,
+    "orientation": "Z up; leaf face in XZ plane; thickness along Y; petiole base on Z=0",
+    "attachment_anchor_grid_xyz": [
+      32,
+      1.5,
+      0
+    ],
+    "export_mesh_origin": "At the center of the petiole base, Z=0; attachment anchor in the exported local mesh is [0,0,0]",
+    "voxel_pitch_meters": 0.05,
+    "game_export": "Surface mesh removes hidden faces only; preserve cubic cells and flat normals; GLB uses standard Y-up conversion."
+  },
+  "validation": {
+    "format": "MagicaVoxel VOX v150",
+    "single_model": true,
+    "grid_xyz": [
+      64,
+      3,
+      64
+    ],
+    "occupied_cubic_cells": 3558,
+    "palette_colors_used": 9,
+    "face_connected_components": 1,
+    "voxel_sha256": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a",
+    "serialized_chunk_lengths_valid": true,
+    "unique_in_bounds_nonzero_cells": true,
+    "palette_indexing": "RGBA slot 0 maps to voxel index 1; index 0 reserved for empty space"
+  },
+  "blend_swap_alternative": "ctac1287 leaf https://blendswap.com/blend/7651 was not obtained because its public download page requires sign in."
+}

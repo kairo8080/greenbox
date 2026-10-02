@@ -1,0 +1,951 @@
+{
+  "schema": "rasta-room-manifest-v1",
+  "voxel_pitch_meters": 0.05,
+  "dimensions_grid": [
+    144,
+    120,
+    64
+  ],
+  "room_dimensions_meters": [
+    7.2,
+    6.0,
+    3.2
+  ],
+  "floor_top_meters": 0.2,
+  "area_increase_factor": 2.0454545454545454,
+  "palette_first_33_preserved": true,
+  "palette_added": [
+    {
+      "index": 34,
+      "name": "rasta_red",
+      "rgba": [
+        201,
+        47,
+        43,
+        255
+      ]
+    },
+    {
+      "index": 35,
+      "name": "rasta_gold",
+      "rgba": [
+        242,
+        194,
+        54,
+        255
+      ]
+    },
+    {
+      "index": 36,
+      "name": "rasta_green",
+      "rgba": [
+        39,
+        130,
+        73,
+        255
+      ]
+    },
+    {
+      "index": 37,
+      "name": "rasta_skin",
+      "rgba": [
+        142,
+        88,
+        52,
+        255
+      ]
+    },
+    {
+      "index": 38,
+      "name": "rasta_hair",
+      "rgba": [
+        39,
+        28,
+        23,
+        255
+      ]
+    },
+    {
+      "index": 39,
+      "name": "rasta_skin_light",
+      "rgba": [
+        175,
+        115,
+        73,
+        255
+      ]
+    }
+  ],
+  "asset_count": 19,
+  "character_ready": true,
+  "game_export_excluded_nodes": [
+    "front_wall_optional",
+    "home_grower_character",
+    "lamp_budget",
+    "pot_empty",
+    "right_wall_optional"
+  ],
+  "game_coordinates": "Y up; native +Y becomes game -Z",
+  "starter_pot_game_center": [
+    4.6,
+    0.2,
+    -4.6
+  ],
+  "native_prop_placement_note": "Integer-grid VOX positions; odd-width pot geometry centers differ by half a voxel (.025m) from game root coordinates",
+  "collision_boxes": [
+    {
+      "name": "floor",
+      "center": [
+        3.6,
+        0.1,
+        -3.0
+      ],
+      "size": [
+        7.2,
+        0.2,
+        6.0
+      ]
+    },
+    {
+      "name": "left_wall",
+      "center": [
+        0.075,
+        1.7,
+        -2.925
+      ],
+      "size": [
+        0.15,
+        3.0,
+        5.85
+      ]
+    },
+    {
+      "name": "back_wall",
+      "center": [
+        3.6,
+        1.7,
+        -5.925
+      ],
+      "size": [
+        7.2,
+        3.0,
+        0.15
+      ]
+    },
+    {
+      "name": "teal_single_bed",
+      "center": [
+        1.175,
+        0.8500000000000001,
+        -4.5
+      ],
+      "size": [
+        1.4500000000000002,
+        1.3,
+        2.2
+      ],
+      "kind": "simple conservative bounding box"
+    },
+    {
+      "name": "desk",
+      "center": [
+        6.050000000000001,
+        0.925,
+        -1.25
+      ],
+      "size": [
+        1.3,
+        1.4500000000000002,
+        0.7000000000000001
+      ],
+      "kind": "simple conservative bounding box"
+    },
+    {
+      "name": "chair",
+      "center": [
+        6.050000000000001,
+        0.625,
+        -0.55
+      ],
+      "size": [
+        0.5,
+        0.8500000000000001,
+        0.5
+      ],
+      "kind": "simple conservative bounding box"
+    },
+    {
+      "name": "bedside_table",
+      "center": [
+        2.25,
+        0.775,
+        -5.300000000000001
+      ],
+      "size": [
+        0.5,
+        1.1500000000000001,
+        0.5
+      ],
+      "kind": "simple conservative bounding box"
+    },
+    {
+      "name": "stereo_corner",
+      "center": [
+        0.9,
+        0.65,
+        -2.475
+      ],
+      "size": [
+        1.2000000000000002,
+        0.9,
+        0.65
+      ],
+      "kind": "simple conservative bounding box"
+    }
+  ],
+  "overlap_cells_by_configuration": {
+    "starter": 0,
+    "upgraded": 0,
+    "full_architecture": 0
+  },
+  "native_scene_sha256": "a7405336718f21882e137e2b1f1b6c22cf0b55bfb535eb2aad6a1a808a1b9c5c",
+  "native_occupancy_palette_roundtrip_exact": true,
+  "flag_reference": "https://jis.gov.jm/symbols/jamaica-national-flag/",
+  "originals_preserved": [
+    "outputs/bedroom",
+    "assets/bedroom.glb",
+    "voxel_sources/starter_bedroom.vox"
+  ],
+  "nodes": [
+    {
+      "name": "oak_floor",
+      "offset_grid": [
+        0,
+        0,
+        0
+      ],
+      "dimensions_grid": [
+        144,
+        120,
+        4
+      ],
+      "game_node_origin": [
+        3.6,
+        0.0,
+        -3.0
+      ],
+      "native_layer": 0,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 69120,
+      "vox_file": "voxel_sources/rasta_room/oak_floor.vox"
+    },
+    {
+      "name": "back_wall_window",
+      "offset_grid": [
+        0,
+        113,
+        4
+      ],
+      "dimensions_grid": [
+        144,
+        7,
+        60
+      ],
+      "game_node_origin": [
+        3.6,
+        0.2,
+        -5.825
+      ],
+      "native_layer": 0,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 35001,
+      "vox_file": "voxel_sources/rasta_room/back_wall_window.vox"
+    },
+    {
+      "name": "left_wall_door",
+      "offset_grid": [
+        0,
+        0,
+        4
+      ],
+      "dimensions_grid": [
+        5,
+        117,
+        60
+      ],
+      "game_node_origin": [
+        0.125,
+        0.2,
+        -2.9250000000000003
+      ],
+      "native_layer": 0,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 22901,
+      "vox_file": "voxel_sources/rasta_room/left_wall_door.vox"
+    },
+    {
+      "name": "right_wall_optional",
+      "offset_grid": [
+        141,
+        0,
+        4
+      ],
+      "dimensions_grid": [
+        3,
+        117,
+        60
+      ],
+      "game_node_origin": [
+        7.125,
+        0.2,
+        -2.9250000000000003
+      ],
+      "native_layer": 5,
+      "native_hidden": true,
+      "game_export": false,
+      "filled_voxels": 21060,
+      "vox_file": "voxel_sources/rasta_room/right_wall_optional.vox"
+    },
+    {
+      "name": "front_wall_optional",
+      "offset_grid": [
+        3,
+        0,
+        4
+      ],
+      "dimensions_grid": [
+        138,
+        3,
+        60
+      ],
+      "game_node_origin": [
+        3.6,
+        0.2,
+        -0.07500000000000001
+      ],
+      "native_layer": 5,
+      "native_hidden": true,
+      "game_export": false,
+      "filled_voxels": 24840,
+      "vox_file": "voxel_sources/rasta_room/front_wall_optional.vox"
+    },
+    {
+      "name": "teal_single_bed",
+      "offset_grid": [
+        9,
+        68,
+        4
+      ],
+      "dimensions_grid": [
+        29,
+        44,
+        26
+      ],
+      "game_node_origin": [
+        1.175,
+        0.2,
+        -4.5
+      ],
+      "native_layer": 1,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 14132,
+      "vox_file": "voxel_sources/rasta_room/teal_single_bed.vox"
+    },
+    {
+      "name": "woven_rug",
+      "offset_grid": [
+        38,
+        5,
+        4
+      ],
+      "dimensions_grid": [
+        64,
+        39,
+        1
+      ],
+      "game_node_origin": [
+        3.5,
+        0.2,
+        -1.225
+      ],
+      "native_layer": 1,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 2432,
+      "vox_file": "voxel_sources/rasta_room/woven_rug.vox"
+    },
+    {
+      "name": "slippers",
+      "offset_grid": [
+        18,
+        58,
+        4
+      ],
+      "dimensions_grid": [
+        8,
+        7,
+        3
+      ],
+      "game_node_origin": [
+        1.1,
+        0.2,
+        -3.075
+      ],
+      "native_layer": 1,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 90,
+      "vox_file": "voxel_sources/rasta_room/slippers.vox"
+    },
+    {
+      "name": "desk",
+      "offset_grid": [
+        108,
+        18,
+        4
+      ],
+      "dimensions_grid": [
+        26,
+        14,
+        29
+      ],
+      "game_node_origin": [
+        6.050000000000001,
+        0.2,
+        -1.25
+      ],
+      "native_layer": 1,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 1566,
+      "vox_file": "voxel_sources/rasta_room/desk.vox"
+    },
+    {
+      "name": "chair",
+      "offset_grid": [
+        116,
+        6,
+        4
+      ],
+      "dimensions_grid": [
+        10,
+        10,
+        17
+      ],
+      "game_node_origin": [
+        6.050000000000001,
+        0.2,
+        -0.55
+      ],
+      "native_layer": 1,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 480,
+      "vox_file": "voxel_sources/rasta_room/chair.vox"
+    },
+    {
+      "name": "bedside_table",
+      "offset_grid": [
+        40,
+        101,
+        4
+      ],
+      "dimensions_grid": [
+        10,
+        10,
+        23
+      ],
+      "game_node_origin": [
+        2.25,
+        0.2,
+        -5.300000000000001
+      ],
+      "native_layer": 1,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 1132,
+      "vox_file": "voxel_sources/rasta_room/bedside_table.vox"
+    },
+    {
+      "name": "watering_can",
+      "offset_grid": [
+        40,
+        46,
+        4
+      ],
+      "dimensions_grid": [
+        16,
+        8,
+        13
+      ],
+      "game_node_origin": [
+        2.4000000000000004,
+        0.2,
+        -2.5
+      ],
+      "native_layer": 2,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 448,
+      "vox_file": "voxel_sources/rasta_room/watering_can.vox"
+    },
+    {
+      "name": "grow_light_rack",
+      "offset_grid": [
+        82,
+        82,
+        4
+      ],
+      "dimensions_grid": [
+        38,
+        22,
+        49
+      ],
+      "game_node_origin": [
+        5.050000000000001,
+        0.2,
+        -4.65
+      ],
+      "native_layer": 6,
+      "native_hidden": true,
+      "game_export": true,
+      "filled_voxels": 2808,
+      "vox_file": "voxel_sources/rasta_room/grow_light_rack.vox"
+    },
+    {
+      "name": "small_fan",
+      "offset_grid": [
+        60,
+        103,
+        4
+      ],
+      "dimensions_grid": [
+        10,
+        7,
+        17
+      ],
+      "game_node_origin": [
+        3.25,
+        0.2,
+        -5.325
+      ],
+      "native_layer": 6,
+      "native_hidden": true,
+      "game_export": true,
+      "filled_voxels": 514,
+      "vox_file": "voxel_sources/rasta_room/small_fan.vox"
+    },
+    {
+      "name": "water_reservoir",
+      "offset_grid": [
+        130,
+        72,
+        4
+      ],
+      "dimensions_grid": [
+        12,
+        12,
+        15
+      ],
+      "game_node_origin": [
+        6.800000000000001,
+        0.2,
+        -3.9000000000000004
+      ],
+      "native_layer": 6,
+      "native_hidden": true,
+      "game_export": true,
+      "filled_voxels": 1748,
+      "vox_file": "voxel_sources/rasta_room/water_reservoir.vox"
+    },
+    {
+      "name": "stereo_corner",
+      "offset_grid": [
+        6,
+        43,
+        4
+      ],
+      "dimensions_grid": [
+        24,
+        13,
+        18
+      ],
+      "game_node_origin": [
+        0.9,
+        0.2,
+        -2.475
+      ],
+      "native_layer": 1,
+      "native_hidden": false,
+      "game_export": true,
+      "filled_voxels": 3652,
+      "vox_file": "voxel_sources/rasta_room/stereo_corner.vox"
+    },
+    {
+      "name": "pot_empty",
+      "offset_grid": [
+        87,
+        87,
+        4
+      ],
+      "dimensions_grid": [
+        11,
+        11,
+        9
+      ],
+      "game_node_origin": [
+        4.625,
+        0.2,
+        -4.625
+      ],
+      "native_layer": 3,
+      "native_hidden": false,
+      "game_export": false,
+      "filled_voxels": 351,
+      "vox_file": "voxel_sources/rasta_room/pot_empty.vox"
+    },
+    {
+      "name": "lamp_budget",
+      "offset_grid": [
+        76,
+        86,
+        4
+      ],
+      "dimensions_grid": [
+        22,
+        13,
+        44
+      ],
+      "game_node_origin": [
+        4.3500000000000005,
+        0.2,
+        -4.625
+      ],
+      "native_layer": 2,
+      "native_hidden": false,
+      "game_export": false,
+      "filled_voxels": 909,
+      "vox_file": "voxel_sources/rasta_room/lamp_budget.vox"
+    },
+    {
+      "name": "home_grower_character",
+      "offset_grid": [
+        63,
+        58,
+        4
+      ],
+      "dimensions_grid": [
+        14,
+        11,
+        34
+      ],
+      "game_node_origin": [
+        3.5,
+        0.2,
+        -3.1750000000000003
+      ],
+      "native_layer": 4,
+      "native_hidden": false,
+      "game_export": false,
+      "filled_voxels": 2007,
+      "vox_file": "voxel_sources/rasta_room/home_grower_character.vox"
+    }
+  ],
+  "connected_components_by_asset": {
+    "oak_floor": 1,
+    "back_wall_window": 1,
+    "left_wall_door": 1,
+    "right_wall_optional": 1,
+    "front_wall_optional": 1,
+    "teal_single_bed": 1,
+    "woven_rug": 1,
+    "slippers": 2,
+    "desk": 1,
+    "chair": 1,
+    "bedside_table": 1,
+    "watering_can": 1,
+    "grow_light_rack": 1,
+    "small_fan": 1,
+    "water_reservoir": 1,
+    "stereo_corner": 1,
+    "pot_empty": 1,
+    "lamp_budget": 1,
+    "home_grower_character": 1
+  },
+  "intentional_separate_components": {
+    "slippers": "Two separate slippers"
+  },
+  "original_native_room_sha256": "5b75ef70a2d1a3ee6266abe7b21fd7b0e49c49ac1800b2b46fc2557a8a0f06a5",
+  "glb_sha256": "1fde1c929ead562229f332d6aea6209dbcf52d20efd557e99f7960191a051abf",
+  "glb_validation": {
+    "bytes": 366176,
+    "nodes": 14,
+    "unique_meshes": 14,
+    "materials": 2,
+    "emissive_material_count": 1,
+    "triangles_unique_mesh_data": 5232,
+    "source_palette_png_embedded_exactly": true,
+    "max_surface_primitives_per_mesh": 2,
+    "nearest_palette_sampling": true,
+    "preview_objects_excluded": true
+  },
+  "actual_exported_nodes": [
+    {
+      "name": "oak_floor",
+      "origin": [
+        3.5999999046325684,
+        0,
+        -3
+      ],
+      "world_min": [
+        0.0,
+        0,
+        -6
+      ],
+      "world_max_exclusive": [
+        7.199999809265137,
+        0.20000000298023224,
+        0
+      ]
+    },
+    {
+      "name": "back_wall_window",
+      "origin": [
+        3.5999999046325684,
+        0.20000000298023224,
+        -5.824999809265137
+      ],
+      "world_min": [
+        0.0,
+        0.20000000298023224,
+        -5.9999998062849045
+      ],
+      "world_max_exclusive": [
+        7.199999809265137,
+        3.2000000029802322,
+        -5.649999812245369
+      ]
+    },
+    {
+      "name": "left_wall_door",
+      "origin": [
+        0.125,
+        0.20000000298023224,
+        -2.924999952316284
+      ],
+      "world_min": [
+        0.0,
+        0.20000000298023224,
+        -5.849999904632568
+      ],
+      "world_max_exclusive": [
+        0.25,
+        3.2000000029802322,
+        0.0
+      ]
+    },
+    {
+      "name": "teal_single_bed",
+      "origin": [
+        1.1749999523162842,
+        0.20000000298023224,
+        -4.5
+      ],
+      "world_min": [
+        0.44999992847442627,
+        0.20000000298023224,
+        -5.600000023841858
+      ],
+      "world_max_exclusive": [
+        1.899999976158142,
+        1.4999999552965164,
+        -3.399999976158142
+      ]
+    },
+    {
+      "name": "woven_rug",
+      "origin": [
+        3.5,
+        0.20000000298023224,
+        -1.225000023841858
+      ],
+      "world_min": [
+        1.899999976158142,
+        0.20000000298023224,
+        -2.200000047683716
+      ],
+      "world_max_exclusive": [
+        5.100000023841858,
+        0.2500000037252903,
+        -0.25
+      ]
+    },
+    {
+      "name": "slippers",
+      "origin": [
+        1.100000023841858,
+        0.20000000298023224,
+        -3.075000047683716
+      ],
+      "world_min": [
+        0.9000000208616257,
+        0.20000000298023224,
+        -3.2500000447034836
+      ],
+      "world_max_exclusive": [
+        1.3000000268220901,
+        0.3500000089406967,
+        -2.900000050663948
+      ]
+    },
+    {
+      "name": "desk",
+      "origin": [
+        6.050000190734863,
+        0.20000000298023224,
+        -1.25
+      ],
+      "world_min": [
+        5.400000214576721,
+        0.20000000298023224,
+        -1.5999999940395355
+      ],
+      "world_max_exclusive": [
+        6.700000166893005,
+        1.650000050663948,
+        -0.9000000059604645
+      ]
+    },
+    {
+      "name": "chair",
+      "origin": [
+        6.050000190734863,
+        0.20000000298023224,
+        -0.550000011920929
+      ],
+      "world_min": [
+        5.800000190734863,
+        0.20000000298023224,
+        -0.800000011920929
+      ],
+      "world_max_exclusive": [
+        6.300000190734863,
+        1.0500000268220901,
+        -0.30000001192092896
+      ]
+    },
+    {
+      "name": "bedside_table",
+      "origin": [
+        2.25,
+        0.20000000298023224,
+        -5.300000190734863
+      ],
+      "world_min": [
+        2.0,
+        0.20000000298023224,
+        -5.550000190734863
+      ],
+      "world_max_exclusive": [
+        2.5,
+        1.3499999791383743,
+        -5.050000190734863
+      ]
+    },
+    {
+      "name": "watering_can",
+      "origin": [
+        2.4000000953674316,
+        0.20000000298023224,
+        -2.5
+      ],
+      "world_min": [
+        2.000000089406967,
+        0.20000000298023224,
+        -2.7000000029802322
+      ],
+      "world_max_exclusive": [
+        2.800000101327896,
+        0.8499999791383743,
+        -2.2999999970197678
+      ]
+    },
+    {
+      "name": "grow_light_rack",
+      "origin": [
+        5.050000190734863,
+        0.20000000298023224,
+        -4.650000095367432
+      ],
+      "world_min": [
+        4.100000202655792,
+        0.20000000298023224,
+        -5.200000107288361
+      ],
+      "world_max_exclusive": [
+        6.000000178813934,
+        2.650000050663948,
+        -4.100000083446503
+      ]
+    },
+    {
+      "name": "small_fan",
+      "origin": [
+        3.25,
+        0.20000000298023224,
+        -5.324999809265137
+      ],
+      "world_min": [
+        3.0,
+        0.20000000298023224,
+        -5.4999998062849045
+      ],
+      "world_max_exclusive": [
+        3.5,
+        1.0500000268220901,
+        -5.149999812245369
+      ]
+    },
+    {
+      "name": "water_reservoir",
+      "origin": [
+        6.800000190734863,
+        0.20000000298023224,
+        -3.9000000953674316
+      ],
+      "world_min": [
+        6.500000178813934,
+        0.20000000298023224,
+        -4.200000107288361
+      ],
+      "world_max_exclusive": [
+        7.100000202655792,
+        0.9500000029802322,
+        -3.6000000834465027
+      ]
+    },
+    {
+      "name": "stereo_corner",
+      "origin": [
+        0.8999999761581421,
+        0.20000000298023224,
+        -2.4749999046325684
+      ],
+      "world_min": [
+        0.2999999523162842,
+        0.20000000298023224,
+        -2.7999998927116394
+      ],
+      "world_max_exclusive": [
+        1.5,
+        1.0999999791383743,
+        -2.1499999165534973
+      ]
+    }
+  ],
+  "game_export_bounds_match_source_occupancy": true
+}

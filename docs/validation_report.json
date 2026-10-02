@@ -1,0 +1,73 @@
+{
+  "schema": "bedroom-roots-validation-v2",
+  "date": "2026-10-02",
+  "game": {
+    "title": "Bedroom Roots",
+    "engine": "Godot 4.7.2",
+    "platform": "Windows x86_64",
+    "renderer": "Compatibility OpenGL",
+    "start": {
+      "level": 1,
+      "xp": 0,
+      "cash": 25,
+      "owned_pots": 1
+    },
+    "level_cap": 3,
+    "crop_rules": "fictional compressed game mechanics",
+    "room_meters": [
+      7.2,
+      6.0,
+      3.2
+    ],
+    "floor_area_relative_to_previous": 2.0454545455,
+    "design": "Jamaican-inspired red/gold/green textiles, flag art, stereo, tam and locs",
+    "character_animation": "Six rigid voxel mesh parts with shoulder/hip pivots, walking swings and care gestures",
+    "movement": "WASD/arrows or click-to-walk; grid pathfinding and body collision",
+    "interaction": "E requires proximity; care buttons queue walking and perform once on arrival",
+    "existing_saves": "Version 1 progress remains compatible"
+  },
+  "checks": {
+    "domain_and_json_persistence": 69,
+    "actual_scene_save_hud_pause": 53,
+    "character_routes_care_collision": 47,
+    "total": 169,
+    "actual_physics_route_steps": 309,
+    "release_game_loop": "passed; far E guard, walking to pot, starter crop through harvest, water animation, XP level2, pot upgrade, progress roundtrip, pause guard",
+    "voxel_sources": "Exact VOX geometry/palette roundtrip; zero room-part overlaps, exact GLB world bounds, connected avatar and nonoverlapping rigid pieces; starter props checked at all four growth stages"
+  },
+  "performance": {
+    "draw_calls": 161.0,
+    "engine": "4.7.2-stable (official)",
+    "fps_from_mean": 59.8413396323834,
+    "frames": 659,
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "mean_ms": 16.7108558421851,
+    "p95_ms": 16.78,
+    "primitives": 40698.0,
+    "render_objects": 527.0,
+    "renderer": "gl_compatibility",
+    "scenario": "three mature plants, upgraded light rack and fan",
+    "duration_seconds": 12,
+    "warmup_seconds": 1,
+    "fps_cap": 60,
+    "measurement": "actual monotonic wall-clock interval between process frames; source render objects/triangles include shadow and UI passes",
+    "scope": "Measured on this laptop, not a guarantee for other devices."
+  },
+  "runtime_hashes": {
+    "BedroomRoots.exe": "4a9eaded8955ef789ab02651ed9d2dde80328fbb342bd2a6db4db33e86305668",
+    "BedroomRoots.pck": "eaa623856e064a5e92cca6a76a0e9b4b95ba9045f10b7752eb7c5f93033d7911"
+  },
+  "editable_starter_room": "voxel_sources/rasta_room/rasta_bedroom.vox",
+  "editable_character": "voxel_sources/rasta_character/home_grower_character.vox",
+  "mesh_triangles": {
+    "room": 5232,
+    "animated_character": 842,
+    "starter_prop_library": 7350
+  },
+  "limitations": [
+    "Bedroom starting slice only; levels 1\u20133.",
+    "No offline growth, campaign, quests or additional rooms.",
+    "Character animation uses six rigid voxel parts rather than a skinned armature.",
+    "Meshes depict true occupied cubes; runtime block editing/destruction is not implemented."
+  ]
+}

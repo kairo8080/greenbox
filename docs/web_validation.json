@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-02",
+  "engine": "Godot 4.7.2",
+  "web_export": "Compatibility renderer, WebAssembly, threads and GDExtensions disabled",
+  "native_source_checks": {"domain_and_persistence": 69, "scene_save_hud_pause": 53, "character_interaction": 47, "total": 169},
+  "browser_checks_before_publish": {
+    "launcher_and_full_room_render": "passed",
+    "route_to_pot_and_plant": "passed; credits changed from 25 to 20 and seedling appeared",
+    "water_and_light": "passed; animated can, water meter 80%, lamp on",
+    "save_and_reload": "passed; crop growth, credits and light restored",
+    "focus_loss_pause_and_fullscreen": "passed",
+    "console_errors_or_warnings": 0
+  },
+  "deployment_build": "npm run build verifies committed engine/data headers, required export files, renderer options and source asset references",
+  "save_scope": "IndexedDB storage local to each browser and site origin; separate from desktop saves",
+  "scope": "Desktop browser prototype. Broad mobile compatibility and browser performance have not been validated."
+}

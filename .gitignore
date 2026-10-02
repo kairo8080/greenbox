@@ -1,0 +1,20 @@
+.vercel
+.env*
+!.env.example
+
+# Local deployment metadata and credentials.
+.vercel/
+
+# Godot caches are regenerated; keep .import settings and .uid sidecars.
+.godot/
+game/runtime/
+
+# Browser exports in public/ are intentionally committed.
+node_modules/
+npm-debug.log*
+*.tmp
+*.blend1
+*.blend2
+.DS_Store
+Thumbs.db
+Desktop.ini

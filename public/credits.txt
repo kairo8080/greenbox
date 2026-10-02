@@ -1,0 +1,10 @@
+BEDROOM ROOTS / GREENBOX
+
+Original voxel room, character, props and game code created for this project.
+Leaf silhouettes derive from Yughues/Nobiax's CC0 Cannabis Plants artwork:
+https://opengameart.org/content/cannabis-plants
+Editable sources and provenance: https://github.com/kairo8080/greenbox
+
+Powered by Godot 4.7.2, distributed under the MIT license.
+License: /GODOT_LICENSE.txt
+Bundled third-party notices: /GODOT_THIRD_PARTY_NOTICES.txt

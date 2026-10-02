@@ -1,0 +1,1452 @@
+{
+  "schema": "voxel-starter-mesh-v1",
+  "assets": [
+    {
+      "name": "pot_empty",
+      "dimensions_voxels": [
+        11,
+        11,
+        9
+      ],
+      "filled_voxels": 351,
+      "exposed_unit_faces": 776,
+      "greedy_quads": 339,
+      "triangles": 678,
+      "vertices": 412,
+      "ordinary_quads": 339,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        11,
+        11,
+        9
+      ],
+      "mesh_dimensions_meters": [
+        0.55,
+        0.55,
+        0.45
+      ],
+      "ground_pivot_source_voxels": [
+        5.5,
+        5.5,
+        0
+      ],
+      "colors_used": [
+        9,
+        21,
+        22,
+        23
+      ],
+      "surface_area_by_palette_index": {
+        "9": 2,
+        "21": 104,
+        "22": 582,
+        "23": 88
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "starter_soil_pot",
+        "soil_top_meters": 0.4,
+        "authoring": "Original cubic prop for this project",
+        "mesh_pivot_source_voxels": [
+          5.5,
+          5.5,
+          0
+        ],
+        "connected_components": 1,
+        "voxel_pitch_meters": 0.05
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "game_pivot_source_voxels": [
+        5.5,
+        5.5,
+        0
+      ]
+    },
+    {
+      "name": "foliage_seedling",
+      "dimensions_voxels": [
+        11,
+        7,
+        8
+      ],
+      "filled_voxels": 58,
+      "exposed_unit_faces": 202,
+      "greedy_quads": 138,
+      "triangles": 276,
+      "vertices": 167,
+      "ordinary_quads": 138,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        11,
+        7,
+        8
+      ],
+      "mesh_dimensions_meters": [
+        0.55,
+        0.35000000000000003,
+        0.4
+      ],
+      "ground_pivot_source_voxels": [
+        5.5,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        17,
+        18,
+        19,
+        20,
+        30
+      ],
+      "surface_area_by_palette_index": {
+        "17": 10,
+        "18": 78,
+        "19": 60,
+        "20": 24,
+        "30": 30
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "foliage_only",
+        "stage": "seedling",
+        "leaf_count": 2,
+        "source_leaf_sha256": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a",
+        "source_reuse": "Existing CC0 leaf silhouette, area resampled into two small cubic leaves",
+        "leaf_resampling": {
+          "method": "area-coverage silhouette resampling, exact occupied-source mask",
+          "source_plane": "XZ; source Y thickness collapsed before projection",
+          "target_grid": [
+            7,
+            1,
+            7
+          ],
+          "minimum_occupied_area_fraction": 0.25,
+          "restored_stem_cells": 1,
+          "preserved_source_apex_cells": 1,
+          "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+          "thin_connectivity_bridge_cells": 0
+        },
+        "growth_representation": "Fictional game art stage",
+        "mesh_pivot_source_voxels": [
+          5.5,
+          3.5,
+          0
+        ],
+        "connected_components": 1,
+        "voxel_pitch_meters": 0.05
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "game_pivot_source_voxels": [
+        5.5,
+        3.5,
+        0
+      ]
+    },
+    {
+      "name": "foliage_small",
+      "dimensions_voxels": [
+        21,
+        11,
+        23
+      ],
+      "filled_voxels": 224,
+      "exposed_unit_faces": 692,
+      "greedy_quads": 475,
+      "triangles": 950,
+      "vertices": 553,
+      "ordinary_quads": 475,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        21,
+        11,
+        23
+      ],
+      "mesh_dimensions_meters": [
+        1.05,
+        0.55,
+        1.1500000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        10.5,
+        5.5,
+        0
+      ],
+      "colors_used": [
+        17,
+        18,
+        19,
+        20,
+        30
+      ],
+      "surface_area_by_palette_index": {
+        "17": 102,
+        "18": 210,
+        "19": 180,
+        "20": 118,
+        "30": 82
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "foliage_only",
+        "stage": "small",
+        "voxel_pitch_meters": 0.05,
+        "source_silhouette_file": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\outputs\\cannabis_leaf.vox",
+        "source_silhouette_sha256": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a",
+        "source_dimensions": [
+          64,
+          3,
+          64
+        ],
+        "source_stem_origin_voxel_indices": [
+          31.5,
+          1,
+          0
+        ],
+        "source_reuse": "Existing cannabis_leaf.vox palmate/serrated silhouette reused for every leaf; source unchanged",
+        "palette_remap": [
+          {
+            "source_index": 1,
+            "source_rgba": [
+              65,
+              79,
+              45,
+              255
+            ],
+            "collection_color": "leaf_dark",
+            "collection_index": 17,
+            "collection_rgb": [
+              33,
+              78,
+              42
+            ]
+          },
+          {
+            "source_index": 2,
+            "source_rgba": [
+              74,
+              89,
+              52,
+              255
+            ],
+            "collection_color": "leaf_dark",
+            "collection_index": 17,
+            "collection_rgb": [
+              33,
+              78,
+              42
+            ]
+          },
+          {
+            "source_index": 3,
+            "source_rgba": [
+              82,
+              97,
+              57,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 4,
+            "source_rgba": [
+              88,
+              104,
+              62,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 5,
+            "source_rgba": [
+              94,
+              110,
+              67,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 6,
+            "source_rgba": [
+              101,
+              117,
+              72,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          },
+          {
+            "source_index": 7,
+            "source_rgba": [
+              107,
+              124,
+              77,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          },
+          {
+            "source_index": 8,
+            "source_rgba": [
+              114,
+              132,
+              82,
+              255
+            ],
+            "collection_color": "leaf_tip",
+            "collection_index": 20,
+            "collection_rgb": [
+              119,
+              184,
+              79
+            ]
+          },
+          {
+            "source_index": 9,
+            "source_rgba": [
+              115,
+              123,
+              72,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          }
+        ],
+        "palette_policy": "Intentional remap of source greens into the shared collection's four leaf shades",
+        "projection": "Finite-thickness tilted leaf planes revoxelized into full occupied axis-aligned cubes",
+        "normal_sampling_half_thickness_cells": 0.62,
+        "leaves": [
+          {
+            "leaf_id": 0,
+            "azimuth_degrees": 0,
+            "tilt_from_vertical_degrees": 58,
+            "stem_node_z": 12,
+            "root_before_normalization": [
+              13.5,
+              12.0,
+              13
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 1
+          },
+          {
+            "leaf_id": 1,
+            "azimuth_degrees": 180,
+            "tilt_from_vertical_degrees": 55,
+            "stem_node_z": 14,
+            "root_before_normalization": [
+              10.5,
+              12.0,
+              15
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 3
+          },
+          {
+            "leaf_id": 2,
+            "azimuth_degrees": 270,
+            "tilt_from_vertical_degrees": 18,
+            "stem_node_z": 18,
+            "root_before_normalization": [
+              12.0,
+              11.5,
+              19
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 0
+          }
+        ],
+        "leaf_count": 3,
+        "projection_bridge_cells_total": 4,
+        "final_plant_connectivity_bridge_cells": 0,
+        "connected_components": 1,
+        "pot_dimensions_target": [
+          10,
+          10,
+          8
+        ],
+        "stem_attachment_normalized_voxels": [
+          10,
+          5,
+          6
+        ],
+        "growth_representation": "Authored game art stages only; no real-world cultivation parameters",
+        "modification": "Removed original pot/soil occupancy; retained leaf and stem colors and exact coordinates",
+        "pot_is_separate_mesh": true,
+        "mesh_pivot_source_voxels": [
+          10.5,
+          5.5,
+          0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "game_pivot_source_voxels": [
+        10.5,
+        5.5,
+        0
+      ]
+    },
+    {
+      "name": "foliage_medium",
+      "dimensions_voxels": [
+        19,
+        17,
+        28
+      ],
+      "filled_voxels": 431,
+      "exposed_unit_faces": 1458,
+      "greedy_quads": 1090,
+      "triangles": 2180,
+      "vertices": 1182,
+      "ordinary_quads": 1090,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        19,
+        17,
+        28
+      ],
+      "mesh_dimensions_meters": [
+        0.9500000000000001,
+        0.8500000000000001,
+        1.4000000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        9.5,
+        8.5,
+        0
+      ],
+      "colors_used": [
+        17,
+        18,
+        19,
+        20,
+        30
+      ],
+      "surface_area_by_palette_index": {
+        "17": 210,
+        "18": 518,
+        "19": 393,
+        "20": 218,
+        "30": 119
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "foliage_only",
+        "stage": "medium",
+        "voxel_pitch_meters": 0.05,
+        "source_silhouette_file": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\outputs\\cannabis_leaf.vox",
+        "source_silhouette_sha256": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a",
+        "source_dimensions": [
+          64,
+          3,
+          64
+        ],
+        "source_stem_origin_voxel_indices": [
+          31.5,
+          1,
+          0
+        ],
+        "source_reuse": "Existing cannabis_leaf.vox palmate/serrated silhouette reused for every leaf; source unchanged",
+        "palette_remap": [
+          {
+            "source_index": 1,
+            "source_rgba": [
+              65,
+              79,
+              45,
+              255
+            ],
+            "collection_color": "leaf_dark",
+            "collection_index": 17,
+            "collection_rgb": [
+              33,
+              78,
+              42
+            ]
+          },
+          {
+            "source_index": 2,
+            "source_rgba": [
+              74,
+              89,
+              52,
+              255
+            ],
+            "collection_color": "leaf_dark",
+            "collection_index": 17,
+            "collection_rgb": [
+              33,
+              78,
+              42
+            ]
+          },
+          {
+            "source_index": 3,
+            "source_rgba": [
+              82,
+              97,
+              57,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 4,
+            "source_rgba": [
+              88,
+              104,
+              62,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 5,
+            "source_rgba": [
+              94,
+              110,
+              67,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 6,
+            "source_rgba": [
+              101,
+              117,
+              72,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          },
+          {
+            "source_index": 7,
+            "source_rgba": [
+              107,
+              124,
+              77,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          },
+          {
+            "source_index": 8,
+            "source_rgba": [
+              114,
+              132,
+              82,
+              255
+            ],
+            "collection_color": "leaf_tip",
+            "collection_index": 20,
+            "collection_rgb": [
+              119,
+              184,
+              79
+            ]
+          },
+          {
+            "source_index": 9,
+            "source_rgba": [
+              115,
+              123,
+              72,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          }
+        ],
+        "palette_policy": "Intentional remap of source greens into the shared collection's four leaf shades",
+        "projection": "Finite-thickness tilted leaf planes revoxelized into full occupied axis-aligned cubes",
+        "normal_sampling_half_thickness_cells": 0.62,
+        "leaves": [
+          {
+            "leaf_id": 0,
+            "azimuth_degrees": 40,
+            "tilt_from_vertical_degrees": 50,
+            "stem_node_z": 13,
+            "root_before_normalization": [
+              13.149,
+              12.964,
+              14
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                13,
+                1,
+                13
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 5
+          },
+          {
+            "leaf_id": 1,
+            "azimuth_degrees": 220,
+            "tilt_from_vertical_degrees": 50,
+            "stem_node_z": 15,
+            "root_before_normalization": [
+              10.851,
+              11.036,
+              16
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                13,
+                1,
+                13
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 5
+          },
+          {
+            "leaf_id": 2,
+            "azimuth_degrees": 130,
+            "tilt_from_vertical_degrees": 55,
+            "stem_node_z": 17,
+            "root_before_normalization": [
+              11.036,
+              13.149,
+              18
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 2
+          },
+          {
+            "leaf_id": 3,
+            "azimuth_degrees": 310,
+            "tilt_from_vertical_degrees": 48,
+            "stem_node_z": 19,
+            "root_before_normalization": [
+              12.964,
+              10.851,
+              20
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 4
+          },
+          {
+            "leaf_id": 4,
+            "azimuth_degrees": 270,
+            "tilt_from_vertical_degrees": 8,
+            "stem_node_z": 23,
+            "root_before_normalization": [
+              12.0,
+              11.5,
+              24
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 0
+          }
+        ],
+        "leaf_count": 5,
+        "projection_bridge_cells_total": 16,
+        "final_plant_connectivity_bridge_cells": 0,
+        "connected_components": 1,
+        "pot_dimensions_target": [
+          11,
+          11,
+          9
+        ],
+        "stem_attachment_normalized_voxels": [
+          9,
+          8,
+          7
+        ],
+        "growth_representation": "Authored game art stages only; no real-world cultivation parameters",
+        "modification": "Removed original pot/soil occupancy; retained leaf and stem colors and exact coordinates",
+        "pot_is_separate_mesh": true,
+        "mesh_pivot_source_voxels": [
+          9.5,
+          8.5,
+          0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "game_pivot_source_voxels": [
+        9.5,
+        8.5,
+        0
+      ]
+    },
+    {
+      "name": "foliage_bushy",
+      "dimensions_voxels": [
+        23,
+        21,
+        30
+      ],
+      "filled_voxels": 673,
+      "exposed_unit_faces": 2122,
+      "greedy_quads": 1513,
+      "triangles": 3026,
+      "vertices": 1699,
+      "ordinary_quads": 1513,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        23,
+        21,
+        30
+      ],
+      "mesh_dimensions_meters": [
+        1.1500000000000001,
+        1.05,
+        1.5
+      ],
+      "ground_pivot_source_voxels": [
+        11.5,
+        10.5,
+        0
+      ],
+      "colors_used": [
+        17,
+        18,
+        19,
+        20,
+        30
+      ],
+      "surface_area_by_palette_index": {
+        "17": 368,
+        "18": 741,
+        "19": 550,
+        "20": 295,
+        "30": 168
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "foliage_only",
+        "stage": "bushy",
+        "voxel_pitch_meters": 0.05,
+        "source_silhouette_file": "C:\\Users\\kairopeng\\Documents\\Codex\\2026-10-01\\i-want-to-make-some-simple\\outputs\\cannabis_leaf.vox",
+        "source_silhouette_sha256": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a",
+        "source_dimensions": [
+          64,
+          3,
+          64
+        ],
+        "source_stem_origin_voxel_indices": [
+          31.5,
+          1,
+          0
+        ],
+        "source_reuse": "Existing cannabis_leaf.vox palmate/serrated silhouette reused for every leaf; source unchanged",
+        "palette_remap": [
+          {
+            "source_index": 1,
+            "source_rgba": [
+              65,
+              79,
+              45,
+              255
+            ],
+            "collection_color": "leaf_dark",
+            "collection_index": 17,
+            "collection_rgb": [
+              33,
+              78,
+              42
+            ]
+          },
+          {
+            "source_index": 2,
+            "source_rgba": [
+              74,
+              89,
+              52,
+              255
+            ],
+            "collection_color": "leaf_dark",
+            "collection_index": 17,
+            "collection_rgb": [
+              33,
+              78,
+              42
+            ]
+          },
+          {
+            "source_index": 3,
+            "source_rgba": [
+              82,
+              97,
+              57,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 4,
+            "source_rgba": [
+              88,
+              104,
+              62,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 5,
+            "source_rgba": [
+              94,
+              110,
+              67,
+              255
+            ],
+            "collection_color": "leaf",
+            "collection_index": 18,
+            "collection_rgb": [
+              48,
+              117,
+              52
+            ]
+          },
+          {
+            "source_index": 6,
+            "source_rgba": [
+              101,
+              117,
+              72,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          },
+          {
+            "source_index": 7,
+            "source_rgba": [
+              107,
+              124,
+              77,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          },
+          {
+            "source_index": 8,
+            "source_rgba": [
+              114,
+              132,
+              82,
+              255
+            ],
+            "collection_color": "leaf_tip",
+            "collection_index": 20,
+            "collection_rgb": [
+              119,
+              184,
+              79
+            ]
+          },
+          {
+            "source_index": 9,
+            "source_rgba": [
+              115,
+              123,
+              72,
+              255
+            ],
+            "collection_color": "leaf_light",
+            "collection_index": 19,
+            "collection_rgb": [
+              80,
+              153,
+              60
+            ]
+          }
+        ],
+        "palette_policy": "Intentional remap of source greens into the shared collection's four leaf shades",
+        "projection": "Finite-thickness tilted leaf planes revoxelized into full occupied axis-aligned cubes",
+        "normal_sampling_half_thickness_cells": 0.62,
+        "leaves": [
+          {
+            "leaf_id": 0,
+            "azimuth_degrees": 25,
+            "tilt_from_vertical_degrees": 58,
+            "stem_node_z": 12,
+            "root_before_normalization": [
+              13.45,
+              12.676,
+              13
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                13,
+                1,
+                13
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 4
+          },
+          {
+            "leaf_id": 1,
+            "azimuth_degrees": 205,
+            "tilt_from_vertical_degrees": 58,
+            "stem_node_z": 14,
+            "root_before_normalization": [
+              10.55,
+              11.324,
+              15
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                13,
+                1,
+                13
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 4
+          },
+          {
+            "leaf_id": 2,
+            "azimuth_degrees": 115,
+            "tilt_from_vertical_degrees": 54,
+            "stem_node_z": 16,
+            "root_before_normalization": [
+              11.366,
+              13.359,
+              17
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                13,
+                1,
+                13
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 5
+          },
+          {
+            "leaf_id": 3,
+            "azimuth_degrees": 295,
+            "tilt_from_vertical_degrees": 54,
+            "stem_node_z": 18,
+            "root_before_normalization": [
+              12.634,
+              10.641,
+              19
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                13,
+                1,
+                13
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 5
+          },
+          {
+            "leaf_id": 4,
+            "azimuth_degrees": 70,
+            "tilt_from_vertical_degrees": 50,
+            "stem_node_z": 20,
+            "root_before_normalization": [
+              12.445,
+              13.222,
+              21
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 3
+          },
+          {
+            "leaf_id": 5,
+            "azimuth_degrees": 250,
+            "tilt_from_vertical_degrees": 50,
+            "stem_node_z": 22,
+            "root_before_normalization": [
+              11.555,
+              10.778,
+              23
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                11,
+                1,
+                11
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 3
+          },
+          {
+            "leaf_id": 6,
+            "azimuth_degrees": 340,
+            "tilt_from_vertical_degrees": 12,
+            "stem_node_z": 23,
+            "root_before_normalization": [
+              12.376,
+              11.863,
+              24
+            ],
+            "resampling": {
+              "method": "area-coverage silhouette resampling, exact occupied-source mask",
+              "source_plane": "XZ; source Y thickness collapsed before projection",
+              "target_grid": [
+                13,
+                1,
+                13
+              ],
+              "minimum_occupied_area_fraction": 0.25,
+              "restored_stem_cells": 0,
+              "preserved_source_apex_cells": 1,
+              "thin_tip_policy": "Original highest occupied source silhouette pixel explicitly retained",
+              "thin_connectivity_bridge_cells": 0
+            },
+            "projection_connectivity_bridge_cells": 0
+          }
+        ],
+        "leaf_count": 7,
+        "projection_bridge_cells_total": 24,
+        "final_plant_connectivity_bridge_cells": 0,
+        "connected_components": 1,
+        "pot_dimensions_target": [
+          11,
+          11,
+          9
+        ],
+        "stem_attachment_normalized_voxels": [
+          11,
+          10,
+          7
+        ],
+        "growth_representation": "Authored game art stages only; no real-world cultivation parameters",
+        "modification": "Removed original pot/soil occupancy; retained leaf and stem colors and exact coordinates",
+        "pot_is_separate_mesh": true,
+        "mesh_pivot_source_voxels": [
+          11.5,
+          10.5,
+          0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "game_pivot_source_voxels": [
+        11.5,
+        10.5,
+        0
+      ]
+    },
+    {
+      "name": "lamp_budget",
+      "dimensions_voxels": [
+        22,
+        13,
+        44
+      ],
+      "filled_voxels": 909,
+      "exposed_unit_faces": 1200,
+      "greedy_quads": 75,
+      "triangles": 150,
+      "vertices": 115,
+      "ordinary_quads": 70,
+      "emissive_quads": 5,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        22,
+        13,
+        44
+      ],
+      "mesh_dimensions_meters": [
+        1.1,
+        0.65,
+        2.2
+      ],
+      "ground_pivot_source_voxels": [
+        11.0,
+        6.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        14,
+        15,
+        16,
+        26,
+        31
+      ],
+      "surface_area_by_palette_index": {
+        "1": 29,
+        "2": 518,
+        "14": 2,
+        "15": 42,
+        "16": 68,
+        "26": 152,
+        "31": 389
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "budget_standing_lamp",
+        "authoring": "Original cubic fixture",
+        "aesthetic_emission": true,
+        "emitter_height_meters": 2.05,
+        "pivot_exception": "Ground point directly below shade center, for placement at pot center; stand offset sideways",
+        "minimum_stand_side_clearance_meters": 0.3,
+        "gameplay_note": "Decorative game prop; no real equipment specification",
+        "mesh_pivot_source_voxels": [
+          6,
+          6.5,
+          0
+        ],
+        "connected_components": 1,
+        "voxel_pitch_meters": 0.05
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "game_pivot_source_voxels": [
+        6,
+        6.5,
+        0
+      ]
+    },
+    {
+      "name": "seed_packet",
+      "dimensions_voxels": [
+        6,
+        1,
+        9
+      ],
+      "filled_voxels": 54,
+      "exposed_unit_faces": 138,
+      "greedy_quads": 45,
+      "triangles": 90,
+      "vertices": 70,
+      "ordinary_quads": 45,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        6,
+        1,
+        9
+      ],
+      "mesh_dimensions_meters": [
+        0.30000000000000004,
+        0.05,
+        0.45
+      ],
+      "ground_pivot_source_voxels": [
+        3.0,
+        0.5,
+        0
+      ],
+      "colors_used": [
+        10,
+        11,
+        17,
+        18,
+        19,
+        27
+      ],
+      "surface_area_by_palette_index": {
+        "10": 8,
+        "11": 77,
+        "17": 6,
+        "18": 6,
+        "19": 7,
+        "27": 34
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "category": "seed_packet",
+        "authoring": "Original cubic decorative game item",
+        "connected_components": 1,
+        "voxel_pitch_meters": 0.05
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center",
+      "game_pivot_source_voxels": [
+        3.0,
+        0.5,
+        0
+      ]
+    }
+  ],
+  "glb_validation": {
+    "bytes": 506048,
+    "nodes": 7,
+    "unique_meshes": 7,
+    "materials": 2,
+    "emissive_material_count": 1,
+    "triangles_unique_mesh_data": 7350,
+    "source_palette_png_embedded_exactly": true,
+    "max_surface_primitives_per_mesh": 2,
+    "nearest_palette_sampling": true,
+    "preview_objects_excluded": true
+  },
+  "material_count": 2,
+  "voxel_pitch_meters": 0.05,
+  "palette_preserved_exactly": true,
+  "game_nodes_translation": "All zero; centered ground, stem root, or lamp emitter-aligned ground pivots",
+  "preview": "Actual cubic geometry; repeated pots belong only to preview",
+  "triangles": 7350
+}
