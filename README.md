@@ -2,6 +2,8 @@
 
 A small desktop-first voxel grow-room game made with Godot 4.7.2. Walk around a furnished bedroom, care for fictional game plants, harvest for cash and XP, and unlock extra pots and equipment.
 
+**[Play the live game](https://greenbox-pi.vercel.app)** · [Vercel project](https://vercel.com/kairo8080/greenbox)
+
 ## Play
 
 Click **Play** in the browser launcher, then use:

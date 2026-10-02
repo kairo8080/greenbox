@@ -8,10 +8,20 @@
     "route_to_pot_and_plant": "passed; credits changed from 25 to 20 and seedling appeared",
     "water_and_light": "passed; animated can, water meter 80%, lamp on",
     "save_and_reload": "passed; crop growth, credits and light restored",
+    "harvest_and_progression": "passed; mature crop harvested, credits increased to 50, XP increased to 20, level 2 unlocked",
     "focus_loss_pause_and_fullscreen": "passed",
     "console_errors_or_warnings": 0
   },
   "deployment_build": "npm run build verifies committed engine/data headers, required export files, renderer options and source asset references",
   "save_scope": "IndexedDB storage local to each browser and site origin; separate from desktop saves",
+  "production": {
+    "url": "https://greenbox-pi.vercel.app",
+    "github": "https://github.com/kairo8080/greenbox",
+    "game_commit": "85e3af01250675b1a1b8234f381d26bf12cf6f5f",
+    "vercel_project": "kairo8080/greenbox",
+    "status": "Ready; GitHub Vercel status check succeeded",
+    "final_domain_checks": "Full room rendered; walking, planting, lamp and watering worked; crop, credits and light survived reload; no browser console errors or warnings",
+    "asset_responses": "HTML, JavaScript, PCK, WASM and license returned HTTP 200; WASM MIME application/wasm; Brotli compression verified"
+  },
   "scope": "Desktop browser prototype. Broad mobile compatibility and browser performance have not been validated."
 }
