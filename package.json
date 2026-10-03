@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Bedroom Roots: a voxel game and committed Godot Web export.",
+  "description": "Greenbox Unity browser game plus the original Godot demo.",
   "repository": {
     "type": "git",
     "url": "https://github.com/kairo8080/greenbox.git"
@@ -12,8 +12,10 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "node scripts/verify-web.mjs",
+    "build": "node scripts/verify-web.mjs && node scripts/verify-unity-web.mjs public/unity",
     "verify:web": "node scripts/verify-web.mjs",
+    "verify:unity": "node scripts/verify-unity-web.mjs public/unity",
+    "sync:unity": "node scripts/sync-unity-web.mjs",
     "export:web": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/export-web.ps1"
   }
 }

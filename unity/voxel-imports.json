@@ -1,0 +1,26 @@
+{
+  "schema": "greenbox-unity-voxel-import-v1",
+  "meters_per_voxel": 0.05,
+  "source_axes": "glTF Y-up, right-handed",
+  "unity_conversion": "glTFast mirrors X",
+  "assets": [
+    {
+      "asset": "rasta_bedroom.glb",
+      "sha256": "1fde1c929ead562229f332d6aea6209dbcf52d20efd557e99f7960191a051abf",
+      "bytes": 366176,
+      "source": "game/assets/rasta_bedroom.glb"
+    },
+    {
+      "asset": "rasta_character.glb",
+      "sha256": "4ea0dd6e3829f31f67f3f1029d1020eba6c79651c1a323b526e40e886a946d9c",
+      "bytes": 62896,
+      "source": "game/assets/rasta_character.glb"
+    },
+    {
+      "asset": "starter_props.glb",
+      "sha256": "589bb9c7c6ea59ece8c6460847e8c098f57f4a8bb180d7e19fd0d78daf0322c9",
+      "bytes": 506048,
+      "source": "game/assets/starter_props.glb"
+    }
+  ]
+}

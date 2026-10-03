@@ -1,12 +1,14 @@
-# Bedroom Roots
+# Greenbox
 
-A small desktop-first voxel grow-room game made with Godot 4.7.2. Walk around a furnished bedroom, care for fictional game plants, harvest for cash and XP, and unlock extra pots and equipment.
+A small desktop-first voxel grow-room game, with a Unity 6000.2.6f1 project and the original Godot 4.7.2 demo. Walk around a furnished bedroom, care for fictional game plants, harvest for cash and XP, and unlock extra pots and equipment.
 
-**[Play the live game](https://greenbox-pi.vercel.app)** · [Vercel project](https://vercel.com/kairo8080/greenbox)
+**[Play the Unity browser game](https://greenbox-pi.vercel.app/unity/)** · [Original Godot demo](https://greenbox-pi.vercel.app) · [Vercel project](https://vercel.com/kairo8080/greenbox)
+
+The new **[Greenbox Unity project](unity/README.md)** lives in `unity/Greenbox/`, using Unity 6000.2.6f1 and Web Build Support. It imports the same optimized voxel assets with Unity glTFast and has passed a real browser build and gameplay check, including a full harvest and saved progress after reloading. MagicaVoxel remains the editable asset source; Blender exports meshes, and Unity supplies the playable game.
 
 ## Play
 
-Click **Play** in the browser launcher, then use:
+The Unity build starts automatically; click **Play** in the original Godot browser launcher. Both versions use:
 
 | Input | Action |
 | --- | --- |
@@ -51,8 +53,9 @@ godot --headless --path game --script res://tests/test_character_interaction.gd
 ## Repository and hosting
 
 - `game/`: playable Godot project, scripts, tests, and mesh assets.
+- `unity/Greenbox/`: playable Unity project, native scene, C# scripts, and imported voxel meshes.
 - `voxel_sources/`: editable `.vox` and Blender sources, with original-source/license records.
-- `public/`: committed, generated browser build served by Vercel.
+- `public/`: committed Godot browser build, with the Unity export at `public/unity/`, served by Vercel.
 - `web/godot-shell.html`: editable browser launcher used during export.
 - `docs/`: asset provenance and validation records.
 - `scripts/`: Web export and deployment-build verification tools.

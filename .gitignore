@@ -18,3 +18,19 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Unity generated files. Keep Assets, Packages, ProjectSettings and .meta files.
+unity/**/Library/
+unity/**/Temp/
+unity/**/Obj/
+unity/**/Logs/
+unity/**/UserSettings/
+unity/**/Builds/
+unity/**/MemoryCaptures/
+unity/**/.vs/
+unity/**/*.csproj
+unity/**/*.sln
+unity/tests/bin/
+unity/tests/*.exe
+unity/tests/*.pdb
+unity-build/
