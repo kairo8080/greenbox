@@ -1,0 +1,1302 @@
+{
+  "schema": "independent-greenbox-voxel-pack-validation-v1",
+  "status": "pass",
+  "verification": "Independent stdlib parsing of actual VOX, GLB BIN accessors and PNG pixels; all triangulated faces clipped against unit source cells and exact palette indices.",
+  "assets_verified": 7,
+  "total_filled_voxels": 16055,
+  "total_triangles": 5954,
+  "original_collection_palette_indices_0_through_39_preserved": true,
+  "voxel_pitch_meters": 0.05,
+  "source_axes": "X/Y horizontal,Z up; front -Y",
+  "glb_axes": "Y up; front +Z",
+  "source_root_pivot": [
+    8,
+    5.5,
+    0
+  ],
+  "assets": [
+    {
+      "asset": "rasta_grower",
+      "filled_voxels": 2007,
+      "dimensions_voxels": [
+        14,
+        11,
+        34
+      ],
+      "colors_used": [
+        1,
+        2,
+        5,
+        11,
+        26,
+        28,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "connected_components": 1,
+      "part_overlap_cells": 0,
+      "parts": [
+        {
+          "name": "torso",
+          "filled_voxels": 424,
+          "dimensions_voxels": [
+            8,
+            6,
+            10
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 362
+        },
+        {
+          "name": "head",
+          "filled_voxels": 899,
+          "dimensions_voxels": [
+            12,
+            11,
+            14
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 806
+        },
+        {
+          "name": "arm_left",
+          "filled_voxels": 138,
+          "dimensions_voxels": [
+            3,
+            5,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 188
+        },
+        {
+          "name": "arm_right",
+          "filled_voxels": 138,
+          "dimensions_voxels": [
+            3,
+            5,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 188
+        },
+        {
+          "name": "leg_left",
+          "filled_voxels": 204,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 262
+        },
+        {
+          "name": "leg_right",
+          "filled_voxels": 204,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 262
+        }
+      ],
+      "source_json_sha256": "bf3cb48f128c3873678d49abd07b42d54ae972580258ef5d5ae853d8759fb515",
+      "vox_sha256": "d591ab9b6c064fac50f2f4f0c491927e3184a4482715146e4ace3b1beae5ec7e",
+      "voxel_palette_matches_source_exactly": true,
+      "source_manifest_hashes_verified": true,
+      "all_part_sources_match_json": true,
+      "rigid_part_surface_unit_faces": 2068,
+      "glb": {
+        "bytes": 62760,
+        "sha256": "cbd8afbbd396425babf7386ba6efcddaa21cdb14f9453cd5c182371bde595976",
+        "nodes": 7,
+        "meshes": 6,
+        "materials": 1,
+        "triangles": 842,
+        "parts": [
+          {
+            "name": "torso",
+            "triangles": 68,
+            "exported_vertices": 128,
+            "exposed_unit_faces_verified": 362,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "head",
+            "triangles": 554,
+            "exported_vertices": 1046,
+            "exposed_unit_faces_verified": 806,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_left",
+            "triangles": 54,
+            "exported_vertices": 104,
+            "exposed_unit_faces_verified": 188,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_right",
+            "triangles": 54,
+            "exported_vertices": 104,
+            "exposed_unit_faces_verified": 188,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_left",
+            "triangles": 56,
+            "exported_vertices": 104,
+            "exposed_unit_faces_verified": 262,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_right",
+            "triangles": 56,
+            "exported_vertices": 104,
+            "exposed_unit_faces_verified": 262,
+            "surface_and_palette_coverage_exact": true
+          }
+        ],
+        "bounds_meters_y_up": [
+          [
+            -0.35000000000000003,
+            0.0,
+            -0.275
+          ],
+          [
+            0.35000000000000003,
+            1.7000000000000002,
+            0.275
+          ]
+        ],
+        "actual_bounds_match_source": true,
+        "all_vertices_on_transformed_voxel_boundaries": true,
+        "flat_axis_aligned_outward_normals": true,
+        "palette_preserved_exactly": true,
+        "surface_coverage_matches_all_exposed_part_faces": true,
+        "neutral_rigid_hierarchy_and_joints": true,
+        "preview_objects_excluded": true
+      },
+      "preview": {
+        "width": 800,
+        "height": 1000,
+        "bytes": 863917,
+        "sha256": "6747c614c4c4204f4ca59ac005a918dc4232935376f1bdadfb07d3488b1ef016",
+        "at_least_distinct_pixel_values": 64
+      },
+      "blend": {
+        "bytes": 109439,
+        "sha256": "7b6e303956cf1c032aa7bb296946c47081fcc32ff97b9aca66945a246314da55",
+        "container_format": "zstandard-compressed-blend",
+        "supported_container_header": true,
+        "verification_scope": "Nonempty file and supported Blender container magic; internal saved-scene blocks not decoded."
+      },
+      "status": "pass"
+    },
+    {
+      "asset": "corporate_boss",
+      "filled_voxels": 3719,
+      "dimensions_voxels": [
+        26,
+        10,
+        36
+      ],
+      "colors_used": [
+        1,
+        26,
+        38,
+        40,
+        41,
+        44,
+        45,
+        46,
+        47,
+        49,
+        50,
+        59,
+        62
+      ],
+      "connected_components": 1,
+      "part_overlap_cells": 0,
+      "parts": [
+        {
+          "name": "torso",
+          "filled_voxels": 1113,
+          "dimensions_voxels": [
+            12,
+            9,
+            12
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 728
+        },
+        {
+          "name": "head",
+          "filled_voxels": 848,
+          "dimensions_voxels": [
+            10,
+            10,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 570
+        },
+        {
+          "name": "arm_left",
+          "filled_voxels": 390,
+          "dimensions_voxels": [
+            4,
+            8,
+            16
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 386
+        },
+        {
+          "name": "arm_right",
+          "filled_voxels": 644,
+          "dimensions_voxels": [
+            10,
+            7,
+            22
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 634
+        },
+        {
+          "name": "leg_left",
+          "filled_voxels": 362,
+          "dimensions_voxels": [
+            5,
+            10,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 390
+        },
+        {
+          "name": "leg_right",
+          "filled_voxels": 362,
+          "dimensions_voxels": [
+            5,
+            10,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 390
+        }
+      ],
+      "source_json_sha256": "a38e42149bcea0bd71c1ec1d84ee911766a08892d543257f3122aecb3713e932",
+      "vox_sha256": "b2d036ba3e25674e18a93605d8064860384535574a73723d680aaa218b3d2e67",
+      "voxel_palette_matches_source_exactly": true,
+      "source_manifest_hashes_verified": true,
+      "all_part_sources_match_json": true,
+      "rigid_part_surface_unit_faces": 3098,
+      "glb": {
+        "bytes": 56656,
+        "sha256": "51b8a93d8eea4b9045f17415327140040633f5a3d1afe9509be3fd28f46153c9",
+        "nodes": 7,
+        "meshes": 6,
+        "materials": 1,
+        "triangles": 742,
+        "parts": [
+          {
+            "name": "torso",
+            "triangles": 210,
+            "exported_vertices": 393,
+            "exposed_unit_faces_verified": 728,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "head",
+            "triangles": 166,
+            "exported_vertices": 306,
+            "exposed_unit_faces_verified": 570,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_left",
+            "triangles": 88,
+            "exported_vertices": 170,
+            "exposed_unit_faces_verified": 386,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_right",
+            "triangles": 150,
+            "exported_vertices": 282,
+            "exposed_unit_faces_verified": 634,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_left",
+            "triangles": 66,
+            "exported_vertices": 127,
+            "exposed_unit_faces_verified": 390,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_right",
+            "triangles": 62,
+            "exported_vertices": 120,
+            "exposed_unit_faces_verified": 390,
+            "surface_and_palette_coverage_exact": true
+          }
+        ],
+        "bounds_meters_y_up": [
+          [
+            -0.5,
+            0.0,
+            -0.225
+          ],
+          [
+            0.8,
+            1.8,
+            0.275
+          ]
+        ],
+        "actual_bounds_match_source": true,
+        "all_vertices_on_transformed_voxel_boundaries": true,
+        "flat_axis_aligned_outward_normals": true,
+        "palette_preserved_exactly": true,
+        "surface_coverage_matches_all_exposed_part_faces": true,
+        "neutral_rigid_hierarchy_and_joints": true,
+        "preview_objects_excluded": true
+      },
+      "preview": {
+        "width": 800,
+        "height": 1000,
+        "bytes": 881805,
+        "sha256": "13cccf103e9bade6da6c39320a8160a404d3a8905663a20d8f13bf83798edd1e",
+        "at_least_distinct_pixel_values": 64
+      },
+      "blend": {
+        "bytes": 108085,
+        "sha256": "9e9fd802e82dba26bcebc501c9976c876bb815ce2bd05ab24d759c31e0405cd2",
+        "container_format": "zstandard-compressed-blend",
+        "supported_container_header": true,
+        "verification_scope": "Nonempty file and supported Blender container magic; internal saved-scene blocks not decoded."
+      },
+      "status": "pass"
+    },
+    {
+      "asset": "chef",
+      "filled_voxels": 2279,
+      "dimensions_voxels": [
+        17,
+        10,
+        41
+      ],
+      "colors_used": [
+        1,
+        2,
+        8,
+        10,
+        11,
+        34,
+        40,
+        44,
+        45,
+        46,
+        47,
+        52,
+        61,
+        63
+      ],
+      "connected_components": 1,
+      "part_overlap_cells": 0,
+      "parts": [
+        {
+          "name": "torso",
+          "filled_voxels": 493,
+          "dimensions_voxels": [
+            8,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 450
+        },
+        {
+          "name": "head",
+          "filled_voxels": 1056,
+          "dimensions_voxels": [
+            12,
+            10,
+            18
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 838
+        },
+        {
+          "name": "arm_left",
+          "filled_voxels": 138,
+          "dimensions_voxels": [
+            3,
+            5,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 188
+        },
+        {
+          "name": "arm_right",
+          "filled_voxels": 184,
+          "dimensions_voxels": [
+            6,
+            5,
+            15
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 298
+        },
+        {
+          "name": "leg_left",
+          "filled_voxels": 204,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 262
+        },
+        {
+          "name": "leg_right",
+          "filled_voxels": 204,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 262
+        }
+      ],
+      "source_json_sha256": "16489e470d592ae4ae0bec65339202122af86f2192f8b1b39da14af7610157c0",
+      "vox_sha256": "278e1e5b9c99972afaea1f1bfb52a7cc31f7afcd144acc65e4c064984f9aac2c",
+      "voxel_palette_matches_source_exactly": true,
+      "source_manifest_hashes_verified": true,
+      "all_part_sources_match_json": true,
+      "rigid_part_surface_unit_faces": 2298,
+      "glb": {
+        "bytes": 75508,
+        "sha256": "b26571c155ff9b4b40791c8f9f8fb360e8d255d155a631b47647c10927cdddcf",
+        "nodes": 7,
+        "meshes": 6,
+        "materials": 1,
+        "triangles": 1064,
+        "parts": [
+          {
+            "name": "torso",
+            "triangles": 184,
+            "exported_vertices": 342,
+            "exposed_unit_faces_verified": 450,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "head",
+            "triangles": 638,
+            "exported_vertices": 1138,
+            "exposed_unit_faces_verified": 838,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_left",
+            "triangles": 44,
+            "exported_vertices": 82,
+            "exposed_unit_faces_verified": 188,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_right",
+            "triangles": 98,
+            "exported_vertices": 182,
+            "exposed_unit_faces_verified": 298,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_left",
+            "triangles": 50,
+            "exported_vertices": 93,
+            "exposed_unit_faces_verified": 262,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_right",
+            "triangles": 50,
+            "exported_vertices": 93,
+            "exposed_unit_faces_verified": 262,
+            "surface_and_palette_coverage_exact": true
+          }
+        ],
+        "bounds_meters_y_up": [
+          [
+            -0.35000000000000003,
+            0.0,
+            -0.225
+          ],
+          [
+            0.5,
+            2.0500000000000003,
+            0.275
+          ]
+        ],
+        "actual_bounds_match_source": true,
+        "all_vertices_on_transformed_voxel_boundaries": true,
+        "flat_axis_aligned_outward_normals": true,
+        "palette_preserved_exactly": true,
+        "surface_coverage_matches_all_exposed_part_faces": true,
+        "neutral_rigid_hierarchy_and_joints": true,
+        "preview_objects_excluded": true
+      },
+      "preview": {
+        "width": 800,
+        "height": 1000,
+        "bytes": 850279,
+        "sha256": "5ab68401253ba84f7a2a6969393a6760262bb751edcb2e8ab2dd33dcb995fdbc",
+        "at_least_distinct_pixel_values": 64
+      },
+      "blend": {
+        "bytes": 112920,
+        "sha256": "bc8bed35c0387d7f248d21456f61ba22c1b3ebe86edb67a38a95919ddd8d5ac5",
+        "container_format": "zstandard-compressed-blend",
+        "supported_container_header": true,
+        "verification_scope": "Nonempty file and supported Blender container magic; internal saved-scene blocks not decoded."
+      },
+      "status": "pass"
+    },
+    {
+      "asset": "blonde_lady",
+      "filled_voxels": 1794,
+      "dimensions_voxels": [
+        14,
+        10,
+        34
+      ],
+      "colors_used": [
+        2,
+        11,
+        12,
+        13,
+        26,
+        28,
+        40,
+        42,
+        43,
+        60,
+        61,
+        62,
+        63
+      ],
+      "connected_components": 1,
+      "part_overlap_cells": 0,
+      "parts": [
+        {
+          "name": "torso",
+          "filled_voxels": 408,
+          "dimensions_voxels": [
+            8,
+            6,
+            10
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 358
+        },
+        {
+          "name": "head",
+          "filled_voxels": 706,
+          "dimensions_voxels": [
+            10,
+            10,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 574
+        },
+        {
+          "name": "arm_left",
+          "filled_voxels": 136,
+          "dimensions_voxels": [
+            3,
+            5,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 186
+        },
+        {
+          "name": "arm_right",
+          "filled_voxels": 136,
+          "dimensions_voxels": [
+            3,
+            5,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 186
+        },
+        {
+          "name": "leg_left",
+          "filled_voxels": 204,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 262
+        },
+        {
+          "name": "leg_right",
+          "filled_voxels": 204,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 262
+        }
+      ],
+      "source_json_sha256": "fe43d3c1fd16f10d5b7c7dc9bf1214dd248d1da5b0bf7e81ccb3709145f09f6f",
+      "vox_sha256": "f9c95c17b4f31198712782cc6c410a4417bdabcf0d37723e1dec58488762d7c9",
+      "voxel_palette_matches_source_exactly": true,
+      "source_manifest_hashes_verified": true,
+      "all_part_sources_match_json": true,
+      "rigid_part_surface_unit_faces": 1828,
+      "glb": {
+        "bytes": 41584,
+        "sha256": "dbb7e807e549f6758a97d1f4daaee5e5d6fdb0a9f7a18610392b8020414a22a9",
+        "nodes": 7,
+        "meshes": 6,
+        "materials": 1,
+        "triangles": 522,
+        "parts": [
+          {
+            "name": "torso",
+            "triangles": 114,
+            "exported_vertices": 218,
+            "exposed_unit_faces_verified": 358,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "head",
+            "triangles": 216,
+            "exported_vertices": 394,
+            "exposed_unit_faces_verified": 574,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_left",
+            "triangles": 48,
+            "exported_vertices": 92,
+            "exposed_unit_faces_verified": 186,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_right",
+            "triangles": 48,
+            "exported_vertices": 92,
+            "exposed_unit_faces_verified": 186,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_left",
+            "triangles": 48,
+            "exported_vertices": 89,
+            "exposed_unit_faces_verified": 262,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_right",
+            "triangles": 48,
+            "exported_vertices": 89,
+            "exposed_unit_faces_verified": 262,
+            "surface_and_palette_coverage_exact": true
+          }
+        ],
+        "bounds_meters_y_up": [
+          [
+            -0.35000000000000003,
+            0.0,
+            -0.225
+          ],
+          [
+            0.35000000000000003,
+            1.7000000000000002,
+            0.275
+          ]
+        ],
+        "actual_bounds_match_source": true,
+        "all_vertices_on_transformed_voxel_boundaries": true,
+        "flat_axis_aligned_outward_normals": true,
+        "palette_preserved_exactly": true,
+        "surface_coverage_matches_all_exposed_part_faces": true,
+        "neutral_rigid_hierarchy_and_joints": true,
+        "preview_objects_excluded": true
+      },
+      "preview": {
+        "width": 800,
+        "height": 1000,
+        "bytes": 850612,
+        "sha256": "8c7c92eb5d08822a231b6b4c219a8031032fbb086fcff524a26d11c9879c62c4",
+        "at_least_distinct_pixel_values": 64
+      },
+      "blend": {
+        "bytes": 105137,
+        "sha256": "82d849021f0ca36af6c1ba85d179b37b8a1001067c7efedcab893e608f5e4f19",
+        "container_format": "zstandard-compressed-blend",
+        "supported_container_header": true,
+        "verification_scope": "Nonempty file and supported Blender container magic; internal saved-scene blocks not decoded."
+      },
+      "status": "pass"
+    },
+    {
+      "asset": "robot",
+      "filled_voxels": 2908,
+      "dimensions_voxels": [
+        18,
+        10,
+        39
+      ],
+      "colors_used": [
+        1,
+        47,
+        48,
+        49,
+        50,
+        51,
+        62
+      ],
+      "connected_components": 1,
+      "part_overlap_cells": 0,
+      "parts": [
+        {
+          "name": "torso",
+          "filled_voxels": 722,
+          "dimensions_voxels": [
+            10,
+            9,
+            11
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 558
+        },
+        {
+          "name": "head",
+          "filled_voxels": 866,
+          "dimensions_voxels": [
+            10,
+            10,
+            14
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 626
+        },
+        {
+          "name": "arm_left",
+          "filled_voxels": 328,
+          "dimensions_voxels": [
+            4,
+            8,
+            17
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 428
+        },
+        {
+          "name": "arm_right",
+          "filled_voxels": 328,
+          "dimensions_voxels": [
+            4,
+            8,
+            17
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 428
+        },
+        {
+          "name": "leg_left",
+          "filled_voxels": 332,
+          "dimensions_voxels": [
+            4,
+            10,
+            14
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 388
+        },
+        {
+          "name": "leg_right",
+          "filled_voxels": 332,
+          "dimensions_voxels": [
+            4,
+            10,
+            14
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 388
+        }
+      ],
+      "source_json_sha256": "974d067790487d64fc9243de2a53c420de168783efeabd0c26260eec95bc2a13",
+      "vox_sha256": "65aeee254babc760c4c5804a1abd8b69c19698d82420c697a8868e4c8b8c7ae2",
+      "voxel_palette_matches_source_exactly": true,
+      "source_manifest_hashes_verified": true,
+      "all_part_sources_match_json": true,
+      "rigid_part_surface_unit_faces": 2816,
+      "glb": {
+        "bytes": 66312,
+        "sha256": "402c58cdc505587e10528851e9df420bc74d35f4ce4ec5049a2b7ee3b4c8bb8b",
+        "nodes": 7,
+        "meshes": 6,
+        "materials": 1,
+        "triangles": 910,
+        "parts": [
+          {
+            "name": "torso",
+            "triangles": 192,
+            "exported_vertices": 362,
+            "exposed_unit_faces_verified": 558,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "head",
+            "triangles": 202,
+            "exported_vertices": 368,
+            "exposed_unit_faces_verified": 626,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_left",
+            "triangles": 144,
+            "exported_vertices": 268,
+            "exposed_unit_faces_verified": 428,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_right",
+            "triangles": 144,
+            "exported_vertices": 268,
+            "exposed_unit_faces_verified": 428,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_left",
+            "triangles": 114,
+            "exported_vertices": 218,
+            "exposed_unit_faces_verified": 388,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_right",
+            "triangles": 114,
+            "exported_vertices": 218,
+            "exposed_unit_faces_verified": 388,
+            "surface_and_palette_coverage_exact": true
+          }
+        ],
+        "bounds_meters_y_up": [
+          [
+            -0.45,
+            0.0,
+            -0.225
+          ],
+          [
+            0.45,
+            1.9500000000000002,
+            0.275
+          ]
+        ],
+        "actual_bounds_match_source": true,
+        "all_vertices_on_transformed_voxel_boundaries": true,
+        "flat_axis_aligned_outward_normals": true,
+        "palette_preserved_exactly": true,
+        "surface_coverage_matches_all_exposed_part_faces": true,
+        "neutral_rigid_hierarchy_and_joints": true,
+        "preview_objects_excluded": true
+      },
+      "preview": {
+        "width": 800,
+        "height": 1000,
+        "bytes": 875989,
+        "sha256": "97c1c8989f18cd6ba80a48f0a7ca48f050484025e2c13ab8db833da7f0932148",
+        "at_least_distinct_pixel_values": 64
+      },
+      "blend": {
+        "bytes": 108375,
+        "sha256": "53f6d837d9afdbfb055a84e502a2a60f166b50d4bce99d2df5357e5a4729b5b7",
+        "container_format": "zstandard-compressed-blend",
+        "supported_container_header": true,
+        "verification_scope": "Nonempty file and supported Blender container magic; internal saved-scene blocks not decoded."
+      },
+      "status": "pass"
+    },
+    {
+      "asset": "party_woman",
+      "filled_voxels": 2316,
+      "dimensions_voxels": [
+        17,
+        11,
+        35
+      ],
+      "colors_used": [
+        41,
+        44,
+        55,
+        56,
+        57,
+        58,
+        61,
+        62,
+        63
+      ],
+      "connected_components": 1,
+      "part_overlap_cells": 0,
+      "parts": [
+        {
+          "name": "torso",
+          "filled_voxels": 671,
+          "dimensions_voxels": [
+            11,
+            8,
+            14
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 716
+        },
+        {
+          "name": "head",
+          "filled_voxels": 946,
+          "dimensions_voxels": [
+            12,
+            11,
+            12
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 714
+        },
+        {
+          "name": "arm_left",
+          "filled_voxels": 123,
+          "dimensions_voxels": [
+            3,
+            5,
+            10
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 172
+        },
+        {
+          "name": "arm_right",
+          "filled_voxels": 162,
+          "dimensions_voxels": [
+            6,
+            7,
+            10
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 232
+        },
+        {
+          "name": "leg_left",
+          "filled_voxels": 207,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 276
+        },
+        {
+          "name": "leg_right",
+          "filled_voxels": 207,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 276
+        }
+      ],
+      "source_json_sha256": "77e9123171d3a58be387b7f48328f9a5b8b7efbeddd15ca90bb61b03c9b8b9df",
+      "vox_sha256": "da5fe5f4b6efb496423b2be0c527cbf07a894d4a73b1ea34fb66abf805682a1f",
+      "voxel_palette_matches_source_exactly": true,
+      "source_manifest_hashes_verified": true,
+      "all_part_sources_match_json": true,
+      "rigid_part_surface_unit_faces": 2386,
+      "glb": {
+        "bytes": 57860,
+        "sha256": "cd80ac3148b62ca7b7f137469177a57a34f1acabd0e54c14762dc45d5c085017",
+        "nodes": 7,
+        "meshes": 6,
+        "materials": 1,
+        "triangles": 770,
+        "parts": [
+          {
+            "name": "torso",
+            "triangles": 188,
+            "exported_vertices": 351,
+            "exposed_unit_faces_verified": 716,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "head",
+            "triangles": 326,
+            "exported_vertices": 597,
+            "exposed_unit_faces_verified": 714,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_left",
+            "triangles": 32,
+            "exported_vertices": 64,
+            "exposed_unit_faces_verified": 172,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_right",
+            "triangles": 88,
+            "exported_vertices": 167,
+            "exposed_unit_faces_verified": 232,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_left",
+            "triangles": 68,
+            "exported_vertices": 127,
+            "exposed_unit_faces_verified": 276,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_right",
+            "triangles": 68,
+            "exported_vertices": 127,
+            "exposed_unit_faces_verified": 276,
+            "surface_and_palette_coverage_exact": true
+          }
+        ],
+        "bounds_meters_y_up": [
+          [
+            -0.35000000000000003,
+            0.0,
+            -0.275
+          ],
+          [
+            0.5,
+            1.75,
+            0.275
+          ]
+        ],
+        "actual_bounds_match_source": true,
+        "all_vertices_on_transformed_voxel_boundaries": true,
+        "flat_axis_aligned_outward_normals": true,
+        "palette_preserved_exactly": true,
+        "surface_coverage_matches_all_exposed_part_faces": true,
+        "neutral_rigid_hierarchy_and_joints": true,
+        "preview_objects_excluded": true
+      },
+      "preview": {
+        "width": 800,
+        "height": 1000,
+        "bytes": 877234,
+        "sha256": "f4f6f0bd61b80bb1bcf851a113b7f4cf1f150013bf3b5e86fa8716e089e6500a",
+        "at_least_distinct_pixel_values": 64
+      },
+      "blend": {
+        "bytes": 108695,
+        "sha256": "c963650e0940d70a115a26d92854795adae030edeafddc9f2cad21900e2aec1b",
+        "container_format": "zstandard-compressed-blend",
+        "supported_container_header": true,
+        "verification_scope": "Nonempty file and supported Blender container magic; internal saved-scene blocks not decoded."
+      },
+      "status": "pass"
+    },
+    {
+      "asset": "skeleton",
+      "filled_voxels": 1032,
+      "dimensions_voxels": [
+        14,
+        9,
+        33
+      ],
+      "colors_used": [
+        1,
+        52,
+        53,
+        54
+      ],
+      "connected_components": 1,
+      "part_overlap_cells": 0,
+      "parts": [
+        {
+          "name": "torso",
+          "filled_voxels": 242,
+          "dimensions_voxels": [
+            8,
+            6,
+            10
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 564
+        },
+        {
+          "name": "head",
+          "filled_voxels": 422,
+          "dimensions_voxels": [
+            8,
+            8,
+            10
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 484
+        },
+        {
+          "name": "arm_left",
+          "filled_voxels": 69,
+          "dimensions_voxels": [
+            3,
+            5,
+            12
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 164
+        },
+        {
+          "name": "arm_right",
+          "filled_voxels": 69,
+          "dimensions_voxels": [
+            3,
+            5,
+            12
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 164
+        },
+        {
+          "name": "leg_left",
+          "filled_voxels": 115,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 248
+        },
+        {
+          "name": "leg_right",
+          "filled_voxels": 115,
+          "dimensions_voxels": [
+            4,
+            7,
+            13
+          ],
+          "connected_components": 1,
+          "exposed_unit_faces": 248
+        }
+      ],
+      "source_json_sha256": "7066afab74f3243e8913134c1e9dc80349d1e9a2e685458da8ade5aaa59cafeb",
+      "vox_sha256": "c3bb81fcca5d8dce367f1b02d165b48922eb10f64918073c987056fe244d138c",
+      "voxel_palette_matches_source_exactly": true,
+      "source_manifest_hashes_verified": true,
+      "all_part_sources_match_json": true,
+      "rigid_part_surface_unit_faces": 1872,
+      "glb": {
+        "bytes": 77828,
+        "sha256": "80d47cfed1c910e0f6519c05c13da61c27b5197aed4e4e524d5fd0484dcc9bb9",
+        "nodes": 7,
+        "meshes": 6,
+        "materials": 1,
+        "triangles": 1104,
+        "parts": [
+          {
+            "name": "torso",
+            "triangles": 414,
+            "exported_vertices": 780,
+            "exposed_unit_faces_verified": 564,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "head",
+            "triangles": 202,
+            "exported_vertices": 376,
+            "exposed_unit_faces_verified": 484,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_left",
+            "triangles": 114,
+            "exported_vertices": 208,
+            "exposed_unit_faces_verified": 164,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "arm_right",
+            "triangles": 114,
+            "exported_vertices": 208,
+            "exposed_unit_faces_verified": 164,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_left",
+            "triangles": 130,
+            "exported_vertices": 238,
+            "exposed_unit_faces_verified": 248,
+            "surface_and_palette_coverage_exact": true
+          },
+          {
+            "name": "leg_right",
+            "triangles": 130,
+            "exported_vertices": 238,
+            "exposed_unit_faces_verified": 248,
+            "surface_and_palette_coverage_exact": true
+          }
+        ],
+        "bounds_meters_y_up": [
+          [
+            -0.35000000000000003,
+            0.0,
+            -0.17500000000000002
+          ],
+          [
+            0.35000000000000003,
+            1.6500000000000001,
+            0.275
+          ]
+        ],
+        "actual_bounds_match_source": true,
+        "all_vertices_on_transformed_voxel_boundaries": true,
+        "flat_axis_aligned_outward_normals": true,
+        "palette_preserved_exactly": true,
+        "surface_coverage_matches_all_exposed_part_faces": true,
+        "neutral_rigid_hierarchy_and_joints": true,
+        "preview_objects_excluded": true
+      },
+      "preview": {
+        "width": 800,
+        "height": 1000,
+        "bytes": 872569,
+        "sha256": "73f2741d87ccdc139932c16130a6e20ccdbb653706a0143e83f81958da23f282",
+        "at_least_distinct_pixel_values": 64
+      },
+      "blend": {
+        "bytes": 110612,
+        "sha256": "f341f660dfae8e52df4768e95ec4f01509a43d732d39a0752ef1d143b6251530",
+        "container_format": "zstandard-compressed-blend",
+        "supported_container_header": true,
+        "verification_scope": "Nonempty file and supported Blender container magic; internal saved-scene blocks not decoded."
+      },
+      "status": "pass"
+    }
+  ]
+}

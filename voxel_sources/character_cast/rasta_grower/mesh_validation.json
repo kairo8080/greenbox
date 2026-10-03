@@ -1,0 +1,479 @@
+{
+  "asset": "rasta_grower",
+  "source_json_sha256": "bf3cb48f128c3873678d49abd07b42d54ae972580258ef5d5ae853d8759fb515",
+  "source_voxel_count": 2007,
+  "dimensions_voxels": [
+    14,
+    11,
+    34
+  ],
+  "height_meters": 1.6999999284744263,
+  "palette_sha256": "9dc96be25a83da891cd7d2952a90b6be20f5e394d4779df091f9f45fe49c3bc9",
+  "parts": [
+    {
+      "name": "torso",
+      "dimensions_voxels": [
+        8,
+        6,
+        10
+      ],
+      "filled_voxels": 424,
+      "exposed_unit_faces": 362,
+      "greedy_quads": 34,
+      "triangles": 68,
+      "vertices": 48,
+      "ordinary_quads": 34,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        8,
+        6,
+        10
+      ],
+      "mesh_dimensions_meters": [
+        0.4,
+        0.30000000000000004,
+        0.5
+      ],
+      "ground_pivot_source_voxels": [
+        4.0,
+        3.0,
+        0
+      ],
+      "colors_used": [
+        5,
+        11,
+        34,
+        35,
+        36
+      ],
+      "surface_area_by_palette_index": {
+        "5": 12,
+        "11": 230,
+        "34": 18,
+        "35": 84,
+        "36": 18
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "torso",
+        "joint_source_voxels": [
+          8.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          4.0,
+          3.5,
+          0.0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "head",
+      "dimensions_voxels": [
+        12,
+        11,
+        14
+      ],
+      "filled_voxels": 899,
+      "exposed_unit_faces": 806,
+      "greedy_quads": 277,
+      "triangles": 554,
+      "vertices": 357,
+      "ordinary_quads": 277,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        12,
+        11,
+        14
+      ],
+      "mesh_dimensions_meters": [
+        0.6000000000000001,
+        0.55,
+        0.7000000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        6.0,
+        5.5,
+        0
+      ],
+      "colors_used": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "surface_area_by_palette_index": {
+        "34": 105,
+        "35": 59,
+        "36": 174,
+        "37": 164,
+        "38": 284,
+        "39": 20
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "head",
+        "joint_source_voxels": [
+          8.0,
+          5.5,
+          23.0
+        ],
+        "mesh_pivot_source_voxels": [
+          6.0,
+          5.5,
+          3.0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          1.1500000000000001,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "arm_left",
+      "dimensions_voxels": [
+        3,
+        5,
+        11
+      ],
+      "filled_voxels": 138,
+      "exposed_unit_faces": 188,
+      "greedy_quads": 27,
+      "triangles": 54,
+      "vertices": 34,
+      "ordinary_quads": 27,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        3,
+        5,
+        11
+      ],
+      "mesh_dimensions_meters": [
+        0.15000000000000002,
+        0.25,
+        0.55
+      ],
+      "ground_pivot_source_voxels": [
+        1.5,
+        2.5,
+        0
+      ],
+      "colors_used": [
+        11,
+        35,
+        36,
+        37,
+        39
+      ],
+      "surface_area_by_palette_index": {
+        "11": 105,
+        "35": 14,
+        "36": 5,
+        "37": 48,
+        "39": 16
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "arm_left",
+        "joint_source_voxels": [
+          3.5,
+          5.5,
+          22.0
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          3.5,
+          10.0
+        ],
+        "joint_glb_translation_meters": [
+          -0.225,
+          1.1,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "arm_right",
+      "dimensions_voxels": [
+        3,
+        5,
+        11
+      ],
+      "filled_voxels": 138,
+      "exposed_unit_faces": 188,
+      "greedy_quads": 27,
+      "triangles": 54,
+      "vertices": 34,
+      "ordinary_quads": 27,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        3,
+        5,
+        11
+      ],
+      "mesh_dimensions_meters": [
+        0.15000000000000002,
+        0.25,
+        0.55
+      ],
+      "ground_pivot_source_voxels": [
+        1.5,
+        2.5,
+        0
+      ],
+      "colors_used": [
+        11,
+        35,
+        36,
+        37,
+        39
+      ],
+      "surface_area_by_palette_index": {
+        "11": 105,
+        "35": 14,
+        "36": 5,
+        "37": 48,
+        "39": 16
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "arm_right",
+        "joint_source_voxels": [
+          12.5,
+          5.5,
+          22.0
+        ],
+        "mesh_pivot_source_voxels": [
+          0.5,
+          3.5,
+          10.0
+        ],
+        "joint_glb_translation_meters": [
+          0.225,
+          1.1,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "leg_left",
+      "dimensions_voxels": [
+        4,
+        7,
+        13
+      ],
+      "filled_voxels": 204,
+      "exposed_unit_faces": 262,
+      "greedy_quads": 28,
+      "triangles": 56,
+      "vertices": 40,
+      "ordinary_quads": 28,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        7,
+        13
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.35000000000000003,
+        0.65
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        26,
+        28,
+        35
+      ],
+      "surface_area_by_palette_index": {
+        "1": 54,
+        "2": 14,
+        "26": 50,
+        "28": 138,
+        "35": 6
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "leg_left",
+        "joint_source_voxels": [
+          6.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          3.0,
+          4.5,
+          13.0
+        ],
+        "joint_glb_translation_meters": [
+          -0.1,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "leg_right",
+      "dimensions_voxels": [
+        4,
+        7,
+        13
+      ],
+      "filled_voxels": 204,
+      "exposed_unit_faces": 262,
+      "greedy_quads": 28,
+      "triangles": 56,
+      "vertices": 40,
+      "ordinary_quads": 28,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        7,
+        13
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.35000000000000003,
+        0.65
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        3.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        26,
+        28,
+        35
+      ],
+      "surface_area_by_palette_index": {
+        "1": 54,
+        "2": 14,
+        "26": 50,
+        "28": 138,
+        "35": 6
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "authoring": "Original occupied-cube model for this project",
+        "part": "leg_right",
+        "joint_source_voxels": [
+          10.0,
+          5.5,
+          13.0
+        ],
+        "mesh_pivot_source_voxels": [
+          1.0,
+          4.5,
+          13.0
+        ],
+        "joint_glb_translation_meters": [
+          0.1,
+          0.65,
+          -0.0
+        ],
+        "connected_components": 1,
+        "rig": "Rigid mesh part; root-child joint with X-axis swing, no armature"
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    }
+  ],
+  "glb": {
+    "bytes": 62760,
+    "sha256": "cbd8afbbd396425babf7386ba6efcddaa21cdb14f9453cd5c182371bde595976",
+    "triangles": 842,
+    "meshes": 6,
+    "materials": 1,
+    "palette_embedded_exactly": true,
+    "nearest_sampling": true,
+    "preview_objects_excluded": true,
+    "neutral_pose": true,
+    "joint_translations_verified": true
+  },
+  "preview": {
+    "method": "Rendered from actual occupied-cube geometry",
+    "character_yaw_degrees": 45,
+    "face_direction_in_image": "right",
+    "camera_type": "perspective",
+    "camera_elevation_degrees": 4,
+    "camera_lens_mm": 70,
+    "resolution": [
+      800,
+      1000
+    ]
+  },
+  "blender": "5.1.2"
+}

@@ -6,6 +6,8 @@ A small desktop-first voxel grow-room game, with a Unity 6000.2.6f1 project and 
 
 The new **[Greenbox Unity project](unity/README.md)** lives in `unity/Greenbox/`, using Unity 6000.2.6f1 and Web Build Support. It imports the same optimized voxel assets with Unity glTFast and has passed a real browser build and gameplay check, including a full harvest and saved progress after reloading. MagicaVoxel remains the editable asset source; Blender exports meshes, and Unity supplies the playable game.
 
+The **[voxel character cast](voxel_sources/character_cast/README.md)** adds a corporate boss, robot, chef, blonde lady, party woman, and skeleton, plus the existing grower with a 45° right-facing pose and lower preview camera. Each includes editable VOX sources, six movable body parts, a neutral GLB, Blender scene, previews, and verification records. The bundled tools reproduce all six new source designs; import the models into Unity to expand the cast.
+
 ## Play
 
 The Unity build starts automatically; click **Play** in the original Godot browser launcher. Both versions use:

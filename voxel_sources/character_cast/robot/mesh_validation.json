@@ -1,0 +1,469 @@
+{
+  "asset": "robot",
+  "source_json_sha256": "974d067790487d64fc9243de2a53c420de168783efeabd0c26260eec95bc2a13",
+  "source_voxel_count": 2908,
+  "dimensions_voxels": [
+    18,
+    10,
+    39
+  ],
+  "height_meters": 1.9500000476837158,
+  "palette_sha256": "ba773b8d60433c4d48d5409f4d28006cd193e071b341ddc5a4dcc41d4b811f58",
+  "parts": [
+    {
+      "name": "torso",
+      "dimensions_voxels": [
+        10,
+        9,
+        11
+      ],
+      "filled_voxels": 722,
+      "exposed_unit_faces": 558,
+      "greedy_quads": 96,
+      "triangles": 192,
+      "vertices": 133,
+      "ordinary_quads": 96,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        10,
+        9,
+        11
+      ],
+      "mesh_dimensions_meters": [
+        0.5,
+        0.45,
+        0.55
+      ],
+      "ground_pivot_source_voxels": [
+        5.0,
+        4.5,
+        0
+      ],
+      "colors_used": [
+        1,
+        47,
+        48,
+        49,
+        50,
+        51,
+        62
+      ],
+      "surface_area_by_palette_index": {
+        "1": 34,
+        "47": 2,
+        "48": 112,
+        "49": 200,
+        "50": 175,
+        "51": 21,
+        "62": 14
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "part": "torso",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          8,
+          5.5,
+          14
+        ],
+        "mesh_pivot_source_voxels": [
+          5,
+          4.5,
+          0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          0.7000000000000001,
+          -0.0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "head",
+      "dimensions_voxels": [
+        10,
+        10,
+        14
+      ],
+      "filled_voxels": 866,
+      "exposed_unit_faces": 626,
+      "greedy_quads": 101,
+      "triangles": 202,
+      "vertices": 150,
+      "ordinary_quads": 101,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        10,
+        10,
+        14
+      ],
+      "mesh_dimensions_meters": [
+        0.5,
+        0.5,
+        0.7000000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        5.0,
+        5.0,
+        0
+      ],
+      "colors_used": [
+        48,
+        49,
+        50,
+        51,
+        62
+      ],
+      "surface_area_by_palette_index": {
+        "48": 234,
+        "49": 194,
+        "50": 152,
+        "51": 44,
+        "62": 2
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "part": "head",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          8,
+          5.5,
+          25
+        ],
+        "mesh_pivot_source_voxels": [
+          5,
+          5.5,
+          0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          1.25,
+          -0.0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "arm_left",
+      "dimensions_voxels": [
+        4,
+        8,
+        17
+      ],
+      "filled_voxels": 328,
+      "exposed_unit_faces": 428,
+      "greedy_quads": 72,
+      "triangles": 144,
+      "vertices": 102,
+      "ordinary_quads": 72,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        8,
+        17
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.4,
+        0.8500000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        4.0,
+        0
+      ],
+      "colors_used": [
+        48,
+        49,
+        50,
+        51,
+        62
+      ],
+      "surface_area_by_palette_index": {
+        "48": 114,
+        "49": 224,
+        "50": 70,
+        "51": 14,
+        "62": 6
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "part": "arm_left",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          2.5,
+          5.5,
+          24
+        ],
+        "mesh_pivot_source_voxels": [
+          3.5,
+          4.5,
+          16
+        ],
+        "joint_glb_translation_meters": [
+          -0.275,
+          1.2000000000000002,
+          -0.0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "arm_right",
+      "dimensions_voxels": [
+        4,
+        8,
+        17
+      ],
+      "filled_voxels": 328,
+      "exposed_unit_faces": 428,
+      "greedy_quads": 72,
+      "triangles": 144,
+      "vertices": 102,
+      "ordinary_quads": 72,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        8,
+        17
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.4,
+        0.8500000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        4.0,
+        0
+      ],
+      "colors_used": [
+        48,
+        49,
+        50,
+        51,
+        62
+      ],
+      "surface_area_by_palette_index": {
+        "48": 114,
+        "49": 224,
+        "50": 70,
+        "51": 14,
+        "62": 6
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "part": "arm_right",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          13.5,
+          5.5,
+          24
+        ],
+        "mesh_pivot_source_voxels": [
+          0.5,
+          4.5,
+          16
+        ],
+        "joint_glb_translation_meters": [
+          0.275,
+          1.2000000000000002,
+          -0.0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "leg_left",
+      "dimensions_voxels": [
+        4,
+        10,
+        14
+      ],
+      "filled_voxels": 332,
+      "exposed_unit_faces": 388,
+      "greedy_quads": 57,
+      "triangles": 114,
+      "vertices": 75,
+      "ordinary_quads": 57,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        10,
+        14
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.5,
+        0.7000000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        5.0,
+        0
+      ],
+      "colors_used": [
+        1,
+        48,
+        49,
+        50,
+        62
+      ],
+      "surface_area_by_palette_index": {
+        "1": 68,
+        "48": 146,
+        "49": 131,
+        "50": 35,
+        "62": 8
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "part": "leg_left",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          5.5,
+          5.5,
+          14
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          5.5,
+          14
+        ],
+        "joint_glb_translation_meters": [
+          -0.125,
+          0.7000000000000001,
+          -0.0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    },
+    {
+      "name": "leg_right",
+      "dimensions_voxels": [
+        4,
+        10,
+        14
+      ],
+      "filled_voxels": 332,
+      "exposed_unit_faces": 388,
+      "greedy_quads": 57,
+      "triangles": 114,
+      "vertices": 75,
+      "ordinary_quads": 57,
+      "emissive_quads": 0,
+      "surfaces_used": 1,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        4,
+        10,
+        14
+      ],
+      "mesh_dimensions_meters": [
+        0.2,
+        0.5,
+        0.7000000000000001
+      ],
+      "ground_pivot_source_voxels": [
+        2.0,
+        5.0,
+        0
+      ],
+      "colors_used": [
+        1,
+        48,
+        49,
+        50,
+        62
+      ],
+      "surface_area_by_palette_index": {
+        "1": 68,
+        "48": 146,
+        "49": 131,
+        "50": 35,
+        "62": 8
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "part": "leg_right",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          10.5,
+          5.5,
+          14
+        ],
+        "mesh_pivot_source_voxels": [
+          1.5,
+          5.5,
+          14
+        ],
+        "joint_glb_translation_meters": [
+          0.125,
+          0.7000000000000001,
+          -0.0
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    }
+  ],
+  "glb": {
+    "bytes": 66312,
+    "sha256": "402c58cdc505587e10528851e9df420bc74d35f4ce4ec5049a2b7ee3b4c8bb8b",
+    "triangles": 910,
+    "meshes": 6,
+    "materials": 1,
+    "palette_embedded_exactly": true,
+    "nearest_sampling": true,
+    "preview_objects_excluded": true,
+    "neutral_pose": true,
+    "joint_translations_verified": true
+  },
+  "preview": {
+    "method": "Rendered from actual occupied-cube geometry",
+    "character_yaw_degrees": 45,
+    "face_direction_in_image": "right",
+    "camera_type": "perspective",
+    "camera_elevation_degrees": 4,
+    "camera_lens_mm": 70,
+    "resolution": [
+      800,
+      1000
+    ]
+  },
+  "blender": "5.1.2"
+}

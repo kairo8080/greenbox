@@ -1,0 +1,233 @@
+{
+  "asset": "party_woman",
+  "description": "Original fictional adult woman with voluminous auburn waves, a violet knee-length dress with pink sash and hem, gold necklace and earrings, block-heeled ankle boots and a small pink clutch",
+  "dimensions_voxels": [
+    17,
+    11,
+    35
+  ],
+  "voxel_count": 2316,
+  "metadata": {
+    "authoring": "Original occupied-cube artwork for Greenbox; no external character asset or likeness",
+    "design": "Original fictional adult woman with voluminous auburn waves, a violet knee-length dress with pink sash and hem, gold necklace and earrings, block-heeled ankle boots and a small pink clutch",
+    "voxel_pitch_meters": 0.05,
+    "source_axes": "X/Y horizontal, Z up; faces native -Y",
+    "glb_axes": "Y up, forward +Z",
+    "source_root_pivot": [
+      8,
+      5.5,
+      0
+    ],
+    "connected_components": 1,
+    "part_overlap_cells": 0,
+    "mesh_pivot_source_voxels": [
+      7,
+      5.5,
+      0
+    ]
+  },
+  "parts": [
+    {
+      "name": "torso",
+      "dimensions": [
+        11,
+        8,
+        14
+      ],
+      "normalization_offset": [
+        3,
+        1,
+        9
+      ],
+      "metadata": {
+        "part": "torso",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          8,
+          5.5,
+          13
+        ],
+        "mesh_pivot_source_voxels": [
+          5,
+          4.5,
+          4
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          0.65,
+          -0.0
+        ]
+      }
+    },
+    {
+      "name": "head",
+      "dimensions": [
+        12,
+        11,
+        12
+      ],
+      "normalization_offset": [
+        2,
+        0,
+        23
+      ],
+      "metadata": {
+        "part": "head",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          8,
+          5.5,
+          23
+        ],
+        "mesh_pivot_source_voxels": [
+          6,
+          5.5,
+          0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          1.1500000000000001,
+          -0.0
+        ]
+      }
+    },
+    {
+      "name": "arm_left",
+      "dimensions": [
+        3,
+        5,
+        10
+      ],
+      "normalization_offset": [
+        1,
+        2,
+        13
+      ],
+      "metadata": {
+        "part": "arm_left",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          3.5,
+          5.5,
+          22
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          3.5,
+          9
+        ],
+        "joint_glb_translation_meters": [
+          -0.225,
+          1.1,
+          -0.0
+        ]
+      }
+    },
+    {
+      "name": "arm_right",
+      "dimensions": [
+        6,
+        7,
+        10
+      ],
+      "normalization_offset": [
+        12,
+        0,
+        13
+      ],
+      "metadata": {
+        "part": "arm_right",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          12.5,
+          5.5,
+          22
+        ],
+        "mesh_pivot_source_voxels": [
+          0.5,
+          5.5,
+          9
+        ],
+        "joint_glb_translation_meters": [
+          0.225,
+          1.1,
+          -0.0
+        ]
+      }
+    },
+    {
+      "name": "leg_left",
+      "dimensions": [
+        4,
+        7,
+        13
+      ],
+      "normalization_offset": [
+        4,
+        1,
+        0
+      ],
+      "metadata": {
+        "part": "leg_left",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          6.5,
+          5.5,
+          13
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          4.5,
+          13
+        ],
+        "joint_glb_translation_meters": [
+          -0.07500000000000001,
+          0.65,
+          -0.0
+        ]
+      }
+    },
+    {
+      "name": "leg_right",
+      "dimensions": [
+        4,
+        7,
+        13
+      ],
+      "normalization_offset": [
+        9,
+        1,
+        0
+      ],
+      "metadata": {
+        "part": "leg_right",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          10.5,
+          5.5,
+          13
+        ],
+        "mesh_pivot_source_voxels": [
+          1.5,
+          4.5,
+          13
+        ],
+        "joint_glb_translation_meters": [
+          0.125,
+          0.65,
+          -0.0
+        ]
+      }
+    }
+  ],
+  "vox_sha256": {
+    "arm_left.vox": "cb7c04877539deab47b2c61c259bb70b00a0eca433db6225b7644f5b4be905ea",
+    "arm_right.vox": "6be60fff71f2b4fd4d8f97c63c2e29e3ad2855730e7e66c7132299ee3636559a",
+    "head.vox": "eb398b7b01ac721d84bbb323d2c05e6a0ec38c84fbcda4c9c6b55588cdec4dd9",
+    "leg_left.vox": "6765380abecf61f50792cbb6fffb6c25d32460c65a423885ba9012b7ee3bd8ca",
+    "leg_right.vox": "8115c4933dbc9224451b49c7d23043209a9b48d2ff8331349513e5870504bd65",
+    "party_woman.vox": "da5fe5f4b6efb496423b2be0c527cbf07a894d4a73b1ea34fb66abf805682a1f",
+    "torso.vox": "6b0d3c957575981737824a0058ff75f00fca7aea45d75d767f308713700036e8"
+  },
+  "source_json_sha256": "77e9123171d3a58be387b7f48328f9a5b8b7efbeddd15ca90bb61b03c9b8b9df"
+}
