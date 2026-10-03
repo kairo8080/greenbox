@@ -76,6 +76,26 @@ tr.group td { background: var(--chip); font-weight: 700; }
 .chip { font-size: 11px; padding: 2px 7px; border-radius: 10px; background: var(--chip); }
 .chip.got { background: var(--accent); color: var(--accent-fg); }
 #toast { min-height: 20px; font-size: 13px; }
+.hero { display: grid; gap: 12px; }
+.pitch { font-size: clamp(20px, 3.2vw, 30px); font-weight: 800; line-height: 1.15; margin: 0; text-wrap: balance; }
+.pitch em { font-style: normal; color: var(--accent); }
+.hero-sub { margin: 0; color: var(--muted); max-width: 90ch; }
+.dash { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.tile .k { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.tile .v { font-size: 22px; font-weight: 700; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.tile .d { font-size: 12px; color: var(--muted); }
+.tile.key { border-color: var(--accent); }
+.loop { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; }
+.loop span.step { background: var(--chip); border-radius: 12px; padding: 3px 10px; }
+.loop span.arrow { color: var(--muted); }
+.tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 10px; }
+.tag.same { background: var(--chip); color: var(--muted); }
+.tag.changed { background: var(--warn); color: var(--bg); }
+.tag.new { background: var(--accent); color: var(--accent-fg); }
+.tag.gap { background: var(--bad); color: var(--bg); }
+.cmp td { white-space: normal; vertical-align: top; min-width: 140px; }
+.cmp td:first-child { font-weight: 600; min-width: 110px; }
 canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 4px; background: var(--wall); }
 .form { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px 14px; }
 .form label { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: var(--muted); }
@@ -93,14 +113,37 @@ select { font: inherit; font-size: 13px; padding: 3px 6px; border: 1px solid var
   <span class="muted">All numbers are simulated. BUD is not a real token yet.</span>
 </header>
 <nav class="tabs" role="tablist">
-  <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="true">Play demo</button>
+  <button type="button" role="tab" id="tab-dash" data-tab="dash" aria-selected="true">Dashboard</button>
+  <button type="button" role="tab" id="tab-compare" data-tab="compare" aria-selected="false">BigCoin vs Greenbox</button>
+  <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="false">Play demo</button>
   <button type="button" role="tab" id="tab-assets" data-tab="assets" aria-selected="false">Assets</button>
   <button type="button" role="tab" id="tab-tasks" data-tab="tasks" aria-selected="false">Tasks &amp; ROI</button>
   <button type="button" role="tab" id="tab-cfo" data-tab="cfo" aria-selected="false">CFO</button>
 </nav>
 
+<!-- ============ DASHBOARD ============ -->
+<div id="view-dash" role="tabpanel">
+  <div class="hero">
+    <p class="pitch">The new <em>BigCoin</em>-style game, with <em>cannabis</em>, on <em>Robinhood Chain</em>.</p>
+    <p class="hero-sub">Mint a strain NFT, grow it in your room, and earn BUD every block by your share of the whole network. Spend BUD on bigger rooms and stronger strains to grow your share. Start free with a Bagseed, or mint a Founder Pack to skip the first week.</p>
+    <div class="dash" id="dash-tiles"><div class="tile"><span class="d">Loading the forecast…</span></div></div>
+    <div class="loop" id="dash-loop"></div>
+    <p class="note" id="dash-note"></p>
+  </div>
+</div>
+
+<!-- ============ COMPARE ============ -->
+<div id="view-compare" role="tabpanel" hidden>
+  <section class="wide">
+    <h2>Same blueprint, three changes that matter</h2>
+    <p id="compare-summary"></p>
+    <div class="scroll"><table class="cmp" id="compare-table"></table></div>
+    <p class="note">BigCoin facts come from docs.bigcoin.tech and Blockworks coverage (researched 2026-10-03). BigCoin's starting token distribution is not covered; its whitepaper was not read. Greenbox numbers are this prototype's settings, not a launched product.</p>
+  </section>
+</div>
+
 <!-- ============ PLAY ============ -->
-<div id="view-play" role="tabpanel">
+<div id="view-play" role="tabpanel" hidden>
   <div class="speed" id="speed">
     <span class="muted">Speed</span>
     <button type="button" id="pause" data-speed="0">Pause</button>
@@ -201,11 +244,11 @@ const dur = (blocks) => {
 const hourLabel = (h) => (h < 24 ? `${h}h` : h % 24 === 0 ? `day ${h / 24}` : `${(h / 24).toFixed(1)}d`);
 
 // ---------------- Tabs ----------------
-let tab = 'play';
+let tab = 'dash';
 function showTab(name) {
   tab = name;
   for (const b of document.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === name));
-  for (const v of ['play', 'assets', 'tasks', 'cfo']) $('view-' + v).hidden = v !== name;
+  for (const v of ['dash', 'compare', 'play', 'assets', 'tasks', 'cfo']) $('view-' + v).hidden = v !== name;
   try { history.replaceState(null, '', '#' + name); } catch (e) { /* sandboxed */ }
   if (name !== 'play') renderAnalysis();
 }
@@ -478,7 +521,7 @@ async function loadForecast() {
     const res = await fetch('./forecast.json');
     forecast = await res.json();
   } catch (e) {
-    for (const v of ['assets-table', 'manual-tasks', 'cfo-kpis']) $(v).innerHTML = '<p class="bad">Could not load forecast.json. Serve this folder over HTTP.</p>';
+    for (const v of ['assets-table', 'manual-tasks', 'cfo-kpis', 'dash-tiles']) $(v).innerHTML = '<p class="bad">Could not load forecast.json. Serve this folder over HTTP.</p>';
     return;
   }
   renderAnalysis();
@@ -496,6 +539,8 @@ function renderAnalysis() {
   if (tab === 'assets') renderAssets();
   if (tab === 'tasks') renderTasks();
   if (tab === 'cfo') renderCfo();
+  if (tab === 'dash') renderDash();
+  if (tab === 'compare') renderCompare();
 }
 
 function renderAssets() {
@@ -506,45 +551,45 @@ function renderAssets() {
   const d14 = H(336), d49 = forecast.game.daily[forecast.game.daily.length - 1];
   const yieldDay = budPerPotencyDay(168);
   const owners = (tier, rooms) => rooms.slice(tier).reduce((a, b) => a + b, 0);
-  const head = `<tr><th>Asset</th><th>Category</th><th>What it adds</th><th class="r">BUD</th><th class="r">USD launch</th><th class="r">USD day 3</th><th class="r">USD day 7</th>
+  const head = `<tr><th>Asset</th><th>Category</th><th>NFT?</th><th>What it adds</th><th class="r">BUD</th><th class="r">USD launch</th><th class="r">USD day 3</th><th class="r">USD day 7</th>
     <th class="r">Output BUD/day</th><th class="r">Payback</th><th class="r">Supply</th><th class="r">Release</th><th class="r">Sold d14</th><th class="r">Sold d49</th></tr>`;
-  const row = (c) => `<tr><td>${c.name}</td><td>${c.cat}</td><td class="wrap">${c.adds}</td><td class="r">${c.bud ?? '—'}</td>
+  const row = (c) => `<tr><td>${c.name}</td><td>${c.cat}</td><td>${c.nft ? 'NFT' : 'in-game'}</td><td class="wrap">${c.adds}</td><td class="r">${c.bud ?? '—'}</td>
     <td class="r">${c.usd0 != null ? usd(c.usd0) : '—'}</td><td class="r">${c.usd3 != null ? usd(c.usd3) : '—'}</td><td class="r">${c.usd7 != null ? usd(c.usd7) : '—'}</td>
     <td class="r">${c.out ?? '—'}</td><td class="r">${c.payback ?? '—'}</td><td class="r">${c.supply}</td><td class="r">${c.release}</td><td class="r">${c.s14}</td><td class="r">${c.s49}</td></tr>`;
   const priced = (bud) => ({ bud, usd0: bud * P0, usd3: bud * P3, usd7: bud * P7 });
   const rows = [];
-  rows.push(`<tr class="group"><td colspan="13">Starter packs (sold for USD, first thing on sale)</td></tr>`);
+  rows.push(`<tr class="group"><td colspan="14">Starter packs (sold for USD, first thing on sale)</td></tr>`);
   for (const pk of PACKS) {
     const cfgPack = LIVE().packs.find((x) => x.id === pk.id);
     const pot = cfgPack.strains.reduce((a, id) => a + byStrain[id].potency, 0);
     const budValue = ROOMS.slice(1, cfgPack.room + 1).reduce((a, r) => a + r.cost, 0) + cfgPack.strains.reduce((a, id) => a + byStrain[id].cost, 0);
     const out = pot * budPerPotencyDay(24);
-    rows.push(row({ name: pk.name, cat: 'Pack (space + harvest)', adds: `${pk.contents}. Worth ${budValue} BUD in-game. Skips about ${cfgPack.room} room upgrade${cfgPack.room > 1 ? 's' : ''} (24h cooldown each).`,
+    rows.push(row({ nft: true, name: pk.name, cat: 'Pack (space + harvest)', adds: `${pk.contents}. Worth ${budValue} BUD in-game. Skips about ${cfgPack.room} room upgrade${cfgPack.room > 1 ? 's' : ''} (24h cooldown each).`,
       bud: null, usd0: assumptions[pk.priceKey], usd3: null, usd7: null, out: `${fmt(out)} (day 1)`, payback: `${(assumptions[pk.priceKey] / (out * P0)).toFixed(1)}d at launch price`,
       supply: 'open', release: 'launch', s14: fmt(d14.packs[pk.id] || 0, 0), s49: '—' }));
   }
-  rows.push(`<tr class="group"><td colspan="13">Grow rooms (space: slots and power)</td></tr>`);
+  rows.push(`<tr class="group"><td colspan="14">Grow rooms (space: slots and power)</td></tr>`);
   ROOMS.forEach((r, i) => {
     const prev = ROOMS[i - 1];
     rows.push(row({ name: r.name, cat: 'Room (space)', adds: prev ? `+${r.slots - prev.slots} slots, +${(r.watts - prev.watts).toLocaleString()} W (${r.slots} slots, ${r.watts.toLocaleString()} W)` : `${r.slots} slots, ${r.watts} W. Free start.`,
       ...(r.cost ? priced(r.cost) : { bud: 0, usd0: 0, usd3: 0, usd7: 0 }), out: '—', payback: '—', supply: 'open', release: i ? '24h cooldown' : 'launch',
       s14: fmt(owners(i, d14.rooms), 0), s49: '—' }));
   });
-  rows.push(`<tr class="group"><td colspan="13">Strains (harvest: potency, draws power, takes a slot)</td></tr>`);
+  rows.push(`<tr class="group"><td colspan="14">Strains (harvest: potency, draws power, takes a slot)</td></tr>`);
   for (const st of STRAINS) {
     const out = st.potency * yieldDay;
-    rows.push(row({ name: st.name, cat: 'Strain (harvest)', adds: `${fmt(st.potency, 0)} potency, ${st.watts} W, 1 slot`,
+    rows.push(row({ nft: st.nft, name: st.name, cat: 'Strain (harvest)', adds: `${fmt(st.potency, 0)} potency, ${st.watts} W, 1 slot`,
       ...(st.cost ? priced(st.cost) : { bud: 0, usd0: 0, usd3: 0, usd7: 0 }), out: fmt(out, 2), payback: st.cost ? `${(st.cost / out).toFixed(1)}d` : 'free',
       supply: st.supply == null ? 'open' : st.supply.toLocaleString(), release: st.unlockHours ? `day ${st.unlockHours / 24}` : 'launch',
       s14: st.supply == null ? 'open' : fmt(d14.items[st.id] || 0, 0), s49: st.supply == null ? 'open' : fmt(d49.items[st.id] || 0, 0) }));
   }
-  rows.push(`<tr class="group"><td colspan="13">Utilities (automation, space, harvest boost; one per grower, no slot)</td></tr>`);
+  rows.push(`<tr class="group"><td colspan="14">Utilities (automation, space, harvest boost; one per grower, no slot)</td></tr>`);
   for (const u of UTILITIES) {
     rows.push(row({ name: u.name, cat: `Utility (${u.kind})`, adds: u.effect, ...priced(u.cost), out: 'see Tasks & ROI', payback: '—', supply: 'open', release: 'launch', s14: '—', s49: '—' }));
   }
-  rows.push(`<tr class="group"><td colspan="13">Decorations (cosmetic: takes a slot, no output)</td></tr>`);
+  rows.push(`<tr class="group"><td colspan="14">Decorations (cosmetic: takes a slot, no output)</td></tr>`);
   for (const c of COSMETICS) {
-    rows.push(row({ name: c.name, cat: 'Decoration', adds: 'Looks only. Limited drops create collector demand and burn BUD.', ...priced(c.cost), out: '0', payback: 'never',
+    rows.push(row({ nft: c.nft, name: c.name, cat: 'Decoration', adds: 'Looks only. Limited drops create collector demand and burn BUD.', ...priced(c.cost), out: '0', payback: 'never',
       supply: c.supply == null ? 'open' : c.supply.toLocaleString(), release: 'launch', s14: c.supply == null ? 'open' : fmt(d14.items[c.id] || 0, 0), s49: c.supply == null ? 'open' : fmt(d49.items[c.id] || 0, 0) }));
   }
   put('assets-table', `<table>${head}${rows.join('')}</table>`);
@@ -713,6 +758,85 @@ function renderCfo() {
     <p class="callout risk">Most of that payout is funded by newer players buying in. If new-player buying stops, the price falls and payback stretches; this is the dynamic that sank BigCoin. Non-game demand for BUD (merge mining, partnerships) is what makes the loop durable.</p>`);
 }
 
+
+// Item counts and NFT split, straight from content.js and the pack list.
+function itemCounts() {
+  const limitedDecor = COSMETICS.filter((c) => c.nft).length;
+  const nft = STRAINS.length + limitedDecor + PACKS.length;
+  const inGame = ROOMS.length + UTILITIES.length + (COSMETICS.length - limitedDecor);
+  return { total: nft + inGame, nft, inGame, strains: STRAINS.length, limitedDecor, packs: PACKS.length,
+    rooms: ROOMS.length, utilities: UTILITIES.length, openDecor: COSMETICS.length - limitedDecor };
+}
+
+// Recommended Founder Pack mint: what its owner earns by the payback target, valued at the launch price.
+function recommendedMint() {
+  const T = assumptions.paybackDays;
+  const pl = forecast.players.find((x) => x.id === 'founder_auto');
+  const sn = pl.snaps.reduce((best, x) => (x.hour <= T * 24 ? x : best), pl.snaps[0]);
+  return { usd: Math.max(1, Math.round(sn.earned * assumptions.launchPrice)), bud: sn.earned, days: T };
+}
+
+function renderDash() {
+  const c = itemCounts();
+  const cfg = LIVE();
+  const m = model, a = assumptions, end = H(336);
+  const cap = cfg.blockReward * cfg.halvingInterval * 2;
+  const reserve = a.lpUsd / a.launchPrice;
+  const rec = recommendedMint();
+  const founders = end.packs.founder || 0, growers = end.packs.grower || 0;
+  const needed = (founders * a.founderPrice + growers * a.growerPrice) / a.paybackDays;
+  const coverage = (cfg.blockReward * 86400 * priceAt(m, 168)) / Math.max(1, needed);
+  const tiles = [
+    { k: 'Items in the game', v: `${c.total}`, d: `${c.nft} NFTs · ${c.inGame} in-game items`, key: true },
+    { k: 'NFTs (tradable)', v: `${c.nft}`, d: `${c.strains} strains (earn BUD) · ${c.limitedDecor} limited decorations · ${c.packs} starter packs` },
+    { k: 'In-game add-ons (not NFTs)', v: `${c.inGame}`, d: `${c.rooms} rooms (space) · ${c.utilities} utilities (automation, boosts) · ${c.openDecor} open decorations` },
+    { k: 'First NFT to mint', v: usd(a.founderPrice), d: `Founder Pack: Garage + 2 Skunk #1. Model suggests ${usd(rec.usd)} so it pays back in ${rec.days} days at the launch price. Free option: Bagseed NFT (gas only).`, key: true },
+    { k: 'Token', v: 'BUD', d: `${fmt(cap, 0)} max from growing, plus a ${fmt(reserve, 0)} BUD liquidity reserve for the launch pool` },
+    { k: 'Emission', v: `${cfg.blockReward}/block`, d: `${fmt(cfg.blockReward * 86400, 0)} BUD a day, halving every ${(cfg.halvingInterval / 1e6).toFixed(1)}M blocks (about ${Math.round(cfg.halvingInterval / 86400)} days). ${pct(cfg.seedlingPool, 0)} goes to new free players.` },
+    { k: 'Every purchase', v: '75 / 25', d: '75% of BUD spent is burned, 25% goes to the treasury' },
+    { k: 'Launch price', v: usd(a.launchPrice), d: `Fully diluted value ${usd(cap * a.launchPrice)} · pool seeded with ${usd(a.lpUsd)}` },
+    { k: 'Day 14 forecast', v: usd(m.price), d: `${pct(m.price / a.launchPrice - 1, 0)} vs launch · ${end.players.toLocaleString()} players · ${pct(end.burned / end.minted, 0)} of minted BUD burned` },
+    { k: 'Studio revenue, 14 days', v: usd(m.packUsd), d: `From ${(founders + growers).toLocaleString()} starter packs. ${a.buybackPct}% to buybacks, ${a.lpPct}% to pool depth.` },
+    { k: 'Flywheel health', v: `${coverage.toFixed(1)}×`, d: `Daily payout value vs what pack buyers need for a ${a.paybackDays}-day payback. Above 1× keeps it turning.`, key: coverage >= 1 },
+    { k: 'Main risk', v: 'Inflow', d: 'Payouts depend on new players buying in. Non-game demand for BUD is what keeps it going after the hype.' },
+  ];
+  put('dash-tiles', tiles.map((t) => `<div class="tile ${t.key ? 'key' : ''}"><span class="k">${t.k}</span><span class="v">${t.v}</span><span class="d">${t.d}</span></div>`).join(''));
+  put('dash-loop', ['Mint a strain NFT', 'Grow', 'Earn BUD by network share', 'Spend BUD (75% burned)', 'Bigger room, stronger strains', 'Bigger share']
+    .map((x) => `<span class="step">${x}</span>`).join('<span class="arrow">→</span>') + '<span class="arrow">↺</span>');
+  $('dash-note').textContent = 'Live schedule forecast with the CFO tab inputs. Change them there and this page updates.';
+}
+
+const COMPARE = [
+  ['Pitch', 'Idle "virtual mining": hold miners, earn $BIG by share of network hashpower.', 'Idle grow game: plant strains, earn BUD by share of network potency.', 'same'],
+  ['Chain', 'Abstract (Ethereum L2).', 'Robinhood Chain (Ethereum L2).', 'changed'],
+  ['Token', '$BIG, fixed 21M supply.', 'BUD, 21M from growing, plus a liquidity reserve sized by the launch pool.', 'changed'],
+  ['Emission', '2.5 $BIG per block, halving every 4.2M blocks (about 51 days).', '2.5 BUD per block, halving every 4.2M blocks (about 49 days at 1 block/s).', 'same'],
+  ['Reward rule', 'Your hashpower ÷ network hashpower × block reward.', 'Your potency ÷ network potency × 85% of the block reward (all of it when no new free players are left).', 'changed'],
+  ['New-player share', 'None. Late joiners compete with whales from day one.', 'Seedling pool: 15% of every block split per head among new free players for their first week.', 'new'],
+  ['Spending', 'All in $BIG: 75% burned, 25% treasury.', 'All in-game spending in BUD: 75% burned, 25% treasury.', 'same'],
+  ['Base', 'Facilities: 9 tiers with slots and a power limit, 24h upgrade cooldown.', 'Rooms: same 9 tiers, same numbers (Closet to Biodome II), 24h cooldown.', 'same'],
+  ['Producers (NFT)', 'Miners: 13 ERC-721 NFTs with hashrate and power draw; free Potato Miner to start.', 'Strains: 13 NFTs with potency and power draw; free Bagseed to start.', 'same'],
+  ['Supply of producers', 'Open mints.', 'Top 6 strains have season caps (2,000 down to 100) and staged releases from day 1 to day 14.', 'new'],
+  ['Lock and sell-back', 'Locked while staked, 24h before unstaking; selling back burns the miner.', 'Rooting lock of 24h; composting burns the strain and refunds 20% from the treasury.', 'changed'],
+  ['Cosmetics', 'Take a slot, no output; seasonal and limited drops.', 'Decorations: same rules. Limited ones are NFTs, open ones are in-game items.', 'same'],
+  ['Daily tasks', 'None beyond claiming.', 'Water every 4h (dry = half output) and harvest within 12h (overflow spoils).', 'new'],
+  ['Automation', 'None.', 'Drip Irrigation and Auto-Trimmer automate the tasks; CO2 and LED boost output and space. In-game items, not NFTs.', 'new'],
+  ['Getting started', 'Free Potato Miner; buy $BIG on a DEX to go faster.', 'Free Bagseed, or a Founder Pack ($20) / Grower Pack ($75) minted for ETH.', 'changed'],
+  ['Studio revenue', '25% of in-game spend to the treasury; 5% royalty on OpenSea resales.', 'Same treasury share, plus starter pack sales that fund buybacks and pool depth.', 'changed'],
+  ['Referrals', '2.5% of what your referrals mine.', 'Planned at the same 2.5%; not built in the prototype yet.', 'same'],
+  ['Extra token demand', 'Bigcoin 2.0 merge mining: point hashpower at new tokens.', 'Not yet. Needed for the loop to last past the launch hype.', 'gap'],
+  ['What happened / risk', 'About 70k players at the April 2025 peak, then the price fell about 93% and critics called it Ponzi-like.', 'Same risk: payouts depend on new buyers. Seedling pool, caps and buybacks slow it down but do not remove it.', 'same'],
+];
+
+function renderCompare() {
+  const counts = { same: 0, changed: 0, new: 0, gap: 0 };
+  for (const r of COMPARE) counts[r[3]]++;
+  $('compare-summary').innerHTML = `Pitch it as <b>the new BigCoin-style game, with cannabis, on Robinhood Chain</b>. Of ${COMPARE.length} points below, ${counts.same} copy BigCoin, ${counts.changed} are adjusted, ${counts.new} are new, and ${counts.gap} is still missing. The new ones are a seedling pool for free players, capped and staged strain drops, and daily care tasks with automation. The missing one is demand for BUD from outside the game, which BigCoin added later with merge mining.`;
+  const label = { same: 'Same', changed: 'Changed', new: 'New', gap: 'Missing' };
+  put('compare-table', `<tr><th>Topic</th><th>BigCoin</th><th>Greenbox</th><th></th></tr>` +
+    COMPARE.map(([topic, big, green, kind]) => `<tr><td>${topic}</td><td>${big}</td><td>${green}</td><td><span class="tag ${kind}">${label[kind]}</span></td></tr>`).join(''));
+}
+
 document.addEventListener('change', (e) => { if (['roi-arch', 'roi-day', 'roi-every'].includes(e.target.id)) renderTasks(); });
 
 // ---------------- Loop ----------------
@@ -733,7 +857,7 @@ addEventListener('pagehide', save);
 const initial = location.hash.slice(1);
 renderPlay();
 loadForecast();
-if (['assets', 'tasks', 'cfo'].includes(initial)) showTab(initial);
+if (['dash', 'compare', 'play', 'assets', 'tasks', 'cfo'].includes(initial)) showTab(initial);
 </script>
 </body>
 </html>

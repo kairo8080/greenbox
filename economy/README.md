@@ -4,7 +4,10 @@ A playable browser prototype of Greenbox's game mechanics and token economy, usi
 idle-mining game as the blueprint and reskinning server mining as a cannabis grow operation. The UI is
 deliberately a plain placeholder; the point is to play-test the rules and the numbers.
 
-- Page: `public/economy/index.html` (served at `/economy/` on the Vercel site; any static server works). Four tabs:
+- Pitch: the new BigCoin-style game, with cannabis, on Robinhood Chain.
+- Page: `public/economy/index.html` (served at `/economy/` on the Vercel site; any static server works). Six tabs:
+  - **Dashboard**: one-screen exec view: item counts and NFT split, tokenomics, starter mint price, 14-day forecast and flywheel health.
+  - **BigCoin vs Greenbox**: side-by-side comparison, each point marked same, changed, new or missing.
   - **Play demo**: the game on the compressed demo schedule, with a minimal canvas view of the room.
   - **Assets**: every room, strain, utility, decoration and starter pack, with category, what it adds, BUD and USD price, output, payback, supply cap, release day and forecast sales.
   - **Tasks & ROI**: manual tasks and the utilities that automate them, an automation payback calculator, hour/day/week progress for five player types, and a whole-game developer view.
@@ -42,6 +45,13 @@ The 20% compost refund, decoration prices and badges are Greenbox inventions; Bi
 - Every purchase burns 75% and sends 25% to the treasury. Compost refunds come out of the treasury and stop when it is empty.
 - Strains you mint plant straight away when they fit, otherwise they go to inventory. Planted strains are locked for 30 minutes.
 - Room upgrades go one tier at a time with a 1 hour cooldown.
+
+## NFTs vs in-game items
+
+NFTs (18): all 13 strains (like BigCoin's miners), the 3 limited decorations, and the 2 starter packs.
+In-game, tied to the account (15): the 9 rooms, the 4 utilities, and the 2 open decorations.
+The first NFT a paying player mints is the Founder Pack; the dashboard suggests its price from what it earns back in the
+payback window at the launch price. Free players start with a Bagseed NFT.
 
 ## Tasks, utilities and the live schedule
 
