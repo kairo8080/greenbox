@@ -4,6 +4,8 @@ A small desktop-first voxel grow-room game, with a Unity 6000.2.6f1 project and 
 
 **[Play the Unity browser game](https://greenbox-pi.vercel.app/unity/)** · **[Explore the voxel lore viewer](https://greenbox-pi.vercel.app/viewer/)** · [Original Godot demo](https://greenbox-pi.vercel.app) · [Vercel project](https://vercel.com/kairo8080/greenbox)
 
+The **[grow economy prototype](economy/README.md)** ([play](https://greenbox-pi.vercel.app/economy/)) is a plain browser game for play-testing the BigCoin-style mechanics: grow rooms with slots and a power limit, strains with potency and power draw, a halving BUD token split by network share, 75% burns, and a simulated network of rival growers. Its UI is a placeholder.
+
 The new **[Greenbox Unity project](unity/README.md)** lives in `unity/Greenbox/`, using Unity 6000.2.6f1 and Web Build Support. It imports the same optimized voxel assets with Unity glTFast and has passed a real browser build and gameplay check, including a full harvest and saved progress after reloading. MagicaVoxel remains the editable asset source; Blender exports meshes, and Unity supplies the playable game.
 
 The **[voxel character cast](voxel_sources/character_cast/README.md)** adds a corporate boss, robot, chef, blonde lady, party woman, and skeleton, plus the existing grower with a 45° right-facing pose and lower preview camera. Each includes editable VOX sources, six movable body parts, a neutral GLB, Blender scene, previews, and verification records. The bundled tools reproduce all six new source designs; import the models into Unity to expand the cast.
@@ -65,6 +67,7 @@ godot --headless --path game --script res://tests/test_character_interaction.gd
 - `game/`: playable Godot project, scripts, tests, and mesh assets.
 - `unity/Greenbox/`: playable Unity project, native scene, C# scripts, and imported voxel meshes.
 - `voxel_sources/`: editable `.vox` and Blender sources, with original-source/license records.
+- `economy/`: grow economy design notes, engine tests, and balance runner; the playable page and engine live in `public/economy/`.
 - `viewer/`: source for the lore/character art viewer and shared palette tools.
 - `public/`: committed Godot browser build, Unity export at `public/unity/`, and standalone art viewer at `public/viewer/`, served by Vercel.
 - `web/godot-shell.html`: editable browser launcher used during export.

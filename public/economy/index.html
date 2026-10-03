@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Greenbox Grow Economy</title>
+<style>
+/* Placeholder UI: one stats bar on top, then panels in a wrapping grid. Mechanics first, art later. */
+:root {
+  --bg: #f3f5f1; --panel: #ffffff; --fg: #1d241d; --muted: #5d6a5d; --line: #d5ddd3;
+  --accent: #2f7a3e; --accent-fg: #ffffff; --warn: #9a6200; --bad: #a23a2a; --chip: #e6eee3;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121611; --panel: #1a2019; --fg: #e3ebe1; --muted: #9aa898; --line: #2e382c;
+    --accent: #5fbf6f; --accent-fg: #0d1a0f; --warn: #e2a640; --bad: #ef7d6a; --chip: #243022; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121611; --panel: #1a2019; --fg: #e3ebe1; --muted: #9aa898; --line: #2e382c;
+  --accent: #5fbf6f; --accent-fg: #0d1a0f; --warn: #e2a640; --bad: #ef7d6a; --chip: #243022; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.4 var(--sans); padding: 12px 16px 32px; }
+h1 { font-size: 18px; margin: 0; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 8px; color: var(--muted); }
+.num, td, .stat b { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.speed { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 12px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; min-width: 0; }
+.stat span { display: block; font-size: 11px; color: var(--muted); }
+.stat b { font-size: 15px; font-weight: 600; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; align-items: start; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px; min-width: 0; }
+.wide { grid-column: 1 / -1; }
+@media (min-width: 1000px) { #shop { grid-column: span 2; } }
+button { font: inherit; font-size: 13px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 4px; background: var(--chip); color: var(--fg); cursor: pointer; }
+button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+button.on { outline: 2px solid var(--accent); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 6px; }
+.slot { border: 1px dashed var(--line); border-radius: 4px; padding: 6px; min-height: 66px; font-size: 12px; display: flex; flex-direction: column; gap: 3px; }
+.slot.full { border-style: solid; background: var(--chip); }
+.slot .muted { font-size: 11px; }
+.muted { color: var(--muted); }
+.warn { color: var(--warn); }
+.bad { color: var(--bad); }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; font-weight: 600; color: var(--muted); font-size: 11px; }
+th, td { padding: 4px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td.r, th.r { text-align: right; }
+tr.you td { font-weight: 700; color: var(--accent); }
+.bar { height: 8px; background: var(--chip); border-radius: 4px; overflow: hidden; margin: 4px 0 8px; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.log { font-size: 12px; max-height: 220px; overflow-y: auto; margin: 0; padding: 0; list-style: none; }
+.log li { padding: 2px 0; border-bottom: 1px solid var(--line); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { font-size: 11px; padding: 2px 7px; border-radius: 10px; background: var(--chip); }
+.chip.got { background: var(--accent); color: var(--accent-fg); }
+#toast { min-height: 20px; font-size: 13px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Greenbox · grow economy prototype</h1>
+  <div class="speed" id="speed">
+    <span class="muted">Speed</span>
+    <button type="button" id="pause" data-speed="0">Pause</button>
+    <button type="button" id="s1" data-speed="1">1×</button>
+    <button type="button" id="s10" data-speed="10">10×</button>
+    <button type="button" id="s60" data-speed="60">60×</button>
+    <button type="button" id="s600" data-speed="600">600×</button>
+    <button type="button" id="reset">New season</button>
+    <span id="confirm-reset" hidden><span class="bad">Wipe this save?</span>
+      <button type="button" id="reset-yes">Yes, restart</button> <button type="button" id="reset-no">Keep playing</button></span>
+  </div>
+</header>
+<div class="stats" id="stats"></div>
+<div id="toast" class="muted" role="status"></div>
+<div class="grid">
+  <section id="room"></section>
+  <section id="shop"></section>
+  <section id="network"></section>
+  <section id="leaders"></section>
+  <section id="inventory"></section>
+  <section id="cosmetics"></section>
+  <section id="badges"></section>
+  <section id="log-panel"><h2>Log</h2><ul class="log" id="log"></ul></section>
+  <section class="wide muted" id="rules"></section>
+</div>
+<script type="module">
+import { ROOMS, STRAINS, COSMETICS, BADGES, TOKEN } from './content.js';
+import * as G from './engine.js';
+
+const SAVE_KEY = 'greenbox-economy-v1';
+const byStrain = Object.fromEntries(STRAINS.map((s) => [s.id, s]));
+const byCosmetic = Object.fromEntries(COSMETICS.map((c) => [c.id, c]));
+const $ = (id) => document.getElementById(id);
+const fmt = (n, d = 2) => {
+  const a = Math.abs(n);
+  if (a >= 1e9) return (n / 1e9).toFixed(2) + 'B';
+  if (a >= 1e6) return (n / 1e6).toFixed(2) + 'M';
+  if (a >= 1e4) return (n / 1e3).toFixed(1) + 'k';
+  return n.toFixed(d);
+};
+const dur = (blocks) => {
+  const s = Math.max(0, Math.round(blocks));
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = s % 60;
+  return h ? `${h}h ${m}m` : m ? `${m}m ${r}s` : `${r}s`;
+};
+
+let state = load();
+let speed = 1;
+let carry = 0;
+let last = performance.now();
+
+function load() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (raw) {
+      const saved = G.deserialize(raw);
+      const away = Math.floor((Date.now() - (saved.savedAt || Date.now())) / 1000);
+      const blocks = Math.min(Math.max(0, away), saved.cfg.maxCatchUp);
+      if (blocks > 0) {
+        G.advance(saved, blocks);
+        saved.log.unshift({ h: saved.height, message: `Welcome back. ${dur(blocks)} of growing happened while you were away.` });
+      }
+      return saved;
+    }
+  } catch (e) { /* storage blocked or bad save: start fresh */ }
+  return G.createGame((Math.random() * 2 ** 32) >>> 0);
+}
+
+function save() {
+  try { state.savedAt = Date.now(); localStorage.setItem(SAVE_KEY, G.serialize(state)); } catch (e) { /* storage unavailable */ }
+}
+
+function act(result) {
+  $('toast').textContent = result.message;
+  $('toast').className = result.ok ? '' : 'bad';
+  render();
+  save();
+}
+
+// Only touch the DOM when a panel's markup changed, so buttons are not replaced mid-click.
+const cache = {};
+function put(id, html) { if (cache[id] !== html) { cache[id] = html; $(id).innerHTML = html; } }
+
+function render() {
+  const s = G.summary(state);
+  const p = state.player;
+  const t = state.token;
+  const next = ROOMS[p.room + 1];
+
+  put('stats', [
+    ['Wallet', `${fmt(p.wallet)} ${TOKEN}`],
+    ['Ready to harvest', `${fmt(p.pending, 3)}`],
+    ['Your potency', `${fmt(s.potency, 0)} pp`],
+    ['Network share', `${(s.share * 100).toFixed(3)}%`],
+    ['Earning', `${fmt(s.perHour)} /h`],
+    ['Block', `#${s.height.toLocaleString()}`],
+    ['Block reward', `${s.reward} ${TOKEN}`],
+    ['Next halving', dur(s.nextHalvingIn)],
+  ].map(([k, v]) => `<div class="stat"><span>${k}</span><b>${v}</b></div>`).join(''));
+
+  const slots = [];
+  for (let i = 0; i < s.room.slots; i++) {
+    const slot = p.slots[i];
+    if (!slot) { slots.push('<div class="slot"><span class="muted">Empty slot</span></div>'); continue; }
+    if (slot.kind === 'cosmetic') {
+      slots.push(`<div class="slot full"><b>${byCosmetic[slot.id].name}</b><span class="muted">decoration</span>
+        <button type="button" data-act="uproot" data-uid="${slot.uid}">Uproot</button></div>`);
+      continue;
+    }
+    const st = byStrain[slot.id];
+    const lock = G.lockLeft(state, slot);
+    slots.push(`<div class="slot full"><b>${st.name}</b><span class="muted num">${fmt(st.potency, 0)} pp · ${st.watts} W</span>
+      ${lock ? `<span class="muted">Rooting ${dur(lock)}</span>` : `<button type="button" data-act="uproot" data-uid="${slot.uid}">Uproot</button>`}</div>`);
+  }
+  const wattPct = Math.min(100, (s.watts / s.room.watts) * 100);
+  put('room', `<h2>Grow room: ${s.room.name} (tier ${p.room + 1}/${ROOMS.length})</h2>
+    <div class="row"><button type="button" class="primary" data-act="claim" ${p.pending > 0 ? '' : 'disabled'}>Harvest ${fmt(p.pending, 3)} ${TOKEN}</button>
+    ${next ? `<button type="button" data-act="upgrade" ${p.wallet >= next.cost && !s.roomCooldown ? '' : 'disabled'}>Upgrade to ${next.name} · ${next.cost} ${TOKEN}</button>
+      <span class="muted">${s.roomCooldown ? `Contractors busy ${dur(s.roomCooldown)}` : `${next.slots} slots, ${next.watts.toLocaleString()} W`}</span>` : '<span class="muted">Top tier reached</span>'}</div>
+    <div class="muted num" style="margin-top:8px">Slots ${s.slotsUsed}/${s.room.slots} · Power ${s.watts.toLocaleString()}/${s.room.watts.toLocaleString()} W</div>
+    <div class="bar"><i style="width:${wattPct}%"></i></div>
+    <div class="slots">${slots.join('')}</div>`);
+
+  put('shop', `<h2>Seed bank (mint strains)</h2><div class="scroll"><table>
+    <tr><th>Strain</th><th class="r">Cost</th><th class="r">Potency</th><th class="r">Watts</th><th class="r">pp per ${TOKEN}</th><th>Fits now</th><th></th></tr>
+    ${STRAINS.filter((x) => !x.starter).map((x) => {
+      const fit = G.canFit(state, x.id);
+      return `<tr><td>${x.name}</td><td class="r">${x.cost}</td><td class="r">${fmt(x.potency, 0)}</td><td class="r">${x.watts}</td>
+        <td class="r">${fmt(x.potency / x.cost, 0)}</td>
+        <td class="${fit ? 'warn' : ''}">${fit ? (fit.startsWith('No free') ? 'no slot' : 'no power') : 'yes'}</td>
+        <td><button type="button" data-act="buy" data-id="${x.id}" ${p.wallet >= x.cost ? '' : 'disabled'}>Buy</button></td></tr>`;
+    }).join('')}</table></div>`);
+
+  const burnedPct = t.minted ? (t.burned / t.minted) * 100 : 0;
+  put('network', `<h2>${TOKEN} token &amp; network</h2><div class="scroll"><table>
+    <tr><td>Season supply cap</td><td class="r">${fmt(s.cap)}</td></tr>
+    <tr><td>Minted so far</td><td class="r">${fmt(t.minted)} (${((t.minted / s.cap) * 100).toFixed(1)}%)</td></tr>
+    <tr><td>Burned (75% of spend)</td><td class="r">${fmt(t.burned)} (${burnedPct.toFixed(1)}% of minted)</td></tr>
+    <tr><td>Treasury (25% of spend)</td><td class="r">${fmt(t.treasury)}</td></tr>
+    <tr><td>Circulating</td><td class="r">${fmt(s.circulating)}</td></tr>
+    <tr><td>Halving era</td><td class="r">${s.era} (reward ${s.reward})</td></tr>
+    <tr><td>Network potency</td><td class="r">${fmt(s.networkPotency, 0)} pp</td></tr>
+    <tr><td>Active growers</td><td class="r">${s.activeGrowers} (${state.stats.quits} quit)</td></tr>
+    </table></div>`);
+
+  const growers = state.bots.filter((b) => b.active).map((b) => ({ name: b.name, potency: b.potency, room: b.room }));
+  growers.push({ name: 'You', potency: s.potency, room: p.room, you: true });
+  growers.sort((a, b) => b.potency - a.potency);
+  const rank = growers.findIndex((g) => g.you) + 1;
+  const top = growers.slice(0, 10);
+  if (rank > 10) top.push(growers[rank - 1]);
+  put('leaders', `<h2>Top growers (you are #${rank} of ${growers.length})</h2><div class="scroll"><table>
+    <tr><th>#</th><th>Grower</th><th>Room</th><th class="r">Potency</th><th class="r">Share</th></tr>
+    ${top.map((g) => `<tr class="${g.you ? 'you' : ''}"><td>${growers.indexOf(g) + 1}</td><td>${g.name}</td><td>${ROOMS[g.room].name}</td>
+      <td class="r">${fmt(g.potency, 0)}</td><td class="r">${((g.potency / s.networkPotency) * 100).toFixed(2)}%</td></tr>`).join('')}
+    </table></div>`);
+
+  const refund = (item) => (item.kind === 'strain' ? byStrain[item.id].cost : byCosmetic[item.id].cost) * state.cfg.sellBackShare;
+  put('inventory', `<h2>Inventory</h2>${p.inventory.length ? `<div class="scroll"><table>${p.inventory.map((item) => {
+      const name = item.kind === 'strain' ? byStrain[item.id].name : byCosmetic[item.id].name;
+      return `<tr><td>${name}</td><td><button type="button" data-act="replant" data-uid="${item.uid}">Plant</button>
+        <button type="button" data-act="sell" data-uid="${item.uid}">Compost (+${fmt(Math.min(refund(item), t.treasury))})</button></td></tr>`;
+    }).join('')}</table></div>` : '<p class="muted">Empty. Uprooted plants and seeds that did not fit land here. Composting burns the item and refunds 20% of its price from the treasury.</p>'}`);
+
+  put('cosmetics', `<h2>Decorations</h2><div class="scroll"><table>
+    <tr><th>Item</th><th class="r">Cost</th><th class="r">Left</th><th></th></tr>
+    ${COSMETICS.map((c) => {
+      const left = G.cosmeticsLeft(state, c.id);
+      return `<tr><td>${c.name}</td><td class="r">${c.cost}</td><td class="r">${left === null ? 'open' : left}</td>
+        <td><button type="button" data-act="cosmetic" data-id="${c.id}" ${p.wallet >= c.cost && left !== 0 ? '' : 'disabled'}>${left === 0 ? 'Sold out' : 'Buy'}</button></td></tr>`;
+    }).join('')}</table></div><p class="muted">Decorations use a slot but add no potency or power draw. Limited drops are shared with the whole network.</p>`);
+
+  put('badges', `<h2>Badges ${p.badges.length}/${BADGES.length}</h2><div class="chips">${BADGES.map((b) =>
+    `<span class="chip ${p.badges.includes(b.id) ? 'got' : ''}">${b.name}</span>`).join('')}</div>`);
+
+  put('log', state.log.slice(0, 40).map((l) => `<li><span class="muted num">#${l.h}</span> ${l.message}</li>`).join(''));
+
+  put('rules', `<h2>How it works</h2>
+    <p>Every block (one game second) mints ${s.reward} ${TOKEN}, split across all growers by their share of total network potency.
+    The reward halves every ${G.DEFAULT_CONFIG.halvingInterval.toLocaleString()} blocks (12 hours at 1×), so supply stops at ${fmt(s.cap, 0)} ${TOKEN}.
+    Spend ${TOKEN} on strains (potency, but they draw power) and room upgrades (more slots and watts, ${dur(state.cfg.roomCooldown)} cooldown).
+    Every purchase burns 75% and sends 25% to the treasury. New strains root for ${dur(state.cfg.strainLock)} before you can uproot them.
+    The other growers are simulated: they join with the early hype, reinvest at their own pace, and some quit after each halving.
+    Progress saves in this browser and keeps growing for up to 12 hours while you are away.</p>`);
+
+  for (const b of document.querySelectorAll('[data-speed]')) b.classList.toggle('on', Number(b.dataset.speed) === speed);
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('button');
+  if (!btn || btn.disabled) return;
+  if (btn.dataset.speed !== undefined) { speed = Number(btn.dataset.speed); render(); return; }
+  const uid = Number(btn.dataset.uid);
+  switch (btn.dataset.act) {
+    case 'claim': return act(G.claim(state));
+    case 'upgrade': return act(G.upgradeRoom(state));
+    case 'buy': return act(G.buyStrain(state, btn.dataset.id));
+    case 'cosmetic': return act(G.buyCosmetic(state, btn.dataset.id));
+    case 'uproot': return act(G.uproot(state, uid));
+    case 'replant': return act(G.replant(state, uid));
+    case 'sell': return act(G.sellBack(state, uid));
+  }
+});
+$('reset').addEventListener('click', () => { $('confirm-reset').hidden = false; });
+$('reset-no').addEventListener('click', () => { $('confirm-reset').hidden = true; });
+$('reset-yes').addEventListener('click', () => {
+  $('confirm-reset').hidden = true;
+  state = G.createGame((Math.random() * 2 ** 32) >>> 0);
+  speed = 1;
+  act({ ok: true, message: 'New season started.' });
+});
+
+let sinceSave = 0;
+setInterval(() => {
+  const now = performance.now();
+  const dt = Math.min(1, (now - last) / 1000);
+  last = now;
+  carry += dt * speed;
+  const blocks = Math.floor(carry);
+  carry -= blocks;
+  if (blocks) G.advance(state, blocks);
+  render();
+  sinceSave += dt;
+  if (sinceSave > 5) { sinceSave = 0; save(); }
+}, 250);
+addEventListener('pagehide', save);
+render();
+</script>
+</body>
+</html>
