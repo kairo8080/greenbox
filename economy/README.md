@@ -7,7 +7,8 @@ deliberately a plain placeholder; the point is to play-test the rules and the nu
 - Pitch: the new BigCoin-style game, with cannabis, on Robinhood Chain.
 - Page: `public/economy/index.html` (served at `/economy/` on the Vercel site; any static server works). A dark "terminal" layout:
   big colour-coded numbers first, detail in tables, explanations folded into "How to read this" toggles.
-  Colours carry meaning: green is Greenbox and good, gold is money and BUD, violet is BigCoin, coral is risk, amber is watch. Six tabs:
+  The palette comes from Kairo's moodboard (acid lime, orange, violet, red and cobalt on near-black), one meaning per colour:
+  lime is Greenbox and good, orange is money and BUD, violet is BigCoin, red is risk, cobalt is watch. Six tabs:
   - **Dashboard**: one-screen exec view: item counts and NFT split, tokenomics, starter mint price, 14-day forecast and flywheel health.
   - **BigCoin vs Greenbox**: BigCoin's live market next to Greenbox's model, then each point tagged same, changed, new or missing.
     The BigCoin figures are a snapshot taken on 3 Oct 2026 from DexScreener (the $BIG pool on Abstract) and OpenSea (the

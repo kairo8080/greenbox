@@ -8,13 +8,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap">
 <style>
-/* Greenbox terminal: a grow-room control panel. Dark by design, one hue per meaning:
-   green = Greenbox / good, gold = money and BUD, violet = BigCoin, coral = risk, amber = watch. */
+/* Greenbox terminal: a grow-room control panel. Palette sampled from Kairo's moodboard (acid lime, orange, violet, red, cobalt on black).
+   Dark by design, one hue per meaning: lime = Greenbox / good, orange = money and BUD, violet = BigCoin, red = risk, cobalt = watch. */
 :root {
-  --bg: #0a120e; --panel: #111c16; --panel-2: #172620; --fg: #e6f2ea; --muted: #8fa699; --line: #24372d;
-  --accent: #3fe08a; --accent-fg: #06130c; --gold: #f6c453; --violet: #b49cff; --bad: #ff6f61; --warn: #ffb547; --good: #3fe08a;
-  --chip: #1b2c24;
-  --soil: #6b4529; --leaf: #3fe08a; --leaf-dry: #a4893d; --pot: #a85a35; --floor: #1a2620; --wall: #0f1a15; --lamp: #f6c453;
+  --bg: #0b0c0a; --panel: #141612; --panel-2: #1c1f19; --fg: #eeede6; --muted: #9b9e94; --line: #2d3128;
+  --accent: #c6f135; --accent-fg: #101400; --gold: #ff9420; --violet: #a479ff; --bad: #ff3d55; --warn: #7790ff; --good: #c6f135;
+  --chip: #22261e;
+  --soil: #3f3426; --leaf: #c6f135; --leaf-dry: #8f8442; --pot: #d4532f; --floor: #1c1f19; --wall: #10120e; --lamp: #ff9420;
   --display: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -134,7 +134,7 @@ canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block;
 .metrics b { font: 700 22px var(--mono); }
 .tag { display: inline-block; font: 700 10px var(--display); letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; }
 .tag.same { background: var(--chip); color: var(--muted); }
-.tag.changed { background: var(--warn); color: #1b1200; }
+.tag.changed { background: var(--warn); color: #050a24; }
 .tag.new { background: var(--accent); color: var(--accent-fg); }
 .tag.gap { background: var(--bad); color: #1d0503; }
 .cmp td { white-space: normal; vertical-align: top; }
