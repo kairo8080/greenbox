@@ -2,8 +2,8 @@
 // BUD/USD pool, starter pack sales and the studio's revenue allocation. Pure functions; the CFO tab drives them.
 
 export const DEFAULT_ASSUMPTIONS = {
-  launchPrice: 0.025, // USD per BUD when the pool opens
-  lpUsd: 25000, // USD the studio seeds into the BUD/USD pool at launch
+  launchPrice: 0.00125, // USD per BUD when the pool opens
+  lpUsd: 26040, // USD the studio seeds into the BUD/USD pool at launch; pairs 20,832,000 BUD, so mined + pool = 420M
   founderPrice: 20, // USD, Garage + 2 Skunk #1
   growerPrice: 75, // USD, Garden Shed + 4 Skunk #1 + OG Kush
   buybackPct: 30, // % of pack revenue used to buy BUD from the pool and burn it

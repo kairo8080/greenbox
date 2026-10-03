@@ -1,13 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ROOMS, STRAINS } from '../../public/economy/content.js';
+import { ROOMS, STRAINS, UTILITIES } from '../../public/economy/content.js';
 import {
   createGame, advance, claim, buyStrain, buyCosmetic, buyUtility, upgradeRoom, uproot, replant, sellBack, water,
-  summary, supplyCap, rewardAt, playerWatts, serialize, deserialize, cosmeticsLeft, effectivePotency, LIVE_CONFIG,
+  summary, supplyCap, rewardAt, playerWatts, serialize, deserialize, cosmeticsLeft, effectivePotency, LIVE_CONFIG, DEFAULT_CONFIG,
 } from '../../public/economy/engine.js';
 
 // A network of one: no bots at launch and nobody joins.
 const SOLO = { startingBots: 0, joinChance: 0 };
+const R = DEFAULT_CONFIG.blockReward; // BUD per block
+const cost = (id) => [...ROOMS, ...STRAINS, ...UTILITIES].find((x) => x.id === id).cost;
 const near = (a, b, eps = 1e-6) => assert.ok(Math.abs(a - b) <= eps * Math.max(1, Math.abs(b)), `${a} != ${b}`);
 
 // Every minted BUD is in a wallet, pending, a bot balance, dormant, the treasury, or burned.
@@ -45,26 +47,26 @@ test('each block is split by share of network potency', () => {
   const state = createGame(1, { startingBots: 3, joinChance: 0 });
   const before = summary(state);
   advance(state, 1);
-  near(state.player.pending, 2.5 * before.share);
+  near(state.player.pending, R * before.share);
   near(before.share, 100 / 400);
 });
 
 test('purchases burn 75% and send 25% to the treasury', () => {
   const state = createGame(1, SOLO);
-  rich(state, 100);
+  rich(state, 100 * 20);
   const r = buyStrain(state, 'ditchweed');
   assert.ok(r.ok, r.message);
-  near(state.token.burned, 3);
-  near(state.token.treasury, 1);
+  near(state.token.burned, cost('ditchweed') * 0.75);
+  near(state.token.treasury, cost('ditchweed') * 0.25);
   assertConserved(state);
 });
 
 test('claim moves pending rewards into the wallet', () => {
   const state = createGame(1, SOLO);
   advance(state, 10);
-  near(state.player.pending, 25);
+  near(state.player.pending, 10 * R);
   assert.ok(claim(state).ok);
-  near(state.player.wallet, 25);
+  near(state.player.wallet, 10 * R);
   assert.equal(claim(state).ok, false);
   assert.ok(state.player.badges.includes('first_claim'));
 });
@@ -102,12 +104,12 @@ test('room upgrades go one tier at a time with a cooldown', () => {
   advance(state, 50);
   assert.ok(upgradeRoom(state).ok);
   assert.equal(state.player.room, 2);
-  near(state.token.burned, (42 + 106) * 0.75);
+  near(state.token.burned, (ROOMS[1].cost + ROOMS[2].cost) * 0.75);
 });
 
 test('planted strains are locked, then can be uprooted, replanted, or sold back', () => {
   const state = createGame(1, { ...SOLO, strainLock: 20 });
-  rich(state, 10);
+  rich(state, cost('ditchweed'));
   buyStrain(state, 'ditchweed');
   const slot = state.player.slots.find((s) => s.id === 'ditchweed');
   assert.equal(uproot(state, slot.uid).ok, false);
@@ -119,7 +121,7 @@ test('planted strains are locked, then can be uprooted, replanted, or sold back'
   uproot(state, slot.uid);
   const wallet = state.player.wallet;
   assert.ok(sellBack(state, slot.uid).ok);
-  near(state.player.wallet - wallet, 4 * 0.2);
+  near(state.player.wallet - wallet, cost('ditchweed') * 0.2);
   assert.equal(state.player.inventory.length, 0);
   assertConserved(state);
 });
@@ -161,7 +163,7 @@ test('a dry room halves potency until watered; Drip Irrigation removes the chore
   near(effectivePotency(state), 50);
   assert.ok(water(state).ok);
   near(effectivePotency(state), 100);
-  rich(state, 1000);
+  rich(state, cost('drip'));
   assert.ok(buyUtility(state, 'drip').ok);
   advance(state, state.cfg.waterBlocks * 3);
   assert.equal(summary(state).wet, true);
@@ -171,15 +173,15 @@ test('a dry room halves potency until watered; Drip Irrigation removes the chore
 test('a full drying rack spoils new harvests; the Auto-Trimmer keeps harvesting', () => {
   const state = createGame(1, { ...SOLO, storageBlocks: 100, trimmerEvery: 50, waterBlocks: 1e9 });
   advance(state, 150);
-  near(state.player.pending, 250);
-  near(state.player.spoiledTotal, 125);
+  near(state.player.pending, 100 * R);
+  near(state.player.spoiledTotal, 50 * R);
   assertConserved(state);
   claim(state);
-  rich(state, 40);
+  rich(state, cost('trimmer'));
   buyUtility(state, 'trimmer');
   advance(state, 10000);
-  near(state.player.spoiledTotal, 125);
-  assert.ok(state.player.pending < 2.5 * state.cfg.trimmerEvery + 1e-6);
+  near(state.player.spoiledTotal, 50 * R);
+  assert.ok(state.player.pending < R * state.cfg.trimmerEvery + 1e-6);
   assertConserved(state);
 });
 
@@ -222,4 +224,11 @@ test('the committed forecast matches the current live config and catalog', async
   const f = JSON.parse(await readFile(new URL('../../public/economy/forecast.json', import.meta.url), 'utf8'));
   assert.deepEqual(f.config, JSON.parse(JSON.stringify(LIVE_CONFIG)), 'rerun npm run forecast');
   assert.deepEqual(f.catalog.strains.map((s) => [s.id, s.cost, s.supply]), STRAINS.map((s) => [s.id, s.cost, s.supply]), 'rerun npm run forecast');
+});
+
+test('420M BUD in total: the live mining cap plus the launch pool reserve, halvings at 4:20', async () => {
+  const { DEFAULT_ASSUMPTIONS: a } = await import('../../public/economy/cfo.js');
+  near(supplyCap(LIVE_CONFIG) + a.lpUsd / a.launchPrice, 420e6);
+  assert.equal(LIVE_CONFIG.halvingInterval % (12 * 3600), 0, 'launch at 4:20 pm keeps every halving on 4:20');
+  for (const s of STRAINS) assert.equal(s.unlockHours % 12, 0, `${s.id} drops at 4:20`);
 });

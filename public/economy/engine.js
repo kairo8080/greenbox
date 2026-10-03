@@ -8,8 +8,8 @@ const HOUR = 3600;
 
 // DEMO compresses the season so halvings happen while you play. LIVE is the launch plan used by the forecasts.
 export const DEMO_CONFIG = {
-  blockReward: 2.5, // BUD per block at launch, as in BigCoin
-  halvingInterval: 43200, // blocks; 12 hours at 1 block/s
+  blockReward: 55, // BUD per block (one toke) at launch; with the live halving this mines 399,168,000 BUD, and the 20,832,000 BUD launch pool makes 420M
+  halvingInterval: 43200, // blocks; 12 hours at 1 block/s, so a session started at 4:20 halves at 4:20 am and pm
   tick: 1, // blocks simulated per step; forecasts use bigger steps for speed
   burnShare: 0.75, // of every purchase; the rest goes to the treasury
   sellBackShare: 0.2, // of the mint price, refunded from the treasury when a strain is sold back
@@ -44,7 +44,7 @@ export const DEFAULT_CONFIG = DEMO_CONFIG;
 
 export const LIVE_CONFIG = {
   ...DEMO_CONFIG,
-  halvingInterval: 4200000, // BigCoin's schedule: about 49 days at 1 block/s, 21M BUD cap
+  halvingInterval: 3628800, // 42 days at 1 block/s: with launch at 4:20 pm UTC every halving lands at 4:20 pm
   tick: 60,
   roomCooldown: 24 * HOUR,
   strainLock: 24 * HOUR,
@@ -59,7 +59,7 @@ export const LIVE_CONFIG = {
   quitChance: 0.003,
   collectorChance: 0.02,
   sellShare: 0.25,
-  buyIns: [{ chance: 0.4, bud: 100 }, { chance: 0.08, bud: 1500 }],
+  buyIns: [{ chance: 0.4, bud: 2000 }, { chance: 0.08, bud: 30000 }],
   packs: [
     { id: 'founder', chance: 0.15, room: 1, strains: ['skunk', 'skunk'] },
     { id: 'grower', chance: 0.03, room: 2, strains: ['skunk', 'skunk', 'skunk', 'skunk', 'ogkush'] },
@@ -320,7 +320,7 @@ function step(state, k) {
   const before = Math.floor(state.height / cfg.halvingInterval);
   state.height += k;
   if (Math.floor(state.height / cfg.halvingInterval) > before) {
-    log(state, `Halving! Block reward is now ${rewardAt(cfg, state.height)} BUD.`);
+    log(state, `4:20 Halving! Each toke now yields ${rewardAt(cfg, state.height)} BUD.`);
   }
   if (p.utilities.includes('trimmer') && state.height - p.lastClaim >= cfg.trimmerEvery) claim(state);
 
