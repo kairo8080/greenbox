@@ -17,29 +17,38 @@ export const ROOMS = [
 ];
 
 // potency: share weight, like hashrate. watts: power draw against the room limit.
+// supply: season cap shared by every grower (null = unlimited), sized from the live forecast: the lower capped tiers sell out late in the first halving era, top tiers stay scarce into era 2. unlockHours: release time after launch on the live schedule.
 export const STRAINS = [
-  { id: 'bagseed', name: 'Bagseed', cost: 0, potency: 100, watts: 1, starter: true },
-  { id: 'ditchweed', name: 'Ditch Weed', cost: 4, potency: 180, watts: 6 },
-  { id: 'northern', name: 'Northern Lights Auto', cost: 12, potency: 600, watts: 12 },
-  { id: 'skunk', name: 'Skunk #1', cost: 34, potency: 5000, watts: 30 },
-  { id: 'bluedream', name: 'Blue Dream', cost: 70, potency: 10000, watts: 55 },
-  { id: 'ogkush', name: 'OG Kush', cost: 127, potency: 20000, watts: 90 },
-  { id: 'widow', name: 'White Widow', cost: 260, potency: 48000, watts: 180 },
-  { id: 'gluestick', name: 'Gorilla Glue', cost: 520, potency: 110000, watts: 380 },
-  { id: 'gelato', name: 'Gelato', cost: 1050, potency: 250000, watts: 750 },
-  { id: 'cake', name: 'Wedding Cake', cost: 1700, potency: 400000, watts: 1200 },
-  { id: 'runtz', name: 'Runtz', cost: 2550, potency: 800000, watts: 2000 },
-  { id: 'zkittlez', name: 'Zkittlez Mother', cost: 3600, potency: 1500000, watts: 3400 },
-  { id: 'genesis', name: 'Greenbox Genesis', cost: 5100, potency: 2508000, watts: 5000 },
+  { id: 'bagseed', name: 'Bagseed', cost: 0, potency: 100, watts: 1, starter: true, supply: null, unlockHours: 0 },
+  { id: 'ditchweed', name: 'Ditch Weed', cost: 4, potency: 180, watts: 6, supply: null, unlockHours: 0 },
+  { id: 'northern', name: 'Northern Lights Auto', cost: 12, potency: 600, watts: 12, supply: null, unlockHours: 0 },
+  { id: 'skunk', name: 'Skunk #1', cost: 34, potency: 5000, watts: 30, supply: null, unlockHours: 0 },
+  { id: 'bluedream', name: 'Blue Dream', cost: 70, potency: 10000, watts: 55, supply: null, unlockHours: 0 },
+  { id: 'ogkush', name: 'OG Kush', cost: 127, potency: 20000, watts: 90, supply: null, unlockHours: 0 },
+  { id: 'widow', name: 'White Widow', cost: 260, potency: 48000, watts: 180, supply: null, unlockHours: 24 },
+  { id: 'gluestick', name: 'Gorilla Glue', cost: 520, potency: 110000, watts: 380, supply: 2000, unlockHours: 48 },
+  { id: 'gelato', name: 'Gelato', cost: 1050, potency: 250000, watts: 750, supply: 400, unlockHours: 72 },
+  { id: 'cake', name: 'Wedding Cake', cost: 1700, potency: 400000, watts: 1200, supply: 600, unlockHours: 120 },
+  { id: 'runtz', name: 'Runtz', cost: 2550, potency: 800000, watts: 2000, supply: 400, unlockHours: 168 },
+  { id: 'zkittlez', name: 'Zkittlez Mother', cost: 3600, potency: 1500000, watts: 3400, supply: 200, unlockHours: 240 },
+  { id: 'genesis', name: 'Greenbox Genesis', cost: 5100, potency: 2508000, watts: 5000, supply: 100, unlockHours: 336 },
+];
+
+// Utilities: bought once per grower, no slot. They automate a manual task or boost the whole room.
+export const UTILITIES = [
+  { id: 'drip', name: 'Drip Irrigation', cost: 60, kind: 'automation', effect: 'Waters the room automatically, so plants never dry out.' },
+  { id: 'trimmer', name: 'Auto-Trimmer', cost: 40, kind: 'automation', effect: 'Harvests every hour, so the drying rack never overflows.' },
+  { id: 'led', name: 'LED Retrofit', cost: 250, kind: 'space', effect: 'Strains draw 25% less power, so more plants fit.' },
+  { id: 'co2', name: 'CO2 Generator', cost: 400, kind: 'harvest', effect: '+10% potency for every strain.' },
 ];
 
 // Cosmetics take a slot, draw no power and add no potency. `supply` is a capped drop shared with the network.
 export const COSMETICS = [
   { id: 'gnome', name: 'Garden Gnome', cost: 3, supply: null },
   { id: 'lavalamp', name: 'Lava Lamp', cost: 8, supply: null },
-  { id: 'poster', name: 'Reggae Poster', cost: 15, supply: 500 },
-  { id: 'goldpot', name: 'Golden Pot', cost: 60, supply: 100 },
-  { id: 'neon', name: 'Neon Leaf Sign', cost: 150, supply: 25 },
+  { id: 'poster', name: 'Reggae Poster', cost: 15, supply: 2000 },
+  { id: 'goldpot', name: 'Golden Pot', cost: 60, supply: 500 },
+  { id: 'neon', name: 'Neon Leaf Sign', cost: 150, supply: 100 },
 ];
 
 export const BADGES = [
@@ -52,4 +61,5 @@ export const BADGES = [
   { id: 'burn_10k', name: 'Bonfire', test: (p) => p.spent * 0.75 >= 10000 },
   { id: 'collector', name: 'Decorator', test: (p) => p.cosmeticsBought >= 3 },
   { id: 'genesis', name: 'Genesis Grower', test: (p) => p.mintedIds.includes('genesis') },
+  { id: 'automated', name: 'Hands Free', test: (p) => p.utilities.includes('drip') && p.utilities.includes('trimmer') },
 ];

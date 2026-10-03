@@ -20,6 +20,7 @@
     "sync:unity": "node scripts/sync-unity-web.mjs",
     "export:web": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/export-web.ps1",
     "test:economy": "node --test economy/tests/engine.test.mjs",
-    "balance": "node economy/balance.mjs"
+    "balance": "node economy/balance.mjs",
+    "forecast": "node economy/forecast.mjs"
   }
 }

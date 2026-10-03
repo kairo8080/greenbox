@@ -5,30 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Greenbox Grow Economy</title>
 <style>
-/* Placeholder UI: one stats bar on top, then panels in a wrapping grid. Mechanics first, art later. */
+/* Placeholder UI: tab bar on top, then panels in a wrapping grid. Mechanics and numbers first, art later. */
 :root {
   --bg: #f3f5f1; --panel: #ffffff; --fg: #1d241d; --muted: #5d6a5d; --line: #d5ddd3;
-  --accent: #2f7a3e; --accent-fg: #ffffff; --warn: #9a6200; --bad: #a23a2a; --chip: #e6eee3;
+  --accent: #2f7a3e; --accent-fg: #ffffff; --warn: #9a6200; --bad: #a23a2a; --good: #2f7a3e; --chip: #e6eee3;
+  --soil: #8a5a36; --leaf: #3f9a4d; --leaf-dry: #b49a4a; --pot: #b5653d; --floor: #e9e2d4; --wall: #d9e3d6; --lamp: #f2d15c;
   --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #121611; --panel: #1a2019; --fg: #e3ebe1; --muted: #9aa898; --line: #2e382c;
-    --accent: #5fbf6f; --accent-fg: #0d1a0f; --warn: #e2a640; --bad: #ef7d6a; --chip: #243022; color-scheme: dark;
+    --accent: #5fbf6f; --accent-fg: #0d1a0f; --warn: #e2a640; --bad: #ef7d6a; --good: #6fd07f; --chip: #243022;
+    --soil: #6b4529; --leaf: #58b866; --leaf-dry: #9c8640; --pot: #9c5533; --floor: #2a2620; --wall: #1f2a1e; --lamp: #e8c64e;
+    color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #121611; --panel: #1a2019; --fg: #e3ebe1; --muted: #9aa898; --line: #2e382c;
-  --accent: #5fbf6f; --accent-fg: #0d1a0f; --warn: #e2a640; --bad: #ef7d6a; --chip: #243022; color-scheme: dark;
+  --accent: #5fbf6f; --accent-fg: #0d1a0f; --warn: #e2a640; --bad: #ef7d6a; --good: #6fd07f; --chip: #243022;
+  --soil: #6b4529; --leaf: #58b866; --leaf-dry: #9c8640; --pot: #9c5533; --floor: #2a2620; --wall: #1f2a1e; --lamp: #e8c64e;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.4 var(--sans); padding: 12px 16px 32px; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.45 var(--sans); padding: 12px 16px 32px; }
 h1 { font-size: 18px; margin: 0; }
 h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 8px; color: var(--muted); }
-.num, td, .stat b { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+h3 { font-size: 14px; margin: 14px 0 6px; }
+p { margin: 6px 0; max-width: 80ch; }
+.num, td, .stat b, input[type=number] { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.speed { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+nav.tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+nav.tabs button { border: 1px solid var(--line); border-bottom: none; border-radius: 6px 6px 0 0; background: var(--chip); padding: 7px 14px; font-weight: 600; }
+nav.tabs button[aria-selected="true"] { background: var(--panel); color: var(--accent); position: relative; top: 1px; }
+.speed { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 12px; }
 .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; min-width: 0; }
 .stat span { display: block; font-size: 11px; color: var(--muted); }
@@ -36,25 +46,27 @@ header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; jus
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; align-items: start; }
 section { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px; min-width: 0; }
 .wide { grid-column: 1 / -1; }
-@media (min-width: 1000px) { #shop { grid-column: span 2; } }
+@media (min-width: 1000px) { .span2 { grid-column: span 2; } }
 button { font: inherit; font-size: 13px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 4px; background: var(--chip); color: var(--fg); cursor: pointer; }
 button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
 button.on { outline: 2px solid var(--accent); }
 button:disabled { opacity: .45; cursor: not-allowed; }
-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 6px; }
 .slot { border: 1px dashed var(--line); border-radius: 4px; padding: 6px; min-height: 66px; font-size: 12px; display: flex; flex-direction: column; gap: 3px; }
 .slot.full { border-style: solid; background: var(--chip); }
-.slot .muted { font-size: 11px; }
 .muted { color: var(--muted); }
 .warn { color: var(--warn); }
 .bad { color: var(--bad); }
+.good { color: var(--good); }
 .scroll { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 12px; }
-th { text-align: left; font-weight: 600; color: var(--muted); font-size: 11px; }
+th { text-align: left; font-weight: 600; color: var(--muted); font-size: 11px; vertical-align: bottom; }
 th, td { padding: 4px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td.wrap { white-space: normal; min-width: 180px; }
 td.r, th.r { text-align: right; }
 tr.you td { font-weight: 700; color: var(--accent); }
+tr.group td { background: var(--chip); font-weight: 700; }
 .bar { height: 8px; background: var(--chip); border-radius: 4px; overflow: hidden; margin: 4px 0 8px; }
 .bar i { display: block; height: 100%; background: var(--accent); }
 .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -64,11 +76,31 @@ tr.you td { font-weight: 700; color: var(--accent); }
 .chip { font-size: 11px; padding: 2px 7px; border-radius: 10px; background: var(--chip); }
 .chip.got { background: var(--accent); color: var(--accent-fg); }
 #toast { min-height: 20px; font-size: 13px; }
+canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 4px; background: var(--wall); }
+.form { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px 14px; }
+.form label { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: var(--muted); }
+.form input { font-size: 14px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--fg); width: 100%; }
+.note { font-size: 12px; color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+.callout { border-left: 3px solid var(--accent); padding: 4px 10px; margin: 8px 0; background: var(--chip); border-radius: 0 4px 4px 0; }
+.callout.risk { border-left-color: var(--bad); }
+select { font: inherit; font-size: 13px; padding: 3px 6px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--fg); }
 </style>
 </head>
 <body>
 <header>
   <h1>Greenbox · grow economy prototype</h1>
+  <span class="muted">All numbers are simulated. BUD is not a real token yet.</span>
+</header>
+<nav class="tabs" role="tablist">
+  <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="true">Play demo</button>
+  <button type="button" role="tab" id="tab-assets" data-tab="assets" aria-selected="false">Assets</button>
+  <button type="button" role="tab" id="tab-tasks" data-tab="tasks" aria-selected="false">Tasks &amp; ROI</button>
+  <button type="button" role="tab" id="tab-cfo" data-tab="cfo" aria-selected="false">CFO</button>
+</nav>
+
+<!-- ============ PLAY ============ -->
+<div id="view-play" role="tabpanel">
   <div class="speed" id="speed">
     <span class="muted">Speed</span>
     <button type="button" id="pause" data-speed="0">Pause</button>
@@ -79,26 +111,69 @@ tr.you td { font-weight: 700; color: var(--accent); }
     <button type="button" id="reset">New season</button>
     <span id="confirm-reset" hidden><span class="bad">Wipe this save?</span>
       <button type="button" id="reset-yes">Yes, restart</button> <button type="button" id="reset-no">Keep playing</button></span>
+    <span class="muted">Demo schedule: halvings every 12 hours, everything released at once.</span>
   </div>
-</header>
-<div class="stats" id="stats"></div>
-<div id="toast" class="muted" role="status"></div>
-<div class="grid">
-  <section id="room"></section>
-  <section id="shop"></section>
-  <section id="network"></section>
-  <section id="leaders"></section>
-  <section id="inventory"></section>
-  <section id="cosmetics"></section>
-  <section id="badges"></section>
-  <section id="log-panel"><h2>Log</h2><ul class="log" id="log"></ul></section>
-  <section class="wide muted" id="rules"></section>
+  <div class="stats" id="stats"></div>
+  <div id="toast" class="muted" role="status"></div>
+  <div class="grid">
+    <section class="span2" id="scene-panel"><h2 id="scene-title">Your grow room</h2><canvas id="room-canvas" width="960" height="300" aria-label="Grow room view"></canvas>
+      <div class="row" id="tasks-row" style="margin-top:8px"></div></section>
+    <section id="room"></section>
+    <section class="span2" id="shop"></section>
+    <section id="utilities"></section>
+    <section id="network"></section>
+    <section id="leaders"></section>
+    <section id="inventory"></section>
+    <section id="cosmetics"></section>
+    <section id="badges"></section>
+    <section id="log-panel"><h2>Log</h2><ul class="log" id="log"></ul></section>
+  </div>
 </div>
-<script type="module">
-import { ROOMS, STRAINS, COSMETICS, BADGES, TOKEN } from './content.js';
-import * as G from './engine.js';
 
-const SAVE_KEY = 'greenbox-economy-v1';
+<!-- ============ ASSETS ============ -->
+<div id="view-assets" role="tabpanel" hidden>
+  <section class="wide">
+    <h2>Every asset in the game</h2>
+    <p>Prices are in BUD. USD values use the launch model on the CFO tab (launch price <b id="assets-p0"></b>, modeled day 3 <b id="assets-p3"></b>, day 7 <b id="assets-p7"></b>).
+    Output is what one unit earns per day on the live schedule against the forecast network on day 7; it falls as the network grows. In the forecast, Gorilla Glue and Gelato sell out late in the first halving era (about day 49). The top tiers barely sell before then, so their caps are scarcity for the second era.</p>
+    <div class="scroll" id="assets-table"></div>
+    <p class="note">Sold by day 14 / 49 come from the live forecast (20k players by day 14, 37k by day 49). Rooms show how many players own that tier or higher. Unlimited items use "open".</p>
+  </section>
+</div>
+
+<!-- ============ TASKS & ROI ============ -->
+<div id="view-tasks" role="tabpanel" hidden>
+  <div class="grid">
+    <section class="wide" id="manual-tasks"></section>
+    <section class="wide" id="automation-roi"></section>
+    <section class="wide" id="player-progress"></section>
+    <section class="wide" id="game-progress"></section>
+  </div>
+</div>
+
+<!-- ============ CFO ============ -->
+<div id="view-cfo" role="tabpanel" hidden>
+  <div class="grid">
+    <section class="wide">
+      <h2>Launch assumptions</h2>
+      <div class="form" id="cfo-form"></div>
+      <p class="note">The BUD/USD pool is seeded by the studio with the USD above plus a matching BUD liquidity reserve minted outside mining emission.
+      Buy-in and sell volumes come from the forecast; only the USD conversion changes with these inputs.</p>
+    </section>
+    <section class="wide" id="cfo-kpis"></section>
+    <section class="wide" id="cfo-price"></section>
+    <section class="wide" id="cfo-sequence"></section>
+    <section class="wide" id="cfo-flows"></section>
+    <section class="wide" id="cfo-payouts"></section>
+  </div>
+</div>
+
+<script type="module">
+import { ROOMS, STRAINS, COSMETICS, UTILITIES, BADGES, TOKEN } from './content.js';
+import * as G from './engine.js';
+import { DEFAULT_ASSUMPTIONS, PACKS, runModel, priceAt } from './cfo.js';
+
+const SAVE_KEY = 'greenbox-economy-v2';
 const byStrain = Object.fromEntries(STRAINS.map((s) => [s.id, s]));
 const byCosmetic = Object.fromEntries(COSMETICS.map((c) => [c.id, c]));
 const $ = (id) => document.getElementById(id);
@@ -109,12 +184,33 @@ const fmt = (n, d = 2) => {
   if (a >= 1e4) return (n / 1e3).toFixed(1) + 'k';
   return n.toFixed(d);
 };
+const usd = (n) => {
+  const a = Math.abs(n);
+  if (a >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+  if (a >= 1e4) return '$' + (n / 1e3).toFixed(1) + 'k';
+  if (a >= 100) return '$' + n.toFixed(0);
+  if (a >= 1) return '$' + n.toFixed(2);
+  return '$' + n.toFixed(4);
+};
+const pct = (n, d = 1) => (n * 100).toFixed(d) + '%';
 const dur = (blocks) => {
   const s = Math.max(0, Math.round(blocks));
   const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = s % 60;
   return h ? `${h}h ${m}m` : m ? `${m}m ${r}s` : `${r}s`;
 };
+const hourLabel = (h) => (h < 24 ? `${h}h` : h % 24 === 0 ? `day ${h / 24}` : `${(h / 24).toFixed(1)}d`);
 
+// ---------------- Tabs ----------------
+let tab = 'play';
+function showTab(name) {
+  tab = name;
+  for (const b of document.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === name));
+  for (const v of ['play', 'assets', 'tasks', 'cfo']) $('view-' + v).hidden = v !== name;
+  try { history.replaceState(null, '', '#' + name); } catch (e) { /* sandboxed */ }
+  if (name !== 'play') renderAnalysis();
+}
+
+// ---------------- Play demo ----------------
 let state = load();
 let speed = 1;
 let carry = 0;
@@ -133,7 +229,7 @@ function load() {
       }
       return saved;
     }
-  } catch (e) { /* storage blocked or bad save: start fresh */ }
+  } catch (e) { /* storage blocked or old save: start fresh */ }
   return G.createGame((Math.random() * 2 ** 32) >>> 0);
 }
 
@@ -144,7 +240,7 @@ function save() {
 function act(result) {
   $('toast').textContent = result.message;
   $('toast').className = result.ok ? '' : 'bad';
-  render();
+  renderPlay();
   save();
 }
 
@@ -152,7 +248,54 @@ function act(result) {
 const cache = {};
 function put(id, html) { if (cache[id] !== html) { cache[id] = html; $(id).innerHTML = html; } }
 
-function render() {
+function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+// Minimal placeholder art: a side view of the room with one pot per slot. Taller plants = higher tier strains.
+function drawRoom(s) {
+  const cv = $('room-canvas');
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height, p = state.player;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = css('--wall'); ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = css('--floor'); ctx.fillRect(0, H - 60, W, 60);
+  const n = s.room.slots;
+  const cols = Math.min(n, 21);
+  const rows = Math.ceil(n / cols);
+  const cell = Math.min((W - 20) / cols, (H - 50) / rows);
+  const wet = s.wet;
+  // Lamp bar: brightness shows how much of the room's power is in use.
+  ctx.fillStyle = css('--lamp'); ctx.globalAlpha = 0.25 + 0.75 * Math.min(1, s.watts / s.room.watts);
+  ctx.fillRect(10, 6, (W - 20), 6); ctx.globalAlpha = 1;
+  for (let i = 0; i < n; i++) {
+    const r = Math.floor(i / cols), c = i % cols;
+    const x = 10 + c * cell + cell * 0.15, w = cell * 0.7;
+    const base = 20 + (r + 1) * cell - 4;
+    const slot = p.slots[i];
+    ctx.fillStyle = css('--pot');
+    ctx.fillRect(x, base - w * 0.4, w, w * 0.4);
+    if (!slot) continue;
+    if (slot.kind === 'cosmetic') {
+      ctx.fillStyle = css('--accent'); ctx.fillRect(x + w * 0.2, base - w * 0.4 - w * 0.5, w * 0.6, w * 0.5);
+      continue;
+    }
+    const tier = STRAINS.findIndex((st) => st.id === slot.id);
+    const blocks = 1 + Math.round(tier * 0.5);
+    const bs = Math.max(3, w / 3);
+    const lock = G.lockLeft(state, slot);
+    ctx.fillStyle = wet ? css('--leaf') : css('--leaf-dry');
+    for (let k = 0; k < blocks; k++) {
+      const yy = base - w * 0.4 - (k + 1) * bs * 0.9;
+      if (yy < 16) break;
+      const spread = k % 2 ? 1 : 0;
+      ctx.fillRect(x + w / 2 - bs / 2 - spread * bs * 0.6, yy, bs * (1 + spread * 1.2), bs * 0.8);
+    }
+    if (lock) { ctx.fillStyle = css('--muted'); ctx.fillRect(x, base + 1, w * (lock / state.cfg.strainLock), 2); }
+  }
+  if (!wet) { ctx.fillStyle = css('--bad'); ctx.font = '600 16px system-ui'; ctx.fillText('Soil is dry: potency halved. Water the plants.', 14, H - 20); }
+  else if (s.rackFull) { ctx.fillStyle = css('--bad'); ctx.font = '600 16px system-ui'; ctx.fillText('Drying rack is full: new buds are spoiling. Harvest now.', 14, H - 20); }
+}
+
+function renderPlay() {
   const s = G.summary(state);
   const p = state.player;
   const t = state.token;
@@ -160,14 +303,23 @@ function render() {
 
   put('stats', [
     ['Wallet', `${fmt(p.wallet)} ${TOKEN}`],
-    ['Ready to harvest', `${fmt(p.pending, 3)}`],
-    ['Your potency', `${fmt(s.potency, 0)} pp`],
+    ['Drying rack', `${fmt(p.pending, 3)}`],
+    ['Potency', `${fmt(s.potency, 0)} pp${s.wet ? '' : ' (dry)'}`],
     ['Network share', `${(s.share * 100).toFixed(3)}%`],
     ['Earning', `${fmt(s.perHour)} /h`],
     ['Block', `#${s.height.toLocaleString()}`],
     ['Block reward', `${s.reward} ${TOKEN}`],
     ['Next halving', dur(s.nextHalvingIn)],
   ].map(([k, v]) => `<div class="stat"><span>${k}</span><b>${v}</b></div>`).join(''));
+
+  $('scene-title').textContent = `Your grow room: ${s.room.name}`;
+  drawRoom(s);
+  const drip = p.utilities.includes('drip');
+  const trim = p.utilities.includes('trimmer');
+  put('tasks-row', `<button type="button" class="primary" data-act="claim" ${p.pending > 0 ? '' : 'disabled'}>Harvest ${fmt(p.pending, 3)} ${TOKEN}</button>
+    <span class="${s.rackFull ? 'bad' : 'muted'}">${trim ? 'Auto-Trimmer harvests hourly' : s.rackFull ? 'Rack full, buds spoiling' : `Rack full in ${dur(s.rackIn)}`}</span>
+    <button type="button" data-act="water" ${drip ? 'disabled' : ''}>Water</button>
+    <span class="${s.wet ? 'muted' : 'bad'}">${drip ? 'Drip Irrigation waters for you' : s.wet ? `Dries out in ${dur(s.dryIn)}` : 'Dry: potency halved'}</span>`);
 
   const slots = [];
   for (let i = 0; i < s.room.slots; i++) {
@@ -180,26 +332,34 @@ function render() {
     }
     const st = byStrain[slot.id];
     const lock = G.lockLeft(state, slot);
-    slots.push(`<div class="slot full"><b>${st.name}</b><span class="muted num">${fmt(st.potency, 0)} pp · ${st.watts} W</span>
+    slots.push(`<div class="slot full"><b>${st.name}</b><span class="muted num">${fmt(st.potency, 0)} pp · ${G.strainWatts(p.utilities, st)} W</span>
       ${lock ? `<span class="muted">Rooting ${dur(lock)}</span>` : `<button type="button" data-act="uproot" data-uid="${slot.uid}">Uproot</button>`}</div>`);
   }
   const wattPct = Math.min(100, (s.watts / s.room.watts) * 100);
-  put('room', `<h2>Grow room: ${s.room.name} (tier ${p.room + 1}/${ROOMS.length})</h2>
-    <div class="row"><button type="button" class="primary" data-act="claim" ${p.pending > 0 ? '' : 'disabled'}>Harvest ${fmt(p.pending, 3)} ${TOKEN}</button>
-    ${next ? `<button type="button" data-act="upgrade" ${p.wallet >= next.cost && !s.roomCooldown ? '' : 'disabled'}>Upgrade to ${next.name} · ${next.cost} ${TOKEN}</button>
+  put('room', `<h2>Room: ${s.room.name} (tier ${p.room + 1}/${ROOMS.length})</h2>
+    <div class="row">${next ? `<button type="button" data-act="upgrade" ${p.wallet >= next.cost && !s.roomCooldown ? '' : 'disabled'}>Upgrade to ${next.name} · ${next.cost} ${TOKEN}</button>
       <span class="muted">${s.roomCooldown ? `Contractors busy ${dur(s.roomCooldown)}` : `${next.slots} slots, ${next.watts.toLocaleString()} W`}</span>` : '<span class="muted">Top tier reached</span>'}</div>
     <div class="muted num" style="margin-top:8px">Slots ${s.slotsUsed}/${s.room.slots} · Power ${s.watts.toLocaleString()}/${s.room.watts.toLocaleString()} W</div>
     <div class="bar"><i style="width:${wattPct}%"></i></div>
     <div class="slots">${slots.join('')}</div>`);
 
   put('shop', `<h2>Seed bank (mint strains)</h2><div class="scroll"><table>
-    <tr><th>Strain</th><th class="r">Cost</th><th class="r">Potency</th><th class="r">Watts</th><th class="r">pp per ${TOKEN}</th><th>Fits now</th><th></th></tr>
+    <tr><th>Strain</th><th class="r">Cost</th><th class="r">Potency</th><th class="r">Watts</th><th class="r">pp per ${TOKEN}</th><th class="r">Season supply</th><th>Fits now</th><th></th></tr>
     ${STRAINS.filter((x) => !x.starter).map((x) => {
       const fit = G.canFit(state, x.id);
-      return `<tr><td>${x.name}</td><td class="r">${x.cost}</td><td class="r">${fmt(x.potency, 0)}</td><td class="r">${x.watts}</td>
-        <td class="r">${fmt(x.potency / x.cost, 0)}</td>
+      const left = G.supplyLeft(state, x);
+      return `<tr><td>${x.name}</td><td class="r">${x.cost}</td><td class="r">${fmt(x.potency, 0)}</td><td class="r">${G.strainWatts(p.utilities, x)}</td>
+        <td class="r">${fmt(x.potency / x.cost, 0)}</td><td class="r">${left === null ? 'open' : `${left} left`}</td>
         <td class="${fit ? 'warn' : ''}">${fit ? (fit.startsWith('No free') ? 'no slot' : 'no power') : 'yes'}</td>
-        <td><button type="button" data-act="buy" data-id="${x.id}" ${p.wallet >= x.cost ? '' : 'disabled'}>Buy</button></td></tr>`;
+        <td><button type="button" data-act="buy" data-id="${x.id}" ${p.wallet >= x.cost && left !== 0 ? '' : 'disabled'}>Buy</button></td></tr>`;
+    }).join('')}</table></div>`);
+
+  put('utilities', `<h2>Utilities (one each, no slot)</h2><div class="scroll"><table>
+    <tr><th>Utility</th><th class="r">Cost</th><th>Does</th><th></th></tr>
+    ${UTILITIES.map((u) => {
+      const own = p.utilities.includes(u.id);
+      return `<tr><td>${u.name}</td><td class="r">${u.cost}</td><td class="wrap">${u.effect}</td>
+        <td><button type="button" data-act="utility" data-id="${u.id}" ${!own && p.wallet >= u.cost ? '' : 'disabled'}>${own ? 'Owned' : 'Buy'}</button></td></tr>`;
     }).join('')}</table></div>`);
 
   const burnedPct = t.minted ? (t.burned / t.minted) * 100 : 0;
@@ -207,6 +367,7 @@ function render() {
     <tr><td>Season supply cap</td><td class="r">${fmt(s.cap)}</td></tr>
     <tr><td>Minted so far</td><td class="r">${fmt(t.minted)} (${((t.minted / s.cap) * 100).toFixed(1)}%)</td></tr>
     <tr><td>Burned (75% of spend)</td><td class="r">${fmt(t.burned)} (${burnedPct.toFixed(1)}% of minted)</td></tr>
+    <tr><td>Spoiled (unharvested)</td><td class="r">${fmt(t.spoiled)}</td></tr>
     <tr><td>Treasury (25% of spend)</td><td class="r">${fmt(t.treasury)}</td></tr>
     <tr><td>Circulating</td><td class="r">${fmt(s.circulating)}</td></tr>
     <tr><td>Halving era</td><td class="r">${s.era} (reward ${s.reward})</td></tr>
@@ -215,15 +376,15 @@ function render() {
     </table></div>`);
 
   const growers = state.bots.filter((b) => b.active).map((b) => ({ name: b.name, potency: b.potency, room: b.room }));
-  growers.push({ name: 'You', potency: s.potency, room: p.room, you: true });
+  growers.push({ name: 'You', potency: s.basePotency, room: p.room, you: true });
   growers.sort((a, b) => b.potency - a.potency);
   const rank = growers.findIndex((g) => g.you) + 1;
   const top = growers.slice(0, 10);
   if (rank > 10) top.push(growers[rank - 1]);
   put('leaders', `<h2>Top growers (you are #${rank} of ${growers.length})</h2><div class="scroll"><table>
-    <tr><th>#</th><th>Grower</th><th>Room</th><th class="r">Potency</th><th class="r">Share</th></tr>
+    <tr><th>#</th><th>Grower</th><th>Room</th><th class="r">Potency</th></tr>
     ${top.map((g) => `<tr class="${g.you ? 'you' : ''}"><td>${growers.indexOf(g) + 1}</td><td>${g.name}</td><td>${ROOMS[g.room].name}</td>
-      <td class="r">${fmt(g.potency, 0)}</td><td class="r">${((g.potency / s.networkPotency) * 100).toFixed(2)}%</td></tr>`).join('')}
+      <td class="r">${fmt(g.potency, 0)}</td></tr>`).join('')}
     </table></div>`);
 
   const refund = (item) => (item.kind === 'strain' ? byStrain[item.id].cost : byCosmetic[item.id].cost) * state.cfg.sellBackShare;
@@ -246,26 +407,21 @@ function render() {
 
   put('log', state.log.slice(0, 40).map((l) => `<li><span class="muted num">#${l.h}</span> ${l.message}</li>`).join(''));
 
-  put('rules', `<h2>How it works</h2>
-    <p>Every block (one game second) mints ${s.reward} ${TOKEN}, split across all growers by their share of total network potency.
-    The reward halves every ${G.DEFAULT_CONFIG.halvingInterval.toLocaleString()} blocks (12 hours at 1×), so supply stops at ${fmt(s.cap, 0)} ${TOKEN}.
-    Spend ${TOKEN} on strains (potency, but they draw power) and room upgrades (more slots and watts, ${dur(state.cfg.roomCooldown)} cooldown).
-    Every purchase burns 75% and sends 25% to the treasury. New strains root for ${dur(state.cfg.strainLock)} before you can uproot them.
-    The other growers are simulated: they join with the early hype, reinvest at their own pace, and some quit after each halving.
-    Progress saves in this browser and keeps growing for up to 12 hours while you are away.</p>`);
-
   for (const b of document.querySelectorAll('[data-speed]')) b.classList.toggle('on', Number(b.dataset.speed) === speed);
 }
 
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('button');
   if (!btn || btn.disabled) return;
-  if (btn.dataset.speed !== undefined) { speed = Number(btn.dataset.speed); render(); return; }
+  if (btn.dataset.tab) return showTab(btn.dataset.tab);
+  if (btn.dataset.speed !== undefined) { speed = Number(btn.dataset.speed); renderPlay(); return; }
   const uid = Number(btn.dataset.uid);
   switch (btn.dataset.act) {
     case 'claim': return act(G.claim(state));
+    case 'water': return act(G.water(state));
     case 'upgrade': return act(G.upgradeRoom(state));
     case 'buy': return act(G.buyStrain(state, btn.dataset.id));
+    case 'utility': return act(G.buyUtility(state, btn.dataset.id));
     case 'cosmetic': return act(G.buyCosmetic(state, btn.dataset.id));
     case 'uproot': return act(G.uproot(state, uid));
     case 'replant': return act(G.replant(state, uid));
@@ -281,6 +437,285 @@ $('reset-yes').addEventListener('click', () => {
   act({ ok: true, message: 'New season started.' });
 });
 
+// ---------------- Live forecast + CFO model ----------------
+let forecast = null;
+let assumptions = { ...DEFAULT_ASSUMPTIONS };
+try { Object.assign(assumptions, JSON.parse(localStorage.getItem('greenbox-cfo') || '{}')); } catch (e) { /* defaults */ }
+let model = null;
+
+const FIELDS = [
+  ['launchPrice', 'BUD launch price (USD)', 0.001],
+  ['lpUsd', 'Pool seed (USD)', 1000],
+  ['founderPrice', 'Founder Pack price (USD)', 1],
+  ['growerPrice', 'Grower Pack price (USD)', 1],
+  ['buybackPct', 'Pack revenue to buyback and burn (%)', 5],
+  ['lpPct', 'Pack revenue to pool depth (%)', 5],
+  ['treasurySellPct', 'Treasury BUD sold for ops (%)', 5],
+  ['paybackDays', 'Target pack payback (days)', 1],
+];
+$('cfo-form').innerHTML = FIELDS.map(([k, label, stepv]) =>
+  `<label for="f-${k}">${label}<input type="number" id="f-${k}" data-field="${k}" step="${stepv}" min="0" value="${assumptions[k]}"></label>`).join('')
+  + '<label>&nbsp;<button type="button" id="cfo-reset">Reset to defaults</button></label>';
+$('cfo-form').addEventListener('input', (e) => {
+  const k = e.target.dataset.field;
+  if (!k) return;
+  const v = Number(e.target.value);
+  if (!Number.isFinite(v) || v < 0) return;
+  assumptions[k] = v;
+  if (k === 'launchPrice' && v <= 0) return;
+  try { localStorage.setItem('greenbox-cfo', JSON.stringify(assumptions)); } catch (err) { /* ok */ }
+  renderAnalysis();
+});
+$('cfo-reset').addEventListener('click', () => {
+  assumptions = { ...DEFAULT_ASSUMPTIONS };
+  for (const [k] of FIELDS) $('f-' + k).value = assumptions[k];
+  try { localStorage.removeItem('greenbox-cfo'); } catch (err) { /* ok */ }
+  renderAnalysis();
+});
+
+async function loadForecast() {
+  try {
+    const res = await fetch('./forecast.json');
+    forecast = await res.json();
+  } catch (e) {
+    for (const v of ['assets-table', 'manual-tasks', 'cfo-kpis']) $(v).innerHTML = '<p class="bad">Could not load forecast.json. Serve this folder over HTTP.</p>';
+    return;
+  }
+  renderAnalysis();
+}
+
+const H = (hour) => forecast.game.hourly[Math.min(hour, forecast.game.hourly.length - 1)];
+const LIVE = () => forecast.config;
+// BUD/day one unit of potency earns at a given hour, using the forecast network (main pool only).
+const budPerPotencyDay = (hour) => (LIVE().blockReward * 86400 * (1 - LIVE().seedlingPool)) / H(hour).network;
+
+function renderAnalysis() {
+  if (!forecast || tab === 'play') return;
+  if (!(assumptions.launchPrice > 0)) return;
+  model = runModel(forecast.game.hourly, assumptions);
+  if (tab === 'assets') renderAssets();
+  if (tab === 'tasks') renderTasks();
+  if (tab === 'cfo') renderCfo();
+}
+
+function renderAssets() {
+  const P0 = assumptions.launchPrice, P3 = priceAt(model, 72), P7 = priceAt(model, 168);
+  $('assets-p0').textContent = usd(P0);
+  $('assets-p3').textContent = `${usd(P3)} (${pct(P3 / P0 - 1, 0)})`;
+  $('assets-p7').textContent = `${usd(P7)} (${pct(P7 / P0 - 1, 0)})`;
+  const d14 = H(336), d49 = forecast.game.daily[forecast.game.daily.length - 1];
+  const yieldDay = budPerPotencyDay(168);
+  const owners = (tier, rooms) => rooms.slice(tier).reduce((a, b) => a + b, 0);
+  const head = `<tr><th>Asset</th><th>Category</th><th>What it adds</th><th class="r">BUD</th><th class="r">USD launch</th><th class="r">USD day 3</th><th class="r">USD day 7</th>
+    <th class="r">Output BUD/day</th><th class="r">Payback</th><th class="r">Supply</th><th class="r">Release</th><th class="r">Sold d14</th><th class="r">Sold d49</th></tr>`;
+  const row = (c) => `<tr><td>${c.name}</td><td>${c.cat}</td><td class="wrap">${c.adds}</td><td class="r">${c.bud ?? '—'}</td>
+    <td class="r">${c.usd0 != null ? usd(c.usd0) : '—'}</td><td class="r">${c.usd3 != null ? usd(c.usd3) : '—'}</td><td class="r">${c.usd7 != null ? usd(c.usd7) : '—'}</td>
+    <td class="r">${c.out ?? '—'}</td><td class="r">${c.payback ?? '—'}</td><td class="r">${c.supply}</td><td class="r">${c.release}</td><td class="r">${c.s14}</td><td class="r">${c.s49}</td></tr>`;
+  const priced = (bud) => ({ bud, usd0: bud * P0, usd3: bud * P3, usd7: bud * P7 });
+  const rows = [];
+  rows.push(`<tr class="group"><td colspan="13">Starter packs (sold for USD, first thing on sale)</td></tr>`);
+  for (const pk of PACKS) {
+    const cfgPack = LIVE().packs.find((x) => x.id === pk.id);
+    const pot = cfgPack.strains.reduce((a, id) => a + byStrain[id].potency, 0);
+    const budValue = ROOMS.slice(1, cfgPack.room + 1).reduce((a, r) => a + r.cost, 0) + cfgPack.strains.reduce((a, id) => a + byStrain[id].cost, 0);
+    const out = pot * budPerPotencyDay(24);
+    rows.push(row({ name: pk.name, cat: 'Pack (space + harvest)', adds: `${pk.contents}. Worth ${budValue} BUD in-game. Skips about ${cfgPack.room} room upgrade${cfgPack.room > 1 ? 's' : ''} (24h cooldown each).`,
+      bud: null, usd0: assumptions[pk.priceKey], usd3: null, usd7: null, out: `${fmt(out)} (day 1)`, payback: `${(assumptions[pk.priceKey] / (out * P0)).toFixed(1)}d at launch price`,
+      supply: 'open', release: 'launch', s14: fmt(d14.packs[pk.id] || 0, 0), s49: '—' }));
+  }
+  rows.push(`<tr class="group"><td colspan="13">Grow rooms (space: slots and power)</td></tr>`);
+  ROOMS.forEach((r, i) => {
+    const prev = ROOMS[i - 1];
+    rows.push(row({ name: r.name, cat: 'Room (space)', adds: prev ? `+${r.slots - prev.slots} slots, +${(r.watts - prev.watts).toLocaleString()} W (${r.slots} slots, ${r.watts.toLocaleString()} W)` : `${r.slots} slots, ${r.watts} W. Free start.`,
+      ...(r.cost ? priced(r.cost) : { bud: 0, usd0: 0, usd3: 0, usd7: 0 }), out: '—', payback: '—', supply: 'open', release: i ? '24h cooldown' : 'launch',
+      s14: fmt(owners(i, d14.rooms), 0), s49: '—' }));
+  });
+  rows.push(`<tr class="group"><td colspan="13">Strains (harvest: potency, draws power, takes a slot)</td></tr>`);
+  for (const st of STRAINS) {
+    const out = st.potency * yieldDay;
+    rows.push(row({ name: st.name, cat: 'Strain (harvest)', adds: `${fmt(st.potency, 0)} potency, ${st.watts} W, 1 slot`,
+      ...(st.cost ? priced(st.cost) : { bud: 0, usd0: 0, usd3: 0, usd7: 0 }), out: fmt(out, 2), payback: st.cost ? `${(st.cost / out).toFixed(1)}d` : 'free',
+      supply: st.supply == null ? 'open' : st.supply.toLocaleString(), release: st.unlockHours ? `day ${st.unlockHours / 24}` : 'launch',
+      s14: st.supply == null ? 'open' : fmt(d14.items[st.id] || 0, 0), s49: st.supply == null ? 'open' : fmt(d49.items[st.id] || 0, 0) }));
+  }
+  rows.push(`<tr class="group"><td colspan="13">Utilities (automation, space, harvest boost; one per grower, no slot)</td></tr>`);
+  for (const u of UTILITIES) {
+    rows.push(row({ name: u.name, cat: `Utility (${u.kind})`, adds: u.effect, ...priced(u.cost), out: 'see Tasks & ROI', payback: '—', supply: 'open', release: 'launch', s14: '—', s49: '—' }));
+  }
+  rows.push(`<tr class="group"><td colspan="13">Decorations (cosmetic: takes a slot, no output)</td></tr>`);
+  for (const c of COSMETICS) {
+    rows.push(row({ name: c.name, cat: 'Decoration', adds: 'Looks only. Limited drops create collector demand and burn BUD.', ...priced(c.cost), out: '0', payback: 'never',
+      supply: c.supply == null ? 'open' : c.supply.toLocaleString(), release: 'launch', s14: c.supply == null ? 'open' : fmt(d14.items[c.id] || 0, 0), s49: c.supply == null ? 'open' : fmt(d49.items[c.id] || 0, 0) }));
+  }
+  put('assets-table', `<table>${head}${rows.join('')}</table>`);
+}
+
+function renderTasks() {
+  const cfg = LIVE();
+  put('manual-tasks', `<h2>Manual tasks and their automation</h2><div class="scroll"><table>
+    <tr><th>Task</th><th>How often</th><th>If you skip it</th><th>Cooldown / timer</th><th>Automated by</th><th class="r">Automation cost</th></tr>
+    <tr><td>Harvest (claim)</td><td>At least every 12h</td><td class="wrap">Drying rack fills after ${cfg.storageBlocks / 3600}h; everything earned after that spoils (burned).</td><td>Rack: ${cfg.storageBlocks / 3600}h</td><td>Auto-Trimmer</td><td class="r">40 BUD</td></tr>
+    <tr><td>Water</td><td>Every 4h</td><td class="wrap">Dry room runs at ${pct(cfg.dryPenalty, 0)} potency until watered.</td><td>Water lasts ${cfg.waterBlocks / 3600}h</td><td>Drip Irrigation</td><td class="r">60 BUD</td></tr>
+    <tr><td>Reinvest in strains</td><td>Whenever you can afford one</td><td class="wrap">Your share shrinks as the network grows.</td><td>New strain roots for ${cfg.strainLock / 3600}h</td><td>Not automated (core decision)</td><td class="r">—</td></tr>
+    <tr><td>Upgrade room</td><td>When slots or power run out</td><td class="wrap">Cannot plant more.</td><td>${cfg.roomCooldown / 3600}h between upgrades</td><td>Not automated</td><td class="r">—</td></tr>
+    <tr><td>Swap weak strains</td><td>When the room is full</td><td class="wrap">Slots stay filled with low-tier plants.</td><td>Only after the ${cfg.strainLock / 3600}h rooting lock</td><td>Not automated</td><td class="r">Compost refunds 20%</td></tr>
+    <tr><td>Boost room</td><td>Once</td><td class="wrap">—</td><td>—</td><td>CO2 Generator (+10%), LED Retrofit (−25% power)</td><td class="r">400 / 250 BUD</td></tr>
+    </table></div>
+    <p class="note">Timers are on the live schedule. The Play demo uses shorter ones (1h room cooldown, 30m rooting) so you can try everything in one sitting.</p>`);
+
+  // Automation ROI calculator.
+  const sel = $('roi-arch')?.value || 'founder_auto';
+  const day = Number($('roi-day')?.value || 7);
+  const every = Number($('roi-every')?.value || 24);
+  const arch = forecast.players.find((x) => x.id === sel);
+  const snap = arch.snaps.reduce((best, sn) => (sn.hour <= day * 24 ? sn : best), arch.snaps[0]);
+  const Y = snap.perDay; // BUD/day at full potency for this player at that point
+  const P = priceAt(model, day * 24);
+  const dryFrac = Math.max(0, (every - cfg.waterBlocks / 3600) / every);
+  const spoilFrac = Math.max(0, (every - cfg.storageBlocks / 3600) / every);
+  const items = [
+    { u: 'drip', gain: Y * (1 - cfg.dryPenalty) * dryFrac, why: `Room is dry ${pct(dryFrac, 0)} of the time at a ${every}h check-in` },
+    { u: 'trimmer', gain: Y * spoilFrac, why: `${pct(spoilFrac, 0)} of output spoils at a ${every}h check-in` },
+    { u: 'co2', gain: Y * (cfg.co2Boost - 1), why: '+10% on everything you grow' },
+    { u: 'led', gain: Y * 0.33, why: 'Up to +33% more plants when power, not slots, is the limit' },
+  ];
+  put('automation-roi', `<h2>Does automation pay for itself?</h2>
+    <div class="row">
+      <label class="muted" for="roi-arch">Player</label><select id="roi-arch">${forecast.players.map((x) => `<option value="${x.id}" ${x.id === sel ? 'selected' : ''}>${x.name}</option>`).join('')}</select>
+      <label class="muted" for="roi-day">at day</label><select id="roi-day">${[1, 3, 7, 14].map((d) => `<option ${d === day ? 'selected' : ''}>${d}</option>`).join('')}</select>
+      <label class="muted" for="roi-every">checking in every</label><select id="roi-every">${[1, 4, 8, 12, 24, 48].map((h) => `<option value="${h}" ${h === every ? 'selected' : ''}>${h}h</option>`).join('')}</select>
+    </div>
+    <p>Income at full potency: <b>${fmt(Y)} BUD/day</b> (${usd(Y * P)}/day at the modeled day-${day} price of ${usd(P)}).</p>
+    <div class="scroll"><table>
+    <tr><th>Item</th><th class="r">Cost BUD</th><th class="r">Cost USD</th><th class="r">Extra BUD/day</th><th class="r">Extra USD/day</th><th class="r">Payback</th><th class="r">Net after 14 days</th><th>Verdict</th><th>Why</th></tr>
+    ${items.map(({ u, gain, why }) => {
+      const it = UTILITIES.find((x) => x.id === u);
+      const payback = gain > 0 ? it.cost / gain : Infinity;
+      const net14 = gain * 14 - it.cost;
+      const verdict = payback <= 3 ? '<span class="good">Buy now</span>' : payback <= 14 ? '<span class="warn">Pays back in 2 weeks</span>' : '<span class="bad">Not yet</span>';
+      return `<tr><td>${it.name}</td><td class="r">${it.cost}</td><td class="r">${usd(it.cost * P)}</td><td class="r">${fmt(gain)}</td><td class="r">${usd(gain * P)}</td>
+        <td class="r">${Number.isFinite(payback) ? payback.toFixed(1) + 'd' : 'never'}</td><td class="r ${net14 >= 0 ? 'good' : 'bad'}">${fmt(net14)} BUD</td><td>${verdict}</td><td class="wrap">${why}</td></tr>`;
+    }).join('')}</table></div>
+    ${(() => {
+      const man = forecast.players.find((x) => x.id === 'founder_daily').snaps.at(-1);
+      const aut = forecast.players.find((x) => x.id === 'founder_auto').snaps.at(-1);
+      return `<p class="callout">Simulated check: two Founder Pack players who log in once a day. The one who buys Drip Irrigation and an Auto-Trimmer (100 BUD) earns <b>${fmt(aut.earned)} BUD</b> by day 14 against <b>${fmt(man.earned)} BUD</b> for the manual one: ${fmt(aut.earned - man.earned)} BUD more for 100 BUD spent. Spoiled harvest drops from ${fmt(man.spoiled)} to ${fmt(aut.spoiled)} BUD.</p>`;
+    })()}`);
+
+  // Individual player progress.
+  const hrs = [1, 6, 24, 72, 168, 336];
+  put('player-progress', `<h2>Individual player: hour, day and week progress (live schedule)</h2>
+    <p class="note">Each row is a full 14-day simulation of one player against the same network. USD uses the modeled price at that hour. Packs start the player in a bigger room.</p>
+    <div class="scroll"><table>
+    <tr><th>Player</th><th>Up front</th>${hrs.map((h) => `<th class="r">${hourLabel(h)}</th>`).join('')}<th class="r">Room day 14</th><th class="r">BUD/day day 14</th><th class="r">Spoiled</th></tr>
+    ${forecast.players.map((pl) => {
+      const cost = pl.pack ? assumptions[PACKS.find((x) => x.id === pl.pack).priceKey] : 0;
+      const cells = hrs.map((h) => {
+        const sn = pl.snaps.find((x) => x.hour === h);
+        return `<td class="r">${fmt(sn.earned)} BUD<br><span class="muted">${usd(sn.earned * priceAt(model, h))}</span></td>`;
+      }).join('');
+      const end = pl.snaps.at(-1);
+      return `<tr><td>${pl.name}</td><td>${cost ? usd(cost) : 'free'}</td>${cells}<td class="r">${ROOMS[end.room].name}</td><td class="r">${fmt(end.perDay)}</td><td class="r">${fmt(end.spoiled)}</td></tr>`;
+    }).join('')}</table></div>
+    <p class="callout risk">Free players earn mostly from the seedling pool (15% of each block shared per head by Closet growers in their first 7 days). After that week a free Closet player earns about 1 BUD a day, so the free path depends on that pool and on cheap first upgrades.</p>`);
+
+  // Whole game (dev view).
+  const rowsH = [1, 6, 12, 24, 48, 72, 120, 168, 240, 336].map((h) => H(h));
+  const line = (g, label) => {
+    const spend = Object.values(g.spendBy).reduce((a, b) => a + b, 0);
+    return `<tr><td>${label}</td><td class="r">${g.players.toLocaleString()}</td><td class="r">${fmt(g.network, 0)}</td><td class="r">${fmt(g.minted)}</td>
+      <td class="r">${fmt(g.burned)}</td><td class="r">${pct(g.burned / Math.max(1, g.minted))}</td><td class="r">${fmt(g.treasury)}</td><td class="r">${fmt(g.spoiled)}</td>
+      <td class="r">${fmt(g.spendBy.strains)}</td><td class="r">${fmt(g.spendBy.rooms)}</td><td class="r">${fmt(g.spendBy.utilities)}</td><td class="r">${fmt(g.spendBy.cosmetics)}</td>
+      <td class="r">${fmt((g.packs.founder || 0) + (g.packs.grower || 0), 0)}</td><td class="r">${usd(priceAt(model, g.hour))}</td></tr>`;
+  };
+  put('game-progress', `<h2>Whole game: developer view (live schedule)</h2>
+    <div class="scroll"><table>
+    <tr><th>Time</th><th class="r">Players</th><th class="r">Network potency</th><th class="r">Minted</th><th class="r">Burned</th><th class="r">Burn %</th><th class="r">Treasury BUD</th><th class="r">Spoiled</th>
+      <th class="r">Spent strains</th><th class="r">Spent rooms</th><th class="r">Spent utilities</th><th class="r">Spent decor</th><th class="r">Packs sold</th><th class="r">Price</th></tr>
+    ${rowsH.map((g) => line(g, hourLabel(g.hour))).join('')}
+    </table></div>
+    <h3>Rest of the first halving era</h3>
+    <div class="scroll"><table><tr><th>Day</th><th class="r">Players</th><th class="r">Minted</th><th class="r">Burned</th><th class="r">Treasury BUD</th><th class="r">Gorilla Glue sold</th><th class="r">Gelato sold</th><th class="r">Runtz sold</th></tr>
+    ${forecast.game.daily.filter((d) => d.day % 7 === 0).map((d) => `<tr><td>${d.day}</td><td class="r">${d.players.toLocaleString()}</td><td class="r">${fmt(d.minted)}</td><td class="r">${fmt(d.burned)}</td><td class="r">${fmt(d.treasury)}</td>
+      <td class="r">${d.items.gluestick || 0}</td><td class="r">${d.items.gelato || 0}</td><td class="r">${d.items.runtz || 0}</td></tr>`).join('')}
+    </table></div>
+    <p class="note">Emission is ${fmt(cfg.blockReward * 86400)} BUD a day until the first halving at block ${cfg.halvingInterval.toLocaleString()} (about day ${Math.round(cfg.halvingInterval / 86400)}). The forecast starts with ${(cfg.startingBots * cfg.cohort).toLocaleString()} players and adds more with launch hype (3 day half-life).</p>`);
+}
+
+function renderCfo() {
+  const a = assumptions, m = model, P0 = a.launchPrice;
+  const end = H(336);
+  const founders = end.packs.founder || 0, growers = end.packs.grower || 0;
+  const emitUsd = (h) => LIVE().blockReward * 86400 * priceAt(m, h);
+  put('cfo-kpis', `<h2>14-day outcome</h2><div class="kpis">${[
+    ['BUD price day 14', `${usd(m.price)} (${pct(m.price / P0 - 1, 0)})`],
+    ['Pack revenue', usd(m.packUsd)],
+    ['Operating cash', usd(m.opsUsd)],
+    ['Treasury BUD held', `${fmt(m.treasuryBud)} (${usd(m.treasuryUsd)})`],
+    ['Pool depth (USD side)', usd(m.poolUsd)],
+    ['BUD bought back & burned', fmt(m.buybackBurned)],
+    ['Players day 14', end.players.toLocaleString()],
+    ['Market cap day 14 (circulating)', usd((end.minted - end.burned - end.treasury - end.spoiled) * m.price)],
+  ].map(([k, v]) => `<div class="stat"><span>${k}</span><b>${v}</b></div>`).join('')}</div>`);
+
+  const days = [0, 1, 2, 3, 4, 5, 6, 7, 10, 14];
+  put('cfo-price', `<h2>Price path for the first two weeks</h2><div class="scroll"><table>
+    <tr><th>Day</th><th class="r">Price</th><th class="r">vs launch</th><th class="r">Players</th><th class="r">Emission/day (USD)</th><th class="r">Genesis (5,100 BUD) in USD</th><th class="r">Garage (42 BUD) in USD</th></tr>
+    ${days.map((d) => { const pr = priceAt(m, d * 24); return `<tr><td>${d}</td><td class="r">${usd(pr)}</td><td class="r ${pr >= P0 ? 'good' : 'bad'}">${pct(pr / P0 - 1, 0)}</td>
+      <td class="r">${H(d * 24).players.toLocaleString()}</td><td class="r">${usd(emitUsd(d * 24))}</td><td class="r">${usd(5100 * pr)}</td><td class="r">${usd(42 * pr)}</td></tr>`; }).join('')}
+    </table></div>
+    <p class="note">What moves the price: newcomers buying BUD (${usd(m.buyerUsd)} over 14 days) and pack-funded buybacks push it up; growers selling ${pct(LIVE().sellShare, 0)} of each harvest (${usd(m.sellerUsd)}) and treasury sales push it down. This is a model, not a promise.</p>`);
+
+  put('cfo-sequence', `<h2>What we sell first, and why</h2><div class="scroll"><table>
+    <tr><th>When</th><th>What goes on sale</th><th>Paid in</th><th>Supply</th><th>Job in the flywheel</th></tr>
+    <tr><td>Launch</td><td>Founder Pack (${usd(a.founderPrice)}), Grower Pack (${usd(a.growerPrice)})</td><td>USD/ETH</td><td>Open (forecast: ${founders.toLocaleString()} + ${growers.toLocaleString()} in 14 days)</td><td class="wrap">The only outside cash. Funds buybacks and pool depth before any BUD exists to sell.</td></tr>
+    <tr><td>Launch</td><td>Rooms, strains up to OG Kush, utilities, open decorations</td><td>BUD</td><td>Open</td><td class="wrap">Main sink: 75% of every purchase burns, so early emission is recycled.</td></tr>
+    <tr><td>Launch</td><td>Limited decorations (Reggae Poster, Golden Pot, Neon Leaf Sign)</td><td>BUD</td><td>2,000 / 500 / 100</td><td class="wrap">Collector demand that adds burns without adding potency. All three sell out within the first two weeks in the forecast.</td></tr>
+    ${STRAINS.filter((s) => s.unlockHours > 0).map((s) => `<tr><td>Day ${s.unlockHours / 24}</td><td>${s.name}</td><td>BUD</td><td>${s.supply == null ? 'Open' : s.supply.toLocaleString()}</td>
+      <td class="wrap">${s.supply == null ? 'Next step up once early players fill their rooms.' : `Capped drop: a new reason to buy BUD every few days. Forecast sold by day 49: ${(forecast.game.daily.at(-1).items[s.id] || 0).toLocaleString()}.`}</td></tr>`).join('')}
+    </table></div>`);
+
+  put('cfo-flows', `<h2>Where the money goes</h2><div class="scroll"><table>
+    <tr><th>Source</th><th class="r">14-day amount</th><th>Goes to</th></tr>
+    <tr><td>Pack sales</td><td class="r">${usd(m.packUsd)}</td><td class="wrap">${a.buybackPct}% buys BUD and burns it (${usd(m.packUsd * a.buybackPct / 100)}), ${a.lpPct}% deepens the pool paired with treasury BUD (${usd(m.lpAddedUsd)} paired), the rest is operating cash.</td></tr>
+    <tr><td>In-game spending (BUD)</td><td class="r">${fmt(Object.values(end.spendBy).reduce((x, y) => x + y, 0))} BUD</td><td class="wrap">75% burned (${fmt(end.burned)} BUD), 25% treasury (${fmt(end.treasury)} BUD).</td></tr>
+    <tr><td>Treasury BUD</td><td class="r">${fmt(end.treasury)} BUD</td><td class="wrap">${a.treasurySellPct}% sold for operating cash; some pairs with pack cash for pool depth; ${fmt(m.treasuryBud)} BUD (${usd(m.treasuryUsd)}) left for compost refunds and future reward boosts.</td></tr>
+    <tr><td>Operating cash</td><td class="r">${usd(m.opsUsd)}</td><td class="wrap">Team, art, servers, audits.</td></tr>
+    </table></div>`);
+
+  // Payouts needed to keep the flywheel turning.
+  const T = a.paybackDays;
+  const payRows = ['founder_auto', 'grower_auto'].map((id) => {
+    const pl = forecast.players.find((x) => x.id === id);
+    const price = a[PACKS.find((x) => x.id === pl.pack).priceKey];
+    const snapT = pl.snaps.reduce((best, sn) => (sn.hour <= T * 24 ? sn : best), pl.snaps[0]);
+    const earnedUsd = pl.snaps.at(-1).earned * m.price;
+    const needPrice = price / Math.max(1e-9, snapT.earned);
+    return `<tr><td>${pl.name}</td><td class="r">${usd(price)}</td><td class="r">${fmt(snapT.earned)} BUD</td><td class="r">${usd(snapT.earned * priceAt(m, snapT.hour))}</td>
+      <td class="r">${usd(needPrice)}</td><td class="r ${earnedUsd >= price ? 'good' : 'bad'}">${usd(earnedUsd)}</td></tr>`;
+  }).join('');
+  const neededDaily = (founders * a.founderPrice + growers * a.growerPrice) / T;
+  const actual7 = emitUsd(168);
+  put('cfo-payouts', `<h2>How much payout keeps the flywheel turning</h2>
+    <p>The flywheel works when a new player earns back what they paid within about <b>${T} days</b>. Then they keep buying, tell friends, and newcomers keep buying BUD, which funds the next payouts.</p>
+    <div class="scroll"><table>
+    <tr><th>Player</th><th class="r">Paid</th><th class="r">BUD earned by day ${T}</th><th class="r">Worth then</th><th class="r">BUD price needed for payback</th><th class="r">14-day earnings at day-14 price</th></tr>
+    ${payRows}</table></div>
+    <div class="kpis" style="margin-top:8px">${[
+      ['Pack buyers by day 14', (founders + growers).toLocaleString()],
+      [`Payout/day they need (${T}d payback)`, usd(neededDaily)],
+      ['Emission value/day on day 7', usd(actual7)],
+      ['Coverage', `${(actual7 / Math.max(1, neededDaily)).toFixed(2)}×`],
+    ].map(([k, v]) => `<div class="stat"><span>${k}</span><b>${v}</b></div>`).join('')}</div>
+    <p class="callout ${actual7 >= neededDaily ? '' : 'risk'}">${actual7 >= neededDaily
+      ? `Daily emission is worth enough to pay pack buyers back in ${T} days. Keep it there by holding the price: route more pack cash to buybacks if price slips below ${usd(Math.max(...['founder_auto', 'grower_auto'].map((id) => { const pl = forecast.players.find((x) => x.id === id); const pr = a[PACKS.find((x) => x.id === pl.pack).priceKey]; const sn = pl.snaps.reduce((b2, sn2) => (sn2.hour <= T * 24 ? sn2 : b2), pl.snaps[0]); return pr / Math.max(1e-9, sn.earned); })))}.`
+      : `Emission is not worth enough to pay pack buyers back in ${T} days. Raise buybacks, lower pack prices, or launch at a higher price with a deeper pool.`}</p>
+    <p class="callout risk">Most of that payout is funded by newer players buying in. If new-player buying stops, the price falls and payback stretches; this is the dynamic that sank BigCoin. Non-game demand for BUD (merge mining, partnerships) is what makes the loop durable.</p>`);
+}
+
+document.addEventListener('change', (e) => { if (['roi-arch', 'roi-day', 'roi-every'].includes(e.target.id)) renderTasks(); });
+
+// ---------------- Loop ----------------
 let sinceSave = 0;
 setInterval(() => {
   const now = performance.now();
@@ -290,12 +725,15 @@ setInterval(() => {
   const blocks = Math.floor(carry);
   carry -= blocks;
   if (blocks) G.advance(state, blocks);
-  render();
+  if (tab === 'play') renderPlay();
   sinceSave += dt;
   if (sinceSave > 5) { sinceSave = 0; save(); }
 }, 250);
 addEventListener('pagehide', save);
-render();
+const initial = location.hash.slice(1);
+renderPlay();
+loadForecast();
+if (['assets', 'tasks', 'cfo'].includes(initial)) showTab(initial);
 </script>
 </body>
 </html>
