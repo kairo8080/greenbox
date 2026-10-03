@@ -198,6 +198,15 @@ h2 { margin: 0 0 6px; }
 .d-pitch .strip { grid-template-columns: repeat(2, 1fr); }
 .d-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
 .sides3 .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 10px; }
+.lore .tagline { font: 700 clamp(22px, 2.2vw, 32px)/1.15 var(--display); margin: 0 0 10px; color: var(--accent); }
+.lore .tagline em { font-style: normal; color: var(--gold); }
+.lore .story p { margin: 0 0 8px; font-size: 14px; line-height: 1.45; }
+.lore .story p:first-child { color: var(--muted); }
+.lore .strip { grid-template-columns: repeat(4, 1fr); margin: 10px 0 12px; }
+.lore .strip b { font-size: 18px; }
+.lore td.when { color: var(--gold); white-space: nowrap; font: 600 12px var(--mono); }
+.lore td.bitcoin { color: var(--muted); }
+.lore td.era { font: 700 12px var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
 .sides3 .metrics b { font-size: 16px; white-space: nowrap; }
 .sides3 .side { padding: 10px 12px; }
 .sides3 .side h3 { font-size: 16px; }
@@ -225,6 +234,9 @@ h2 { margin: 0 0 6px; }
   .dash .pitch { font-size: clamp(28px, 2.9vw, 44px); }
   .dash .big .v { font-size: clamp(26px, 2.6vw, 40px); }
 
+  .screen.lore { grid-template-columns: 1.05fr 1.2fr .95fr; grid-template-rows: 1fr; }
+  .lore section { display: flex; flex-direction: column; }
+  .lore .l-eras .lc { flex: 1; min-height: 120px; }
   .screen.cmpx { grid-template-columns: 1fr 1.05fr; grid-template-rows: auto 1fr; grid-template-areas: "launch today" "launch blue"; }
   .cmpx .c-launch { display: flex; flex-direction: column; }
   .cmpx .c-launch { grid-area: launch; } .cmpx .c-today { grid-area: today; } .cmpx .c-blue { grid-area: blue; }
@@ -259,6 +271,7 @@ h2 { margin: 0 0 6px; }
   <h1><b>Greenbox</b> terminal</h1>
   <nav class="tabs" role="tablist">
     <button type="button" role="tab" id="tab-dash" data-tab="dash" aria-selected="true">Dashboard</button>
+    <button type="button" role="tab" id="tab-lore" data-tab="lore" aria-selected="false">Lore &amp; 420</button>
     <button type="button" role="tab" id="tab-compare" data-tab="compare" aria-selected="false">BigCoin vs Greenbox</button>
     <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="false">Play demo</button>
     <button type="button" role="tab" id="tab-assets" data-tab="assets" aria-selected="false">Assets</button>
@@ -273,7 +286,7 @@ h2 { margin: 0 0 6px; }
   <div class="screen dash">
     <div class="d-pitch">
       <p class="pitch">The new <em class="v">BigCoin</em>-style game, with <em>cannabis</em>, on <em class="g">Robinhood Chain</em>.</p>
-      <p class="hero-sub">Mint a strain. Grow it. Earn BUD by your share of the network.</p>
+      <p class="hero-sub">Grow the lost crop: 420M BUD ever, halving every 42 days at 4:20 pm.</p>
       <div class="loop" id="dash-loop"></div>
       <div class="strip" id="dash-strip"></div>
       <section><h2>Where minted BUD went · day 14</h2><div id="dash-supply"></div></section>
@@ -285,6 +298,31 @@ h2 { margin: 0 0 6px; }
       <section class="chart-card"><h2>Players · first 49 days (model)</h2><div class="lc" id="dash-players"></div></section>
       <section class="span-all"><h2 id="dash-items-title">Items · NFT vs in-game</h2><div id="dash-items"></div></section>
     </div>
+  </div>
+</div>
+
+<!-- ============ LORE ============ -->
+<div id="view-lore" role="tabpanel" hidden>
+  <div class="screen lore">
+    <section class="l-story">
+      <p class="tagline" id="lore-tagline"></p>
+      <div class="story" id="lore-story"></div>
+      <div class="strip" id="lore-strip"></div>
+      <h2>4:20 calendar · UTC</h2>
+      <div class="scroll"><table id="lore-events"></table></div>
+    </section>
+    <section class="l-map">
+      <h2>Lore swap · Bitcoin → BigCoin → Greenbox</h2>
+      <div class="scroll"><table class="cmp" id="lore-map"></table></div>
+      <h2 style="margin-top:12px">Words in the game</h2>
+      <div class="scroll"><table id="lore-terms"></table></div>
+    </section>
+    <section class="l-eras">
+      <h2>Eras · the yield halves at 4:20 pm, every 42 days</h2>
+      <div class="scroll"><table id="lore-eras"></table></div>
+      <h2 style="margin-top:12px">BUD per toke · first 252 days</h2><div class="lc" id="lore-chart"></div>
+      <details class="more"><summary>Sources</summary>Every real-world line is fact-checked against public sources (Wikipedia "420 (cannabis culture)", Merriam-Webster, USDA "Hemp for Victory", grow guides); list in research/greenbox-lore.md. Names tied to trademark disputes are replaced: Gorilla Glue → Resin Stick, Runtz → Sugar Kief, Zkittlez → Afghani Mother. The 1971 group is described, not named, to stay clear of their brand.</details>
+    </section>
   </div>
 </div>
 
@@ -369,7 +407,7 @@ h2 { margin: 0 0 6px; }
     <section><div class="scroll" id="assets-other"></div></section>
     <section class="a-right"><div class="scroll" id="assets-strains"></div>
       <h2 style="margin-top:12px">Strain payback · days to earn back the price (day-7 network)</h2><div id="assets-payback"></div>
-      <details class="more"><summary>How to read this</summary>BUD / day is output per strain against the day-7 network; it falls as the network grows. Sold d14 comes from the live forecast; for rooms it is players at that tier or higher. Gorilla Glue and Gelato sell out near day 49; higher caps carry scarcity into the second halving era.</details>
+      <details class="more"><summary>How to read this</summary>BUD / day is output per strain against the day-7 network; it falls as the network grows. Sold d14 comes from the live forecast; for rooms it is players at that tier or higher. Resin Stick and Gelato sell out near day 49; higher caps carry scarcity into the second halving era.</details>
     </section>
   </div>
 </div>
@@ -399,7 +437,7 @@ h2 { margin: 0 0 6px; }
 </div>
 
 <script type="module">
-import { ROOMS, STRAINS, COSMETICS, UTILITIES, BADGES, TOKEN } from './content.js';
+import { ROOMS, STRAINS, COSMETICS, UTILITIES, BADGES, TOKEN, LORE } from './content.js';
 import * as G from './engine.js';
 import { DEFAULT_ASSUMPTIONS, PACKS, runModel, priceAt } from './cfo.js';
 
@@ -420,7 +458,8 @@ const usd = (n) => {
   if (a >= 1e4) return '$' + (n / 1e3).toFixed(1) + 'k';
   if (a >= 100) return '$' + n.toFixed(0);
   if (a >= 1) return '$' + n.toFixed(2);
-  return '$' + n.toFixed(4);
+  if (a >= 0.01 || a === 0) return '$' + n.toFixed(4);
+  return '$' + n.toPrecision(3);
 };
 const pct = (n, d = 1) => (n * 100).toFixed(d) + '%';
 const dur = (blocks) => {
@@ -435,7 +474,7 @@ let tab = 'dash';
 function showTab(name) {
   tab = name;
   for (const b of document.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === name));
-  for (const v of ['dash', 'compare', 'play', 'assets', 'tasks', 'cfo']) $('view-' + v).hidden = v !== name;
+  for (const v of ['dash', 'lore', 'compare', 'play', 'assets', 'tasks', 'cfo']) $('view-' + v).hidden = v !== name;
   try { history.replaceState(null, '', '#' + name); } catch (e) { /* sandboxed */ }
   if (name !== 'play') renderAnalysis();
 }
@@ -578,9 +617,9 @@ function renderPlay() {
     ['Potency', `${fmt(s.potency, 0)} pp${s.wet ? '' : ' (dry)'}`],
     ['Network share', `${(s.share * 100).toFixed(3)}%`],
     ['Earning', `${fmt(s.perHour)} /h`],
-    ['Block', `#${s.height.toLocaleString()}`],
-    ['Block reward', `${s.reward} ${TOKEN}`],
-    ['Next halving', dur(s.nextHalvingIn)],
+    ['Toke', `#${s.height.toLocaleString()}`],
+    ['Per toke', `${s.reward} ${TOKEN}`],
+    ['Next 4:20 halving', dur(s.nextHalvingIn)],
   ].map(([k, v]) => `<div class="stat"><span>${k}</span><b>${v}</b></div>`).join(''));
 
   $('scene-title').textContent = `Your grow room: ${s.room.name}`;
@@ -619,7 +658,7 @@ function renderPlay() {
     ${STRAINS.filter((x) => !x.starter).map((x) => {
       const fit = G.canFit(state, x.id);
       const left = G.supplyLeft(state, x);
-      return `<tr><td>${x.name}</td><td class="r">${x.cost}</td><td class="r">${fmt(x.potency, 0)}</td>
+      return `<tr><td title="${x.lore}">${x.name}</td><td class="r">${fmt(x.cost, 0)}</td><td class="r">${fmt(x.potency, 0)}</td>
         <td class="r ${left === null ? 'muted' : 'violet'}">${left === null ? 'open' : left}</td>
         <td class="${fit ? 'warn' : 'good'}">${fit ? (fit.startsWith('No free') ? 'slot' : 'power') : 'yes'}</td>
         <td><button type="button" data-act="buy" data-id="${x.id}" ${p.wallet >= x.cost && left !== 0 ? '' : 'disabled'}>Buy</button></td></tr>`;
@@ -629,7 +668,7 @@ function renderPlay() {
     <tr><th>Utility</th><th class="r">Cost</th><th></th></tr>
     ${UTILITIES.map((u) => {
       const own = p.utilities.includes(u.id);
-      return `<tr><td class="w"><b>${u.name}</b><span class="sub">${UTIL_SHORT[u.id]}</span></td><td class="r gold">${u.cost}</td>
+      return `<tr><td class="w"><b>${u.name}</b><span class="sub">${UTIL_SHORT[u.id]}</span></td><td class="r gold">${fmt(u.cost, 0)}</td>
         <td><button type="button" data-act="utility" data-id="${u.id}" ${!own && p.wallet >= u.cost ? '' : 'disabled'}>${own ? 'Owned' : 'Buy'}</button></td></tr>`;
     }).join('')}</table></div>`);
 
@@ -668,7 +707,7 @@ function renderPlay() {
     <tr><th>Item</th><th class="r">Cost</th><th class="r">Left</th><th></th></tr>
     ${COSMETICS.map((c) => {
       const left = G.cosmeticsLeft(state, c.id);
-      return `<tr><td>${c.name}</td><td class="r">${c.cost}</td><td class="r">${left === null ? 'open' : left}</td>
+      return `<tr><td class="w" title="${c.lore}">${c.name}</td><td class="r">${fmt(c.cost, 0)}</td><td class="r">${left === null ? 'open' : left}</td>
         <td><button type="button" data-act="cosmetic" data-id="${c.id}" ${p.wallet >= c.cost && left !== 0 ? '' : 'disabled'}>${left === 0 ? 'Sold out' : 'Buy'}</button></td></tr>`;
     }).join('')}</table></div><p class="note">Take a slot, no potency. Limited drops are shared network-wide.</p>`);
 
@@ -714,7 +753,7 @@ try { Object.assign(assumptions, JSON.parse(localStorage.getItem('greenbox-cfo')
 let model = null;
 
 const FIELDS = [
-  ['launchPrice', 'Launch price $', 0.001],
+  ['launchPrice', 'Launch price $', 0.00001],
   ['lpUsd', 'Pool seed $', 1000],
   ['founderPrice', 'Founder Pack $', 1],
   ['growerPrice', 'Grower Pack $', 1],
@@ -768,6 +807,7 @@ function renderAnalysis() {
   if (tab === 'cfo') renderCfo();
   if (tab === 'dash') renderDash();
   if (tab === 'compare') renderCompare();
+  if (tab === 'lore') renderLore();
 }
 
 function renderAssets() {
@@ -789,7 +829,7 @@ function renderAssets() {
   const rowsA = [];
   const groupA = (t) => rowsA.push(`<tr class="group"><td colspan="5">${t}</td></tr>`);
   const soldCap = (sold, cap) => (cap === 'open' ? `<td class="r">${sold}</td>` : `<td class="r violet">${sold} / ${cap}</td>`);
-  const rowA = (c) => `<tr><td><b>${c.name}</b>${c.nft ? ' <span class="tag new">NFT</span>' : ''}</td><td class="muted">${c.adds}</td>${moneyL(c)}${soldCap(c.s14, c.supply)}</tr>`;
+  const rowA = (c) => `<tr><td class="w"><b title="${c.lore || ''}">${c.name}</b>${c.nft ? ' <span class="tag new">NFT</span>' : ''}</td><td class="muted">${c.adds}</td>${moneyL(c)}${soldCap(c.s14, c.supply)}</tr>`;
   const SHORT = { drip: 'Auto-water', trimmer: 'Auto-harvest hourly', led: '−25% power draw', co2: '+10% potency' };
   groupA('Starter packs · paid in ETH');
   for (const pk of PACKS) {
@@ -803,14 +843,14 @@ function renderAssets() {
   groupA('Grow rooms · space');
   ROOMS.forEach((r, i) => {
     const prev = ROOMS[i - 1];
-    rowsA.push(rowA({ name: r.name, adds: prev ? `+${r.slots - prev.slots} slots · +${fmt(r.watts - prev.watts, 0)} W` : `${r.slots} slots · ${r.watts} W`,
+    rowsA.push(rowA({ name: r.name, lore: r.lore, adds: prev ? `+${r.slots - prev.slots} slots · +${fmt(r.watts - prev.watts, 0)} W` : `${r.slots} slots · ${r.watts} W`,
       ...(r.cost ? priced(r.cost) : { bud: 'free', usd0: null, usd7: null }), supply: 'open', s14: fmt(owners(i, d14.rooms), 0) }));
   });
   groupA('Utilities · automation and boosts');
-  for (const u of UTILITIES) rowsA.push(rowA({ name: u.name, adds: SHORT[u.id] || u.effect, ...priced(u.cost), supply: 'open', s14: '—' }));
+  for (const u of UTILITIES) rowsA.push(rowA({ name: u.name, lore: u.lore, adds: SHORT[u.id] || u.effect, ...priced(u.cost), supply: 'open', s14: '—' }));
   groupA('Decorations · looks only');
   for (const c of COSMETICS) {
-    rowsA.push(rowA({ nft: c.nft, name: c.name, adds: c.supply ? 'Limited drop' : 'Open', ...priced(c.cost),
+    rowsA.push(rowA({ nft: c.nft, name: c.name, lore: c.lore, adds: c.supply ? 'Limited drop' : 'Open', ...priced(c.cost),
       supply: c.supply == null ? 'open' : c.supply.toLocaleString(), s14: c.supply == null ? '—' : fmt(d14.items[c.id] || 0, 0) }));
   }
   put('assets-other', `<table><tr><th>Asset</th><th>Adds</th><th class="r">BUD</th><th class="r">$ launch</th><th class="r">Sold d14 / cap</th></tr>${rowsA.join('')}</table>`);
@@ -820,7 +860,7 @@ function renderAssets() {
     const out = st.potency * yieldDay;
     const days = st.cost ? st.cost / out : null;
     const c = st.cost ? priced(st.cost) : { bud: 'free', usd0: null, usd7: null };
-    return `<tr><td><b>${st.name}</b> <span class="muted">${fmt(st.potency, 0)} pp</span></td>${money(c)}
+    return `<tr><td><b title="${st.lore}">${st.name}</b> <span class="muted">${fmt(st.potency, 0)} pp</span></td>${money(c)}
       <td class="r good">${fmt(out, out < 10 ? 2 : 0)}</td><td class="r ${days != null ? payCls(days) : 'muted'}">${days ? days.toFixed(1) + 'd' : 'free'}</td>
       ${sup(st.supply == null ? 'open' : st.supply.toLocaleString())}<td class="r muted">${st.unlockHours ? `day ${st.unlockHours / 24}` : 'launch'}</td></tr>`;
   });
@@ -840,8 +880,8 @@ function renderTasks() {
   const h = (b) => `${b / 3600}h`;
   put('manual-tasks', `<h2>Daily tasks</h2><div class="scroll"><table>
     <tr><th>Task</th><th>Every</th><th>Miss it</th><th>Automate</th></tr>
-    <tr><td><b>Harvest</b></td><td>${h(cfg.storageBlocks)}</td><td class="w bad">Overflow spoils</td><td class="w">Auto-Trimmer <b class="gold">40</b></td></tr>
-    <tr><td><b>Water</b></td><td>${h(cfg.waterBlocks)}</td><td class="w bad">Output −${pct(1 - cfg.dryPenalty, 0)}</td><td class="w">Drip <b class="gold">60</b></td></tr>
+    <tr><td><b>Harvest</b></td><td>${h(cfg.storageBlocks)}</td><td class="w bad">Overflow spoils</td><td class="w">Auto-Trimmer <b class="gold">${fmt(UTILITIES.find((u) => u.id === 'trimmer').cost, 0)}</b></td></tr>
+    <tr><td><b>Water</b></td><td>${h(cfg.waterBlocks)}</td><td class="w bad">Output −${pct(1 - cfg.dryPenalty, 0)}</td><td class="w">Drip <b class="gold">${fmt(UTILITIES.find((u) => u.id === 'drip').cost, 0)}</b></td></tr>
     <tr><td><b>Reinvest</b></td><td class="w">When affordable</td><td class="w warn">Share shrinks</td><td class="muted">Manual</td></tr>
     <tr><td><b>Upgrade</b></td><td class="w">${h(cfg.roomCooldown)} cooldown</td><td class="w warn">No space</td><td class="muted">Manual</td></tr>
     <tr><td><b>Swap</b></td><td class="w">After ${h(cfg.strainLock)} lock</td><td class="w warn">Weak slots</td><td class="muted">Manual</td></tr>
@@ -881,7 +921,7 @@ function renderTasks() {
       return `<tr><td><b>${it.name}</b> <span class="muted">· ${why}</span></td><td class="r gold">${it.cost} BUD</td><td class="r good">${fmt(gain)}</td>
         <td class="r ${pb <= 3 ? 'good' : pb <= 14 ? 'warn' : 'bad'}">${Number.isFinite(pb) ? pb.toFixed(1) + 'd' : 'never'}</td><td class="r ${net14 >= 0 ? 'good' : 'bad'}">${net14 >= 0 ? '+' : ''}${fmt(net14)}</td><td>${tag}</td></tr>`;
     }).join('')}</table></div>
-    <p class="callout">Simulated: automation turns <b class="gold">100 BUD</b> into <b class="good">+${fmt(aut.earned - man.earned, 0)} BUD</b> by day 14 (Founder Pack, daily login).</p>`);
+    <p class="callout">Simulated: automation turns <b class="gold">${fmt(UTILITIES.filter((u) => u.kind === 'automation').reduce((t2, u) => t2 + u.cost, 0), 0)} BUD</b> into <b class="good">+${fmt(aut.earned - man.earned, 0)} BUD</b> by day 14 (Founder Pack, daily login).</p>`);
 
   const hrs = [24, 72, 168, 336];
   put('player-progress', `<h2>Player progress · BUD earned</h2>
@@ -913,7 +953,7 @@ function renderTasks() {
     ${forecast.game.daily.filter((d) => d.day % 7 === 0).map((d) => `<tr><td><b>day ${d.day}</b></td><td class="r">${d.players.toLocaleString()}</td><td class="r">${fmt(d.minted, 0)}</td>
       <td class="r good">${pct(d.burned / d.minted, 0)}</td><td class="r gold">${fmt(d.treasury, 0)}</td><td class="r muted">—</td><td class="r muted">—</td><td class="r muted">—</td></tr>`).join('')}
     </table></div>
-    <details class="more"><summary>Assumptions</summary>${fmt(cfg.blockReward * 86400, 0)} BUD/day until the first halving (~day ${Math.round(cfg.halvingInterval / 86400)}). Starts with ${(cfg.startingBots * cfg.cohort).toLocaleString()} players; launch hype halves every 3 days. Spend: strains ${fmt(H(336).spendBy.strains, 0)}, rooms ${fmt(H(336).spendBy.rooms, 0)}, utilities ${fmt(H(336).spendBy.utilities, 0)}, decor ${fmt(H(336).spendBy.cosmetics, 0)} BUD by day 14.</details>
+    <details class="more"><summary>Assumptions</summary>${fmt(cfg.blockReward * 86400, 0)} BUD/day until the first halving (day ${Math.round(cfg.halvingInterval / 86400)}, 4:20 pm UTC). Starts with ${(cfg.startingBots * cfg.cohort).toLocaleString()} players; launch hype halves every 3 days. Spend: strains ${fmt(H(336).spendBy.strains, 0)}, rooms ${fmt(H(336).spendBy.rooms, 0)}, utilities ${fmt(H(336).spendBy.utilities, 0)}, decor ${fmt(H(336).spendBy.cosmetics, 0)} BUD by day 14.</details>
     <h2 style="margin-top:12px">Share of minted BUD burned · first 49 days (model)</h2><div class="lc" id="tasks-burn"></div>`);
   const burnPts = forecast.game.hourly.filter((q) => q.hour % 24 === 0 && q.minted).map((q) => ({ x: q.hour / 24, y: q.burned / q.minted }))
     .concat(forecast.game.daily.map((q) => ({ x: q.day, y: q.burned / q.minted })));
@@ -982,6 +1022,29 @@ function renderCfo() {
     { color: css('--gold'), fx: (x) => `day ${Math.round(x * 10) / 10}`, fy: (y) => usd(y), ticks: [0, 3, 7, 14] });
 }
 
+// Lore tab: the story, the 4:20 calendar and the halving eras, from LORE in content.js and the live schedule.
+function renderLore() {
+  const cfg = LIVE(), a = assumptions;
+  const reserve = a.lpUsd / a.launchPrice, mined = G.supplyCap(cfg), days = cfg.halvingInterval / 86400;
+  $('lore-tagline').innerHTML = LORE.tagline.replace('420M BUD', '<em>420M BUD</em>');
+  put('lore-story', LORE.story.split('\n').map((x) => `<p>${x}</p>`).join(''));
+  const mio = (n) => `${+(n / 1e6).toFixed(2)}M`;
+  put('lore-strip', [['Total', mio(mined + reserve)], ['Grown', mio(mined)], ['Launch pool', mio(reserve)], ['Per toke', `${cfg.blockReward} BUD`]]
+    .map(([k, v]) => `<div><span>${k}</span><b class="${k === 'Total' ? 'good' : 'gold'}">${v}</b></div>`).join(''));
+  put('lore-events', LORE.events.map((e) => `<tr><td class="when">${e.when}</td><td class="w"><b>${e.name}</b><span class="sub">${e.what}</span></td></tr>`).join(''));
+  put('lore-map', `<tr><th>Bitcoin</th><th class="violet">BigCoin</th><th class="good">Greenbox</th></tr>` +
+    LORE.map.map((m) => `<tr><td class="bitcoin">${m.bitcoin}</td><td class="bc">${m.bigcoin}</td><td class="gb">${m.greenbox}</td></tr>`).join(''));
+  put('lore-terms', LORE.terms.map((t) => `<tr><td><b class="good">${t.name}</b></td><td class="w muted">${t.line}</td></tr>`).join(''));
+  put('lore-eras', `<tr><th>Era</th><th>Days</th><th class="r">BUD / toke</th><th></th></tr>` + LORE.eras.map((e, i) => {
+    const r = cfg.blockReward / 2 ** i;
+    return `<tr><td class="era">${e.name}</td><td class="num">${i * days}${i < LORE.eras.length - 1 ? `–${(i + 1) * days}` : '+'}</td>
+      <td class="r gold">${r >= 1 ? +r.toFixed(3) : r.toPrecision(3)}</td><td class="w muted">${e.line}</td></tr>`;
+  }).join(''));
+  const pts = [];
+  for (let d = 0; d <= 252; d += 1) pts.push({ x: d, y: G.rewardAt(cfg, d * 86400) });
+  lineChart('lore-chart', pts, { color: css('--gold'), fx: (x) => `day ${x}`, fy: (y) => `${+y.toFixed(2)}`, ticks: [0, 42, 84, 126, 168, 210] });
+}
+
 // Item counts and NFT split, straight from content.js and the pack list.
 function itemCounts() {
   const limitedDecor = COSMETICS.filter((c) => c.nft).length;
@@ -1022,11 +1085,11 @@ function renderDash() {
       <span class="d">payouts vs ${a.paybackDays}-day payback need</span></div>`,
   ].join(''));
   put('dash-strip', [
-    ['Max supply', fmt(cap, 0)], ['Per day', fmt(cfg.blockReward * 86400, 0)], ['Halving', `~${Math.round(cfg.halvingInterval / 86400)} days`],
-    ['Burned', '<span class="good">75%</span>'], ['Treasury', '<span class="gold">25%</span>'], ['New players', `${pct(cfg.seedlingPool, 0)} pool`],
+    ['Total supply', `${+((cap + a.lpUsd / a.launchPrice) / 1e6).toFixed(2)}M`], ['Per day', fmt(cfg.blockReward * 86400, 0)], ['Halves 4:20 pm', `${Math.round(cfg.halvingInterval / 86400)} days`],
+    ['Blazed', '<span class="good">75%</span>'], ['Stash', '<span class="gold">25%</span>'], ['New players', `${pct(cfg.seedlingPool, 0)} pool`],
     ['Players d14', fmt(end.players, 0)], ['Packs d14', `<span class="gold">${usd(m.packUsd)}</span>`],
   ].map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join(''));
-  put('dash-loop', ['Mint', 'Grow', 'Earn BUD', 'Spend · 75% burned', 'Bigger room', 'Bigger share']
+  put('dash-loop', ['Mint', 'Grow', 'Harvest BUD', 'Spend · 75% blazed', 'Bigger room', 'Bigger share']
     .map((x, i) => `<span class="step ${i === 2 ? 'hot' : ''}">${x}</span>`).join('<span class="arrow">→</span>') + '<span class="arrow">↺</span>');
   $('dash-note').innerHTML = `<span class="bad">Risk:</span> payouts depend on new buyers. Details in BigCoin vs Greenbox and CFO.`;
 
@@ -1037,7 +1100,7 @@ function renderDash() {
   lineChart('dash-players', pl, { color: css('--accent'), fx: (x) => `day ${x}`, fy: (y) => (y >= 1000 ? (y / 1000).toFixed(y >= 1e4 ? 0 : 1) + 'k' : String(Math.round(y))), ticks: [0, 14, 28, 49] });
 
   const burned = end.burned, treas = end.treasury, spoiled = end.spoiled, held = Math.max(0, end.minted - burned - treas - spoiled);
-  const parts = [['Burned', burned, 'var(--accent)'], ['Held by players', held, 'var(--muted)'], ['Treasury', treas, 'var(--gold)'], ['Spoiled', spoiled, 'var(--bad)']];
+  const parts = [['Blazed (burned)', burned, 'var(--accent)'], ['Held by players', held, 'var(--muted)'], ['Treasury', treas, 'var(--gold)'], ['Spoiled', spoiled, 'var(--bad)']];
   put('dash-supply', `<div class="hbar" role="img" aria-label="Share of ${fmt(end.minted, 0)} BUD minted by day 14">${parts.map(([k, v, c]) => `<i style="flex:${v};background:${c}" title="${k}: ${fmt(v, 0)} BUD"></i>`).join('')}</div>
     <div class="kv">${parts.map(([k, v, c]) => `<span class="sw" style="background:${c}"></span><span>${k}</span><b>${fmt(v, 0)}</b><em>${pct(v / end.minted, 0)}</em>`).join('')}
     <span></span><span class="muted">Minted</span><b>${fmt(end.minted, 0)}</b><em></em></div>`);
@@ -1069,7 +1132,7 @@ const BIGCOIN_LIVE = {
 const BIGCOIN_LAUNCH = [
   'On-chain launch · Abstract',
   ['Contract deployed', ['1 Apr 2025 · 05:24 UTC', 'Chain'], () => 'Launch day'],
-  ['Pre-mint', ['None in the contract', 'Code', 'Only a minter set by the owner can mint'], (c, a) => `${fmt(a.lpUsd / a.launchPrice, 0)} BUD pool reserve, outside the 21M mined`],
+  ['Pre-mint', ['None in the contract', 'Code', 'Only a minter set by the owner can mint'], (c, a) => `${fmt(a.lpUsd / a.launchPrice, 0)} BUD launch pool, inside the 420M`],
   ['Minted before the pool', ['1,551,279 $BIG in 3 mints, 1–8 Apr', 'Chain', '97.5% to the deployer, 2.5% to one other wallet. The deployer moved 945,000 to a third wallet'], () => 'None · the pool opens with mining'],
   ['First DEX pool', ['8 Apr 2025 · 16:19 UTC · AbstractSwap BIG/WETH', 'Chain'], () => 'Launch day · BUD/USD'],
   ['First liquidity', ['299,999 $BIG + 4 WETH, from the deployer', 'Chain', 'Concentrated position: the ratio is not a price'], (c, a) => `${fmt(a.lpUsd / a.launchPrice, 0)} BUD + ${usd(a.lpUsd)}`],
@@ -1077,22 +1140,22 @@ const BIGCOIN_LAUNCH = [
   ['Team allocation', { unk: 'Not published' }, () => 'None · treasury gets 25% of spend'],
   ['Peak, first week', ['$9.05 high · $6.9M–7.5M market cap, 14 Apr 2025', 'CR, BW'], () => `${usd(Math.max(...model.path.filter((q) => q.hour <= 168).map((q) => q.price)))} high in week 1 (model)`],
   'Token rules',
-  ['Max supply', ['21,000,000 $BIG', 'WP, Code', 'Capped in the contract; burns free room to mint again'], () => '21,000,000 BUD'],
+  ['Max supply', ['21,000,000 $BIG', 'WP, Code', 'Capped in the contract; burns free room to mint again'], (c, a) => `${(G.supplyCap(c) + a.lpUsd / a.launchPrice).toLocaleString()} BUD · ${fmt(G.supplyCap(c), 0)} grown + ${fmt(a.lpUsd / a.launchPrice, 0)} pool`],
   ['Block reward', ['2.3 $BIG (whitepaper) · 2.5 (docs)', 'WP, Docs'], (c) => `${c.blockReward} BUD`],
-  ['Block time', ['~1.1 s', 'WP'], () => '1 s (simulated)'],
-  ['Halving', ['Every 4.2M blocks · ~53.5 days', 'WP'], (c) => `Every ${(c.halvingInterval / 1e6).toFixed(1)}M blocks · ~${Math.round(c.halvingInterval / 86400)} days`],
+  ['Block time', ['~1.1 s', 'WP'], () => '1 s, one toke (simulated)'],
+  ['Halving', ['Every 4.2M blocks · ~53.5 days', 'WP'], (c) => `Every ${Math.round(c.halvingInterval / 86400)} days, at 4:20 pm UTC`],
   ['Spend burned', ['75% of miner and facility buys', 'WP'], () => '75% of all spend'],
   ['Spend to treasury', ['25%', 'Docs'], () => '25%'],
   ['Emission split', ['All by hashpower share', 'Docs'], (c) => `${pct(1 - c.seedlingPool, 0)} by potency · ${pct(c.seedlingPool, 0)} new-player pool`],
-  ['Referrals', ["2.5% of referees' mining", 'WP, Docs'], () => '2.5% (planned)'],
+  ['Referrals', ["2.5% of referees' mining", 'WP, Docs'], () => '4.20% (planned)'],
   ['Entry cost', ['Small ETH fee (anti-sybil), amount not stated', 'WP'], (c, a) => `Free, or packs ${usd(a.founderPrice)} / ${usd(a.growerPrice)}`],
   ['Starter producer', ['Free Potato Miner (optional)', 'WP, Docs'], () => 'Free Bagseed'],
 ];
 
 const COMPARE = [
   ['Chain', 'Abstract', 'Robinhood Chain', 'changed'],
-  ['Token', '$BIG · 21M cap', 'BUD · 21M cap + launch pool reserve', 'changed'],
-  ['Emission', '2.3–2.5/block, halves every 4.2M blocks', '2.5/block, same halving', 'same'],
+  ['Token', '$BIG · 21M cap (Bitcoin lore)', 'BUD · 420M total (cannabis lore)', 'changed'],
+  ['Emission', '2.3–2.5/block, halves every 4.2M blocks', '55/toke, halves every 42 days at 4:20 pm', 'changed'],
   ['Rewards', 'Share of network hashpower', 'Share of potency, 85% · 15% to new players', 'changed'],
   ['Spending', '75% burn · 25% treasury', 'Same', 'same'],
   ['Base', '9 facilities, 24h cooldown', '9 grow rooms, same numbers', 'same'],
@@ -1103,14 +1166,14 @@ const COMPARE = [
   ['Daily play', 'Claim only', 'Water + harvest, or automate', 'new'],
   ['Onboarding', 'Free miner + small ETH fee', 'Free Bagseed or $20 Founder Pack', 'changed'],
   ['Revenue', 'Treasury 25% · 5% NFT royalty', 'Same + pack sales → buybacks, pool', 'changed'],
-  ['Referrals', '2.5% of referees', 'Same (planned)', 'same'],
+  ['Referrals', '2.5% of referees', 'Sesh Invite · 4.20% (planned)', 'changed'],
   ['Outside demand', 'Merge mining (2.0)', 'Not yet', 'gap'],
 ];
 
 function renderCompare() {
   const b = BIGCOIN_LIVE, a = assumptions, m = model, end = H(336);
   const c = itemCounts();
-  const cap = LIVE().blockReward * LIVE().halvingInterval * 2;
+  const cap = G.supplyCap(LIVE()) + assumptions.lpUsd / assumptions.launchPrice; // 420M: grown + launch pool
   const dailyVol = (m.buyerUsd + m.sellerUsd) / 14;
   const metric = (k, v, cls = '') => `<div><span>${k}</span><b class="${cls}">${v}</b></div>`;
   const cfg = LIVE();
@@ -1163,7 +1226,7 @@ addEventListener('pagehide', save);
 const initial = location.hash.slice(1);
 renderPlay();
 loadForecast();
-if (['dash', 'compare', 'play', 'assets', 'tasks', 'cfo'].includes(initial)) showTab(initial);
+if (['dash', 'lore', 'compare', 'play', 'assets', 'tasks', 'cfo'].includes(initial)) showTab(initial);
 </script>
 </body>
 </html>

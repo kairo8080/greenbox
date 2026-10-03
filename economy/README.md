@@ -43,15 +43,22 @@ Everything is simulated. There is no wallet, chain, or real token, and other gro
 | Badges | Badges |
 | Claim rewards | Harvest |
 
-Room numbers and six strain rows (Bagseed, Ditch Weed, Skunk #1, OG Kush, Runtz, Greenbox Genesis) copy BigCoin's
+Room numbers and six strain rows (Bagseed, Ditch Weed, Skunk #1, OG Kush, Sugar Kief, Greenbox Genesis) copy BigCoin's
 published Facilities and Miners tables. The other seven strains are interpolated so value per BUD rises with tier.
 The 20% compost refund, decoration prices and badges are Greenbox inventions; BigCoin's docs do not give them.
 
 ## Token rules
 
+BigCoin's numbers come from Bitcoin lore (21M, mining, halvings). Greenbox's come from cannabis lore (Kairo, 3 Oct 2026):
+**420,000,000 BUD in total**, nothing outside it: 399,168,000 grown by players (55 BUD per block, halving every
+42 days) plus a 20,832,000 BUD launch pool ($26,040 at $0.00125). Launch is at 4:20 pm UTC, so every halving and every
+strain drop lands on 4:20 pm. In game a block is a "toke", burns are "blazed", the treasury is "the Stash", and the
+halving eras follow the plant (Germination, Sprout, Veg, Flip, Flower, Ripen, Cure). All of it lives in `LORE` in
+`content.js` and shows on the Lore & 420 tab; the fact-checked sources are in research/greenbox-lore.md in the project
+files. Every BUD price is 20× the BigCoin-scale price, so dollar results match the old model closely.
+
 - Each block (one game second) mints the block reward, split across every active grower by `your potency / network potency`.
-- Reward starts at 2.5 BUD (BigCoin's figure) and halves every 43,200 blocks (12 hours at 1×). That caps the season at 216,000 BUD.
-  BigCoin halves every 4.2M blocks (about 51 days) with a 21M cap; the schedule is compressed so halvings happen while you play. All of this is in `DEFAULT_CONFIG`.
+- Demo (`DEFAULT_CONFIG`): reward starts at 55 BUD and halves every 43,200 blocks (12 hours at 1×), so halvings happen while you play.
 - Every purchase burns 75% and sends 25% to the treasury. Compost refunds come out of the treasury and stop when it is empty.
 - Strains you mint plant straight away when they fit, otherwise they go to inventory. Planted strains are locked for 30 minutes.
 - Room upgrades go one tier at a time with a 1 hour cooldown.
@@ -67,11 +74,11 @@ payback window at the launch price. Free players start with a Bagseed NFT.
 
 - **Harvest**: earnings sit in a drying rack. After 12 hours without a harvest the rack is full and new earnings spoil (removed from supply). The **Auto-Trimmer** (40 BUD) harvests hourly.
 - **Water**: one watering lasts 4 hours; a dry room runs at 50% potency. **Drip Irrigation** (60 BUD) waters automatically.
-- **CO2 Generator** (400 BUD) adds 10% potency. **LED Retrofit** (250 BUD) cuts strain power draw by 25%, so more plants fit.
+- **CO2 Generator** (8,000 BUD) adds 10% potency. **LED Retrofit** (5,000 BUD) cuts strain power draw by 25%, so more plants fit.
 - **Seedling pool**: 15% of every block is shared per head among growers who are still in the Closet and joined less than 7 days ago, so free players can afford their first upgrades.
-- **Live schedule** (`LIVE_CONFIG`, used by the forecast): BigCoin's real halving (4.2M blocks, 21M cap), 24h room cooldown and rooting lock, staged strain releases (White Widow day 1 to Greenbox Genesis day 14) and season supply caps on the six top strains.
+- **Live schedule** (`LIVE_CONFIG`, used by the forecast): 420M schedule (halving every 42 days at 4:20 pm), 24h room cooldown and rooting lock, staged strain releases (White Widow day 1 to Greenbox Genesis day 14) and season supply caps on the six top strains.
 - **Starter packs** (live only): Founder Pack (Garage + 2 Skunk #1) and Grower Pack (Garden Shed + 4 Skunk #1 + OG Kush), sold for USD. They are the only outside cash in the model.
-- **Market**: simulated growers sell 25% of each harvest; some newcomers buy BUD on joining (40% buy about 100 BUD, 8% about 1,500). The CFO tab turns those flows into a USD price with a constant-product pool.
+- **Market**: simulated growers sell 25% of each harvest; some newcomers buy BUD on joining (40% buy about 2,000 BUD, 8% about 30,000). The CFO tab turns those flows into a USD price with a constant-product pool.
 - Live growers are cohorts of 25 players, which keeps a 20,000-player forecast fast.
 
 ## The simulated network
