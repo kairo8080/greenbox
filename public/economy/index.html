@@ -137,6 +137,10 @@ canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block;
 .tag.changed { background: var(--warn); color: #050a24; }
 .tag.new { background: var(--accent); color: var(--accent-fg); }
 .tag.gap { background: var(--bad); color: #1d0503; }
+.tag.src { background: var(--chip); color: var(--violet); }
+.tag.unk { background: transparent; color: var(--bad); border: 1px solid var(--bad); }
+.cmp td.unk { color: var(--bad); font-style: italic; }
+.cmp td.srcs { color: var(--muted); font-size: 11px; }
 .cmp td { white-space: normal; vertical-align: top; }
 .cmp td:first-child { font: 600 12px var(--display); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); min-width: 90px; }
 .cmp td.bc { color: var(--violet); min-width: 160px; }
@@ -173,14 +177,26 @@ canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block;
 <!-- ============ COMPARE ============ -->
 <div id="view-compare" role="tabpanel" hidden>
   <div class="hero">
-    <p class="pitch" style="max-width:none;font-size:clamp(22px,3.4vw,34px)"><em class="v">BigCoin</em> today vs <em>Greenbox</em> at launch</p>
+    <p class="pitch" style="max-width:none;font-size:clamp(22px,3.4vw,34px)"><em class="v">BigCoin</em> vs <em>Greenbox</em>: launch day</p>
+    <section class="wide">
+      <div class="row" style="justify-content:space-between"><h2 style="margin:0">Launch-day tokenomics</h2>
+        <div class="legend"><span class="tag src">Sourced</span><span class="tag unk">Not published</span></div></div>
+      <div class="scroll"><table class="cmp" id="compare-launch"></table></div>
+    </section>
+    <h2 style="margin:18px 0 8px">Today</h2>
     <div class="vs" id="compare-vs"></div>
     <p class="callout" id="compare-takeaway"></p>
     <section class="wide">
       <div class="row" style="justify-content:space-between"><h2 style="margin:0">Blueprint, point by point</h2>
         <div class="legend"><span class="tag same">Same</span><span class="tag changed">Changed</span><span class="tag new">New</span><span class="tag gap">Missing</span></div></div>
       <div class="scroll"><table class="cmp" id="compare-table"></table></div>
-      <details class="more"><summary>Sources</summary>BigCoin live figures: DexScreener BIG/WETH pair and OpenSea "Bigcoin Miners" collection, read 3 Oct 2026. Rules: docs.bigcoin.tech and Blockworks. Greenbox figures: this prototype's launch model (CFO tab).</details>
+      <details class="more" open><summary>Sources</summary>
+        <b>WP</b> BigCoin whitepaper (bigcoin.tech/whitepaper.pdf) ·
+        <b>Docs</b> docs.bigcoin.tech ·
+        <b>DEX</b> DexScreener API, all 11 $BIG pools on Abstract (token 0xDf70…1223), read 3 Oct 2026 ·
+        <b>OS</b> OpenSea "Bigcoin Miners", read 3 Oct 2026 ·
+        <b>BW</b> Blockworks (peak players, fall from peak).
+        Greenbox figures are this prototype's launch plan and model (CFO tab), not market data.</details>
     </section>
   </div>
 </div>
@@ -818,25 +834,46 @@ function renderDash() {
   $('dash-note').innerHTML = `<span class="bad">Risk:</span> payouts depend on new buyers. Details in BigCoin vs Greenbox and CFO.`;
 }
 
-// BigCoin market snapshot: DexScreener BIG/WETH (AbstractSwap) and OpenSea "Bigcoin Miners", read 3 Oct 2026.
+// BigCoin market, 3 Oct 2026: DexScreener API (all 11 $BIG pools on Abstract) and OpenSea "Bigcoin Miners".
+// Only sourced figures; see the Sources note on the tab.
 const BIGCOIN_LIVE = {
-  date: '3 Oct 2026', price: 0.03295, marketCap: 324716, liquidity: 971.61, vol24: 2.73, change24: -3.61,
+  date: '3 Oct 2026', pools: 11, liquidity: 13102.56, vol24: 632.14,
+  priceLow: 0.03157, priceHigh: 0.03799, // per-pool prices differ
+  mainPool: { name: 'Aborean BIG/WETH', price: 0.03404, liquidity: 5644.06, marketCap: 335419 },
   nftSupply: 43937, nftOwners: 2675, floor: 0.36, nftVolume: 2.5e6, creatorFee: 5, peakPlayers: 70000, fromPeak: -93,
 };
+
+// Launch-day tokenomics. BigCoin cells are [value, source], or null when no source we can reach publishes it.
+const BIGCOIN_LAUNCH = [
+  ['Max supply', ['21,000,000 $BIG', 'WP, Docs'], () => '21,000,000 BUD'],
+  ['Block reward', ['2.3 $BIG (whitepaper) · 2.5 (docs)', 'WP, Docs'], (c) => `${c.blockReward} BUD`],
+  ['Block time', ['~1.1 s', 'WP'], () => '1 s (simulated)'],
+  ['Halving', ['Every 4.2M blocks · ~53.5 days', 'WP'], (c) => `Every ${(c.halvingInterval / 1e6).toFixed(1)}M blocks · ~${Math.round(c.halvingInterval / 86400)} days`],
+  ['Spend burned', ['75% of miner and facility buys', 'WP'], () => '75% of all spend'],
+  ['Spend to treasury', ['25%', 'Docs'], () => '25%'],
+  ['Emission split', ['All by hashpower share', 'Docs'], (c) => `${pct(1 - c.seedlingPool, 0)} by potency · ${pct(c.seedlingPool, 0)} new-player pool`],
+  ['Referrals', ["2.5% of referees' mining", 'WP, Docs'], () => '2.5% (planned)'],
+  ['Entry cost', ['Small ETH fee (anti-sybil), amount not stated', 'WP'], (c, a) => `Free, or packs ${usd(a.founderPrice)} / ${usd(a.growerPrice)}`],
+  ['Starter producer', ['Free Potato Miner (optional)', 'WP, Docs'], () => 'Free Bagseed'],
+  ['First DEX pool', ['8 Apr 2025 · AbstractSwap BIG/WETH', 'DEX'], () => 'Launch day · BUD/USD'],
+  ['Launch price', null, (c, a) => usd(a.launchPrice)],
+  ['Launch liquidity', null, (c, a) => usd(a.lpUsd)],
+  ['Pre-mint / allocations', null, (c, a) => `${fmt(a.lpUsd / a.launchPrice, 0)} BUD pool reserve, outside the 21M mined`],
+];
 
 const COMPARE = [
   ['Chain', 'Abstract', 'Robinhood Chain', 'changed'],
   ['Token', '$BIG · 21M cap', 'BUD · 21M cap + launch pool reserve', 'changed'],
-  ['Emission', '2.5/block, halves every 4.2M blocks', 'Same', 'same'],
+  ['Emission', '2.3–2.5/block, halves every 4.2M blocks', '2.5/block, same halving', 'same'],
   ['Rewards', 'Share of network hashpower', 'Share of potency, 85% · 15% to new players', 'changed'],
   ['Spending', '75% burn · 25% treasury', 'Same', 'same'],
   ['Base', '9 facilities, 24h cooldown', '9 grow rooms, same numbers', 'same'],
   ['Producer NFTs', '13 miners · free Potato Miner', '13 strains · free Bagseed', 'same'],
-  ['NFT supply', 'Open mints (43,937 miners today)', 'Top 6 strains capped, released day 1–14', 'new'],
+  ['NFT supply', 'Open mints (43,937 miners on OpenSea today)', 'Top 6 strains capped, released day 1–14', 'new'],
   ['Sell-back', 'Burns the miner', 'Burns it, 20% refund', 'changed'],
   ['Cosmetics', 'Slot, no output, limited drops', 'Same · limited ones are NFTs', 'same'],
   ['Daily play', 'Claim only', 'Water + harvest, or automate', 'new'],
-  ['Onboarding', 'Free miner, buy $BIG on DEX', 'Free Bagseed or $20 Founder Pack', 'changed'],
+  ['Onboarding', 'Free miner + small ETH fee', 'Free Bagseed or $20 Founder Pack', 'changed'],
   ['Revenue', 'Treasury 25% · 5% NFT royalty', 'Same + pack sales → buybacks, pool', 'changed'],
   ['Referrals', '2.5% of referees', 'Same (planned)', 'same'],
   ['Outside demand', 'Merge mining (2.0)', 'Not yet', 'gap'],
@@ -848,23 +885,27 @@ function renderCompare() {
   const cap = LIVE().blockReward * LIVE().halvingInterval * 2;
   const dailyVol = (m.buyerUsd + m.sellerUsd) / 14;
   const metric = (k, v, cls = '') => `<div><span>${k}</span><b class="${cls}">${v}</b></div>`;
+  const cfg = LIVE();
+  put('compare-launch', `<tr><th>Item</th><th class="violet">BigCoin at launch</th><th class="good">Greenbox at launch</th><th>Source</th></tr>` +
+    BIGCOIN_LAUNCH.map(([k, bc, gb]) => `<tr><td>${k}</td>${bc ? `<td class="bc">${bc[0]}</td>` : '<td class="unk">Not published</td>'}
+      <td class="gb">${gb(cfg, a)}</td><td class="srcs">${bc ? bc[1] : 'asked Kairo'}</td></tr>`).join(''));
   put('compare-vs', `
-    <div class="side big-coin"><h3>BigCoin</h3><div class="sub">Live market · ${b.date}</div><div class="metrics">
-      ${metric('Token price', usd(b.price), 'violet')}${metric('Since peak', `${b.fromPeak}%`, 'bad')}
-      ${metric('Market cap', usd(b.marketCap))}${metric('Pool liquidity', usd(b.liquidity), 'bad')}
-      ${metric('Volume 24h', usd(b.vol24), 'bad')}${metric('Peak players', '~70k')}
+    <div class="side big-coin"><h3>BigCoin</h3><div class="sub">Live market · ${b.date} · all ${b.pools} pools</div><div class="metrics">
+      ${metric('Token price', usd(b.mainPool.price), 'violet')}${metric('Since peak', `${b.fromPeak}%`, 'bad')}
+      ${metric('Market cap', usd(b.mainPool.marketCap))}${metric('Liquidity, all pools', usd(b.liquidity), 'bad')}
+      ${metric('Volume 24h, all pools', usd(b.vol24), 'bad')}${metric('Peak players', '~70k')}
       ${metric('Miner NFTs', b.nftSupply.toLocaleString())}${metric('NFT owners', b.nftOwners.toLocaleString())}
       ${metric('NFT floor', usd(b.floor), 'violet')}${metric('NFT volume, all-time', usd(b.nftVolume))}
-    </div></div>
-    <div class="side green-box"><h3>Greenbox</h3><div class="sub">Launch plan · model, day 14</div><div class="metrics">
+    </div><div class="sub" style="margin:10px 0 0">Price and cap from the deepest pool (${b.mainPool.name}, ${usd(b.mainPool.liquidity)} liquidity). Pools range ${usd(b.priceLow)} to ${usd(b.priceHigh)}.</div></div>
+    <div class="side green-box"><h3>Greenbox</h3><div class="sub">Model, day 14 · not market data</div><div class="metrics">
       ${metric('Token price', `${usd(a.launchPrice)} → ${usd(m.price)}`, 'gold')}${metric('vs launch', `+${pct(m.price / a.launchPrice - 1, 0)}`, 'good')}
       ${metric('Fully diluted', usd(cap * a.launchPrice))}${metric('Pool liquidity', usd(m.poolUsd), 'good')}
       ${metric('Volume / day', usd(dailyVol), 'good')}${metric('Players', end.players.toLocaleString())}
       ${metric('NFT types', `${c.nft}`)}${metric('Starter mint', usd(a.founderPrice), 'gold')}
       ${metric('Pack revenue', usd(m.packUsd), 'gold')}${metric('Creator fee', `${b.creatorFee}% (planned)`)}
     </div></div>`);
-  $('compare-takeaway').innerHTML = `BigCoin today has <b class="bad">${usd(b.liquidity)}</b> of liquidity and <b class="bad">${usd(b.vol24)}</b> of daily volume.
-    Greenbox launches with a <b class="good">${usd(a.lpUsd)}</b> pool, deepened by pack sales, plus pack-funded buybacks. Same game loop, sturdier market.`;
+  $('compare-takeaway').innerHTML = `BigCoin today: <b class="bad">${usd(b.liquidity)}</b> of liquidity and <b class="bad">${usd(b.vol24)}</b> of daily volume across ${b.pools} pools.
+    Greenbox plans a <b class="good">${usd(a.lpUsd)}</b> launch pool, deepened by pack sales and buybacks.`;
   const label = { same: 'Same', changed: 'Changed', new: 'New', gap: 'Missing' };
   put('compare-table', `<tr><th>Topic</th><th class="violet">BigCoin</th><th class="good">Greenbox</th><th></th></tr>` +
     COMPARE.map(([topic, big, green, kind]) => `<tr><td>${topic}</td><td class="bc">${big}</td><td class="gb">${green}</td><td><span class="tag ${kind}">${label[kind]}</span></td></tr>`).join(''));
