@@ -1,0 +1,2 @@
+# Preserve exact bytes recorded by source manifests and verification reports.
+** -text whitespace=cr-at-eol

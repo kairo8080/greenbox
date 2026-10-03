@@ -20,14 +20,14 @@ function glbDocument(bytes) {
   return document;
 }
 
-async function asset(id, label, kind, glbPath, voxPath, source) {
+async function asset(id, label, kind, glbPath, voxPath, source, variant = {}) {
   const bytes = await fs.readFile(path.join(root, glbPath));
   const document = glbDocument(bytes);
   const triangles = document.meshes.reduce((sum, mesh) => sum + mesh.primitives.reduce((total, primitive) => {
     if ((primitive.mode ?? 4) !== 4) throw new Error('Viewer expects triangulated meshes');
     return total + document.accessors[primitive.indices ?? primitive.attributes.POSITION].count / 3;
   }, 0), 0);
-  return { id, label, kind, glb: bytes.toString('base64'), vox: voxPath ? (await fs.readFile(path.join(root, voxPath))).toString('base64') : null,
+  return { id, label, kind, ...variant, glb: bytes.toString('base64'), vox: voxPath ? (await fs.readFile(path.join(root, voxPath))).toString('base64') : null,
     glbSha256: crypto.createHash('sha256').update(bytes).digest('hex'), triangles,
     voxels: source?.voxels?.length ?? null, height: source ? source.dimensions[2] * 0.05 : null };
 }
@@ -36,13 +36,18 @@ const models = [];
 for (const [id, label] of cast) {
   const base = `voxel_sources/character_cast/${id}/${id}`;
   const source = JSON.parse(await fs.readFile(path.join(root, `${base}.json`), 'utf8'));
-  models.push(await asset(id, label, 'character', `${base}.glb`, `${base}.vox`, source));
+  models.push(await asset(id, label, 'character', `${base}.glb`, `${base}.vox`, source, { style: 'original', characterId: id }));
+}
+for (const [id, label] of cast) {
+  const base = `voxel_sources/chibi_cast/${id}/${id}`;
+  const source = JSON.parse(await fs.readFile(path.join(root, `${base}.json`), 'utf8'));
+  models.push(await asset(`${id}_chibi`, label, 'character', `${base}.glb`, `${base}.vox`, source, { style: 'chibi', characterId: id }));
 }
 models.push(await asset('bedroom', 'Rasta bedroom', 'room', 'game/assets/rasta_bedroom.glb', 'voxel_sources/rasta_room/rasta_bedroom.vox'));
 models.push(await asset('props', 'Grow props', 'props', 'game/assets/starter_props.glb', null));
 const result = await esbuild.build({ entryPoints: [path.join(root, 'viewer/viewer.js')], bundle: true, write: false, format: 'iife', target: ['es2022'], minify: true, legalComments: 'inline', sourcemap: false });
 const [shell, css] = await Promise.all(['viewer-shell.html', 'viewer.css'].map(file => fs.readFile(path.join(root, 'viewer', file), 'utf8')));
-const embedded = JSON.stringify({ schema: 'greenbox-viewer-v1', catalog, models }).replaceAll('<', '\\u003c');
+const embedded = JSON.stringify({ schema: 'greenbox-viewer-v2', catalog, models }).replaceAll('<', '\\u003c');
 const script = result.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
 const license = await fs.readFile(path.join(root, 'viewer/node_modules/three/LICENSE'), 'utf8');
 const html = shell.replace('<!-- VIEWER_STYLE -->', () => css).replace('<!-- VIEWER_DATA -->', () => embedded).replace('<!-- VIEWER_SCRIPT -->', () => script)

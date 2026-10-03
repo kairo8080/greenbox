@@ -1,0 +1,234 @@
+{
+  "asset": "skeleton",
+  "description": "Original compact chibi skeleton: oversized cubic skull, solid square sockets and alternating block teeth, attached open ribcage and spine, short articulated bone limbs and broad feet; six movable parts.",
+  "dimensions_voxels": [
+    16,
+    12,
+    28
+  ],
+  "voxel_count": 2832,
+  "metadata": {
+    "authoring": "Original Greenbox chibi occupied-cube artwork; no external character asset or likeness",
+    "design": "Original compact chibi skeleton: oversized cubic skull, solid square sockets and alternating block teeth, attached open ribcage and spine, short articulated bone limbs and broad feet; six movable parts.",
+    "style": "chibi",
+    "voxel_pitch_meters": 0.05,
+    "source_axes": "X/Y horizontal, Z up; faces native -Y",
+    "glb_axes": "Y up, forward +Z",
+    "source_root_pivot": [
+      10,
+      7,
+      0
+    ],
+    "connected_components": 1,
+    "part_overlap_cells": 0,
+    "mesh_pivot_source_voxels": [
+      8,
+      6,
+      0
+    ]
+  },
+  "parts": [
+    {
+      "name": "torso",
+      "dimensions": [
+        8,
+        6,
+        7
+      ],
+      "normalization_offset": [
+        6,
+        4,
+        7
+      ],
+      "metadata": {
+        "part": "torso",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          10,
+          7,
+          7
+        ],
+        "mesh_pivot_source_voxels": [
+          4,
+          3,
+          0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          0.35000000000000003,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "head",
+      "dimensions": [
+        16,
+        12,
+        14
+      ],
+      "normalization_offset": [
+        2,
+        1,
+        14
+      ],
+      "metadata": {
+        "part": "head",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          10,
+          7,
+          14
+        ],
+        "mesh_pivot_source_voxels": [
+          8,
+          6,
+          0
+        ],
+        "joint_glb_translation_meters": [
+          0.0,
+          0.7000000000000001,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "arm_left",
+      "dimensions": [
+        3,
+        6,
+        8
+      ],
+      "normalization_offset": [
+        3,
+        3,
+        6
+      ],
+      "metadata": {
+        "part": "arm_left",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          5.5,
+          7,
+          12.5
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          4,
+          6.5
+        ],
+        "joint_glb_translation_meters": [
+          -0.225,
+          0.625,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "arm_right",
+      "dimensions": [
+        3,
+        6,
+        8
+      ],
+      "normalization_offset": [
+        14,
+        3,
+        6
+      ],
+      "metadata": {
+        "part": "arm_right",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          14.5,
+          7,
+          12.5
+        ],
+        "mesh_pivot_source_voxels": [
+          0.5,
+          4,
+          6.5
+        ],
+        "joint_glb_translation_meters": [
+          0.225,
+          0.625,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "leg_left",
+      "dimensions": [
+        5,
+        7,
+        7
+      ],
+      "normalization_offset": [
+        5,
+        3,
+        0
+      ],
+      "metadata": {
+        "part": "leg_left",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          7.5,
+          7,
+          7
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          4,
+          7
+        ],
+        "joint_glb_translation_meters": [
+          -0.125,
+          0.35000000000000003,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "leg_right",
+      "dimensions": [
+        5,
+        7,
+        7
+      ],
+      "normalization_offset": [
+        10,
+        3,
+        0
+      ],
+      "metadata": {
+        "part": "leg_right",
+        "connected_components": 1,
+        "joint_source_voxels": [
+          12.5,
+          7,
+          7
+        ],
+        "mesh_pivot_source_voxels": [
+          2.5,
+          4,
+          7
+        ],
+        "joint_glb_translation_meters": [
+          0.125,
+          0.35000000000000003,
+          0.0
+        ]
+      }
+    }
+  ],
+  "vox_sha256": {
+    "arm_left.vox": "03d4a2d35d82a20f286f33475ba30c69913f3e44180954f0d00c708f1397e0fd",
+    "arm_right.vox": "03d4a2d35d82a20f286f33475ba30c69913f3e44180954f0d00c708f1397e0fd",
+    "head.vox": "06e5ad84c7ee30ba6a5453e110a4eb17972850bab5b709d6f29227a1d679c0a7",
+    "leg_left.vox": "b8a80b1d62ff21508301ef74ca29ff103fd418af4b0cd4ace5a88548abad10b0",
+    "leg_right.vox": "b8a80b1d62ff21508301ef74ca29ff103fd418af4b0cd4ace5a88548abad10b0",
+    "skeleton.vox": "d3db112e47098665e141137b5c83d9185af779a7ca216f2c310d51ac830316ae",
+    "torso.vox": "bf3a81e6e20cb52c62c6e15d8ebf112692186b1d9365e3b982aa7d0738d0824a"
+  },
+  "source_json_sha256": "1e8ec66573b80da3c5e8b82aa113dd4f4ffebfde2d41b26de646c4f180e9a2a8"
+}

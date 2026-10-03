@@ -4,8 +4,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { buildPalette, writeVoxPalette, writeGlbPalette } from './palette-core.mjs';
 
 const data = JSON.parse(document.getElementById('viewer-data').textContent);
-const ui = Object.fromEntries(['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats', 'scene-labels', 'asset-select', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle', 'reset-view', 'palette-select', 'protect-identity', 'palette-swatches', 'palette-status', 'export-palette', 'export-vox', 'export-glb'].map(id => [id, document.getElementById(id)]));
-const state = { selected: 'rasta_grower', collection: 'characters', mode: 'compare', framing: 'body', synced: true, spinning: false, theme: 'original', protected: true, overrides: {} };
+const ui = Object.fromEntries(['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats', 'scene-labels', 'asset-select', 'character-style', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle', 'reset-view', 'palette-select', 'protect-identity', 'palette-swatches', 'palette-status', 'export-palette', 'export-vox', 'export-glb'].map(id => [id, document.getElementById(id)]));
+const state = { selected: 'rasta_grower', style: 'chibi', collection: 'characters', mode: 'compare', framing: 'body', synced: true, spinning: false, theme: 'original', protected: true, overrides: {} };
 const records = new Map();
 const panels = document.createElement('div');
 panels.id = 'view-panels';
@@ -23,6 +23,8 @@ let previousTime = 0, statsTime = 0;
 const number = value => value.toLocaleString('en-US');
 const hex = color => '#' + color.slice(0, 3).map(value => value.toString(16).padStart(2, '0')).join('');
 const decode = value => Uint8Array.from(atob(value), character => character.charCodeAt(0));
+const selectedModelId = () => state.style === 'chibi' ? `${state.selected}_chibi` : state.selected;
+const characterModels = () => data.models.filter(model => model.kind === 'character' && model.style === state.style);
 
 function updatePalette() {
   palette = buildPalette(data.catalog, state.theme, state.protected, state.overrides);
@@ -49,10 +51,12 @@ function makeSwatches() {
   }
 }
 
-function applyMaterials(root) {
+function applyMaterials(root, style) {
   root.traverse(object => {
     if (!object.isMesh) return;
-    object.castShadow = object.receiveShadow = true;
+    object.castShadow = true;
+    // Broad chibi faces stay clean while the models cast ground shadows.
+    object.receiveShadow = style !== 'chibi';
     const materials = Array.isArray(object.material) ? object.material : [object.material];
     for (const material of materials) {
       if (material.map) material.map = paletteTexture;
@@ -89,12 +93,12 @@ function modelClone(record) {
 
 function highlightSelection() {
   for (const view of views) {
-    const selected = view.ids.includes(state.selected);
+    const selected = view.ids.includes(selectedModelId());
     view.panel.classList.toggle('is-selected', selected && state.collection === 'characters');
     view.label.classList.toggle('is-selected', selected && state.collection === 'characters');
   }
   const selected = currentRecord();
-  ui['selected-label'].textContent = selected.label + (state.collection === 'characters' && state.mode === 'compare' ? ' · comparing seven' : '');
+  ui['selected-label'].textContent = selected.label + (state.collection === 'characters' ? ` · ${state.style === 'chibi' ? 'chibi' : 'original'}${state.mode === 'compare' ? ' · comparing seven' : ''}` : '');
   ui['character-select'].value = state.selected;
   ui['export-vox'].disabled = !selected.voxBytes;
   ui['export-vox'].title = selected.voxBytes ? 'Download the current palette in the editable voxel source' : 'Props have separate VOX sources; download the original prop library as GLB';
@@ -103,7 +107,7 @@ function highlightSelection() {
 }
 
 function currentRecord() {
-  return records.get(state.collection === 'characters' ? state.selected : state.collection === 'room' ? 'bedroom' : 'props');
+  return records.get(state.collection === 'characters' ? selectedModelId() : state.collection === 'room' ? 'bedroom' : 'props');
 }
 
 function chooseDriver(view) {
@@ -119,7 +123,7 @@ function chooseDriver(view) {
     driver = view;
   }
   if (state.collection === 'characters' && view.ids.length === 1) {
-    state.selected = view.ids[0];
+    state.selected = records.get(view.ids[0]).characterId;
     highlightSelection();
   }
 }
@@ -142,10 +146,14 @@ function syncViews() {
 
 function makeView(ids, label) {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#27362d');
+  scene.background = new THREE.Color('#bed7d2');
   scene.add(new THREE.HemisphereLight(0xfff6df, 0x52644f, 2.25));
   const key = new THREE.DirectionalLight(0xfff1d7, 3.0);
   key.position.set(-3, 6, 5);
+  key.castShadow = true;
+  key.shadow.mapSize.set(512, 512);
+  key.shadow.bias = -0.0002;
+  key.shadow.normalBias = 0.008;
   scene.add(key);
   const fill = new THREE.DirectionalLight(0xc9e8ef, 1.15);
   fill.position.set(4, 3, -3);
@@ -169,7 +177,14 @@ function makeView(ids, label) {
   for (const model of models.values()) box.union(new THREE.Box3().setFromObject(model));
   const size = box.getSize(new THREE.Vector3());
   const groundSize = Math.max(size.x, size.z, size.y) * 2.2;
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(groundSize, groundSize), new THREE.MeshStandardMaterial({ color: '#304034', roughness: 1 }));
+  const span = Math.max(size.x, size.z, size.y);
+  const center = box.getCenter(new THREE.Vector3());
+  key.target.position.copy(center);
+  scene.add(key.target);
+  key.position.copy(center).add(new THREE.Vector3(-0.8, 1.7, 1.0).multiplyScalar(span * 2));
+  Object.assign(key.shadow.camera, { left: -span, right: span, top: span, bottom: -span, near: 0.1, far: span * 10 });
+  key.shadow.camera.updateProjectionMatrix();
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(groundSize, groundSize), new THREE.MeshStandardMaterial({ color: '#e6d4ab', roughness: 1 }));
   ground.rotation.x = -Math.PI / 2;
   ground.position.set(box.getCenter(new THREE.Vector3()).x, box.min.y - 0.008, box.getCenter(new THREE.Vector3()).z);
   ground.receiveShadow = true;
@@ -193,7 +208,7 @@ function makeView(ids, label) {
   controls.autoRotateSpeed = 1.2;
   controls.maxPolarAngle = Math.PI * 0.88;
   controls.listenToKeyEvents(panel);
-  const view = { ids, scene, models, panel, label: tag, camera, controls, box, height: size.y, defaultTarget: new THREE.Vector3(), frameDistance: 1 };
+  const view = { ids, scene, models, panel, label: tag, camera, controls, box, height: size.y, defaultTarget: new THREE.Vector3(), frameDistance: 1, needsShadow: true };
   panel.addEventListener('pointerdown', () => chooseDriver(view), { capture: true });
   panel.addEventListener('wheel', () => chooseDriver(view), { passive: true, capture: true });
   panel.addEventListener('focus', () => chooseDriver(view));
@@ -207,14 +222,15 @@ function frameView(view, resetAngle = true) {
   view.camera.aspect = aspect;
   view.camera.updateProjectionMatrix();
   let box = view.box.clone();
-  if (state.framing === 'portrait' && state.collection === 'characters') {
-    const model = view.models.get(view.ids.length === 1 ? view.ids[0] : state.selected);
+  const portrait = state.framing === 'portrait' && state.collection === 'characters';
+  if (portrait) {
+    const model = view.models.get(view.ids.length === 1 ? view.ids[0] : selectedModelId());
     let head;
     model?.traverse(object => { if (object.isMesh && /head/i.test(object.name)) head = object; });
     if (head) {
       box = new THREE.Box3().setFromObject(head);
       const headSize = box.getSize(new THREE.Vector3());
-      box.min.y -= headSize.y * 0.42;
+      box.min.y -= headSize.y * 0.22;
       box.expandByVector(new THREE.Vector3(0.1, 0.06, 0.05));
     }
   }
@@ -224,7 +240,8 @@ function frameView(view, resetAngle = true) {
   const elevation = defaultElevation();
   const depth = (size.x + size.z) / Math.sqrt(2);
   const projectedHeight = size.y * Math.cos(elevation) + depth * Math.sin(elevation);
-  view.frameDistance = Math.max(projectedHeight / (2 * tangent), Math.max(size.x, size.z) / (2 * tangent * aspect)) * 1.28 + size.z * 0.3;
+  const projectedWidth = portrait ? depth : Math.max(size.x, size.z);
+  view.frameDistance = Math.max(projectedHeight / (2 * tangent), projectedWidth / (2 * tangent * aspect)) * (portrait ? 1.1 : 1.28) + size.z * (portrait ? 0.1 : 0.3);
   view.defaultTarget.copy(center);
   view.controls.minDistance = Math.max(0.12, view.height * 0.15);
   view.controls.maxDistance = Math.max(view.frameDistance * 10, view.height * 12);
@@ -251,18 +268,22 @@ function setAngle(view, azimuth, elevation) {
 function rebuildViews() {
   for (const view of views) {
     view.controls.dispose();
-    view.scene.traverse(object => { if (object.userData.viewerGround) { object.geometry.dispose(); object.material.dispose(); } });
+    view.scene.traverse(object => {
+      if (object.userData.viewerGround) { object.geometry.dispose(); object.material.dispose(); }
+      if (object.isLight && object.shadow) object.shadow.dispose();
+    });
   }
   views = []; driver = null;
   panels.replaceChildren(); ui['scene-labels'].replaceChildren();
   const compare = state.collection === 'characters' && state.mode === 'compare';
   panels.classList.toggle('compare', compare);
-  if (compare) views = data.models.filter(model => model.kind === 'character').map(model => makeView([model.id], model.label));
-  else if (state.collection === 'characters' && state.mode === 'lineup') views = [makeView(data.models.filter(model => model.kind === 'character').map(model => model.id), 'All seven characters')];
+  if (compare) views = characterModels().map(model => makeView([model.id], model.label));
+  else if (state.collection === 'characters' && state.mode === 'lineup') views = [makeView(characterModels().map(model => model.id), `All seven ${state.style} characters`)];
   else { const record = currentRecord(); views = [makeView([record.id], record.label)]; }
-  driver = views.find(view => view.ids.includes(state.selected)) ?? views[0];
+  driver = views.find(view => view.ids.includes(selectedModelId())) ?? views[0];
   for (const view of views) frameView(view);
   ui['view-mode'].disabled = state.collection !== 'characters';
+  ui['character-style'].disabled = state.collection !== 'characters';
   ui['character-select'].disabled = state.collection !== 'characters';
   ui['framing'].disabled = state.collection !== 'characters';
   ui['sync-cameras'].disabled = !compare;
@@ -304,7 +325,9 @@ function render(time) {
         if (right <= left || top <= bottom) continue;
         renderer.setViewport(x, y, rect.width, rect.height);
         renderer.setScissor(left, bottom, right - left, top - bottom);
+        renderer.shadowMap.needsUpdate = view.needsShadow;
         renderer.render(view.scene, view.camera);
+        view.needsShadow = false;
         view.label.style.left = `${x + rect.width / 2}px`;
         view.label.style.top = `${rect.bottom - canvasRect.top - 36}px`;
       }
@@ -350,12 +373,13 @@ function reportError(error) {
 function wireControls() {
   ui['asset-select'].addEventListener('change', event => { state.collection = event.target.value; rebuildViews(); });
   ui['view-mode'].addEventListener('change', event => { state.mode = event.target.value; rebuildViews(); });
+  ui['character-style'].addEventListener('change', event => { state.style = event.target.value; rebuildViews(); });
   ui.framing.addEventListener('change', event => { state.framing = event.target.value; for (const view of views) frameView(view); syncViews(); });
   ui['character-select'].addEventListener('change', event => {
     state.selected = event.target.value;
     if (state.mode === 'solo') rebuildViews();
     else if (state.mode === 'lineup' && state.framing === 'portrait') { for (const view of views) frameView(view); highlightSelection(); }
-    else { driver = views.find(view => view.ids.includes(state.selected)) ?? driver; highlightSelection(); }
+    else { chooseDriver(views.find(view => view.ids.includes(selectedModelId())) ?? driver); highlightSelection(); }
   });
   ui['sync-cameras'].addEventListener('change', event => { state.synced = event.target.checked; syncViews(); });
   ui['reset-view'].addEventListener('click', () => { for (const view of views) frameView(view); syncViews(); });
@@ -384,13 +408,16 @@ async function start() {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.autoClear = false;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
+  renderer.shadowMap.autoUpdate = false;
   makeSwatches(); updatePalette();
   const loader = new GLTFLoader();
   let loaded = 0;
   await Promise.all(data.models.map(async model => {
     const glbBytes = decode(model.glb);
     const gltf = await loader.parseAsync(glbBytes.buffer, '');
-    applyMaterials(gltf.scene);
+    applyMaterials(gltf.scene, model.style);
     records.set(model.id, { ...model, scene: gltf.scene, glbBytes, voxBytes: model.vox ? decode(model.vox) : null });
     ui['loading-status'].textContent = `Loaded ${++loaded} of ${data.models.length} assets`;
   }));

@@ -1,6 +1,6 @@
 # Greenbox voxel character viewer
 
-Inspect seven true voxel characters, the bedroom, and grow props in one offline 3D viewer. A shared indexed palette keeps color changes consistent across the entire collection.
+Inspect seven true voxel characters in chibi and original proportions, the bedroom, and grow props in one offline 3D viewer. A shared indexed palette keeps color changes consistent across both casts and the environment.
 
 ## Open or build
 
@@ -16,12 +16,15 @@ npm run build:viewer
 ## Inspect assets
 
 - Choose **Character collection**, **Bedroom scene**, or **Grow props**.
+- **Character style** switches all seven between **Chibi** (the default) and **Original**. The selected character and global color edits persist across the switch.
 - Characters support **Compare all seven**, **Solo**, and **Lineup**, with **Full body** or **Portrait** framing.
 - Drag to orbit, scroll to zoom, and right-drag to pan. Use **Front**, **Right**, **Left**, and **Back** for repeatable views.
 - **Reset view** restores characters to a 45° view with a low 4° elevation. The bedroom opens from its cutaway side at 28°, and props use 15°. **Sync cameras across views** keeps comparison views aligned.
 - **Turntable** orbits the camera around the asset. It does not animate a character's walking pose.
 
 The characters are Rasta grower, Corporate boss, Robot, Chef, Blonde lady, Party woman, and Skeleton. The viewer changes camera framing and colors; it does not edit meshes or poses.
+
+The chibi cast takes broad art direction from [The Touryst](https://thetouryst.shinen.com/deluxe/): broad cube heads, compact silhouettes, clean color blocks, and bright lighting. These are original Greenbox designs. The stage uses a pale sky, warm ground, and cached 512-pixel shadows; shadows are rebuilt when the displayed models change. The chibi collection totals 4,030 triangles and the original collection totals 5,954. These mesh counts do not guarantee a frame rate on every device.
 
 ## Use one palette everywhere
 
@@ -45,4 +48,4 @@ Exports start from the embedded source assets and create new download files. The
 
 ## Validation
 
-Palette/export checks cover all seven characters across five themes, the bedroom, and props. They verify stable color indices, immutable inputs, preserved VOX occupancy and unknown chunks, and preserved GLB geometry, hierarchy, and pivots. Additional checks cover multi-model VOX files, missing palette chunks, malformed files, and PNG integrity. These checks validate export structure; browser interaction and performance require separate viewer testing.
+Palette/export checks cover both seven-character casts across five themes, the bedroom, and props. They verify stable color indices, immutable inputs, preserved VOX occupancy and unknown chunks, and preserved GLB geometry, hierarchy, and pivots. Additional checks cover multi-model VOX files, missing palette chunks, malformed files, and PNG integrity. Each chibi GLB is independently compared against its exact source cube surfaces and canonical palette atlas. These checks validate export structure; browser interaction and performance require separate viewer testing.

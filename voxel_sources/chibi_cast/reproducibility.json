@@ -1,0 +1,262 @@
+{
+  "schema": "greenbox-chibi-source-reproducibility-v1",
+  "status": "pass",
+  "method": "Portable bundled builders executed in an isolated temporary pack; all generated source JSON, source manifests and native VOX bytes compared directly with the accepted pack. Accepted files were not rewritten.",
+  "assets_verified": 7,
+  "files_verified": 63,
+  "portable_sources_independently_verified": true,
+  "files": [
+    {
+      "path": "rasta_grower/rasta_grower.json",
+      "sha256": "89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c"
+    },
+    {
+      "path": "rasta_grower/source_manifest.json",
+      "sha256": "0b8c09bd4bc5ee7c8744957e2fd1596012de1fdde85c9d378c7fe36accc0f022"
+    },
+    {
+      "path": "rasta_grower/arm_left.vox",
+      "sha256": "2443309c382c260e92df76a1aab5b98495dbf8a13317cef4a4c28e64dddbde20"
+    },
+    {
+      "path": "rasta_grower/arm_right.vox",
+      "sha256": "2443309c382c260e92df76a1aab5b98495dbf8a13317cef4a4c28e64dddbde20"
+    },
+    {
+      "path": "rasta_grower/head.vox",
+      "sha256": "823640a96562ba31045716825714d1e72cebfc0f5bc8c7790c871f3762f06bda"
+    },
+    {
+      "path": "rasta_grower/leg_left.vox",
+      "sha256": "e4db94c9e617e357c55a577c4d9733a192847b4fb1cfe9308cbf188e93d1842a"
+    },
+    {
+      "path": "rasta_grower/leg_right.vox",
+      "sha256": "e4db94c9e617e357c55a577c4d9733a192847b4fb1cfe9308cbf188e93d1842a"
+    },
+    {
+      "path": "rasta_grower/rasta_grower.vox",
+      "sha256": "a622b3b13a43a486fe59c4aa8c84170b5d5f6fd75633eed92da28e3ae0354a9b"
+    },
+    {
+      "path": "rasta_grower/torso.vox",
+      "sha256": "4e27148d73c34cde557d299407523b137597ca6bceae0a64d30c721b3a153730"
+    },
+    {
+      "path": "corporate_boss/corporate_boss.json",
+      "sha256": "e872a2ae2a4ac9eeb398c772201c0cc4cfffebded6cdda49bfa81d4a9c9c1b53"
+    },
+    {
+      "path": "corporate_boss/source_manifest.json",
+      "sha256": "b95eed6f7cc6f3f859be84de92c3092ce03b1454da59147d4bbb585a7102703c"
+    },
+    {
+      "path": "corporate_boss/arm_left.vox",
+      "sha256": "b113c18d43fa3d09c401cf0d681c31464dde6f7e2f2718e25297f7889219497b"
+    },
+    {
+      "path": "corporate_boss/arm_right.vox",
+      "sha256": "c41cea3d7e047a36384b7335692c736e1dd9f33800ea889cf5c432dc04073f33"
+    },
+    {
+      "path": "corporate_boss/corporate_boss.vox",
+      "sha256": "1fc8b715c0bdfc73f319a8b9736b91d028cad0d3966a429f4e28a61c3f51bd25"
+    },
+    {
+      "path": "corporate_boss/head.vox",
+      "sha256": "e6a37cd7b6961990e0b53b98a66ba85db847fbdd8cbc378d32b23edc97ac249f"
+    },
+    {
+      "path": "corporate_boss/leg_left.vox",
+      "sha256": "8f0614567c59ec72fce28f2cf1db1ac7299841eabd9770f4be86c137d0a9218f"
+    },
+    {
+      "path": "corporate_boss/leg_right.vox",
+      "sha256": "8f0614567c59ec72fce28f2cf1db1ac7299841eabd9770f4be86c137d0a9218f"
+    },
+    {
+      "path": "corporate_boss/torso.vox",
+      "sha256": "2c96e2f28f7e3f7fe42f2978d30421adc44f4b9daf656930fa9a0e5585c7f063"
+    },
+    {
+      "path": "robot/robot.json",
+      "sha256": "00341b29bb7ef8d69b860a3c6f199e99466209763d897c98177761d353340f12"
+    },
+    {
+      "path": "robot/source_manifest.json",
+      "sha256": "024d57193fdc97a17eadc502f929747098fd1c382eaef2a228e9bac9e2442419"
+    },
+    {
+      "path": "robot/arm_left.vox",
+      "sha256": "fdbab793f8363c99fc804a56154719f7e216acb4f38b49de64ab94e55b61562e"
+    },
+    {
+      "path": "robot/arm_right.vox",
+      "sha256": "fdbab793f8363c99fc804a56154719f7e216acb4f38b49de64ab94e55b61562e"
+    },
+    {
+      "path": "robot/head.vox",
+      "sha256": "a50c1cb2135220d72f40f4b13c55d6f4dd50738d632f3786d4921446fd6743da"
+    },
+    {
+      "path": "robot/leg_left.vox",
+      "sha256": "9a35c273c270b04af597f8e4cc7a72da7be75033ecff23103d96938c1ad99223"
+    },
+    {
+      "path": "robot/leg_right.vox",
+      "sha256": "9a35c273c270b04af597f8e4cc7a72da7be75033ecff23103d96938c1ad99223"
+    },
+    {
+      "path": "robot/robot.vox",
+      "sha256": "b66ae8a4d9db2f58b8d89508fc19c6614562f7d99be9ce587573861a5a144b84"
+    },
+    {
+      "path": "robot/torso.vox",
+      "sha256": "774210ec2382cc147e402604d1313cd1b0de83e6001f7f230af56ea56ee8c4b5"
+    },
+    {
+      "path": "chef/chef.json",
+      "sha256": "f549bd20e5f080ee65961a75ab6a7571dc367f448e0787147a3c4309406e217c"
+    },
+    {
+      "path": "chef/source_manifest.json",
+      "sha256": "c8017f5b6ac13b55494bb21dac996571eee58ed42f6769b929bdd15f26a92ca8"
+    },
+    {
+      "path": "chef/arm_left.vox",
+      "sha256": "18ea9b732e4000a349f48fba6ebaebbfd11075c66b626d74c89ff45ebd7fe6c5"
+    },
+    {
+      "path": "chef/arm_right.vox",
+      "sha256": "646e84c45660ff4f8fc68ee2a4da9dd2244a25083b0f0505ede0143c6a135834"
+    },
+    {
+      "path": "chef/chef.vox",
+      "sha256": "adc0cb7fe0fe62994dec8dba33246fef715bd454c2fc1252dfd6dddca4e3b776"
+    },
+    {
+      "path": "chef/head.vox",
+      "sha256": "f3243ccce5da72c60c25e7d1793086c68e516d79139ffb5cfb6e7af194058977"
+    },
+    {
+      "path": "chef/leg_left.vox",
+      "sha256": "88745b27061765dff8d43aa7f31eeb0fa3211f0be524a1c05d7b9aeb4fa0ebf1"
+    },
+    {
+      "path": "chef/leg_right.vox",
+      "sha256": "88745b27061765dff8d43aa7f31eeb0fa3211f0be524a1c05d7b9aeb4fa0ebf1"
+    },
+    {
+      "path": "chef/torso.vox",
+      "sha256": "a02995bca04a93e5c9a6468edb407934563d392d19b0c45b488df343b979712f"
+    },
+    {
+      "path": "blonde_lady/blonde_lady.json",
+      "sha256": "74c94702cdc920c06de8b5e9bc0034354d37896ab7896a832aec14203ec11ae0"
+    },
+    {
+      "path": "blonde_lady/source_manifest.json",
+      "sha256": "97c1a850bace328eba46c9ff949730a621fb405a09981b7147aa1f4d431375ac"
+    },
+    {
+      "path": "blonde_lady/arm_left.vox",
+      "sha256": "98a946068f1820537d45a6d6367426075763f88d747f2304ea3d17b4ea3c27e9"
+    },
+    {
+      "path": "blonde_lady/arm_right.vox",
+      "sha256": "98a946068f1820537d45a6d6367426075763f88d747f2304ea3d17b4ea3c27e9"
+    },
+    {
+      "path": "blonde_lady/blonde_lady.vox",
+      "sha256": "e79af10984667f247ed611a3a00f068e2c9edad857119e25c5557797932eeb94"
+    },
+    {
+      "path": "blonde_lady/head.vox",
+      "sha256": "6c593aaa1caa4e0f1745ea662c10958cfc2d0e8af832ed98dca10e2b9b2dac83"
+    },
+    {
+      "path": "blonde_lady/leg_left.vox",
+      "sha256": "f7be83908807011bc0cda4e2bcc2f9cbc5a486f3e9e7b247071948790a4431cb"
+    },
+    {
+      "path": "blonde_lady/leg_right.vox",
+      "sha256": "f7be83908807011bc0cda4e2bcc2f9cbc5a486f3e9e7b247071948790a4431cb"
+    },
+    {
+      "path": "blonde_lady/torso.vox",
+      "sha256": "eb49fab72aa10c9407ae6863444a27fac21fa407fd9baa32cb79d117fa9d45b4"
+    },
+    {
+      "path": "party_woman/party_woman.json",
+      "sha256": "00251a40d8f2aa36583fc891efdd8db74811524cb160d8807ba3494c9d6a593e"
+    },
+    {
+      "path": "party_woman/source_manifest.json",
+      "sha256": "95a7e5ea68113d17be3806f2b8a99b58bc90d052b67766ae6abb561dc39717e9"
+    },
+    {
+      "path": "party_woman/arm_left.vox",
+      "sha256": "33f77353cb3722aa85de118bda46dc175863050e777e6e88f40ad425318ffd8f"
+    },
+    {
+      "path": "party_woman/arm_right.vox",
+      "sha256": "41faa432f3952a35cb58c6a1941a7a8d447c46b9bc19ddc7c9acd69627658a78"
+    },
+    {
+      "path": "party_woman/head.vox",
+      "sha256": "208eb6d3a384ede3f062504ff763fb7363a3359bc2097be3a54380ce36969d1e"
+    },
+    {
+      "path": "party_woman/leg_left.vox",
+      "sha256": "9fea79e59ff24debb7a0acb3d95e81662753f7bc1fe7215251e26920f0222994"
+    },
+    {
+      "path": "party_woman/leg_right.vox",
+      "sha256": "9fea79e59ff24debb7a0acb3d95e81662753f7bc1fe7215251e26920f0222994"
+    },
+    {
+      "path": "party_woman/party_woman.vox",
+      "sha256": "5ac478c3ab1b2668d35ce638aaa242891ca25baeabfb13f02b085bd0f5e84968"
+    },
+    {
+      "path": "party_woman/torso.vox",
+      "sha256": "b55334aa7d2770442ae95479dc5dee144c8cec8800bca667a3a87256e7d76fb6"
+    },
+    {
+      "path": "skeleton/skeleton.json",
+      "sha256": "1e8ec66573b80da3c5e8b82aa113dd4f4ffebfde2d41b26de646c4f180e9a2a8"
+    },
+    {
+      "path": "skeleton/source_manifest.json",
+      "sha256": "1a04b8e8491d4c3e5c9411c9b2e2b8d7955bad34d892bf458649e69d938f3af2"
+    },
+    {
+      "path": "skeleton/arm_left.vox",
+      "sha256": "03d4a2d35d82a20f286f33475ba30c69913f3e44180954f0d00c708f1397e0fd"
+    },
+    {
+      "path": "skeleton/arm_right.vox",
+      "sha256": "03d4a2d35d82a20f286f33475ba30c69913f3e44180954f0d00c708f1397e0fd"
+    },
+    {
+      "path": "skeleton/head.vox",
+      "sha256": "06e5ad84c7ee30ba6a5453e110a4eb17972850bab5b709d6f29227a1d679c0a7"
+    },
+    {
+      "path": "skeleton/leg_left.vox",
+      "sha256": "b8a80b1d62ff21508301ef74ca29ff103fd418af4b0cd4ace5a88548abad10b0"
+    },
+    {
+      "path": "skeleton/leg_right.vox",
+      "sha256": "b8a80b1d62ff21508301ef74ca29ff103fd418af4b0cd4ace5a88548abad10b0"
+    },
+    {
+      "path": "skeleton/skeleton.vox",
+      "sha256": "d3db112e47098665e141137b5c83d9185af779a7ca216f2c310d51ac830316ae"
+    },
+    {
+      "path": "skeleton/torso.vox",
+      "sha256": "bf3a81e6e20cb52c62c6e15d8ebf112692186b1d9365e3b982aa7d0738d0824a"
+    }
+  ]
+}

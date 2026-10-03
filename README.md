@@ -8,7 +8,9 @@ The new **[Greenbox Unity project](unity/README.md)** lives in `unity/Greenbox/`
 
 The **[voxel character cast](voxel_sources/character_cast/README.md)** adds a corporate boss, robot, chef, blonde lady, party woman, and skeleton, plus the existing grower with a 45° right-facing pose and lower preview camera. Each includes editable VOX sources, six movable body parts, a neutral GLB, Blender scene, previews, and verification records. The bundled tools reproduce all six new source designs; import the models into Unity to expand the cast.
 
-The **[interactive character lab](viewer/README.md)** puts all seven characters in one window with synchronized orbit/zoom, full-body and portrait views, a lineup, and five shared palette themes. It includes the bedroom and props, editable color swatches, and recolored VOX/GLB downloads. `public/viewer/index.html` is also a single portable HTML file with all assets and code embedded. Rebuild it with `npm install --prefix viewer` and `npm run build:viewer`; the Vercel build verifies the committed file.
+The **[chibi cast](voxel_sources/chibi_cast/README.md)** remakes all seven with broad cube heads, short legs, and compact bodies, taking visual inspiration from [The Touryst](https://thetouryst.shinen.com/deluxe/). These original Greenbox assets retain the exact collection palette, editable VOX sources, and six movable rigid parts. All seven together use 4,030 triangles; the taller original cast remains available.
+
+The **[interactive character lab](viewer/README.md)** puts all seven characters in one window with a **Chibi / Original** switch, synchronized orbit/zoom, full-body and portrait views, a lineup, and five shared palette themes. It includes the bedroom and props, editable color swatches, and recolored VOX/GLB downloads. The brighter stage adds cached soft shadows. `public/viewer/index.html` is also a single portable HTML file with all assets and code embedded. Rebuild it with `npm install --prefix viewer` and `npm run build:viewer`; the Vercel build verifies the committed file.
 
 ## Play
 

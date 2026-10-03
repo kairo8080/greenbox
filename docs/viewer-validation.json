@@ -1,22 +1,21 @@
 {
-  "schema": "greenbox-viewer-validation-v1",
+  "schema": "greenbox-viewer-validation-v2",
   "date": "2026-10-03",
-  "embedded_assets": 9,
-  "character_voxels": 16055,
-  "character_triangles": 5954,
-  "static_delivery": "Passed independent HTML, GLB BIN/accessor, VOX occupancy, PNG pixel, palette, control and inline JavaScript syntax checks; eight corrupted delivery cases rejected.",
-  "palette_exports": "335 property checks passed for character themes, room, props, immutable inputs, preserved occupancy/geometry/pivots, unknown chunks and malformed inputs.",
+  "embedded_assets": 16,
+  "character_voxels": 44126,
+  "character_triangles": 9984,
+  "static_delivery": "Passed independent delivered HTML, embedded GLB BIN/accessor, VOX occupancy, exact canonical PNG/palette, style/identity control and inline script checks. Six malformed v2 delivery cases rejected.",
+  "palette_exports": "Earlier original cast checks passed (335 properties). New chibi checks passed 70 asset/preset/protection combinations, covering 140 VOX and 140 GLB outputs with unknown-chunk probes; geometry, occupancy, palette indices and joints preserved.",
   "browser_checked": [
-    "All seven characters rendered from actual GLB geometry",
-    "Full body and portrait framing",
-    "Compare, Solo and Lineup layouts",
-    "Drag orbit and wheel zoom, including synchronized zoom to 192%",
-    "Independent selected-character camera and global camera synchronization",
-    "Front, Back, reset and camera turntable",
-    "Original, Island, Pastel and Neon themes with identity protection on/off",
-    "Editable color slot 51 set to #fa3377",
-    "Bedroom cutaway camera and grouped prop library preview",
-    "VOX, GLB and palette export generation produced visible Save links without runtime errors"
+    "All seven chibi characters rendered from actual GLBs, with bright lighting and cached ground shadows",
+    "Chibi/Original switch preserves selected identity, theme and custom color slot 51 (#fa3377)",
+    "Full body and closer portrait framing; all seven views and solo inspected visually",
+    "Compare, Solo and Lineup layouts; shared Pastel theme with identity protection off",
+    "Drag orbit and wheel zoom: angle changed from -45 to -114 degrees and zoom reached 143 percent",
+    "Independent selected-character Back camera; synchronization re-enabled and reset",
+    "Turntable camera moved from 180 to 130 degrees and was stopped",
+    "Bedroom cutaway and props; character controls disabled appropriately",
+    "Chibi skeleton VOX/GLB and palette export generation produced correct Save filenames with no runtime error"
   ],
   "browser_limitations": [
     "The automated in-app browser prohibits file:// navigation; the self-contained local file was validated statically, and interactive rendering was checked over HTTP.",
@@ -27,5 +26,25 @@
     "three": "0.186.1",
     "esbuild_build_only": "0.28.2",
     "external_runtime_requests": false
+  },
+  "character_styles": {
+    "original": {
+      "assets": 7,
+      "voxels": 16055,
+      "triangles": 5954
+    },
+    "chibi": {
+      "assets": 7,
+      "voxels": 28071,
+      "triangles": 4030
+    }
+  },
+  "default_character_style": "chibi",
+  "html_sha256": "fe8797757717af257f29b2f715b4997686ac553509df4d0a84f8512aa5d0e47f",
+  "lighting": {
+    "shadow_type": "PCFShadowMap",
+    "map_pixels": 512,
+    "static_cached": true,
+    "chibi_self_shadows": false
   }
 }

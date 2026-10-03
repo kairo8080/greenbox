@@ -18,7 +18,7 @@
           <h1>Voxel character lab</h1>
         </div>
       </div>
-      <div class="header-note"><span class="status-dot" aria-hidden="true"></span>Seven characters. One shared palette.</div>
+      <div class="header-note"><span class="status-dot" aria-hidden="true"></span>Seven characters. Two styles. One shared palette.</div>
     </header>
 
     <main class="workspace">
@@ -52,6 +52,11 @@
             <option value="room">Bedroom scene</option>
             <option value="props">Grow props</option>
           </select>
+          <label class="field-label" for="character-style">Character style</label>
+          <select id="character-style" data-ready-control disabled>
+            <option value="chibi">Chibi · chunky proportions</option>
+            <option value="original">Original · taller proportions</option>
+          </select>
           <div class="field-row">
             <div class="field">
               <label class="field-label" for="view-mode">Layout</label>
@@ -80,7 +85,7 @@
             <option value="skeleton">Skeleton</option>
           </select>
           <label class="check-row" for="sync-cameras"><input id="sync-cameras" type="checkbox" checked data-ready-control disabled><span>Sync cameras across views</span></label>
-          <p class="section-note">Compare shows every character. Solo brings one forward; lineup places them together.</p>
+          <p class="section-note">Switch between the chibi and original casts. Compare shows all seven; solo and lineup share the same colors.</p>
         </section>
 
         <section class="control-section">

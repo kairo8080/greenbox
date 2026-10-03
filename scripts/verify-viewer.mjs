@@ -11,8 +11,13 @@ const repository = dirname(dirname(fileURLToPath(import.meta.url)));
 const filename = process.argv[2] ? resolve(process.argv[2]) : join(repository, 'public', 'viewer', 'index.html');
 const failures = [];
 const characterIds = ['rasta_grower', 'corporate_boss', 'robot', 'chef', 'blonde_lady', 'party_woman', 'skeleton'];
+const chibiIds = characterIds.map(id => `${id}_chibi`);
+// Chibi totals independently measured from real GLB accessors and source VOX.
+// See outputs/greenbox-chibi-pack/pack_validation.json and work/chibi/verify_chibi.py.
+const expectedStyleTotals = { original: { triangles: 5954, voxels: 16055 }, chibi: { triangles: 4030, voxels: 28071 } };
+const styleTotals = { original: { triangles: 0, voxels: 0, models: 0 }, chibi: { triangles: 0, voxels: 0, models: 0 } };
 const requiredIds = ['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats',
-  'scene-labels', 'asset-select', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle',
+  'scene-labels', 'asset-select', 'character-style', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle',
   'reset-view', 'camera-front', 'camera-right', 'camera-left', 'camera-back', 'palette-select', 'protect-identity',
   'palette-swatches', 'palette-status', 'export-palette', 'export-vox', 'export-glb'];
 const roleNames = ('air ink slate wall wall_shadow trim floor floor_dark floor_light wood wood_light linen teal '
@@ -189,7 +194,11 @@ function validateGlb(bytes, model, palette) {
   }
   const images = (json.images ?? []).map((image, index) => {
     requireValue(image.mimeType === 'image/png' || image.uri?.startsWith('data:image/png;'), `${label}: image ${index} must be an embedded PNG.`);
-    return palettePng(image.uri === undefined ? view(image.bufferView).bytes : embeddedUri(image.uri, `${label} image ${index}`), `${label} image ${index}`);
+    const pixels = palettePng(image.uri === undefined ? view(image.bufferView).bytes : embeddedUri(image.uri, `${label} image ${index}`), `${label} image ${index}`);
+    if (model.style === 'chibi') for (let texel = 0; texel < 256; texel++)
+      requireValue(sameColor([...pixels.subarray(texel * 4, texel * 4 + 4)], palette[(texel + 1) % 256]),
+        `${label}: chibi embedded atlas differs from canonical palette slot ${(texel + 1) % 256}.`);
+    return pixels;
   });
   requireValue(images.length > 0, `${label}: no embedded palette image.`);
   const meshTriangles = (json.meshes ?? []).map((mesh, meshIndex) => {
@@ -296,7 +305,8 @@ function validateVox(bytes, model, palette) {
   if (model.kind === 'character') {
     requireValue(rgba, `${label}: editable character VOX needs its canonical RGBA palette.`);
     // Older assets legitimately leave newer, unused semantic slots black.
-    for (const index of colorsUsed) {
+    const indices = model.style === 'chibi' ? Array.from({ length: 256 }, (_, index) => index) : colorsUsed;
+    for (const index of indices) {
       const texel = (index + 255) % 256;
       requireValue(sameColor([...rgba.subarray(texel * 4, texel * 4 + 4)], palette[index]), `${label}: VOX palette slot ${index} is not canonical.`);
     }
@@ -315,7 +325,7 @@ try {
   const ids = tags.map(tag => tag.attrs.get('id')).filter(Boolean);
   check(new Set(ids).size === ids.length, 'Viewer contains duplicate HTML IDs.');
   for (const id of requiredIds) check(ids.includes(id), `Required viewer control/region is missing: ${id}.`);
-  for (const id of ['asset-select', 'view-mode', 'character-select', 'framing', 'palette-select'])
+  for (const id of ['asset-select', 'character-style', 'view-mode', 'character-select', 'framing', 'palette-select'])
     check(tags.some(tag => tag.name === 'select' && tag.attrs.get('id') === id), `${id} must be a select control.`);
   for (const id of ['motion-toggle', 'reset-view', 'camera-front', 'camera-right', 'camera-left', 'camera-back', 'export-palette', 'export-vox', 'export-glb'])
     check(tags.some(tag => tag.name === 'button' && tag.attrs.get('id') === id), `${id} must be a button.`);
@@ -323,12 +333,20 @@ try {
     check(tags.some(tag => tag.name === 'input' && tag.attrs.get('id') === id && tag.attrs.get('type') === 'checkbox'), `${id} must be a checkbox.`);
   check(tags.some(tag => tag.name === 'canvas' && tag.attrs.get('id') === 'viewer-canvas'), 'viewer-canvas must be a canvas element.');
   const optionSets = { 'asset-select': ['characters', 'room', 'props'], 'view-mode': ['compare', 'solo', 'lineup'],
-    'framing': ['body', 'portrait'], 'character-select': characterIds, 'palette-select': ['original', 'island', 'pastel', 'neon', 'mono'] };
+    'character-style': ['chibi', 'original'], 'framing': ['body', 'portrait'], 'character-select': characterIds,
+    'palette-select': ['original', 'island', 'pastel', 'neon', 'mono'] };
   for (const match of dom.matchAll(/<select\b([^>]*)>([\s\S]*?)<\/select\s*>/gi)) {
     const id = attributes(match[1]).get('id'), expected = optionSets[id];
     if (!expected) continue;
-    const values = [...match[2].matchAll(/<option\b[^>]*>/gi)].map(option => attributes(option[0]).get('value'));
+    const options = [...match[2].matchAll(/<option\b[^>]*>/gi)];
+    const values = options.map(option => attributes(option[0]).get('value'));
     check(expected.every(value => values.includes(value)), `${id} is missing a required option.`);
+    if (id === 'character-style') {
+      check(values.length === 2 && new Set(values).size === 2, 'Character style must offer exactly chibi and original.');
+      const selected = options.filter(option => /\sselected(?:\s*=|\s|>)/i.test(option[0]));
+      check(selected.length <= 1 && attributes((selected[0] ?? options[0])[0]).get('value') === 'chibi',
+        'Character style must default to chibi.');
+    }
   }
   for (const tag of tags) {
     if (tag.name === 'script') check(!tag.attrs.has('src'), 'Single-file viewer cannot load an external script.');
@@ -360,16 +378,20 @@ try {
       check(inertHttpReference(match[2], url.index, url[0]), `Viewer bundle contains an executable HTTP reference: ${url[0]}.`);
   }
   const data = JSON.parse(dataScripts[0][2]);
-  requireValue(data.schema === 'greenbox-viewer-v1', 'Unrecognized viewer data schema.');
+  requireValue(data.schema === 'greenbox-viewer-v2', 'Unrecognized viewer data schema.');
   validateCatalog(data.catalog);
-  requireValue(Array.isArray(data.models) && data.models.length === 9, 'Viewer must embed seven characters, bedroom, and props.');
+  requireValue(Array.isArray(data.models) && data.models.length === 16, 'Viewer must embed seven original characters, seven chibi characters, bedroom, and props.');
   const modelIds = data.models.map(model => model.id);
-  check(new Set(modelIds).size === 9, 'Embedded model IDs must be unique.');
-  for (const id of [...characterIds, 'bedroom', 'props']) check(modelIds.includes(id), `Missing embedded model: ${id}.`);
+  check(new Set(modelIds).size === 16, 'Embedded model IDs must be unique.');
+  for (const id of [...characterIds, ...chibiIds, 'bedroom', 'props']) check(modelIds.includes(id), `Missing embedded model: ${id}.`);
   for (const model of data.models) {
     try {
-      const expectedKind = characterIds.includes(model.id) ? 'character' : model.id === 'bedroom' ? 'room' : model.id === 'props' ? 'props' : null;
+      const expectedStyle = characterIds.includes(model.id) ? 'original' : chibiIds.includes(model.id) ? 'chibi' : null;
+      const expectedKind = expectedStyle ? 'character' : model.id === 'bedroom' ? 'room' : model.id === 'props' ? 'props' : null;
       requireValue(expectedKind && model.kind === expectedKind, `${model.id}: invalid asset kind.`);
+      if (expectedStyle) requireValue(model.style === expectedStyle
+        && model.characterId === (expectedStyle === 'chibi' ? model.id.slice(0, -6) : model.id),
+        `${model.id}: character style or identity mapping is incorrect.`);
       requireValue(typeof model.label === 'string' && model.label.trim().length > 0 && integer(model.triangles, 1)
         && (integer(model.voxels) || (model.kind !== 'character' && model.voxels === null))
         && ((Number.isFinite(model.height) && model.height > 0) || (model.kind !== 'character' && model.height === null)),
@@ -377,12 +399,21 @@ try {
       const triangles = validateGlb(base64(model.glb, `${model.id} GLB`), model, data.catalog.original);
       requireValue(model.kind !== 'character' || model.vox !== null, `${model.id}: editable character VOX is missing.`);
       const voxels = model.vox === null ? null : validateVox(base64(model.vox, `${model.id} VOX`), model, data.catalog.original);
-      if (model.kind === 'character') { triangleTotal += triangles; voxelTotal += voxels; }
+      if (model.kind === 'character') {
+        triangleTotal += triangles; voxelTotal += voxels;
+        styleTotals[expectedStyle].triangles += triangles;
+        styleTotals[expectedStyle].voxels += voxels;
+        styleTotals[expectedStyle].models++;
+      }
       verifiedModels++;
     } catch (error) { failures.push(error.message); }
   }
-  check(triangleTotal === 5954, `Character geometry must total 5954 triangles; actual verified total is ${triangleTotal}.`);
-  check(voxelTotal === 16055, `Character sources must total 16055 occupied cells; actual verified total is ${voxelTotal}.`);
+  for (const [style, expected] of Object.entries(expectedStyleTotals)) {
+    const actual = styleTotals[style];
+    check(actual.models === 7, `${style}: expected seven verified character models; actual is ${actual.models}.`);
+    check(actual.triangles === expected.triangles, `${style}: character geometry must total ${expected.triangles} triangles; actual is ${actual.triangles}.`);
+    check(actual.voxels === expected.voxels, `${style}: sources must total ${expected.voxels} occupied cells; actual is ${actual.voxels}.`);
+  }
 } catch (error) { failures.push(error.code ?? error.message); }
 
 console.log('Static integrity validation does not establish interactive behavior, browser performance, or offline rendering success.');
