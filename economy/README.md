@@ -7,6 +7,7 @@ deliberately a plain placeholder; the point is to play-test the rules and the nu
 - Pitch: the new BigCoin-style game, with cannabis, on Robinhood Chain.
 - Page: `public/economy/index.html` (served at `/economy/` on the Vercel site; any static server works). A dark "terminal" layout:
   big colour-coded numbers first, detail in tables, explanations folded into "How to read this" toggles.
+  On a laptop or desktop (at least 1100×640) each tab fits on one screen: panels scroll inside, the page does not. Narrower screens stack the panels.
   The palette comes from Kairo's moodboard (acid lime, orange, violet, red and cobalt on near-black), one meaning per colour:
   lime is Greenbox and good, orange is money and BUD, violet is BigCoin, red is risk, cobalt is watch. Six tabs:
   - **Dashboard**: one-screen exec view: item counts and NFT split, tokenomics, starter mint price, 14-day forecast and flywheel health.

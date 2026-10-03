@@ -141,55 +141,158 @@ canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block;
 .tag.unk { background: transparent; color: var(--bad); border: 1px solid var(--bad); }
 .cmp td.unk { color: var(--bad); font-style: italic; }
 .cmp td.srcs { color: var(--muted); font-size: 11px; }
+.cmpx .cmp td, .cmpx .cmp th { padding: 3px 6px; }
 .cmp td { white-space: normal; vertical-align: top; }
 .cmp td:first-child { font: 600 12px var(--display); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); min-width: 90px; }
 .cmp td.bc { color: var(--violet); min-width: 160px; }
 .cmp td.gb { color: var(--fg); min-width: 160px; }
 .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); align-items: center; }
+
+/* Density */
+section { padding: 10px 12px; }
+th, td { padding: 4px 7px; }
+table { font-size: 12px; }
+h2 { margin: 0 0 6px; }
+.callout { margin: 8px 0 0; padding: 6px 10px; font-size: 13px; }
+
+/* Charts: one series each, title names it; hover shows the exact value */
+.lc { position: relative; flex: 1; min-height: 150px; margin: 2px 0 14px 38px; cursor: crosshair; }
+.lc svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.lc .grid-l { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.lc .line { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.lc .ax { position: absolute; font: 10px var(--mono); color: var(--muted); white-space: nowrap; }
+.lc .ax.y { left: -38px; width: 34px; text-align: right; transform: translateY(-50%); }
+.lc .ax.x { bottom: -14px; transform: translateX(-50%); }
+.lc .ax.x.first { transform: none; } .lc .ax.x.last { transform: translateX(-100%); }
+.lc .cross { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--muted); display: none; pointer-events: none; }
+.lc .dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--panel); transform: translate(-50%, -50%); display: none; pointer-events: none; }
+.lc .tip { position: absolute; top: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 3px 7px; font: 11px var(--mono); white-space: nowrap; display: none; pointer-events: none; z-index: 2; }
+.lc:hover .cross, .lc:hover .dot, .lc:hover .tip { display: block; }
+.chart-card { display: flex; flex-direction: column; }
+.hbar { display: flex; height: 14px; gap: 2px; margin: 4px 0 8px; }
+.hbar i { display: block; height: 100%; border-radius: 2px; min-width: 2px; }
+.kv { display: grid; grid-template-columns: 10px 1fr auto auto; gap: 3px 8px; align-items: center; font-size: 12px; }
+.kv .sw { width: 10px; height: 10px; border-radius: 2px; }
+.kv b { font-family: var(--mono); text-align: right; }
+.kv em { font-style: normal; color: var(--muted); font-family: var(--mono); text-align: right; min-width: 36px; }
+.cat { display: grid; grid-template-columns: 92px 1fr 24px 1fr;  gap: 4px 8px; align-items: center; font-size: 12px; }
+.cat .hbar { margin: 0; height: 12px; }
+.cat b { font-family: var(--mono); text-align: right; }
+.ingame { background: #4c5245; }
+.pb { display: grid; grid-template-columns: 130px 1fr 44px; gap: 3px 8px; align-items: center; font-size: 12px; }
+.pb .hbar { margin: 0; height: 10px; }
+.pb b { font-family: var(--mono); text-align: right; }
+.lc .ref { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--fg); opacity: .6; pointer-events: none; }
+.lc .ref span { position: absolute; right: 0; top: -15px; font: 10px var(--mono); color: var(--fg); }
+.legend-i { display: flex; gap: 12px; font-size: 11px; color: var(--muted); margin-top: 6px; }
+.legend-i i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.big8 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.big8 .big .v { font-size: clamp(22px, 2.1vw, 30px); }
+.big8 .big .d { font-size: 11.5px; }
+.toprow { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.screen { display: grid; gap: 10px; }
+.d-pitch { display: flex; flex-direction: column; gap: 12px; }
+.d-pitch .strip { grid-template-columns: repeat(2, 1fr); }
+.d-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.sides3 .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 10px; }
+.sides3 .metrics b { font-size: 16px; white-space: nowrap; }
+.sides3 .side { padding: 10px 12px; }
+.sides3 .side h3 { font-size: 16px; }
+.sides3 .side .sub { margin-bottom: 6px; font-size: 11px; }
+
+/* One screen per tab on laptop and desktop: panels scroll inside, the page does not */
+@media (min-width: 1100px) and (min-height: 640px) {
+  body { height: 100vh; overflow: hidden; display: flex; flex-direction: column; padding: 8px 14px 10px; }
+  header { margin-bottom: 8px; border-bottom: 1px solid var(--line); flex-wrap: nowrap; }
+  nav.tabs { border-bottom: none; margin: 0; flex: 1; }
+  nav.tabs button { padding: 8px 12px; }
+  [role=tabpanel] { flex: 1; min-height: 0; }
+  [role=tabpanel][hidden] { display: none; }
+  .screen { height: 100%; min-height: 0; }
+  .screen > *, .col > section { min-height: 0; overflow: auto; }
+  .col { overflow: auto; }
+
+  .screen.dash { grid-template-columns: minmax(340px, 4fr) 8fr; grid-template-rows: auto 1fr; grid-template-areas: "pitch kpis" "pitch charts"; }
+  .dash .d-pitch { grid-area: pitch; } .dash .d-kpis { grid-area: kpis; } .dash .d-charts { grid-area: charts; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; overflow: hidden; }
+  .dash .d-charts .span-all { grid-column: 1 / -1; }
+  .chart-card .lc { min-height: 0; }
+  .dash .d-pitch .strip { grid-template-columns: repeat(4, 1fr); }
+  .dash .d-pitch .strip div { padding: 6px 10px; }
+  .dash .d-pitch .strip b { font-size: 16px; }
+  .dash .pitch { font-size: clamp(28px, 2.9vw, 44px); }
+  .dash .big .v { font-size: clamp(26px, 2.6vw, 40px); }
+
+  .screen.cmpx { grid-template-columns: 1fr 1.05fr; grid-template-rows: auto 1fr; grid-template-areas: "launch today" "launch blue"; }
+  .cmpx .c-launch { display: flex; flex-direction: column; }
+  .cmpx .c-launch { grid-area: launch; } .cmpx .c-today { grid-area: today; } .cmpx .c-blue { grid-area: blue; }
+
+  .screen.play { grid-template-columns: 1fr 1.45fr .95fr .9fr; grid-template-rows: auto 1fr; }
+  .play #log-panel { flex: 1; } .play table button { padding: 2px 8px; } .play .log { max-height: none; }
+  .play .p-top { grid-column: 1 / -1; overflow: visible; }
+  .play .stats { grid-template-columns: repeat(8, minmax(0, 1fr)); margin: 0; }
+  .play .speed { margin-bottom: 6px; }
+  .play canvas#room-canvas { max-height: 190px; object-fit: contain; }
+
+  .screen.assets { grid-template-columns: 1fr 1.2fr; grid-template-rows: auto 1fr; }
+  .assets .a-right { display: flex; flex-direction: column; }
+  .lc { min-height: 100px; }
+  .assets .a-top { grid-column: 1 / -1; overflow: visible; }
+
+  .screen.tasks { grid-template-columns: 1.2fr 1fr; grid-template-rows: auto 1fr; grid-template-areas: "auto daily" "players game"; }
+  .tasks #automation-roi { grid-area: auto; } .tasks #manual-tasks { grid-area: daily; } .tasks #player-progress { grid-area: players; } .tasks #game-progress { grid-area: game; }
+  .tasks #player-progress, .tasks #game-progress { display: flex; flex-direction: column; }
+
+  .screen.cfo { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto 1fr; }
+  .cfo .f-in, .cfo .f-kpis { grid-column: 1 / -1; overflow: visible; }
+  .cfo .form { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px 10px; }
+  .cfo .form input { font-size: 13px; padding: 4px 6px; }
+  .cfo .big8 { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+  .cfo #cfo-price, .cfo #cfo-sequence, .cfo #cfo-flows { display: flex; flex-direction: column; }
+}
 </style>
 </head>
 <body>
 <header>
   <h1><b>Greenbox</b> terminal</h1>
+  <nav class="tabs" role="tablist">
+    <button type="button" role="tab" id="tab-dash" data-tab="dash" aria-selected="true">Dashboard</button>
+    <button type="button" role="tab" id="tab-compare" data-tab="compare" aria-selected="false">BigCoin vs Greenbox</button>
+    <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="false">Play demo</button>
+    <button type="button" role="tab" id="tab-assets" data-tab="assets" aria-selected="false">Assets</button>
+    <button type="button" role="tab" id="tab-tasks" data-tab="tasks" aria-selected="false">Tasks &amp; ROI</button>
+    <button type="button" role="tab" id="tab-cfo" data-tab="cfo" aria-selected="false">CFO</button>
+  </nav>
   <span class="live">Simulated · BUD is not live yet</span>
 </header>
-<nav class="tabs" role="tablist">
-  <button type="button" role="tab" id="tab-dash" data-tab="dash" aria-selected="true">Dashboard</button>
-  <button type="button" role="tab" id="tab-compare" data-tab="compare" aria-selected="false">BigCoin vs Greenbox</button>
-  <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="false">Play demo</button>
-  <button type="button" role="tab" id="tab-assets" data-tab="assets" aria-selected="false">Assets</button>
-  <button type="button" role="tab" id="tab-tasks" data-tab="tasks" aria-selected="false">Tasks &amp; ROI</button>
-  <button type="button" role="tab" id="tab-cfo" data-tab="cfo" aria-selected="false">CFO</button>
-</nav>
 
 <!-- ============ DASHBOARD ============ -->
 <div id="view-dash" role="tabpanel">
-  <div class="hero">
-    <p class="pitch">The new <em class="v">BigCoin</em>-style game, with <em>cannabis</em>, on <em class="g">Robinhood Chain</em>.</p>
-    <p class="hero-sub">Mint a strain. Grow it. Earn BUD by your share of the network.</p>
-    <div class="big4" id="dash-big"><div class="big"><span class="d">Loading the forecast…</span></div></div>
-    <div class="strip" id="dash-strip"></div>
-    <div class="loop" id="dash-loop"></div>
-    <p class="note" id="dash-note"></p>
+  <div class="screen dash">
+    <div class="d-pitch">
+      <p class="pitch">The new <em class="v">BigCoin</em>-style game, with <em>cannabis</em>, on <em class="g">Robinhood Chain</em>.</p>
+      <p class="hero-sub">Mint a strain. Grow it. Earn BUD by your share of the network.</p>
+      <div class="loop" id="dash-loop"></div>
+      <div class="strip" id="dash-strip"></div>
+      <section><h2>Where minted BUD went · day 14</h2><div id="dash-supply"></div></section>
+      <p class="note" id="dash-note" style="margin:0"></p>
+    </div>
+    <div class="big4 d-kpis" id="dash-big"><div class="big"><span class="d">Loading the forecast…</span></div></div>
+    <div class="d-charts">
+      <section class="chart-card"><h2>BUD price · first 14 days (model)</h2><div class="lc" id="dash-price"></div></section>
+      <section class="chart-card"><h2>Players · first 49 days (model)</h2><div class="lc" id="dash-players"></div></section>
+      <section class="span-all"><h2 id="dash-items-title">Items · NFT vs in-game</h2><div id="dash-items"></div></section>
+    </div>
   </div>
 </div>
 
 <!-- ============ COMPARE ============ -->
 <div id="view-compare" role="tabpanel" hidden>
-  <div class="hero">
-    <p class="pitch" style="max-width:none;font-size:clamp(22px,3.4vw,34px)"><em class="v">BigCoin</em> vs <em>Greenbox</em>: launch day</p>
-    <section class="wide">
+  <div class="screen cmpx">
+    <section class="c-launch">
       <div class="row" style="justify-content:space-between"><h2 style="margin:0">Launch-day tokenomics</h2>
         <div class="legend"><span class="tag src">Sourced</span><span class="tag unk">Not published</span></div></div>
       <div class="scroll"><table class="cmp" id="compare-launch"></table></div>
-    </section>
-    <h2 style="margin:18px 0 8px">Today</h2>
-    <div class="vs" id="compare-vs"></div>
-    <p class="callout" id="compare-takeaway"></p>
-    <section class="wide">
-      <div class="row" style="justify-content:space-between"><h2 style="margin:0">Blueprint, point by point</h2>
-        <div class="legend"><span class="tag same">Same</span><span class="tag changed">Changed</span><span class="tag new">New</span><span class="tag gap">Missing</span></div></div>
-      <div class="scroll"><table class="cmp" id="compare-table"></table></div>
       <details class="more" open><summary>Sources</summary>
         <b>WP</b> BigCoin whitepaper (bigcoin.tech/whitepaper.pdf) ·
         <b>Docs</b> docs.bigcoin.tech ·
@@ -197,74 +300,95 @@ canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block;
         <b>OS</b> OpenSea "Bigcoin Miners", read 3 Oct 2026 ·
         <b>BW</b> Blockworks (peak players, fall from peak).
         Greenbox figures are this prototype's launch plan and model (CFO tab), not market data.</details>
+      <p class="callout" id="compare-takeaway" style="margin-top:auto"></p>
+    </section>
+    <div class="c-today sides3">
+      <div class="vs" id="compare-vs"></div>
+    </div>
+    <section class="c-blue">
+      <div class="row" style="justify-content:space-between"><h2 style="margin:0">Blueprint, point by point</h2>
+        <div class="legend"><span class="tag same">Same</span><span class="tag changed">Changed</span><span class="tag new">New</span><span class="tag gap">Missing</span></div></div>
+      <div class="scroll"><table class="cmp" id="compare-table"></table></div>
     </section>
   </div>
 </div>
 
 <!-- ============ PLAY ============ -->
 <div id="view-play" role="tabpanel" hidden>
-  <div class="speed" id="speed">
-    <span class="muted">Speed</span>
-    <button type="button" id="pause" data-speed="0">Pause</button>
-    <button type="button" id="s1" data-speed="1">1×</button>
-    <button type="button" id="s10" data-speed="10">10×</button>
-    <button type="button" id="s60" data-speed="60">60×</button>
-    <button type="button" id="s600" data-speed="600">600×</button>
-    <button type="button" id="reset">New season</button>
-    <span id="confirm-reset" hidden><span class="bad">Wipe this save?</span>
-      <button type="button" id="reset-yes">Yes, restart</button> <button type="button" id="reset-no">Keep playing</button></span>
-    <span class="muted">Demo schedule: halvings every 12 hours, everything released at once.</span>
-  </div>
-  <div class="stats" id="stats"></div>
-  <div id="toast" class="muted" role="status"></div>
-  <div class="grid">
-    <section class="span2" id="scene-panel"><h2 id="scene-title">Your grow room</h2><canvas id="room-canvas" width="960" height="300" aria-label="Grow room view"></canvas>
-      <div class="row" id="tasks-row" style="margin-top:8px"></div></section>
-    <section id="room"></section>
-    <section class="span2" id="shop"></section>
-    <section id="utilities"></section>
-    <section id="network"></section>
-    <section id="leaders"></section>
-    <section id="inventory"></section>
-    <section id="cosmetics"></section>
-    <section id="badges"></section>
-    <section id="log-panel"><h2>Log</h2><ul class="log" id="log"></ul></section>
+  <div class="screen play">
+    <div class="p-top">
+      <div class="speed" id="speed">
+        <span class="muted">Speed</span>
+        <button type="button" id="pause" data-speed="0">Pause</button>
+        <button type="button" id="s1" data-speed="1">1×</button>
+        <button type="button" id="s10" data-speed="10">10×</button>
+        <button type="button" id="s60" data-speed="60">60×</button>
+        <button type="button" id="s600" data-speed="600">600×</button>
+        <button type="button" id="reset">New season</button>
+        <span id="confirm-reset" hidden><span class="bad">Wipe this save?</span>
+          <button type="button" id="reset-yes">Yes, restart</button> <button type="button" id="reset-no">Keep playing</button></span>
+        <span class="muted">Demo: halvings every 12h, all strains released.</span>
+        <span id="toast" class="muted" role="status"></span>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="col">
+      <section id="scene-panel"><h2 id="scene-title">Your grow room</h2><canvas id="room-canvas" width="960" height="300" aria-label="Grow room view"></canvas>
+        <div class="row" id="tasks-row" style="margin-top:8px"></div></section>
+      <section id="room"></section>
+      <section id="log-panel"><h2>Log</h2><ul class="log" id="log"></ul></section>
+    </div>
+    <div class="col"><section id="shop"></section></div>
+    <div class="col">
+      <section id="utilities"></section>
+      <section id="cosmetics"></section>
+      <section id="inventory"></section>
+    </div>
+    <div class="col">
+      <section id="network"></section>
+      <section id="leaders"></section>
+      <section id="badges"></section>
+    </div>
   </div>
 </div>
 
 <!-- ============ ASSETS ============ -->
 <div id="view-assets" role="tabpanel" hidden>
-  <section class="wide">
-    <div class="row" style="justify-content:space-between"><h2 style="margin:0">Every asset</h2>
-      <span class="note">BUD price <b class="gold" id="assets-p0"></b> launch · <b class="gold" id="assets-p3"></b> day 3 · <b class="gold" id="assets-p7"></b> day 7</span></div>
-    <div class="scroll" id="assets-table"></div>
-    <details class="more"><summary>How to read this</summary>Output is BUD per day per unit against the day-7 network; it falls as the network grows. Sold d14/d49 come from the live forecast; for rooms it is players at that tier or higher. Gorilla Glue and Gelato sell out near day 49; higher caps carry scarcity into the second halving era.</details>
-  </section>
+  <div class="screen assets">
+    <div class="a-top toprow">
+      <h2 style="margin:0">Every asset</h2>
+      <span class="note">BUD price <b class="gold" id="assets-p0"></b> launch · <b class="gold" id="assets-p3"></b> day 3 · <b class="gold" id="assets-p7"></b> day 7 (model)</span>
+      <span class="note">Payback: <b class="good">≤3d</b> · <b class="warn">≤14d</b> · <b class="bad">longer</b> · supply in <b class="violet">violet</b> is capped</span>
+    </div>
+    <section><div class="scroll" id="assets-other"></div></section>
+    <section class="a-right"><div class="scroll" id="assets-strains"></div>
+      <h2 style="margin-top:12px">Strain payback · days to earn back the price (day-7 network)</h2><div id="assets-payback"></div>
+      <details class="more"><summary>How to read this</summary>BUD / day is output per strain against the day-7 network; it falls as the network grows. Sold d14 comes from the live forecast; for rooms it is players at that tier or higher. Gorilla Glue and Gelato sell out near day 49; higher caps carry scarcity into the second halving era.</details>
+    </section>
+  </div>
 </div>
 
 <!-- ============ TASKS & ROI ============ -->
 <div id="view-tasks" role="tabpanel" hidden>
-  <div class="grid">
+  <div class="screen tasks">
     <section id="manual-tasks"></section>
     <section id="automation-roi"></section>
-    <section class="wide" id="player-progress"></section>
-    <section class="wide" id="game-progress"></section>
+    <section id="player-progress"></section>
+    <section id="game-progress"></section>
   </div>
 </div>
 
 <!-- ============ CFO ============ -->
 <div id="view-cfo" role="tabpanel" hidden>
-  <div class="grid">
-    <section class="wide">
-      <h2>Launch inputs</h2>
+  <div class="screen cfo">
+    <section class="f-in">
       <div class="form" id="cfo-form"></div>
       <details class="more"><summary>About the model</summary>The studio seeds the BUD/USD pool with the USD above plus a matching BUD reserve minted outside mining. Buy and sell volumes come from the forecast; these inputs only change the USD side.</details>
     </section>
-    <div class="wide" id="cfo-kpis"></div>
+    <div class="f-kpis" id="cfo-kpis"></div>
     <section id="cfo-price"></section>
     <section id="cfo-sequence"></section>
     <section id="cfo-flows"></section>
-    <div class="wide" id="cfo-payouts"></div>
   </div>
 </div>
 
@@ -348,6 +472,45 @@ function act(result) {
 const cache = {};
 function put(id, html) { if (cache[id] !== html) { cache[id] = html; $(id).innerHTML = html; } }
 
+// Single-series line chart: SVG path in a stretched viewBox, HTML axis labels, hover crosshair + tooltip.
+const charts = {};
+function lineChart(id, pts, { color, fx, fy, ticks, ref }) {
+  const el = $(id);
+  if (!el) return;
+  const xs = pts.map((q) => q.x), ys = pts.map((q) => q.y);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), y1 = Math.max(...ys, ref ? ref.y : 0) * 1.08 || 1;
+  const X = (x) => ((x - x0) / (x1 - x0 || 1)) * 1000, Y = (y) => 300 - (y / y1) * 300;
+  const d = pts.map((q, i) => `${i ? 'L' : 'M'}${X(q.x).toFixed(1)},${Y(q.y).toFixed(1)}`).join('');
+  const area = `${d}L1000,300L0,300Z`;
+  charts[id] = { pts, fx, fy, x0, x1, y1, color };
+  const yt = [0, 0.5, 1].map((f) => f * y1);
+  el.innerHTML = `<svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+      ${yt.map((v) => `<line class="grid-l" x1="0" x2="1000" y1="${Y(v)}" y2="${Y(v)}"/>`).join('')}
+      <path d="${area}" fill="${color}" opacity=".12"/><path class="line" d="${d}" stroke="${color}"/></svg>
+    ${yt.map((v) => `<span class="ax y" style="top:${(Y(v) / 3).toFixed(1)}%">${v ? fy(v) : '0'}</span>`).join('')}
+    ${(ticks || [x0, x1]).map((t, i, arr) => `<span class="ax x ${i === 0 ? 'first' : i === arr.length - 1 ? 'last' : ''}" style="left:${(X(t) / 10).toFixed(1)}%">${fx(t)}</span>`).join('')}
+    ${ref ? `<div class="ref" style="top:${(Y(ref.y) / 3).toFixed(1)}%"><span>${ref.label}</span></div>` : ''}
+    <div class="cross"></div><div class="dot" style="background:${color}"></div><div class="tip"></div>`;
+  el.setAttribute('role', 'img');
+  el.setAttribute('aria-label', `${fy(pts[0].y)} at ${fx(x0)} to ${fy(pts.at(-1).y)} at ${fx(x1)}`);
+}
+document.addEventListener('pointermove', (e) => {
+  const el = e.target.closest?.('.lc');
+  if (!el || !charts[el.id]) return;
+  const c = charts[el.id];
+  const r = el.getBoundingClientRect();
+  const f = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+  const xv = c.x0 + f * (c.x1 - c.x0);
+  let best = c.pts[0];
+  for (const q of c.pts) if (Math.abs(q.x - xv) < Math.abs(best.x - xv)) best = q;
+  const px = ((best.x - c.x0) / (c.x1 - c.x0 || 1)) * r.width, py = (1 - best.y / c.y1) * r.height;
+  el.querySelector('.cross').style.left = px + 'px';
+  const dot = el.querySelector('.dot'); dot.style.left = px + 'px'; dot.style.top = py + 'px';
+  const tip = el.querySelector('.tip');
+  tip.innerHTML = `${c.fx(best.x)} · <b>${c.fy(best.y, true)}</b>`;
+  tip.style.left = Math.min(px + 8, r.width - tip.offsetWidth) + 'px';
+});
+
 function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
 
 // Minimal placeholder art: a side view of the room with one pot per slot. Taller plants = higher tier strains.
@@ -394,6 +557,8 @@ function drawRoom(s) {
   if (!wet) { ctx.fillStyle = css('--bad'); ctx.font = '600 16px system-ui'; ctx.fillText('Soil is dry: potency halved. Water the plants.', 14, H - 20); }
   else if (s.rackFull) { ctx.fillStyle = css('--bad'); ctx.font = '600 16px system-ui'; ctx.fillText('Drying rack is full: new buds are spoiling. Harvest now.', 14, H - 20); }
 }
+
+const UTIL_SHORT = { drip: 'Waters automatically', trimmer: 'Harvests every hour', led: '−25% power draw, more plants fit', co2: '+10% potency' };
 
 function renderPlay() {
   const s = G.summary(state);
@@ -443,47 +608,46 @@ function renderPlay() {
     <div class="bar"><i style="width:${wattPct}%"></i></div>
     <div class="slots">${slots.join('')}</div>`);
 
-  put('shop', `<h2>Seed bank (mint strains)</h2><div class="scroll"><table>
-    <tr><th>Strain</th><th class="r">Cost</th><th class="r">Potency</th><th class="r">Watts</th><th class="r">pp per ${TOKEN}</th><th class="r">Season supply</th><th>Fits now</th><th></th></tr>
+  put('shop', `<h2>Seed bank · mint strains</h2><div class="scroll"><table>
+    <tr><th>Strain</th><th class="r">Cost</th><th class="r">Potency</th><th class="r">Left</th><th title="Fits in your room now, or what is missing">Fits</th><th></th></tr>
     ${STRAINS.filter((x) => !x.starter).map((x) => {
       const fit = G.canFit(state, x.id);
       const left = G.supplyLeft(state, x);
-      return `<tr><td>${x.name}</td><td class="r">${x.cost}</td><td class="r">${fmt(x.potency, 0)}</td><td class="r">${G.strainWatts(p.utilities, x)}</td>
-        <td class="r">${fmt(x.potency / x.cost, 0)}</td><td class="r">${left === null ? 'open' : `${left} left`}</td>
-        <td class="${fit ? 'warn' : ''}">${fit ? (fit.startsWith('No free') ? 'no slot' : 'no power') : 'yes'}</td>
+      return `<tr><td>${x.name}</td><td class="r">${x.cost}</td><td class="r">${fmt(x.potency, 0)}</td>
+        <td class="r ${left === null ? 'muted' : 'violet'}">${left === null ? 'open' : left}</td>
+        <td class="${fit ? 'warn' : 'good'}">${fit ? (fit.startsWith('No free') ? 'slot' : 'power') : 'yes'}</td>
         <td><button type="button" data-act="buy" data-id="${x.id}" ${p.wallet >= x.cost && left !== 0 ? '' : 'disabled'}>Buy</button></td></tr>`;
     }).join('')}</table></div>`);
 
-  put('utilities', `<h2>Utilities (one each, no slot)</h2><div class="scroll"><table>
+  put('utilities', `<h2>Utilities · one each, no slot</h2><div class="scroll"><table>
     <tr><th>Utility</th><th class="r">Cost</th><th></th></tr>
     ${UTILITIES.map((u) => {
       const own = p.utilities.includes(u.id);
-      return `<tr><td class="w"><b>${u.name}</b><span class="sub">${u.effect}</span></td><td class="r gold">${u.cost}</td>
+      return `<tr><td class="w"><b>${u.name}</b><span class="sub">${UTIL_SHORT[u.id]}</span></td><td class="r gold">${u.cost}</td>
         <td><button type="button" data-act="utility" data-id="${u.id}" ${!own && p.wallet >= u.cost ? '' : 'disabled'}>${own ? 'Owned' : 'Buy'}</button></td></tr>`;
     }).join('')}</table></div>`);
 
   const burnedPct = t.minted ? (t.burned / t.minted) * 100 : 0;
   put('network', `<h2>${TOKEN} token &amp; network</h2><div class="scroll"><table>
-    <tr><td>Season supply cap</td><td class="r">${fmt(s.cap)}</td></tr>
-    <tr><td>Minted so far</td><td class="r">${fmt(t.minted)} (${((t.minted / s.cap) * 100).toFixed(1)}%)</td></tr>
-    <tr><td>Burned (75% of spend)</td><td class="r">${fmt(t.burned)} (${burnedPct.toFixed(1)}% of minted)</td></tr>
-    <tr><td>Spoiled (unharvested)</td><td class="r">${fmt(t.spoiled)}</td></tr>
-    <tr><td>Treasury (25% of spend)</td><td class="r">${fmt(t.treasury)}</td></tr>
+    <tr><td>Minted</td><td class="r">${fmt(t.minted)} <span class="muted">/ ${fmt(s.cap, 0)}</span></td></tr>
+    <tr><td>Burned</td><td class="r good">${fmt(t.burned)} <span class="muted">${burnedPct.toFixed(0)}%</span></td></tr>
+    <tr><td>Treasury</td><td class="r gold">${fmt(t.treasury)}</td></tr>
+    <tr><td>Spoiled</td><td class="r bad">${fmt(t.spoiled)}</td></tr>
     <tr><td>Circulating</td><td class="r">${fmt(s.circulating)}</td></tr>
-    <tr><td>Halving era</td><td class="r">${s.era} (reward ${s.reward})</td></tr>
-    <tr><td>Network potency</td><td class="r">${fmt(s.networkPotency, 0)} pp</td></tr>
-    <tr><td>Active growers</td><td class="r">${s.activeGrowers} (${state.stats.quits} quit)</td></tr>
+    <tr><td>Era · reward</td><td class="r">${s.era} · ${s.reward}</td></tr>
+    <tr><td>Network</td><td class="r">${fmt(s.networkPotency, 0)} pp</td></tr>
+    <tr><td>Growers</td><td class="r">${s.activeGrowers} <span class="muted">(${state.stats.quits} quit)</span></td></tr>
     </table></div>`);
 
   const growers = state.bots.filter((b) => b.active).map((b) => ({ name: b.name, potency: b.potency, room: b.room }));
   growers.push({ name: 'You', potency: s.basePotency, room: p.room, you: true });
   growers.sort((a, b) => b.potency - a.potency);
   const rank = growers.findIndex((g) => g.you) + 1;
-  const top = growers.slice(0, 10);
-  if (rank > 10) top.push(growers[rank - 1]);
-  put('leaders', `<h2>Top growers (you are #${rank} of ${growers.length})</h2><div class="scroll"><table>
-    <tr><th>#</th><th>Grower</th><th>Room</th><th class="r">Potency</th></tr>
-    ${top.map((g) => `<tr class="${g.you ? 'you' : ''}"><td>${growers.indexOf(g) + 1}</td><td>${g.name}</td><td>${ROOMS[g.room].name}</td>
+  const top = growers.slice(0, 6);
+  if (rank > 6) top.push(growers[rank - 1]);
+  put('leaders', `<h2>Top growers · you #${rank} of ${growers.length}</h2><div class="scroll"><table>
+    <tr><th>#</th><th>Grower</th><th class="r">Potency</th></tr>
+    ${top.map((g) => `<tr class="${g.you ? 'you' : ''}"><td>${growers.indexOf(g) + 1}</td><td>${g.name} <span class="muted">${ROOMS[g.room].name}</span></td>
       <td class="r">${fmt(g.potency, 0)}</td></tr>`).join('')}
     </table></div>`);
 
@@ -492,7 +656,7 @@ function renderPlay() {
       const name = item.kind === 'strain' ? byStrain[item.id].name : byCosmetic[item.id].name;
       return `<tr><td>${name}</td><td><button type="button" data-act="replant" data-uid="${item.uid}">Plant</button>
         <button type="button" data-act="sell" data-uid="${item.uid}">Compost (+${fmt(Math.min(refund(item), t.treasury))})</button></td></tr>`;
-    }).join('')}</table></div>` : '<p class="muted">Empty. Uprooted plants and seeds that did not fit land here. Composting burns the item and refunds 20% of its price from the treasury.</p>'}`);
+    }).join('')}</table></div>` : '<p class="note">Empty. Uprooted or unplaced items land here. Compost burns one for a 20% refund.</p>'}`);
 
   put('cosmetics', `<h2>Decorations</h2><div class="scroll"><table>
     <tr><th>Item</th><th class="r">Cost</th><th class="r">Left</th><th></th></tr>
@@ -500,7 +664,7 @@ function renderPlay() {
       const left = G.cosmeticsLeft(state, c.id);
       return `<tr><td>${c.name}</td><td class="r">${c.cost}</td><td class="r">${left === null ? 'open' : left}</td>
         <td><button type="button" data-act="cosmetic" data-id="${c.id}" ${p.wallet >= c.cost && left !== 0 ? '' : 'disabled'}>${left === 0 ? 'Sold out' : 'Buy'}</button></td></tr>`;
-    }).join('')}</table></div><p class="muted">Decorations use a slot but add no potency or power draw. Limited drops are shared with the whole network.</p>`);
+    }).join('')}</table></div><p class="note">Take a slot, no potency. Limited drops are shared network-wide.</p>`);
 
   put('badges', `<h2>Badges ${p.badges.length}/${BADGES.length}</h2><div class="chips">${BADGES.map((b) =>
     `<span class="chip ${p.badges.includes(b.id) ? 'got' : ''}">${b.name}</span>`).join('')}</div>`);
@@ -544,18 +708,18 @@ try { Object.assign(assumptions, JSON.parse(localStorage.getItem('greenbox-cfo')
 let model = null;
 
 const FIELDS = [
-  ['launchPrice', 'BUD launch price (USD)', 0.001],
-  ['lpUsd', 'Pool seed (USD)', 1000],
-  ['founderPrice', 'Founder Pack price (USD)', 1],
-  ['growerPrice', 'Grower Pack price (USD)', 1],
-  ['buybackPct', 'Pack revenue to buyback and burn (%)', 5],
-  ['lpPct', 'Pack revenue to pool depth (%)', 5],
-  ['treasurySellPct', 'Treasury BUD sold for ops (%)', 5],
-  ['paybackDays', 'Target pack payback (days)', 1],
+  ['launchPrice', 'Launch price $', 0.001],
+  ['lpUsd', 'Pool seed $', 1000],
+  ['founderPrice', 'Founder Pack $', 1],
+  ['growerPrice', 'Grower Pack $', 1],
+  ['buybackPct', 'Packs → buyback %', 5],
+  ['lpPct', 'Packs → pool %', 5],
+  ['treasurySellPct', 'Treasury sold %', 5],
+  ['paybackDays', 'Payback days', 1],
 ];
 $('cfo-form').innerHTML = FIELDS.map(([k, label, stepv]) =>
   `<label for="f-${k}">${label}<input type="number" id="f-${k}" data-field="${k}" step="${stepv}" min="0" value="${assumptions[k]}"></label>`).join('')
-  + '<label>&nbsp;<button type="button" id="cfo-reset">Reset to defaults</button></label>';
+  + '<label>&nbsp;<button type="button" id="cfo-reset">Reset</button></label>';
 $('cfo-form').addEventListener('input', (e) => {
   const k = e.target.dataset.field;
   if (!k) return;
@@ -578,7 +742,7 @@ async function loadForecast() {
     const res = await fetch('./forecast.json');
     forecast = await res.json();
   } catch (e) {
-    for (const v of ['assets-table', 'manual-tasks', 'cfo-kpis', 'dash-big']) $(v).innerHTML = '<p class="bad">Could not load forecast.json. Serve this folder over HTTP.</p>';
+    for (const v of ['assets-other', 'manual-tasks', 'cfo-kpis', 'dash-big']) $(v).innerHTML = '<p class="bad">Could not load forecast.json. Serve this folder over HTTP.</p>';
     return;
   }
   renderAnalysis();
@@ -610,47 +774,59 @@ function renderAssets() {
   const owners = (tier, rooms) => rooms.slice(tier).reduce((a, b) => a + b, 0);
   const nftTag = (n) => (n ? '<span class="tag new">NFT</span>' : '<span class="tag same">in-game</span>');
   const payCls = (d) => (d <= 3 ? 'good' : d <= 14 ? 'warn' : 'bad');
-  const head = `<tr><th>Asset</th><th></th><th>Adds</th><th class="r">BUD</th><th class="r">USD launch</th><th class="r">USD day 7</th>
-    <th class="r">BUD / day</th><th class="r">Payback</th><th class="r">Supply</th><th class="r">Release</th><th class="r">Sold d14</th></tr>`;
-  const row = (c) => `<tr><td><b>${c.name}</b></td><td>${nftTag(c.nft)}</td><td class="wrap muted">${c.adds}</td><td class="r">${c.bud ?? '—'}</td>
-    <td class="r gold">${c.usd0 != null ? usd(c.usd0) : '—'}</td><td class="r gold">${c.usd7 != null ? usd(c.usd7) : '—'}</td>
-    <td class="r good">${c.out ?? '—'}</td><td class="r ${c.payDays != null ? payCls(c.payDays) : 'muted'}">${c.payback ?? '—'}</td>
-    <td class="r ${c.supply === 'open' ? 'muted' : 'violet'}">${c.supply}</td><td class="r muted">${c.release}</td><td class="r">${c.s14}</td></tr>`;
   const priced = (bud) => ({ bud, usd0: bud * P0, usd7: bud * P7 });
-  const rows = [];
-  const group = (t) => rows.push(`<tr class="group"><td colspan="11">${t}</td></tr>`);
-  group('Starter packs · paid in ETH');
+  const money = (c) => `<td class="r">${c.bud ?? '—'}</td><td class="r gold">${c.usd0 != null ? usd(c.usd0) : '—'}</td><td class="r gold">${c.usd7 != null ? usd(c.usd7) : '—'}</td>`;
+  const moneyL = (c) => `<td class="r">${c.bud ?? '—'}</td><td class="r gold">${c.usd0 != null ? usd(c.usd0) : '—'}</td>`;
+  const sup = (v) => `<td class="r ${v === 'open' ? 'muted' : 'violet'}">${v}</td>`;
+
+  // Left: everything that is not a strain.
+  const rowsA = [];
+  const groupA = (t) => rowsA.push(`<tr class="group"><td colspan="5">${t}</td></tr>`);
+  const soldCap = (sold, cap) => (cap === 'open' ? `<td class="r">${sold}</td>` : `<td class="r violet">${sold} / ${cap}</td>`);
+  const rowA = (c) => `<tr><td><b>${c.name}</b>${c.nft ? ' <span class="tag new">NFT</span>' : ''}</td><td class="muted">${c.adds}</td>${moneyL(c)}${soldCap(c.s14, c.supply)}</tr>`;
+  const SHORT = { drip: 'Auto-water', trimmer: 'Auto-harvest hourly', led: '−25% power draw', co2: '+10% potency' };
+  groupA('Starter packs · paid in ETH');
   for (const pk of PACKS) {
     const cfgPack = LIVE().packs.find((x) => x.id === pk.id);
     const pot = cfgPack.strains.reduce((a, id) => a + byStrain[id].potency, 0);
     const out = pot * budPerPotencyDay(24);
     const days = assumptions[pk.priceKey] / (out * P0);
-    rows.push(row({ nft: true, name: pk.name, adds: pk.contents, bud: null, usd0: assumptions[pk.priceKey], usd7: null,
-      out: fmt(out, 1), payback: `${days.toFixed(1)}d`, payDays: days, supply: 'open', release: 'launch', s14: fmt(d14.packs[pk.id] || 0, 0) }));
+    rowsA.push(`<tr><td><b>${pk.name}</b> <span class="tag new">NFT</span></td><td class="w muted">${pk.contents}<span class="sub"><span class="good">${fmt(out, 0)} BUD/day</span> · <span class="${payCls(days)}">${days.toFixed(1)}d payback</span></span></td>
+      <td class="r">—</td><td class="r gold">${usd(assumptions[pk.priceKey])}</td><td class="r">${fmt(d14.packs[pk.id] || 0, 0)}</td></tr>`);
   }
-  group('Grow rooms · space');
+  groupA('Grow rooms · space');
   ROOMS.forEach((r, i) => {
     const prev = ROOMS[i - 1];
-    rows.push(row({ name: r.name, adds: prev ? `+${r.slots - prev.slots} slots · +${fmt(r.watts - prev.watts, 0)} W` : `${r.slots} slots · ${r.watts} W`,
-      ...(r.cost ? priced(r.cost) : { bud: 'free', usd0: null, usd7: null }), supply: 'open', release: i ? '24h cooldown' : 'launch', s14: fmt(owners(i, d14.rooms), 0) }));
+    rowsA.push(rowA({ name: r.name, adds: prev ? `+${r.slots - prev.slots} slots · +${fmt(r.watts - prev.watts, 0)} W` : `${r.slots} slots · ${r.watts} W`,
+      ...(r.cost ? priced(r.cost) : { bud: 'free', usd0: null, usd7: null }), supply: 'open', s14: fmt(owners(i, d14.rooms), 0) }));
   });
-  group('Strains · harvest');
-  for (const st of STRAINS) {
+  groupA('Utilities · automation and boosts');
+  for (const u of UTILITIES) rowsA.push(rowA({ name: u.name, adds: SHORT[u.id] || u.effect, ...priced(u.cost), supply: 'open', s14: '—' }));
+  groupA('Decorations · looks only');
+  for (const c of COSMETICS) {
+    rowsA.push(rowA({ nft: c.nft, name: c.name, adds: c.supply ? 'Limited drop' : 'Open', ...priced(c.cost),
+      supply: c.supply == null ? 'open' : c.supply.toLocaleString(), s14: c.supply == null ? '—' : fmt(d14.items[c.id] || 0, 0) }));
+  }
+  put('assets-other', `<table><tr><th>Asset</th><th>Adds</th><th class="r">BUD</th><th class="r">$ launch</th><th class="r">Sold d14 / cap</th></tr>${rowsA.join('')}</table>`);
+
+  // Right: strains, the producers (all NFTs).
+  const rowsS = STRAINS.map((st) => {
     const out = st.potency * yieldDay;
     const days = st.cost ? st.cost / out : null;
-    rows.push(row({ nft: st.nft, name: st.name, adds: `${fmt(st.potency, 0)} pp · ${st.watts} W`,
-      ...(st.cost ? priced(st.cost) : { bud: 'free', usd0: null, usd7: null }), out: fmt(out, out < 10 ? 2 : 0), payback: days ? `${days.toFixed(1)}d` : 'free', payDays: days,
-      supply: st.supply == null ? 'open' : st.supply.toLocaleString(), release: st.unlockHours ? `day ${st.unlockHours / 24}` : 'launch',
-      s14: st.supply == null ? '—' : fmt(d14.items[st.id] || 0, 0) }));
-  }
-  group('Utilities · automation and boosts');
-  for (const u of UTILITIES) rows.push(row({ name: u.name, adds: u.effect, ...priced(u.cost), supply: 'open', release: 'launch', s14: '—' }));
-  group('Decorations · looks only');
-  for (const c of COSMETICS) {
-    rows.push(row({ nft: c.nft, name: c.name, adds: c.supply ? 'Limited drop' : 'Open', ...priced(c.cost),
-      supply: c.supply == null ? 'open' : c.supply.toLocaleString(), release: 'launch', s14: c.supply == null ? '—' : fmt(d14.items[c.id] || 0, 0) }));
-  }
-  put('assets-table', `<table>${head}${rows.join('')}</table>`);
+    const c = st.cost ? priced(st.cost) : { bud: 'free', usd0: null, usd7: null };
+    return `<tr><td><b>${st.name}</b> <span class="muted">${fmt(st.potency, 0)} pp</span></td>${money(c)}
+      <td class="r good">${fmt(out, out < 10 ? 2 : 0)}</td><td class="r ${days != null ? payCls(days) : 'muted'}">${days ? days.toFixed(1) + 'd' : 'free'}</td>
+      ${sup(st.supply == null ? 'open' : st.supply.toLocaleString())}<td class="r muted">${st.unlockHours ? `day ${st.unlockHours / 24}` : 'launch'}</td></tr>`;
+  });
+  const paid = STRAINS.filter((st) => st.cost);
+  const pbMax = Math.max(...paid.map((st) => st.cost / (st.potency * yieldDay)));
+  put('assets-payback', `<div class="pb">${paid.map((st) => {
+    const d = st.cost / (st.potency * yieldDay);
+    return `<span>${st.name}</span><div class="hbar"><i style="width:${(d / pbMax) * 100}%;background:var(--${d <= 3 ? 'good' : d <= 14 ? 'warn' : 'bad'})"></i></div><b class="${payCls(d)}">${d.toFixed(1)}d</b>`;
+  }).join('')}</div><p class="note">Higher tiers pay back faster, which is what pulls players up the ladder.</p>`);
+  put('assets-strains', `<table><tr class="group"><td colspan="8">Strains · harvest · all NFTs · output and payback vs the day-7 network</td></tr>
+    <tr><th>Strain</th><th class="r">BUD</th><th class="r">$ launch</th><th class="r">$ d7</th><th class="r">BUD/day</th><th class="r">Payback</th><th class="r">Supply</th><th class="r">Release</th></tr>
+    ${rowsS.join('')}</table>`);
 }
 
 function renderTasks() {
@@ -701,7 +877,7 @@ function renderTasks() {
     }).join('')}</table></div>
     <p class="callout">Simulated: automation turns <b class="gold">100 BUD</b> into <b class="good">+${fmt(aut.earned - man.earned, 0)} BUD</b> by day 14 (Founder Pack, daily login).</p>`);
 
-  const hrs = [1, 24, 72, 168, 336];
+  const hrs = [24, 72, 168, 336];
   put('player-progress', `<h2>Player progress · BUD earned</h2>
     <div class="scroll"><table>
     <tr><th>Player</th><th class="r">Pays</th>${hrs.map((x) => `<th class="r">${hourLabel(x)}</th>`).join('')}<th class="r">Room d14</th></tr>
@@ -715,10 +891,14 @@ function renderTasks() {
       const end = pl.snaps.at(-1);
       return `<tr><td><b>${pl.name}</b></td><td class="r gold">${cost ? usd(cost) : 'free'}</td>${cells}<td class="r">${ROOMS[end.room].name}</td></tr>`;
     }).join('')}</table></div>
-    <p class="callout risk"><b>Free players stall</b> at ~1 BUD/day once the 7-day new-player pool ends.</p>`);
+    <p class="callout risk"><b>Free players stall</b> at ~1 BUD/day once the 7-day new-player pool ends.</p>
+    <h2 style="margin-top:12px">Founder Pack + automation · USD value of BUD earned</h2><div class="lc" id="tasks-chart"></div>`);
+  const fa = forecast.players.find((x) => x.id === 'founder_auto');
+  lineChart('tasks-chart', fa.snaps.filter((sn) => sn.hour <= 336).map((sn) => ({ x: sn.hour / 24, y: sn.earned * priceAt(model, sn.hour) })),
+    { color: css('--accent'), fx: (x) => `day ${Math.round(x * 10) / 10}`, fy: (y) => usd(y), ticks: [0, 3, 7, 14], ref: { y: assumptions.founderPrice, label: `pack ${usd(assumptions.founderPrice)}` } });
 
   const rowsH = [1, 6, 24, 72, 168, 336].map((x) => H(x));
-  put('game-progress', `<h2>Whole game · dev view</h2>
+  put('game-progress', `<h2>Whole game · dev view (model)</h2>
     <div class="scroll"><table>
     <tr><th>Time</th><th class="r">Players</th><th class="r">Minted</th><th class="r">Burned</th><th class="r">Treasury</th><th class="r">Spoiled</th><th class="r">Packs</th><th class="r">Price</th></tr>
     ${rowsH.map((g) => `<tr><td><b>${hourLabel(g.hour)}</b></td><td class="r">${g.players.toLocaleString()}</td><td class="r">${fmt(g.minted, 0)}</td>
@@ -727,7 +907,11 @@ function renderTasks() {
     ${forecast.game.daily.filter((d) => d.day % 7 === 0).map((d) => `<tr><td><b>day ${d.day}</b></td><td class="r">${d.players.toLocaleString()}</td><td class="r">${fmt(d.minted, 0)}</td>
       <td class="r good">${pct(d.burned / d.minted, 0)}</td><td class="r gold">${fmt(d.treasury, 0)}</td><td class="r muted">—</td><td class="r muted">—</td><td class="r muted">—</td></tr>`).join('')}
     </table></div>
-    <details class="more"><summary>Assumptions</summary>${fmt(cfg.blockReward * 86400, 0)} BUD/day until the first halving (~day ${Math.round(cfg.halvingInterval / 86400)}). Starts with ${(cfg.startingBots * cfg.cohort).toLocaleString()} players; launch hype halves every 3 days. Spend: strains ${fmt(H(336).spendBy.strains, 0)}, rooms ${fmt(H(336).spendBy.rooms, 0)}, utilities ${fmt(H(336).spendBy.utilities, 0)}, decor ${fmt(H(336).spendBy.cosmetics, 0)} BUD by day 14.</details>`);
+    <details class="more"><summary>Assumptions</summary>${fmt(cfg.blockReward * 86400, 0)} BUD/day until the first halving (~day ${Math.round(cfg.halvingInterval / 86400)}). Starts with ${(cfg.startingBots * cfg.cohort).toLocaleString()} players; launch hype halves every 3 days. Spend: strains ${fmt(H(336).spendBy.strains, 0)}, rooms ${fmt(H(336).spendBy.rooms, 0)}, utilities ${fmt(H(336).spendBy.utilities, 0)}, decor ${fmt(H(336).spendBy.cosmetics, 0)} BUD by day 14.</details>
+    <h2 style="margin-top:12px">Share of minted BUD burned · first 49 days (model)</h2><div class="lc" id="tasks-burn"></div>`);
+  const burnPts = forecast.game.hourly.filter((q) => q.hour % 24 === 0 && q.minted).map((q) => ({ x: q.hour / 24, y: q.burned / q.minted }))
+    .concat(forecast.game.daily.map((q) => ({ x: q.day, y: q.burned / q.minted })));
+  lineChart('tasks-burn', burnPts, { color: css('--accent'), fx: (x) => `day ${x}`, fy: (y) => pct(y, 0), ticks: [0, 14, 28, 49] });
 }
 
 function renderCfo() {
@@ -737,14 +921,13 @@ function renderCfo() {
   const emitUsd = (h) => LIVE().blockReward * 86400 * priceAt(m, h);
   const up = m.price / P0 - 1;
   const big = (cls, k, v, d) => `<div class="big ${cls}"><span class="k">${k}</span><span class="v">${v}</span><span class="d">${d}</span></div>`;
-  put('cfo-kpis', `<h2>Day 14</h2><div class="big4">
-    ${big('gold', 'BUD price', usd(m.price), `<b class="${up >= 0 ? 'good' : 'bad'}">${up >= 0 ? '+' : ''}${pct(up, 0)}</b> vs launch`)}
+  const kpiTiles = `
+    ${big('gold', 'BUD price d14', usd(m.price), `<b class="${up >= 0 ? 'good' : 'bad'}">${up >= 0 ? '+' : ''}${pct(up, 0)}</b> vs launch`)}
     ${big('gold', 'Pack revenue', usd(m.packUsd), `${(founders + growers).toLocaleString()} packs sold`)}
     ${big('green', 'Pool depth', usd(m.poolUsd), `from ${usd(a.lpUsd)} seed`)}
-    ${big('green', 'Operating cash', usd(m.opsUsd), `treasury holds ${fmt(m.treasuryBud, 0)} BUD`)}
-  </div>`);
+    ${big('green', 'Operating cash', usd(m.opsUsd), `treasury holds ${fmt(m.treasuryBud, 0)} BUD`)}`;
 
-  put('cfo-price', `<h2>Price path</h2><div class="scroll"><table>
+  put('cfo-price', `<h2>BUD price · first 14 days (model)</h2><div class="lc" id="cfo-chart" style="min-height:140px"></div><div class="scroll"><table>
     <tr><th>Day</th><th class="r">Price</th><th class="r">Change</th><th class="r">Players</th><th class="r">Payout / day</th></tr>
     ${[0, 1, 3, 7, 14].map((d) => { const pr = priceAt(m, d * 24); const ch = pr / P0 - 1; return `<tr><td><b>${d}</b></td><td class="r gold">${usd(pr)}</td>
       <td class="r ${ch >= 0 ? 'good' : 'bad'}">${ch >= 0 ? '+' : ''}${pct(ch, 0)}</td><td class="r">${H(d * 24).players.toLocaleString()}</td><td class="r gold">${usd(emitUsd(d * 24))}</td></tr>`; }).join('')}
@@ -757,14 +940,18 @@ function renderCfo() {
     <tr><td><b>Launch</b></td><td class="w">Rooms, strains to OG Kush, utilities<span class="sub">paid in BUD · main burn</span></td><td class="r muted">open</td></tr>
     <tr><td><b>Launch</b></td><td>Limited decorations</td><td class="r violet">capped</td></tr>
     ${STRAINS.filter((x) => x.unlockHours > 0).map((x) => `<tr><td><b>Day ${x.unlockHours / 24}</b></td><td>${x.name}</td><td class="r ${x.supply ? 'violet' : 'muted'}">${x.supply ? x.supply.toLocaleString() : 'open'}</td></tr>`).join('')}
-    </table></div>`);
+    </table></div>
+    <h2 style="margin-top:12px">Pack revenue · cumulative USD (model)</h2><div class="lc" id="cfo-packs"></div>`);
+  const packRev = forecast.game.hourly.filter((q) => q.hour % 6 === 0).map((q) => ({ x: q.hour / 24,
+    y: PACKS.reduce((t2, pk) => t2 + (q.packs[pk.id] || 0) * a[pk.priceKey], 0) }));
+  lineChart('cfo-packs', packRev, { color: css('--gold'), fx: (x) => `day ${Math.round(x * 10) / 10}`, fy: (y) => usd(y), ticks: [0, 3, 7, 14] });
 
-  put('cfo-flows', `<h2>Where the money goes</h2><div class="scroll"><table>
+  const flowsHtml = `<h2>Where the money goes</h2><div class="scroll"><table>
     <tr><th>In</th><th class="r">14 days</th><th>Out</th></tr>
     <tr><td><b>Pack sales</b></td><td class="r gold">${usd(m.packUsd)}</td><td class="w"><span class="good">${a.buybackPct}% buyback + burn</span> · <span class="good">${a.lpPct}% pool depth</span> · ${100 - a.buybackPct - a.lpPct}% ops</td></tr>
     <tr><td><b>In-game spend</b></td><td class="r gold">${fmt(Object.values(end.spendBy).reduce((x, y) => x + y, 0), 0)} BUD</td><td class="w"><span class="good">75% burned</span> · 25% treasury</td></tr>
     <tr><td><b>Treasury</b></td><td class="r gold">${fmt(end.treasury, 0)} BUD</td><td class="w">${a.treasurySellPct}% sold for ops · rest pairs pool, refunds, boosts</td></tr>
-    </table></div>`);
+    </table></div>`;
 
   const T = a.paybackDays;
   const neededDaily = (founders * a.founderPrice + growers * a.growerPrice) / T;
@@ -776,13 +963,17 @@ function renderCfo() {
     const sn = pl.snaps.reduce((b2, x) => (x.hour <= T * 24 ? x : b2), pl.snaps[0]);
     return pr / Math.max(1e-9, sn.earned);
   }));
-  put('cfo-payouts', `<h2>Flywheel payout</h2><div class="big4">
-    ${big('gold', 'Needed / day', usd(neededDaily), `pack buyers paid back in ${T} days`)}
+  put('cfo-kpis', `<div class="big8">${kpiTiles}
+    ${big('gold', 'Needed / day', usd(neededDaily), `pays packs back in ${T} days`)}
     ${big('gold', 'Paid out / day', usd(actual7), 'emission value, day 7')}
     ${big(cov >= 1 ? 'green' : 'red', 'Coverage', `${cov.toFixed(1)}×`, cov >= 1 ? 'flywheel turns' : 'flywheel stalls')}
-    ${big('violet', 'Floor price', usd(needPrice), 'BUD price that still pays back')}
-  </div>
-  <p class="callout risk"><b>Keep BUD above ${usd(needPrice)}.</b> Below it, raise buybacks or cut pack prices. Payouts rely on new buyers until BUD has outside demand.</p>`);
+    ${big('violet', 'Floor price', usd(needPrice), 'BUD price that still pays back')}</div>`);
+  put('cfo-flows', flowsHtml + `<p class="callout risk"><b>Keep BUD above ${usd(needPrice)}.</b> Below it, raise buybacks or cut pack prices. Payouts rely on new buyers until BUD has outside demand.</p>
+    <h2 style="margin-top:12px">Pool depth · USD side (model)</h2><div class="lc" id="cfo-pool"></div>`);
+  lineChart('cfo-pool', m.path.filter((q) => q.hour % 6 === 0).map((q) => ({ x: q.hour / 24, y: q.U })),
+    { color: css('--accent'), fx: (x) => `day ${Math.round(x * 10) / 10}`, fy: (y) => usd(y), ticks: [0, 3, 7, 14] });
+  lineChart('cfo-chart', m.path.filter((q) => q.hour % 6 === 0).map((q) => ({ x: q.hour / 24, y: q.price })),
+    { color: css('--gold'), fx: (x) => `day ${Math.round(x * 10) / 10}`, fy: (y) => usd(y), ticks: [0, 3, 7, 14] });
 }
 
 // Item counts and NFT split, straight from content.js and the pack list.
@@ -827,11 +1018,31 @@ function renderDash() {
   put('dash-strip', [
     ['Max supply', fmt(cap, 0)], ['Per day', fmt(cfg.blockReward * 86400, 0)], ['Halving', `~${Math.round(cfg.halvingInterval / 86400)} days`],
     ['Burned', '<span class="good">75%</span>'], ['Treasury', '<span class="gold">25%</span>'], ['New players', `${pct(cfg.seedlingPool, 0)} pool`],
-    ['Players d14', end.players.toLocaleString()], ['Pack revenue d14', `<span class="gold">${usd(m.packUsd)}</span>`],
+    ['Players d14', fmt(end.players, 0)], ['Packs d14', `<span class="gold">${usd(m.packUsd)}</span>`],
   ].map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join(''));
   put('dash-loop', ['Mint', 'Grow', 'Earn BUD', 'Spend · 75% burned', 'Bigger room', 'Bigger share']
     .map((x, i) => `<span class="step ${i === 2 ? 'hot' : ''}">${x}</span>`).join('<span class="arrow">→</span>') + '<span class="arrow">↺</span>');
   $('dash-note').innerHTML = `<span class="bad">Risk:</span> payouts depend on new buyers. Details in BigCoin vs Greenbox and CFO.`;
+
+  lineChart('dash-price', m.path.filter((q) => q.hour % 6 === 0).map((q) => ({ x: q.hour / 24, y: q.price })),
+    { color: css('--gold'), fx: (x) => `day ${Math.round(x * 10) / 10}`, fy: (y) => usd(y), ticks: [0, 3, 7, 14] });
+  const pl = forecast.game.hourly.filter((q) => q.hour % 24 === 0).map((q) => ({ x: q.hour / 24, y: q.players }))
+    .concat(forecast.game.daily.map((q) => ({ x: q.day, y: q.players })));
+  lineChart('dash-players', pl, { color: css('--accent'), fx: (x) => `day ${x}`, fy: (y) => (y >= 1000 ? (y / 1000).toFixed(y >= 1e4 ? 0 : 1) + 'k' : String(Math.round(y))), ticks: [0, 14, 28, 49] });
+
+  const burned = end.burned, treas = end.treasury, spoiled = end.spoiled, held = Math.max(0, end.minted - burned - treas - spoiled);
+  const parts = [['Burned', burned, 'var(--accent)'], ['Held by players', held, 'var(--muted)'], ['Treasury', treas, 'var(--gold)'], ['Spoiled', spoiled, 'var(--bad)']];
+  put('dash-supply', `<div class="hbar" role="img" aria-label="Share of ${fmt(end.minted, 0)} BUD minted by day 14">${parts.map(([k, v, c]) => `<i style="flex:${v};background:${c}" title="${k}: ${fmt(v, 0)} BUD"></i>`).join('')}</div>
+    <div class="kv">${parts.map(([k, v, c]) => `<span class="sw" style="background:${c}"></span><span>${k}</span><b>${fmt(v, 0)}</b><em>${pct(v / end.minted, 0)}</em>`).join('')}
+    <span></span><span class="muted">Minted</span><b>${fmt(end.minted, 0)}</b><em></em></div>`);
+
+  const cats = [['Strains', STRAINS.length, STRAINS.length], ['Rooms', ROOMS.length, 0], ['Utilities', UTILITIES.length, 0],
+    ['Decorations', COSMETICS.length, c.limitedDecor], ['Starter packs', PACKS.length, PACKS.length]];
+  const maxN = Math.max(...cats.map((x) => x[1]));
+  $('dash-items-title').textContent = `${c.total} items · ${c.nft} NFTs, ${c.inGame} in-game`;
+  put('dash-items', `<div class="cat">${cats.map(([k, n, nft]) => `<span>${k}</span><div class="hbar" style="width:${(n / maxN) * 100}%">
+      ${nft ? `<i style="flex:${nft};background:var(--accent)" title="${nft} NFT"></i>` : ''}${n - nft ? `<i class="ingame" style="flex:${n - nft}" title="${n - nft} in-game"></i>` : ''}</div><b>${n}</b><span class="muted">${{ Strains: 'producers · potency', Rooms: 'slots and power', Utilities: 'automation and boosts', Decorations: 'looks only · 3 limited', 'Starter packs': 'sold for USD (ETH)' }[k]}</span>`).join('')}</div>
+    <div class="legend-i"><span><i style="background:var(--accent)"></i>NFT (tradable)</span><span><i class="ingame"></i>In-game only</span></div>`);
 }
 
 // BigCoin market, 3 Oct 2026: DexScreener API (all 11 $BIG pools on Abstract) and OpenSea "Bigcoin Miners".
@@ -898,7 +1109,7 @@ function renderCompare() {
       ${metric('NFT floor', usd(b.floor), 'violet')}${metric('NFT volume, all-time', usd(b.nftVolume))}
     </div><div class="sub" style="margin:10px 0 0">Price and cap from the deepest pool (${b.mainPool.name}, ${usd(b.mainPool.liquidity)} liquidity). Pools range ${usd(b.priceLow)} to ${usd(b.priceHigh)}.</div></div>
     <div class="side green-box"><h3>Greenbox</h3><div class="sub">Model, day 14 · not market data</div><div class="metrics">
-      ${metric('Token price', `${usd(a.launchPrice)} → ${usd(m.price)}`, 'gold')}${metric('vs launch', `+${pct(m.price / a.launchPrice - 1, 0)}`, 'good')}
+      ${metric('Launch price', usd(a.launchPrice), 'gold')}${metric('Price day 14', usd(m.price), 'gold')}
       ${metric('Fully diluted', usd(cap * a.launchPrice))}${metric('Pool liquidity', usd(m.poolUsd), 'good')}
       ${metric('Volume / day', usd(dailyVol), 'good')}${metric('Players', end.players.toLocaleString())}
       ${metric('NFT types', `${c.nft}`)}${metric('Starter mint', usd(a.founderPrice), 'gold')}
