@@ -1,11 +1,12 @@
 // Scripted player for balance runs and forecasts: at each check-in it does the manual tasks, then reinvests greedily.
-import { ROOMS, STRAINS } from '../public/economy/content.js';
+import { ROOMS, STRAINS, UTILITIES } from '../public/economy/content.js';
 import {
   claim, water, buyStrain, buyUtility, upgradeRoom, canFit, playerWatts, uproot, sellBack, lockLeft,
   isUnlocked, supplyLeft, strainWatts,
 } from '../public/economy/engine.js';
 
 const byId = Object.fromEntries(STRAINS.map((s) => [s.id, s]));
+const utilCost = (id) => UTILITIES.find((u) => u.id === id).cost;
 
 // Gives the player a USD starter pack at launch, the same way simulated founders get theirs.
 export function grantPack(state, pack) {
@@ -20,8 +21,8 @@ export function checkIn(state, { automate = false, onEvent = () => {} } = {}) {
   const p = state.player;
   const has = (id) => p.utilities.includes(id);
   if (automate) {
-    if (!has('drip') && p.wallet >= 60) buyUtility(state, 'drip');
-    if (!has('trimmer') && p.wallet >= 40) buyUtility(state, 'trimmer');
+    if (!has('drip') && p.wallet >= utilCost('drip')) buyUtility(state, 'drip');
+    if (!has('trimmer') && p.wallet >= utilCost('trimmer')) buyUtility(state, 'trimmer');
   }
   for (let guard = 0; guard < 60; guard++) {
     const room = ROOMS[p.room];

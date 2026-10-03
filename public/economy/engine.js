@@ -67,6 +67,7 @@ export const LIVE_CONFIG = {
 };
 
 const strainIndex = Object.fromEntries(STRAINS.map((s, i) => [s.id, i]));
+const utilCost = (id) => UTILITIES.find((u) => u.id === id).cost;
 const BOT_NAMES = ['Mary', 'Jay', 'Herb', 'Sativa Sam', 'Indie', 'Kush Kid', 'Dank', 'Ganja Gran', 'Bud', 'Skunky',
   'Rasta Ray', 'Leafy', 'Trichome Tom', 'Dro', 'Chronic Chris', 'Hash Hal', 'Pheno Phil', 'Terp Tess', 'Kief Kim', 'Roach'];
 
@@ -387,8 +388,8 @@ function botInvest(state, b) {
     const freeSlots = room.slots - b.items.length;
     const freeWatts = room.watts - b.watts;
     const has = (id) => b.utilities.includes(id);
-    if (!has('drip') && b.every > cfg.waterBlocks && budget >= 60 && b.room >= 1) { botBuyUtility(state, b, 'drip'); continue; }
-    if (!has('trimmer') && b.every > cfg.storageBlocks * 0.8 && budget >= 40 && b.room >= 1) { botBuyUtility(state, b, 'trimmer'); continue; }
+    if (!has('drip') && b.every > cfg.waterBlocks && budget >= utilCost('drip') && b.room >= 1) { botBuyUtility(state, b, 'drip'); continue; }
+    if (!has('trimmer') && b.every > cfg.storageBlocks * 0.8 && budget >= utilCost('trimmer') && b.room >= 1) { botBuyUtility(state, b, 'trimmer'); continue; }
     let best = -1;
     let bestScore = 0;
     for (let i = 1; i < STRAINS.length; i++) {
@@ -419,8 +420,8 @@ function botInvest(state, b) {
       b.roomReadyAt = state.height + cfg.roomCooldown;
       continue;
     }
-    if (!has('led') && freeSlots > 1 && freeWatts < 30 && budget >= 250) { botBuyUtility(state, b, 'led'); continue; }
-    if (!has('co2') && b.room >= 4 && budget >= 400) { botBuyUtility(state, b, 'co2'); continue; }
+    if (!has('led') && freeSlots > 1 && freeWatts < 30 && budget >= utilCost('led')) { botBuyUtility(state, b, 'led'); continue; }
+    if (!has('co2') && b.room >= 4 && budget >= utilCost('co2')) { botBuyUtility(state, b, 'co2'); continue; }
     // Room maxed out (or waiting on cooldown): swap the weakest strain for a much stronger one that fits.
     if (freeSlots > 0) return;
     let weakest = 0;

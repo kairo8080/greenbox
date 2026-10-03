@@ -1,6 +1,7 @@
 // Precomputes the live-launch forecast the Assets, Tasks & ROI and CFO tabs read.
 // Usage: node economy/forecast.mjs  (writes public/economy/forecast.json; deterministic for a given seed)
 import { writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import { ROOMS, STRAINS, COSMETICS } from '../public/economy/content.js';
 import { createGame, advance, summary, LIVE_CONFIG } from '../public/economy/engine.js';
 import { checkIn, grantPack } from './strategy.mjs';
@@ -29,9 +30,9 @@ function snapshotPlayer(state) {
   };
 }
 
-function runPlayer(arch) {
-  const state = createGame(SEED, LIVE_CONFIG);
-  if (arch.pack) grantPack(state, LIVE_CONFIG.packs.find((x) => x.id === arch.pack));
+function runPlayer(arch, cfg = LIVE_CONFIG) {
+  const state = createGame(SEED, cfg);
+  if (arch.pack) grantPack(state, cfg.packs.find((x) => x.id === arch.pack));
   const snaps = [];
   const events = [];
   const onEvent = (e) => { if (events.length < 40 && !events.some((x) => x.e === e)) events.push({ hour: round(state.height / HOUR, 1), e }); };
@@ -43,8 +44,8 @@ function runPlayer(arch) {
   return { ...arch, snaps, events };
 }
 
-function gameRun() {
-  const state = createGame(SEED, LIVE_CONFIG);
+function gameRun(cfg = LIVE_CONFIG) {
+  const state = createGame(SEED, cfg);
   const hourly = [];
   const sample = () => {
     const t = state.token;
@@ -74,21 +75,31 @@ function gameRun() {
   return { hourly, daily };
 }
 
-const started = Date.now();
-const out = {
-  generated: 'node economy/forecast.mjs',
-  seed: SEED,
-  config: LIVE_CONFIG,
-  catalog: { rooms: ROOMS, strains: STRAINS, cosmetics: COSMETICS },
-  game: gameRun(),
-  players: ARCHETYPES.map(runPlayer),
-};
-writeFileSync(new URL('../public/economy/forecast.json', import.meta.url), JSON.stringify(out));
-console.log(`forecast.json written in ${((Date.now() - started) / 1000).toFixed(1)}s`);
-for (const p of out.players) {
-  const last = p.snaps[p.snaps.length - 1];
-  const d1 = p.snaps.find((s) => s.hour === 24);
-  console.log(`${p.name.padEnd(28)} day1 earned ${d1.earned} room ${d1.room} | day14 earned ${last.earned} spoiled ${last.spoiled} room ${last.room} ${last.perDay}/day`);
+// Exported so balance experiments can run the same forecast on another config without writing the file.
+export function buildForecast(cfg = LIVE_CONFIG) {
+  return {
+    generated: 'node economy/forecast.mjs',
+    seed: SEED,
+    config: cfg,
+    catalog: { rooms: ROOMS, strains: STRAINS, cosmetics: COSMETICS },
+    game: gameRun(cfg),
+    players: ARCHETYPES.map((arch) => runPlayer(arch, cfg)),
+  };
 }
-const g = out.game.hourly[out.game.hourly.length - 1];
-console.log('game day14', JSON.stringify({ players: g.players, minted: g.minted, burned: g.burned, treasury: g.treasury, spoiled: g.spoiled, spendBy: g.spendBy, packs: g.packs, items: g.items }));
+
+function main() {
+  const started = Date.now();
+  const out = buildForecast();
+  writeFileSync(new URL('../public/economy/forecast.json', import.meta.url), JSON.stringify(out));
+  console.log(`forecast.json written in ${((Date.now() - started) / 1000).toFixed(1)}s`);
+  for (const p of out.players) {
+    const last = p.snaps[p.snaps.length - 1];
+    const d1 = p.snaps.find((s) => s.hour === 24);
+    console.log(`${p.name.padEnd(28)} day1 earned ${d1.earned} room ${d1.room} | day14 earned ${last.earned} spoiled ${last.spoiled} room ${last.room} ${last.perDay}/day`);
+  }
+  const g = out.game.hourly[out.game.hourly.length - 1];
+  console.log('game day14', JSON.stringify({ players: g.players, minted: g.minted, burned: g.burned, treasury: g.treasury, spoiled: g.spoiled, spendBy: g.spendBy, packs: g.packs, items: g.items }));
+}
+
+// Write the file only when run as a script, not when imported.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();
