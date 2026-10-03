@@ -5,9 +5,13 @@ idle-mining game as the blueprint and reskinning server mining as a cannabis gro
 deliberately a plain placeholder; the point is to play-test the rules and the numbers.
 
 - Pitch: the new BigCoin-style game, with cannabis, on Robinhood Chain.
-- Page: `public/economy/index.html` (served at `/economy/` on the Vercel site; any static server works). Six tabs:
+- Page: `public/economy/index.html` (served at `/economy/` on the Vercel site; any static server works). A dark "terminal" layout:
+  big colour-coded numbers first, detail in tables, explanations folded into "How to read this" toggles.
+  Colours carry meaning: green is Greenbox and good, gold is money and BUD, violet is BigCoin, coral is risk, amber is watch. Six tabs:
   - **Dashboard**: one-screen exec view: item counts and NFT split, tokenomics, starter mint price, 14-day forecast and flywheel health.
-  - **BigCoin vs Greenbox**: side-by-side comparison, each point marked same, changed, new or missing.
+  - **BigCoin vs Greenbox**: BigCoin's live market next to Greenbox's model, then each point tagged same, changed, new or missing.
+    The BigCoin figures are a snapshot taken on 3 Oct 2026 from DexScreener (the $BIG pool on Abstract) and OpenSea (the
+    bigcoin-miners collection), stored in `BIGCOIN_LIVE` in the page; refresh them by hand.
   - **Play demo**: the game on the compressed demo schedule, with a minimal canvas view of the room.
   - **Assets**: every room, strain, utility, decoration and starter pack, with category, what it adds, BUD and USD price, output, payback, supply cap, release day and forecast sales.
   - **Tasks & ROI**: manual tasks and the utilities that automate them, an automation payback calculator, hour/day/week progress for five player types, and a whole-game developer view.
