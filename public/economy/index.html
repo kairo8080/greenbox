@@ -141,7 +141,9 @@ canvas#room-canvas { width: 100%; max-width: 100%; height: auto; display: block;
 .tag.unk { background: transparent; color: var(--bad); border: 1px solid var(--bad); }
 .cmp td.unk { color: var(--bad); font-style: italic; }
 .cmp td.srcs { color: var(--muted); font-size: 11px; }
+.cmp tr.group td { color: var(--muted); padding-top: 5px; padding-bottom: 5px; }
 .cmpx .cmp td, .cmpx .cmp th { padding: 3px 6px; }
+.cmpx #compare-table td { padding: 2px 6px; }
 .cmp td { white-space: normal; vertical-align: top; }
 .cmp td:first-child { font: 600 12px var(--display); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); min-width: 90px; }
 .cmp td.bc { color: var(--violet); min-width: 160px; }
@@ -293,13 +295,16 @@ h2 { margin: 0 0 6px; }
       <div class="row" style="justify-content:space-between"><h2 style="margin:0">Launch-day tokenomics</h2>
         <div class="legend"><span class="tag src">Sourced</span><span class="tag unk">Not published</span></div></div>
       <div class="scroll"><table class="cmp" id="compare-launch"></table></div>
-      <details class="more" open><summary>Sources</summary>
+      <details class="more"><summary>Sources: WP, Docs, Chain, Code, DEX, OS, Abscan, CR, BW</summary>
         <b>WP</b> BigCoin whitepaper (bigcoin.tech/whitepaper.pdf) ·
         <b>Docs</b> docs.bigcoin.tech ·
         <b>DEX</b> DexScreener API, all 11 $BIG pools on Abstract (token 0xDf70…1223), read 3 Oct 2026 ·
-        <b>OS</b> OpenSea "Bigcoin Miners", read 3 Oct 2026 ·
-        <b>Abscan</b> abscan.org token page (supply, holders, first activity), 3 Oct 2026 ·
-        <b>BW</b> Blockworks (peak players, fall from peak).
+        <b>OS</b> OpenSea "Bigcoin Miners" and $BIG holder list, read 3 Oct 2026 ·
+        <b>Abscan</b> abscan.org token page (supply, holders), 3 Oct 2026 ·
+        <b>Chain</b> Abstract block explorer: contract creation and every $BIG transfer up to the first pool ·
+        <b>Code</b> verified $BIG contract source on Abscan ·
+        <b>CR</b> CryptoRank (all-time high; page shows no contract address) ·
+        <b>BW</b> Blockworks, 14 Apr 2025 (market cap via GeckoTerminal).
         Greenbox figures are this prototype's launch plan and model (CFO tab), not market data.</details>
       <p class="callout" id="compare-takeaway" style="margin-top:auto"></p>
     </section>
@@ -1055,12 +1060,24 @@ const BIGCOIN_LIVE = {
   mainPool: { name: 'Aborean BIG/WETH', price: 0.03404, liquidity: 5644.06, marketCap: 335419, fdv: 284000, vol24: 461, txns24: 24, buys24: 11, sells24: 13 },
   // Abscan token page (screenshot from Kairo, 3 Oct 2026).
   onchain: { supply: 9852639.49, holders: 46563, transfers: 4867599, firstActive: '1 Apr 2025' },
-  nftSupply: 43937, nftOwners: 2675, floor: 0.36, nftVolume: 2.5e6, creatorFee: 5, peakPlayers: 70000, fromPeak: -93,
+  nftSupply: 43937, nftOwners: 2675, floor: 0.36, nftVolume: 2.5e6, creatorFee: 5, peakPlayers: 70000, ath: 9.05, athDate: '14 Apr 2025', top10: 53.35, burnWallet: 15.3,
 };
 
 // Launch-day tokenomics. BigCoin cells are [value, source], or null when no source we can reach publishes it.
+// [item, [BigCoin value, source, optional note] | { unk: why }, (cfg, a) => Greenbox value]; strings start a group.
+// On-chain rows were read from the Abstract explorer API and the verified contract source (3 Oct 2026).
 const BIGCOIN_LAUNCH = [
-  ['Max supply', ['21,000,000 $BIG', 'WP, Docs'], () => '21,000,000 BUD'],
+  'On-chain launch · Abstract',
+  ['Contract deployed', ['1 Apr 2025 · 05:24 UTC', 'Chain'], () => 'Launch day'],
+  ['Pre-mint', ['None in the contract', 'Code', 'Only a minter set by the owner can mint'], (c, a) => `${fmt(a.lpUsd / a.launchPrice, 0)} BUD pool reserve, outside the 21M mined`],
+  ['Minted before the pool', ['1,551,279 $BIG in 3 mints, 1–8 Apr', 'Chain', '97.5% to the deployer, 2.5% to one other wallet. The deployer moved 945,000 to a third wallet'], () => 'None · the pool opens with mining'],
+  ['First DEX pool', ['8 Apr 2025 · 16:19 UTC · AbstractSwap BIG/WETH', 'Chain'], () => 'Launch day · BUD/USD'],
+  ['First liquidity', ['299,999 $BIG + 4 WETH, from the deployer', 'Chain', 'Concentrated position: the ratio is not a price'], (c, a) => `${fmt(a.lpUsd / a.launchPrice, 0)} BUD + ${usd(a.lpUsd)}`],
+  ['Launch price', { unk: 'Not published or readable on-chain' }, (c, a) => usd(a.launchPrice)],
+  ['Team allocation', { unk: 'Not published' }, () => 'None · treasury gets 25% of spend'],
+  ['Peak, first week', ['$9.05 high · $6.9M–7.5M market cap, 14 Apr 2025', 'CR, BW'], () => `${usd(Math.max(...model.path.filter((q) => q.hour <= 168).map((q) => q.price)))} high in week 1 (model)`],
+  'Token rules',
+  ['Max supply', ['21,000,000 $BIG', 'WP, Code', 'Capped in the contract; burns free room to mint again'], () => '21,000,000 BUD'],
   ['Block reward', ['2.3 $BIG (whitepaper) · 2.5 (docs)', 'WP, Docs'], (c) => `${c.blockReward} BUD`],
   ['Block time', ['~1.1 s', 'WP'], () => '1 s (simulated)'],
   ['Halving', ['Every 4.2M blocks · ~53.5 days', 'WP'], (c) => `Every ${(c.halvingInterval / 1e6).toFixed(1)}M blocks · ~${Math.round(c.halvingInterval / 86400)} days`],
@@ -1070,11 +1087,6 @@ const BIGCOIN_LAUNCH = [
   ['Referrals', ["2.5% of referees' mining", 'WP, Docs'], () => '2.5% (planned)'],
   ['Entry cost', ['Small ETH fee (anti-sybil), amount not stated', 'WP'], (c, a) => `Free, or packs ${usd(a.founderPrice)} / ${usd(a.growerPrice)}`],
   ['Starter producer', ['Free Potato Miner (optional)', 'WP, Docs'], () => 'Free Bagseed'],
-  ['Token live on-chain', ['1 Apr 2025 (first token activity)', 'Abscan'], () => 'Launch day'],
-  ['First DEX pool', ['8 Apr 2025 · AbstractSwap BIG/WETH', 'DEX'], () => 'Launch day · BUD/USD'],
-  ['Launch price', null, (c, a) => usd(a.launchPrice)],
-  ['Launch liquidity', null, (c, a) => usd(a.lpUsd)],
-  ['Pre-mint / allocations', null, (c, a) => `${fmt(a.lpUsd / a.launchPrice, 0)} BUD pool reserve, outside the 21M mined`],
 ];
 
 const COMPARE = [
@@ -1103,15 +1115,20 @@ function renderCompare() {
   const metric = (k, v, cls = '') => `<div><span>${k}</span><b class="${cls}">${v}</b></div>`;
   const cfg = LIVE();
   put('compare-launch', `<tr><th>Item</th><th class="violet">BigCoin at launch</th><th class="good">Greenbox at launch</th><th>Source</th></tr>` +
-    BIGCOIN_LAUNCH.map(([k, bc, gb]) => `<tr><td>${k}</td>${bc ? `<td class="bc">${bc[0]}</td>` : '<td class="unk">Not published</td>'}
-      <td class="gb">${gb(cfg, a)}</td><td class="srcs">${bc ? bc[1] : 'asked Kairo'}</td></tr>`).join(''));
+    BIGCOIN_LAUNCH.map((r) => {
+      if (typeof r === 'string') return `<tr class="group"><td colspan="4">${r}</td></tr>`;
+      const [k, bc, gb] = r;
+      const known = Array.isArray(bc);
+      return `<tr><td>${k}</td>${known ? `<td class="bc">${bc[0]}${bc[2] ? `<span class="sub">${bc[2]}</span>` : ''}</td>` : `<td class="unk">${bc.unk}</td>`}
+      <td class="gb">${gb(cfg, a)}</td><td class="srcs">${known ? bc[1] : 'asked Kairo'}</td></tr>`;
+    }).join(''));
   put('compare-vs', `
     <div class="side big-coin"><h3>BigCoin</h3><div class="sub">Live market · ${b.date}</div><div class="metrics">
-      ${metric('Token price', usd(b.mainPool.price), 'violet')}${metric('Market cap', usd(b.mainPool.marketCap))}${metric('Since peak', `${b.fromPeak}%`, 'bad')}
+      ${metric('Token price', usd(b.mainPool.price), 'violet')}${metric('Market cap', usd(b.mainPool.marketCap))}${metric('From ATH', pct(b.mainPool.price / b.ath - 1, 1), 'bad')}
       ${metric('Main pool liquidity', usd(b.mainPool.liquidity), 'bad')}${metric('Main pool vol 24h', usd(b.mainPool.vol24), 'bad')}${metric('Trades 24h', `${b.mainPool.txns24} <small class="muted">${b.mainPool.buys24}B/${b.mainPool.sells24}S</small>`)}
-      ${metric(`All ${b.pools} pools liq.`, usd(b.liquidity), 'bad')}${metric('Holders', b.onchain.holders.toLocaleString())}${metric('Supply on-chain', fmt(b.onchain.supply, 2))}
+      ${metric('Top 10 wallets', `${b.top10}%`, 'warn')}${metric('Holders', b.onchain.holders.toLocaleString())}${metric('Supply on-chain', fmt(b.onchain.supply, 2))}
       ${metric('Miner NFTs', b.nftSupply.toLocaleString())}${metric('NFT floor', usd(b.floor), 'violet')}${metric('NFT volume, all-time', usd(b.nftVolume))}
-    </div><div class="sub" style="margin:8px 0 0">Main pool ${b.mainPool.name}. Supply and holders from Abscan. Pools range ${usd(b.priceLow)} to ${usd(b.priceHigh)}.</div></div>
+    </div><div class="sub" style="margin:4px 0 0">Pool ${b.mainPool.name} · Abscan holders, supply · OpenSea top 10 (${b.burnWallet}% burn wallet) · CryptoRank ATH ${usd(b.ath)}, ${b.athDate}</div></div>
     <div class="side green-box"><h3>Greenbox</h3><div class="sub">Model, day 14 · not market data</div><div class="metrics">
       ${metric('Launch price', usd(a.launchPrice), 'gold')}${metric('Price day 14', usd(m.price), 'gold')}
       ${metric('Fully diluted', usd(cap * a.launchPrice))}${metric('Pool liquidity', usd(m.poolUsd), 'good')}

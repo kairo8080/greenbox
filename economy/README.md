@@ -12,8 +12,12 @@ deliberately a plain placeholder; the point is to play-test the rules and the nu
   lime is Greenbox and good, orange is money and BUD, violet is BigCoin, red is risk, cobalt is watch. Six tabs:
   - **Dashboard**: one-screen exec view: item counts and NFT split, tokenomics, starter mint price, 14-day forecast and flywheel health.
   - **BigCoin vs Greenbox**: BigCoin's live market next to Greenbox's model, then each point tagged same, changed, new or missing.
-    The BigCoin figures are a snapshot taken on 3 Oct 2026 from DexScreener (the $BIG pool on Abstract) and OpenSea (the
-    bigcoin-miners collection), stored in `BIGCOIN_LIVE` in the page; refresh them by hand.
+    The BigCoin figures are a snapshot taken on 3 Oct 2026 from DexScreener (main pool Aborean BIG/WETH plus all 11 pools),
+    Abscan, OpenSea (miners collection and token holders) and CryptoRank (all-time high), stored in `BIGCOIN_LIVE` in the
+    page; refresh them by hand. The launch-day table (`BIGCOIN_LAUNCH`) puts what the chain shows first (contract
+    deployment, mints before the first pool, first liquidity, read from the Abstract explorer and the verified contract),
+    then the token rules from the whitepaper and docs. Every BigCoin cell names its source; anything no reachable source
+    publishes (launch price in USD, team allocation) says so instead of being estimated.
   - **Play demo**: the game on the compressed demo schedule, with a minimal canvas view of the room.
   - **Assets**: every room, strain, utility, decoration and starter pack, with category, what it adds, BUD and USD price, output, payback, supply cap, release day and forecast sales.
   - **Tasks & ROI**: manual tasks and the utilities that automate them, an automation payback calculator, hour/day/week progress for five player types, and a whole-game developer view.
