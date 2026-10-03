@@ -12,7 +12,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "node scripts/verify-web.mjs && node scripts/verify-unity-web.mjs public/unity",
+    "build": "node scripts/verify-web.mjs && node scripts/verify-unity-web.mjs public/unity && node scripts/verify-viewer.mjs",
+    "build:viewer": "node scripts/build-viewer.mjs",
+    "verify:viewer": "node scripts/verify-viewer.mjs",
     "verify:web": "node scripts/verify-web.mjs",
     "verify:unity": "node scripts/verify-unity-web.mjs public/unity",
     "sync:unity": "node scripts/sync-unity-web.mjs",

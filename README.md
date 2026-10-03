@@ -2,11 +2,13 @@
 
 A small desktop-first voxel grow-room game, with a Unity 6000.2.6f1 project and the original Godot 4.7.2 demo. Walk around a furnished bedroom, care for fictional game plants, harvest for cash and XP, and unlock extra pots and equipment.
 
-**[Play the Unity browser game](https://greenbox-pi.vercel.app/unity/)** · [Original Godot demo](https://greenbox-pi.vercel.app) · [Vercel project](https://vercel.com/kairo8080/greenbox)
+**[Play the Unity browser game](https://greenbox-pi.vercel.app/unity/)** · **[Open the voxel character lab](https://greenbox-pi.vercel.app/viewer/)** · [Original Godot demo](https://greenbox-pi.vercel.app) · [Vercel project](https://vercel.com/kairo8080/greenbox)
 
 The new **[Greenbox Unity project](unity/README.md)** lives in `unity/Greenbox/`, using Unity 6000.2.6f1 and Web Build Support. It imports the same optimized voxel assets with Unity glTFast and has passed a real browser build and gameplay check, including a full harvest and saved progress after reloading. MagicaVoxel remains the editable asset source; Blender exports meshes, and Unity supplies the playable game.
 
 The **[voxel character cast](voxel_sources/character_cast/README.md)** adds a corporate boss, robot, chef, blonde lady, party woman, and skeleton, plus the existing grower with a 45° right-facing pose and lower preview camera. Each includes editable VOX sources, six movable body parts, a neutral GLB, Blender scene, previews, and verification records. The bundled tools reproduce all six new source designs; import the models into Unity to expand the cast.
+
+The **[interactive character lab](viewer/README.md)** puts all seven characters in one window with synchronized orbit/zoom, full-body and portrait views, a lineup, and five shared palette themes. It includes the bedroom and props, editable color swatches, and recolored VOX/GLB downloads. `public/viewer/index.html` is also a single portable HTML file with all assets and code embedded. Rebuild it with `npm install --prefix viewer` and `npm run build:viewer`; the Vercel build verifies the committed file.
 
 ## Play
 

@@ -1,0 +1,31 @@
+{
+  "schema": "greenbox-viewer-validation-v1",
+  "date": "2026-10-03",
+  "embedded_assets": 9,
+  "character_voxels": 16055,
+  "character_triangles": 5954,
+  "static_delivery": "Passed independent HTML, GLB BIN/accessor, VOX occupancy, PNG pixel, palette, control and inline JavaScript syntax checks; eight corrupted delivery cases rejected.",
+  "palette_exports": "335 property checks passed for character themes, room, props, immutable inputs, preserved occupancy/geometry/pivots, unknown chunks and malformed inputs.",
+  "browser_checked": [
+    "All seven characters rendered from actual GLB geometry",
+    "Full body and portrait framing",
+    "Compare, Solo and Lineup layouts",
+    "Drag orbit and wheel zoom, including synchronized zoom to 192%",
+    "Independent selected-character camera and global camera synchronization",
+    "Front, Back, reset and camera turntable",
+    "Original, Island, Pastel and Neon themes with identity protection on/off",
+    "Editable color slot 51 set to #fa3377",
+    "Bedroom cutaway camera and grouped prop library preview",
+    "VOX, GLB and palette export generation produced visible Save links without runtime errors"
+  ],
+  "browser_limitations": [
+    "The automated in-app browser prohibits file:// navigation; the self-contained local file was validated statically, and interactive rendering was checked over HTTP.",
+    "The in-app browser download event timed out for blob downloads; generated links were confirmed, while binary palette/export preservation was validated separately.",
+    "No measured frame-rate claim or broad device compatibility claim."
+  ],
+  "runtime_dependencies": {
+    "three": "0.186.1",
+    "esbuild_build_only": "0.28.2",
+    "external_runtime_requests": false
+  }
+}

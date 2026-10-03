@@ -1,0 +1,2 @@
+# The bundled Three.js shaders intentionally retain whitespace inside GLSL strings.
+index.html whitespace=-blank-at-eol,-space-before-tab
