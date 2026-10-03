@@ -298,6 +298,7 @@ h2 { margin: 0 0 6px; }
         <b>Docs</b> docs.bigcoin.tech ·
         <b>DEX</b> DexScreener API, all 11 $BIG pools on Abstract (token 0xDf70…1223), read 3 Oct 2026 ·
         <b>OS</b> OpenSea "Bigcoin Miners", read 3 Oct 2026 ·
+        <b>Abscan</b> abscan.org token page (supply, holders, first activity), 3 Oct 2026 ·
         <b>BW</b> Blockworks (peak players, fall from peak).
         Greenbox figures are this prototype's launch plan and model (CFO tab), not market data.</details>
       <p class="callout" id="compare-takeaway" style="margin-top:auto"></p>
@@ -1050,7 +1051,10 @@ function renderDash() {
 const BIGCOIN_LIVE = {
   date: '3 Oct 2026', pools: 11, liquidity: 13102.56, vol24: 632.14,
   priceLow: 0.03157, priceHigh: 0.03799, // per-pool prices differ
-  mainPool: { name: 'Aborean BIG/WETH', price: 0.03404, liquidity: 5644.06, marketCap: 335419 },
+  // Main pool, confirmed by Kairo from DexScreener (screenshot, 3 Oct 2026).
+  mainPool: { name: 'Aborean BIG/WETH', price: 0.03404, liquidity: 5644.06, marketCap: 335419, fdv: 284000, vol24: 461, txns24: 24, buys24: 11, sells24: 13 },
+  // Abscan token page (screenshot from Kairo, 3 Oct 2026).
+  onchain: { supply: 9852639.49, holders: 46563, transfers: 4867599, firstActive: '1 Apr 2025' },
   nftSupply: 43937, nftOwners: 2675, floor: 0.36, nftVolume: 2.5e6, creatorFee: 5, peakPlayers: 70000, fromPeak: -93,
 };
 
@@ -1066,6 +1070,7 @@ const BIGCOIN_LAUNCH = [
   ['Referrals', ["2.5% of referees' mining", 'WP, Docs'], () => '2.5% (planned)'],
   ['Entry cost', ['Small ETH fee (anti-sybil), amount not stated', 'WP'], (c, a) => `Free, or packs ${usd(a.founderPrice)} / ${usd(a.growerPrice)}`],
   ['Starter producer', ['Free Potato Miner (optional)', 'WP, Docs'], () => 'Free Bagseed'],
+  ['Token live on-chain', ['1 Apr 2025 (first token activity)', 'Abscan'], () => 'Launch day'],
   ['First DEX pool', ['8 Apr 2025 · AbstractSwap BIG/WETH', 'DEX'], () => 'Launch day · BUD/USD'],
   ['Launch price', null, (c, a) => usd(a.launchPrice)],
   ['Launch liquidity', null, (c, a) => usd(a.lpUsd)],
@@ -1101,13 +1106,12 @@ function renderCompare() {
     BIGCOIN_LAUNCH.map(([k, bc, gb]) => `<tr><td>${k}</td>${bc ? `<td class="bc">${bc[0]}</td>` : '<td class="unk">Not published</td>'}
       <td class="gb">${gb(cfg, a)}</td><td class="srcs">${bc ? bc[1] : 'asked Kairo'}</td></tr>`).join(''));
   put('compare-vs', `
-    <div class="side big-coin"><h3>BigCoin</h3><div class="sub">Live market · ${b.date} · all ${b.pools} pools</div><div class="metrics">
-      ${metric('Token price', usd(b.mainPool.price), 'violet')}${metric('Since peak', `${b.fromPeak}%`, 'bad')}
-      ${metric('Market cap', usd(b.mainPool.marketCap))}${metric('Liquidity, all pools', usd(b.liquidity), 'bad')}
-      ${metric('Volume 24h, all pools', usd(b.vol24), 'bad')}${metric('Peak players', '~70k')}
-      ${metric('Miner NFTs', b.nftSupply.toLocaleString())}${metric('NFT owners', b.nftOwners.toLocaleString())}
-      ${metric('NFT floor', usd(b.floor), 'violet')}${metric('NFT volume, all-time', usd(b.nftVolume))}
-    </div><div class="sub" style="margin:10px 0 0">Price and cap from the deepest pool (${b.mainPool.name}, ${usd(b.mainPool.liquidity)} liquidity). Pools range ${usd(b.priceLow)} to ${usd(b.priceHigh)}.</div></div>
+    <div class="side big-coin"><h3>BigCoin</h3><div class="sub">Live market · ${b.date}</div><div class="metrics">
+      ${metric('Token price', usd(b.mainPool.price), 'violet')}${metric('Market cap', usd(b.mainPool.marketCap))}${metric('Since peak', `${b.fromPeak}%`, 'bad')}
+      ${metric('Main pool liquidity', usd(b.mainPool.liquidity), 'bad')}${metric('Main pool vol 24h', usd(b.mainPool.vol24), 'bad')}${metric('Trades 24h', `${b.mainPool.txns24} <small class="muted">${b.mainPool.buys24}B/${b.mainPool.sells24}S</small>`)}
+      ${metric(`All ${b.pools} pools liq.`, usd(b.liquidity), 'bad')}${metric('Holders', b.onchain.holders.toLocaleString())}${metric('Supply on-chain', fmt(b.onchain.supply, 2))}
+      ${metric('Miner NFTs', b.nftSupply.toLocaleString())}${metric('NFT floor', usd(b.floor), 'violet')}${metric('NFT volume, all-time', usd(b.nftVolume))}
+    </div><div class="sub" style="margin:8px 0 0">Main pool ${b.mainPool.name}. Supply and holders from Abscan. Pools range ${usd(b.priceLow)} to ${usd(b.priceHigh)}.</div></div>
     <div class="side green-box"><h3>Greenbox</h3><div class="sub">Model, day 14 · not market data</div><div class="metrics">
       ${metric('Launch price', usd(a.launchPrice), 'gold')}${metric('Price day 14', usd(m.price), 'gold')}
       ${metric('Fully diluted', usd(cap * a.launchPrice))}${metric('Pool liquidity', usd(m.poolUsd), 'good')}
@@ -1115,7 +1119,7 @@ function renderCompare() {
       ${metric('NFT types', `${c.nft}`)}${metric('Starter mint', usd(a.founderPrice), 'gold')}
       ${metric('Pack revenue', usd(m.packUsd), 'gold')}${metric('Creator fee', `${b.creatorFee}% (planned)`)}
     </div></div>`);
-  $('compare-takeaway').innerHTML = `BigCoin today: <b class="bad">${usd(b.liquidity)}</b> of liquidity and <b class="bad">${usd(b.vol24)}</b> of daily volume across ${b.pools} pools.
+  $('compare-takeaway').innerHTML = `BigCoin's main pool today: <b class="bad">${usd(b.mainPool.liquidity)}</b> of liquidity and <b class="bad">${usd(b.mainPool.vol24)}</b> traded in 24h (${usd(b.liquidity)} across all ${b.pools} pools).
     Greenbox plans a <b class="good">${usd(a.lpUsd)}</b> launch pool, deepened by pack sales and buybacks.`;
   const label = { same: 'Same', changed: 'Changed', new: 'New', gap: 'Missing' };
   put('compare-table', `<tr><th>Topic</th><th class="violet">BigCoin</th><th class="good">Greenbox</th><th></th></tr>` +
