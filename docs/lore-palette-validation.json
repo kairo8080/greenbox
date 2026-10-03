@@ -1,0 +1,61 @@
+{
+  "schema": "greenbox-lore-palette-export-regression-v1",
+  "status": "pass",
+  "preset": "neon",
+  "protect_identity": true,
+  "assets_verified": 2,
+  "palette_sha256": "06ccbee7857d984881e7eb4093d949dc432d9e8a875dd2e06e27ad0beac074ad",
+  "palette_png_sha256": "3db6b9e553042c2721a35e6ab221508c5fec12db66ca7ca180b012544cd571b0",
+  "protected_identity_slots_verified": 17,
+  "changed_palette_slots": 46,
+  "total_source_filled_voxels": 344735,
+  "total_source_triangles": 24970,
+  "verification": "Actual palette-core.mjs functions ran against both accepted lore VOX and GLB source bytes. Independently parsed VOX chunks and GLB documents/BIN; compared every original geometry byte and all unmodified JSON structures; decoded the replacement 16x16 RGBA PNG. Exports were generated in memory only.",
+  "limits": [
+    "Targeted Neon preset with identity protection enabled only.",
+    "PNG was encoded independently in Node; browser canvas PNG encoding and browser download saving were not exercised.",
+    "This checks export data integrity and palette/material references, not visual appearance or frame rate."
+  ],
+  "assets": [
+    {
+      "asset": "roots_street",
+      "status": "pass",
+      "filled_voxels": 220120,
+      "triangles": 11646,
+      "source_vox_sha256": "6b8b67ff8c10f0b181683b3e7f77ff00aa8bb9fa1936fd98b94a8e0540f04579",
+      "source_glb_sha256": "ef121995b22110ec9e63412254c4974fa9f3d015bcbc7b4ecc4fbb60942e834b",
+      "recolored_vox_sha256": "e22567b61ad01ab24eb8a61899ace0c4f6bda3df210a28235d32ad09efafcaf5",
+      "recolored_glb_sha256": "66cee9a4b6bf79441c22e4748ca9c59dfbe64d5285e529ab4ad419b48ece7f86",
+      "vox_bytes": 881576,
+      "glb_bytes": 773440,
+      "all_non_rgba_vox_chunks_and_occupancy_index_bytes_preserved": true,
+      "all_original_glb_bin_bytes_preserved": true,
+      "geometry_buffer_views_meshes_nodes_accessors_and_signed_zeros_preserved": true,
+      "all_other_glb_json_unchanged_except_palette_view_and_buffer_length": true,
+      "static_and_emissive_material_split_preserved": true,
+      "material_palette_references_consistent": true,
+      "replacement_png_rgba_matches_neon_with_identity_protection": true,
+      "original_inputs_immutable": true
+    },
+    {
+      "asset": "starter_loft",
+      "status": "pass",
+      "filled_voxels": 124615,
+      "triangles": 13324,
+      "source_vox_sha256": "75b2b000407118b650b174da51d90eb1128290341e26e2184d1859e4729a82cf",
+      "source_glb_sha256": "7ae2bda606be24539895700093f69e25df7a1d5d552c0253aa12624dee25d192",
+      "recolored_vox_sha256": "d3a3a030c238c8ba4f8c36f8be1291747e2463f2d2e350f134ee383c00a534ea",
+      "recolored_glb_sha256": "084b8efe60ef43267cbf4a1ac159c88ebdfa27c8c865fff20f7334a9d0945347",
+      "vox_bytes": 499556,
+      "glb_bytes": 888888,
+      "all_non_rgba_vox_chunks_and_occupancy_index_bytes_preserved": true,
+      "all_original_glb_bin_bytes_preserved": true,
+      "geometry_buffer_views_meshes_nodes_accessors_and_signed_zeros_preserved": true,
+      "all_other_glb_json_unchanged_except_palette_view_and_buffer_length": true,
+      "static_and_emissive_material_split_preserved": true,
+      "material_palette_references_consistent": true,
+      "replacement_png_rgba_matches_neon_with_identity_protection": true,
+      "original_inputs_immutable": true
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "name": "roots_street",
+  "description": "Original ROOTS district street: a seed and grow-supply co-op beside the GREENBOX social arcade corner. Raised voxel ROOTS/GREENBOX/GROW lettering, restrained red/gold/green trims, blue recessed displays, actual reused CC0-leaf-derived voxel plants, tiled pavement, angular urban palms, bench, recycling bin, lamppost and two original chibi neighbours. Inspired by clean compact daytime voxel environments; all signs, architecture, characters and decorative graphics are original Greenbox artwork. Fictional game setting without cultivation recipes. Exact 0.05 m occupied-cube grid and collection palette.",
+  "occupied_voxels": 220120,
+  "dimensions": [
+    170,
+    125,
+    62
+  ],
+  "voxel_pitch_meters": 0.05,
+  "palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "intentional_union_overlap_cells": 0,
+  "connected_components": 1,
+  "assets": [
+    {
+      "name": "district_pavement",
+      "voxels": 73100,
+      "dimensions": [
+        170,
+        125,
+        4
+      ]
+    },
+    {
+      "name": "roots_shop",
+      "voxels": 68968,
+      "dimensions": [
+        78,
+        45,
+        58
+      ]
+    },
+    {
+      "name": "greenbox_social_corner",
+      "voxels": 59855,
+      "dimensions": [
+        77,
+        44,
+        53
+      ]
+    },
+    {
+      "name": "district_bench",
+      "voxels": 732,
+      "dimensions": [
+        23,
+        9,
+        16
+      ]
+    },
+    {
+      "name": "district_lamppost",
+      "voxels": 472,
+      "dimensions": [
+        6,
+        6,
+        49
+      ]
+    },
+    {
+      "name": "roots_sandwich_board",
+      "voxels": 2971,
+      "dimensions": [
+        29,
+        10,
+        26
+      ]
+    },
+    {
+      "name": "urban_palm",
+      "voxels": 1284,
+      "dimensions": [
+        27,
+        27,
+        38
+      ]
+    },
+    {
+      "name": "district_recycling_bin",
+      "voxels": 768,
+      "dimensions": [
+        8,
+        8,
+        12
+      ]
+    },
+    {
+      "name": "cc0_derived_small_plant",
+      "voxels": 503,
+      "dimensions": [
+        21,
+        11,
+        29
+      ]
+    },
+    {
+      "name": "chibi_rasta_grower",
+      "voxels": 4170,
+      "dimensions": [
+        18,
+        15,
+        32
+      ]
+    },
+    {
+      "name": "chibi_blonde_neighbour",
+      "voxels": 4504,
+      "dimensions": [
+        18,
+        14,
+        30
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "name": "district_pavement",
+      "asset": "district_pavement",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "roots_shop",
+      "asset": "roots_shop",
+      "offset": [
+        5,
+        77,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "greenbox_social_corner",
+      "asset": "greenbox_social_corner",
+      "offset": [
+        87,
+        78,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "district_bench",
+      "asset": "district_bench",
+      "offset": [
+        79,
+        59,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "district_lamppost",
+      "asset": "district_lamppost",
+      "offset": [
+        82,
+        74,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "roots_sandwich_board",
+      "asset": "roots_sandwich_board",
+      "offset": [
+        7,
+        56,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "left_urban_palm",
+      "asset": "urban_palm",
+      "offset": [
+        1,
+        57,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "right_urban_palm",
+      "asset": "urban_palm",
+      "offset": [
+        141,
+        51,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "district_recycling_bin",
+      "asset": "district_recycling_bin",
+      "offset": [
+        105,
+        66,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "roots_display_plant",
+      "asset": "cc0_derived_small_plant",
+      "offset": [
+        15,
+        86,
+        11
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "left_curb_planter",
+      "asset": "cc0_derived_small_plant",
+      "offset": [
+        2,
+        39,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "right_curb_planter",
+      "asset": "cc0_derived_small_plant",
+      "offset": [
+        146,
+        39,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "greenbox_display_plant",
+      "asset": "cc0_derived_small_plant",
+      "offset": [
+        136,
+        91,
+        11
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "grower_at_roots",
+      "asset": "chibi_rasta_grower",
+      "offset": [
+        42,
+        53,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "neighbour_at_greenbox",
+      "asset": "chibi_blonde_neighbour",
+      "offset": [
+        121,
+        50,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    }
+  ],
+  "provenance": [
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_small",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    },
+    {
+      "path": "outputs/greenbox-chibi-pack/rasta_grower/rasta_grower.json",
+      "sha256": "89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c",
+      "source_asset": "rasta_grower",
+      "color_remap": {
+        "1": 1,
+        "34": 34,
+        "35": 35,
+        "36": 36,
+        "37": 37,
+        "38": 38,
+        "39": 39,
+        "11": 11,
+        "28": 28,
+        "62": 62
+      }
+    },
+    {
+      "path": "outputs/greenbox-chibi-pack/blonde_lady/blonde_lady.json",
+      "sha256": "74c94702cdc920c06de8b5e9bc0034354d37896ab7896a832aec14203ec11ae0",
+      "source_asset": "blonde_lady",
+      "color_remap": {
+        "1": 1,
+        "40": 40,
+        "42": 42,
+        "43": 43,
+        "12": 12,
+        "13": 13,
+        "11": 11,
+        "26": 26,
+        "28": 28,
+        "61": 61
+      }
+    }
+  ],
+  "sha256": {
+    "flat_scene.json": "0a096fb9ae8112bc154e0983f28e7030528cc8c725a0ffba11df08db5a0b38f3",
+    "roots_street.json": "6635d67221e83e9bc1edb731c171b62f161fc7356c6c64f6ad770942ffe03492",
+    "roots_street.vox": "6b8b67ff8c10f0b181683b3e7f77ff00aa8bb9fa1936fd98b94a8e0540f04579",
+    "scene.json": "1716092d2542211d8a31641716845b402e9f186e356166c825355a987b1fef72"
+  }
+}

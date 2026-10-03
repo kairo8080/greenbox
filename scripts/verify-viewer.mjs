@@ -17,7 +17,7 @@ const chibiIds = characterIds.map(id => `${id}_chibi`);
 const expectedStyleTotals = { original: { triangles: 5954, voxels: 16055 }, chibi: { triangles: 4030, voxels: 28071 } };
 const styleTotals = { original: { triangles: 0, voxels: 0, models: 0 }, chibi: { triangles: 0, voxels: 0, models: 0 } };
 const requiredIds = ['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats',
-  'scene-labels', 'asset-select', 'character-style', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle',
+  'scene-labels', 'asset-select', 'character-style', 'lore-location', 'lighting-mode', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle',
   'reset-view', 'camera-front', 'camera-right', 'camera-left', 'camera-back', 'palette-select', 'protect-identity',
   'palette-swatches', 'palette-status', 'export-palette', 'export-vox', 'export-glb'];
 const roleNames = ('air ink slate wall wall_shadow trim floor floor_dark floor_light wood wood_light linen teal '
@@ -195,18 +195,25 @@ function validateGlb(bytes, model, palette) {
   const images = (json.images ?? []).map((image, index) => {
     requireValue(image.mimeType === 'image/png' || image.uri?.startsWith('data:image/png;'), `${label}: image ${index} must be an embedded PNG.`);
     const pixels = palettePng(image.uri === undefined ? view(image.bufferView).bytes : embeddedUri(image.uri, `${label} image ${index}`), `${label} image ${index}`);
-    if (model.style === 'chibi') for (let texel = 0; texel < 256; texel++)
+    if (model.style === 'chibi' || model.kind === 'lore') for (let texel = 0; texel < 256; texel++)
       requireValue(sameColor([...pixels.subarray(texel * 4, texel * 4 + 4)], palette[(texel + 1) % 256]),
-        `${label}: chibi embedded atlas differs from canonical palette slot ${(texel + 1) % 256}.`);
+        `${label}: embedded atlas differs from canonical palette slot ${(texel + 1) % 256}.`);
     return pixels;
   });
   requireValue(images.length > 0, `${label}: no embedded palette image.`);
+  const meshPositions = [];
   const meshTriangles = (json.meshes ?? []).map((mesh, meshIndex) => {
     requireValue(Array.isArray(mesh.primitives) && mesh.primitives.length > 0, `${label}: empty mesh ${meshIndex}.`);
-    let total = 0;
+    let total = 0; const points = [];
     for (const primitive of mesh.primitives) {
       requireValue((primitive.mode ?? 4) === 4, `${label}: voxel mesh must use triangle primitives.`);
       const vertices = accessor(primitive.attributes?.POSITION, 'VEC3', 3, [5126]);
+      for (let index = 0; index < vertices.count; index++) {
+        const offset = vertices.offset + index * vertices.stride;
+        const point = [0, 4, 8].map(component => vertices.bytes.readFloatLE(offset + component));
+        requireValue(point.every(Number.isFinite), `${label}: nonfinite geometry position.`);
+        points.push(point);
+      }
       let count = vertices.count;
       if (primitive.indices !== undefined) {
         const indices = accessor(primitive.indices, 'SCALAR', 1, [5121, 5123, 5125]);
@@ -236,26 +243,57 @@ function validateGlb(bytes, model, palette) {
           `${label}: used GLB texel differs from canonical palette slot ${paletteIndex}.`);
       }
     }
+    meshPositions[meshIndex] = points;
     return total;
   });
   requireValue(meshTriangles.length > 0 && Array.isArray(json.nodes) && Array.isArray(json.scenes), `${label}: missing mesh scene.`);
   const scene = json.scenes[json.scene ?? 0];
   requireValue(Array.isArray(scene?.nodes) && scene.nodes.length > 0, `${label}: invalid default scene.`);
   const visited = new Set();
-  function visit(index) {
+  const identity = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+  const bounds = [[Infinity, Infinity, Infinity], [-Infinity, -Infinity, -Infinity]];
+  function multiply(a, b) {
+    return Array.from({ length: 16 }, (_, index) => {
+      const column = Math.floor(index / 4), row = index % 4;
+      return [0, 1, 2, 3].reduce((sum, component) => sum + a[component * 4 + row] * b[column * 4 + component], 0);
+    });
+  }
+  function nodeMatrix(node) {
+    if (node.matrix !== undefined) {
+      requireValue(Array.isArray(node.matrix) && node.matrix.length === 16 && node.matrix.every(Number.isFinite), `${label}: invalid node matrix.`);
+      return node.matrix;
+    }
+    const t = node.translation ?? [0, 0, 0], s = node.scale ?? [1, 1, 1], q = node.rotation ?? [0, 0, 0, 1];
+    requireValue([t, s].every(values => Array.isArray(values) && values.length === 3 && values.every(Number.isFinite))
+      && Array.isArray(q) && q.length === 4 && q.every(Number.isFinite), `${label}: invalid node transform.`);
+    const [x, y, z, w] = q;
+    requireValue(Math.abs(q.reduce((sum, value) => sum + value * value, 0) - 1) < 1e-5, `${label}: nonunit rotation quaternion.`);
+    return [(1 - 2 * (y * y + z * z)) * s[0], 2 * (x * y + z * w) * s[0], 2 * (x * z - y * w) * s[0], 0,
+      2 * (x * y - z * w) * s[1], (1 - 2 * (x * x + z * z)) * s[1], 2 * (y * z + x * w) * s[1], 0,
+      2 * (x * z + y * w) * s[2], 2 * (y * z - x * w) * s[2], (1 - 2 * (x * x + y * y)) * s[2], 0,
+      ...t, 1];
+  }
+  function visit(index, parent = identity) {
     requireValue(integer(index) && json.nodes[index] && !visited.has(index), `${label}: invalid/repeated/cyclic scene node ${index}.`);
     visited.add(index);
     const node = json.nodes[index];
+    const world = multiply(parent, nodeMatrix(node));
     let triangles = 0;
     if (node.mesh !== undefined) {
       requireValue(integer(node.mesh) && meshTriangles[node.mesh] !== undefined, `${label}: invalid node mesh.`);
       triangles += meshTriangles[node.mesh];
+      for (const point of meshPositions[node.mesh]) for (let axis = 0; axis < 3; axis++) {
+        const value = world[axis] * point[0] + world[4 + axis] * point[1] + world[8 + axis] * point[2] + world[12 + axis];
+        bounds[0][axis] = Math.min(bounds[0][axis], value); bounds[1][axis] = Math.max(bounds[1][axis], value);
+      }
     }
-    for (const child of node.children ?? []) triangles += visit(child);
+    for (const child of node.children ?? []) triangles += visit(child, world);
     return triangles;
   }
   const triangles = scene.nodes.reduce((sum, node) => sum + visit(node), 0);
   check(triangles === model.triangles, `${label}: declared ${model.triangles} triangles, actual scene has ${triangles}.`);
+  if (model.kind === 'lore') check(Math.abs((bounds[1][1] - bounds[0][1]) - model.height) < 1e-5,
+    `${label}: declared height ${model.height} differs from actual world mesh height ${bounds[1][1] - bounds[0][1]}.`);
   return triangles;
 }
 
@@ -264,7 +302,8 @@ function validateVox(bytes, model, palette) {
   requireValue(bytes.length >= 20 && bytes.toString('ascii', 0, 4) === 'VOX '
     && [150, 200].includes(bytes.readUInt32LE(4)) && bytes.toString('ascii', 8, 12) === 'MAIN'
     && bytes.readUInt32LE(12) === 0 && bytes.readUInt32LE(16) === bytes.length - 20, `${label}: invalid VOX header/MAIN size.`);
-  let count = 0, models = 0, size, rgba, pack;
+  let count = 0, models = 0, size, rgba, pack, loreDimensions;
+  const occupiedBounds = [[Infinity, Infinity, Infinity], [-Infinity, -Infinity, -Infinity]];
   const colorsUsed = new Set();
   function chunks(start, end, depth = 0) {
     requireValue(depth <= 128, `${label}: VOX nesting is too deep.`);
@@ -284,10 +323,15 @@ function validateVox(bytes, model, palette) {
         const cells = bytes.readUInt32LE(content);
         requireValue(cells > 0 && length === 4 + cells * 4, `${label}: XYZI length does not match its cell count.`);
         const occupied = new Set();
+        if (model.kind === 'lore') loreDimensions = size.slice();
         for (let index = 0; index < cells; index++) {
           const offset = content + 4 + index * 4, x = bytes[offset], y = bytes[offset + 1], z = bytes[offset + 2], color = bytes[offset + 3];
           requireValue(x < size[0] && y < size[1] && z < size[2] && color !== 0, `${label}: invalid voxel coordinate/color.`);
           colorsUsed.add(color);
+          if (model.kind === 'lore') for (const [axis, value] of [x, y, z].entries()) {
+            occupiedBounds[0][axis] = Math.min(occupiedBounds[0][axis], value);
+            occupiedBounds[1][axis] = Math.max(occupiedBounds[1][axis], value);
+          }
           const key = x + y * 256 + z * 65536;
           requireValue(!occupied.has(key), `${label}: duplicate occupied voxel cell.`);
           occupied.add(key);
@@ -302,10 +346,17 @@ function validateVox(bytes, model, palette) {
   }
   chunks(20, bytes.length);
   requireValue(models > 0 && !size && (pack === undefined || pack === models), `${label}: incomplete/mismatched VOX models.`);
-  if (model.kind === 'character') {
-    requireValue(rgba, `${label}: editable character VOX needs its canonical RGBA palette.`);
+  if (model.kind === 'lore') {
+    requireValue(models === 1 && occupiedBounds[0].every(value => value === 0)
+      && loreDimensions.every((value, axis) => value === occupiedBounds[1][axis] + 1),
+    `${label}: lore VOX must be one flattened, tightly bounded source model.`);
+    check(Math.abs(loreDimensions[2] * 0.05 - model.height) < 1e-5,
+      `${label}: declared height ${model.height} differs from occupied VOX height ${loreDimensions[2] * 0.05}.`);
+  }
+  if (model.kind === 'character' || model.kind === 'lore') {
+    requireValue(rgba, `${label}: editable character/lore VOX needs its canonical RGBA palette.`);
     // Older assets legitimately leave newer, unused semantic slots black.
-    const indices = model.style === 'chibi' ? Array.from({ length: 256 }, (_, index) => index) : colorsUsed;
+    const indices = model.style === 'chibi' || model.kind === 'lore' ? Array.from({ length: 256 }, (_, index) => index) : colorsUsed;
     for (const index of indices) {
       const texel = (index + 255) % 256;
       requireValue(sameColor([...rgba.subarray(texel * 4, texel * 4 + 4)], palette[index]), `${label}: VOX palette slot ${index} is not canonical.`);
@@ -325,14 +376,15 @@ try {
   const ids = tags.map(tag => tag.attrs.get('id')).filter(Boolean);
   check(new Set(ids).size === ids.length, 'Viewer contains duplicate HTML IDs.');
   for (const id of requiredIds) check(ids.includes(id), `Required viewer control/region is missing: ${id}.`);
-  for (const id of ['asset-select', 'character-style', 'view-mode', 'character-select', 'framing', 'palette-select'])
+  for (const id of ['asset-select', 'character-style', 'lore-location', 'lighting-mode', 'view-mode', 'character-select', 'framing', 'palette-select'])
     check(tags.some(tag => tag.name === 'select' && tag.attrs.get('id') === id), `${id} must be a select control.`);
   for (const id of ['motion-toggle', 'reset-view', 'camera-front', 'camera-right', 'camera-left', 'camera-back', 'export-palette', 'export-vox', 'export-glb'])
     check(tags.some(tag => tag.name === 'button' && tag.attrs.get('id') === id), `${id} must be a button.`);
   for (const id of ['sync-cameras', 'protect-identity'])
     check(tags.some(tag => tag.name === 'input' && tag.attrs.get('id') === id && tag.attrs.get('type') === 'checkbox'), `${id} must be a checkbox.`);
   check(tags.some(tag => tag.name === 'canvas' && tag.attrs.get('id') === 'viewer-canvas'), 'viewer-canvas must be a canvas element.');
-  const optionSets = { 'asset-select': ['characters', 'room', 'props'], 'view-mode': ['compare', 'solo', 'lineup'],
+  const optionSets = { 'asset-select': ['lore', 'characters', 'room', 'props'], 'view-mode': ['compare', 'solo', 'lineup'],
+    'lore-location': ['starter_loft', 'roots_street'], 'lighting-mode': ['day', 'night'],
     'character-style': ['chibi', 'original'], 'framing': ['body', 'portrait'], 'character-select': characterIds,
     'palette-select': ['original', 'island', 'pastel', 'neon', 'mono'] };
   for (const match of dom.matchAll(/<select\b([^>]*)>([\s\S]*?)<\/select\s*>/gi)) {
@@ -341,11 +393,12 @@ try {
     const options = [...match[2].matchAll(/<option\b[^>]*>/gi)];
     const values = options.map(option => attributes(option[0]).get('value'));
     check(expected.every(value => values.includes(value)), `${id} is missing a required option.`);
-    if (id === 'character-style') {
-      check(values.length === 2 && new Set(values).size === 2, 'Character style must offer exactly chibi and original.');
+    const defaults = { 'asset-select': 'lore', 'character-style': 'chibi', 'lore-location': 'starter_loft', 'lighting-mode': 'night' };
+    if (id in defaults) {
+      check(values.length === expected.length && new Set(values).size === expected.length, `${id} must offer exactly its required options.`);
       const selected = options.filter(option => /\sselected(?:\s*=|\s|>)/i.test(option[0]));
-      check(selected.length <= 1 && attributes((selected[0] ?? options[0])[0]).get('value') === 'chibi',
-        'Character style must default to chibi.');
+      check(selected.length <= 1 && attributes((selected[0] ?? options[0])[0]).get('value') === defaults[id],
+        `${id} must default to ${defaults[id]}.`);
     }
   }
   for (const tag of tags) {
@@ -378,26 +431,27 @@ try {
       check(inertHttpReference(match[2], url.index, url[0]), `Viewer bundle contains an executable HTTP reference: ${url[0]}.`);
   }
   const data = JSON.parse(dataScripts[0][2]);
-  requireValue(data.schema === 'greenbox-viewer-v2', 'Unrecognized viewer data schema.');
+  requireValue(data.schema === 'greenbox-viewer-v3', 'Unrecognized viewer data schema.');
   validateCatalog(data.catalog);
-  requireValue(Array.isArray(data.models) && data.models.length === 16, 'Viewer must embed seven original characters, seven chibi characters, bedroom, and props.');
+  requireValue(Array.isArray(data.models) && data.models.length === 18, 'Viewer must embed seven original characters, seven chibi characters, bedroom, props, and two lore locations.');
   const modelIds = data.models.map(model => model.id);
-  check(new Set(modelIds).size === 16, 'Embedded model IDs must be unique.');
-  for (const id of [...characterIds, ...chibiIds, 'bedroom', 'props']) check(modelIds.includes(id), `Missing embedded model: ${id}.`);
+  check(new Set(modelIds).size === 18, 'Embedded model IDs must be unique.');
+  for (const id of [...characterIds, ...chibiIds, 'bedroom', 'props', 'roots_street', 'starter_loft']) check(modelIds.includes(id), `Missing embedded model: ${id}.`);
   for (const model of data.models) {
     try {
       const expectedStyle = characterIds.includes(model.id) ? 'original' : chibiIds.includes(model.id) ? 'chibi' : null;
-      const expectedKind = expectedStyle ? 'character' : model.id === 'bedroom' ? 'room' : model.id === 'props' ? 'props' : null;
+      const expectedKind = expectedStyle ? 'character' : model.id === 'bedroom' ? 'room' : model.id === 'props' ? 'props'
+        : ['roots_street', 'starter_loft'].includes(model.id) ? 'lore' : null;
       requireValue(expectedKind && model.kind === expectedKind, `${model.id}: invalid asset kind.`);
       if (expectedStyle) requireValue(model.style === expectedStyle
         && model.characterId === (expectedStyle === 'chibi' ? model.id.slice(0, -6) : model.id),
         `${model.id}: character style or identity mapping is incorrect.`);
       requireValue(typeof model.label === 'string' && model.label.trim().length > 0 && integer(model.triangles, 1)
-        && (integer(model.voxels) || (model.kind !== 'character' && model.voxels === null))
-        && ((Number.isFinite(model.height) && model.height > 0) || (model.kind !== 'character' && model.height === null)),
+        && (integer(model.voxels, 1) || (!['character', 'lore'].includes(model.kind) && model.voxels === null))
+        && ((Number.isFinite(model.height) && model.height > 0) || (!['character', 'lore'].includes(model.kind) && model.height === null)),
       `${model.id}: invalid asset label/statistics.`);
       const triangles = validateGlb(base64(model.glb, `${model.id} GLB`), model, data.catalog.original);
-      requireValue(model.kind !== 'character' || model.vox !== null, `${model.id}: editable character VOX is missing.`);
+      requireValue(!['character', 'lore'].includes(model.kind) || model.vox !== null, `${model.id}: editable character/lore VOX is missing.`);
       const voxels = model.vox === null ? null : validateVox(base64(model.vox, `${model.id} VOX`), model, data.catalog.original);
       if (model.kind === 'character') {
         triangleTotal += triangles; voxelTotal += voxels;

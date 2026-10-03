@@ -45,9 +45,15 @@ for (const [id, label] of cast) {
 }
 models.push(await asset('bedroom', 'Rasta bedroom', 'room', 'game/assets/rasta_bedroom.glb', 'voxel_sources/rasta_room/rasta_bedroom.vox'));
 models.push(await asset('props', 'Grow props', 'props', 'game/assets/starter_props.glb', null));
+for (const [id, label] of [['starter_loft','Level-one bedroom'],['roots_street','ROOTS district']]) {
+  const base = `voxel_sources/lore_scenes/${id}/${id}`;
+  const source = JSON.parse(await fs.readFile(path.join(root, `${base}.json`), 'utf8'));
+  const scene = JSON.parse(await fs.readFile(path.join(root, `voxel_sources/lore_scenes/${id}/scene.json`), 'utf8'));
+  models.push(await asset(id, label, 'lore', `${base}.glb`, `${base}.vox`, source, { loreLights: scene.lights }));
+}
 const result = await esbuild.build({ entryPoints: [path.join(root, 'viewer/viewer.js')], bundle: true, write: false, format: 'iife', target: ['es2022'], minify: true, legalComments: 'inline', sourcemap: false });
 const [shell, css] = await Promise.all(['viewer-shell.html', 'viewer.css'].map(file => fs.readFile(path.join(root, 'viewer', file), 'utf8')));
-const embedded = JSON.stringify({ schema: 'greenbox-viewer-v2', catalog, models }).replaceAll('<', '\\u003c');
+const embedded = JSON.stringify({ schema: 'greenbox-viewer-v3', catalog, models }).replaceAll('<', '\\u003c');
 const script = result.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
 const license = await fs.readFile(path.join(root, 'viewer/node_modules/three/LICENSE'), 'utf8');
 const html = shell.replace('<!-- VIEWER_STYLE -->', () => css).replace('<!-- VIEWER_DATA -->', () => embedded).replace('<!-- VIEWER_SCRIPT -->', () => script)

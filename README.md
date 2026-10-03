@@ -2,7 +2,7 @@
 
 A small desktop-first voxel grow-room game, with a Unity 6000.2.6f1 project and the original Godot 4.7.2 demo. Walk around a furnished bedroom, care for fictional game plants, harvest for cash and XP, and unlock extra pots and equipment.
 
-**[Play the Unity browser game](https://greenbox-pi.vercel.app/unity/)** · **[Open the voxel character lab](https://greenbox-pi.vercel.app/viewer/)** · [Original Godot demo](https://greenbox-pi.vercel.app) · [Vercel project](https://vercel.com/kairo8080/greenbox)
+**[Play the Unity browser game](https://greenbox-pi.vercel.app/unity/)** · **[Explore the voxel lore viewer](https://greenbox-pi.vercel.app/viewer/)** · [Original Godot demo](https://greenbox-pi.vercel.app) · [Vercel project](https://vercel.com/kairo8080/greenbox)
 
 The new **[Greenbox Unity project](unity/README.md)** lives in `unity/Greenbox/`, using Unity 6000.2.6f1 and Web Build Support. It imports the same optimized voxel assets with Unity glTFast and has passed a real browser build and gameplay check, including a full harvest and saved progress after reloading. MagicaVoxel remains the editable asset source; Blender exports meshes, and Unity supplies the playable game.
 
@@ -10,7 +10,11 @@ The **[voxel character cast](voxel_sources/character_cast/README.md)** adds a co
 
 The **[chibi cast](voxel_sources/chibi_cast/README.md)** remakes all seven with broad cube heads, short legs, and compact bodies, taking visual inspiration from [The Touryst](https://thetouryst.shinen.com/deluxe/). These original Greenbox assets retain the exact collection palette, editable VOX sources, and six movable rigid parts. All seven together use 4,030 triangles; the taller original cast remains available.
 
-The **[interactive character lab](viewer/README.md)** puts all seven characters in one window with a **Chibi / Original** switch, synchronized orbit/zoom, full-body and portrait views, a lineup, and five shared palette themes. It includes the bedroom and props, editable color swatches, and recolored VOX/GLB downloads. The brighter stage adds cached soft shadows. `public/viewer/index.html` is also a single portable HTML file with all assets and code embedded. Rebuild it with `npm install --prefix viewer` and `npm run build:viewer`; the Vercel build verifies the committed file.
+The **[interactive voxel viewer](viewer/README.md)** now opens at **Greenbox lore scenes → Level-one bedroom → Night**. Switch to **ROOTS district**, choose day or night, and inspect the scenes with orbit, zoom, turntable, soft shadows, and bloom. The 18 embedded models also include both seven-character casts, the original bedroom, and props, with **Chibi / Original** comparison views and five global palette themes. The lore locations are static 3D art previews; gameplay continues in the existing Unity and Godot projects.
+
+The **[editable lore scenes](voxel_sources/lore_scenes/README.md)** apply broad inspiration from the user's Touryst references to original Greenbox artwork, reusing the cast and CC0-derived plants. No game assets or textures were copied. ROOTS uses 220,120 occupied cubes and 11,646 triangles; the level-one bedroom uses 124,615 cubes and 13,324 triangles, for 344,735 cubes and 24,970 triangles total. [Open ROOTS in daylight](https://greenbox-pi.vercel.app/viewer/?collection=lore&location=roots_street&lighting=day).
+
+The viewer provides editable color swatches and recolored VOX/GLB export links. `public/viewer/index.html` is a portable HTML file with all assets and runtime code embedded for offline use; direct `file://` opening has not been browser-tested here. Export link generation was verified in the in-app browser, while saving files to disk was not. Rebuild with `npm install --prefix viewer` and `npm run build:viewer`; the Vercel build verifies the committed viewer.
 
 ## Play
 
@@ -61,7 +65,8 @@ godot --headless --path game --script res://tests/test_character_interaction.gd
 - `game/`: playable Godot project, scripts, tests, and mesh assets.
 - `unity/Greenbox/`: playable Unity project, native scene, C# scripts, and imported voxel meshes.
 - `voxel_sources/`: editable `.vox` and Blender sources, with original-source/license records.
-- `public/`: committed Godot browser build, with the Unity export at `public/unity/`, served by Vercel.
+- `viewer/`: source for the lore/character art viewer and shared palette tools.
+- `public/`: committed Godot browser build, Unity export at `public/unity/`, and standalone art viewer at `public/viewer/`, served by Vercel.
 - `web/godot-shell.html`: editable browser launcher used during export.
 - `docs/`: asset provenance and validation records.
 - `scripts/`: Web export and deployment-build verification tools.

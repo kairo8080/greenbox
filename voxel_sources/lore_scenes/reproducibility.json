@@ -1,0 +1,166 @@
+{
+  "schema": "greenbox-lore-source-reproducibility-v1",
+  "status": "pass",
+  "scenes_verified": 2,
+  "files_verified": 39,
+  "method": "Bundled builders and SHA-addressed source inputs executed in an isolated temporary pack. Every native source JSON, source manifest, assembled VOX and modular asset VOX compared byte for byte. Accepted scene folders were not rewritten.",
+  "portable_inputs_independently_verified": true,
+  "files": [
+    {
+      "path": "roots_street/roots_street.json",
+      "sha256": "6635d67221e83e9bc1edb731c171b62f161fc7356c6c64f6ad770942ffe03492"
+    },
+    {
+      "path": "roots_street/roots_street.vox",
+      "sha256": "6b8b67ff8c10f0b181683b3e7f77ff00aa8bb9fa1936fd98b94a8e0540f04579"
+    },
+    {
+      "path": "roots_street/scene.json",
+      "sha256": "1716092d2542211d8a31641716845b402e9f186e356166c825355a987b1fef72"
+    },
+    {
+      "path": "roots_street/flat_scene.json",
+      "sha256": "0a096fb9ae8112bc154e0983f28e7030528cc8c725a0ffba11df08db5a0b38f3"
+    },
+    {
+      "path": "roots_street/source_manifest.json",
+      "sha256": "c37b44cf6b6ef400e5d46f34fe00b7b6e97c1ba398f0fcbd7a12467dc920f612"
+    },
+    {
+      "path": "roots_street/assets/cc0_derived_small_plant.vox",
+      "sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa"
+    },
+    {
+      "path": "roots_street/assets/chibi_blonde_neighbour.vox",
+      "sha256": "e79af10984667f247ed611a3a00f068e2c9edad857119e25c5557797932eeb94"
+    },
+    {
+      "path": "roots_street/assets/chibi_rasta_grower.vox",
+      "sha256": "a622b3b13a43a486fe59c4aa8c84170b5d5f6fd75633eed92da28e3ae0354a9b"
+    },
+    {
+      "path": "roots_street/assets/district_bench.vox",
+      "sha256": "07fbba1fdb62c42390a6694959fc4e90eae177eb1ee4d4562779c5774c2d64b5"
+    },
+    {
+      "path": "roots_street/assets/district_lamppost.vox",
+      "sha256": "ffe32a0adc2202bb6582bfc82b0bc22e35f478802647b1277311437e4f01d429"
+    },
+    {
+      "path": "roots_street/assets/district_pavement.vox",
+      "sha256": "9d410d313324434e9f19b0d8bc1fdef02e2687d78080fd5cb58bf3546f148fb2"
+    },
+    {
+      "path": "roots_street/assets/district_recycling_bin.vox",
+      "sha256": "b2461b7c9654fd98038addc42b15c0abaaa4b48061de657093cf1b21d1ad266d"
+    },
+    {
+      "path": "roots_street/assets/greenbox_social_corner.vox",
+      "sha256": "b70d89f1e0d80704f1d2994a18fb38d7531d64844cc212968c509fde2b5b59f8"
+    },
+    {
+      "path": "roots_street/assets/roots_sandwich_board.vox",
+      "sha256": "56e729ec5c9c5e6b6412b9dff1d2a9889209e81c1ad2c32cd4e43c7808894479"
+    },
+    {
+      "path": "roots_street/assets/roots_shop.vox",
+      "sha256": "76d6fd0948dcd4fa62b2abf955fd7f50f6a8afefb2a2bdd232cdada6085b9c2f"
+    },
+    {
+      "path": "roots_street/assets/urban_palm.vox",
+      "sha256": "8b3839027323cbb021afb96109533aa7c2d7e840ecd51b8c42aa380bd33bd730"
+    },
+    {
+      "path": "starter_loft/starter_loft.json",
+      "sha256": "131183141ee1f1040371f57a7fe08641e90f844252f1f9b8c559e08293364861"
+    },
+    {
+      "path": "starter_loft/starter_loft.vox",
+      "sha256": "75b2b000407118b650b174da51d90eb1128290341e26e2184d1859e4729a82cf"
+    },
+    {
+      "path": "starter_loft/scene.json",
+      "sha256": "76051f9f638f8086c43fc3c72e9591732bdc165d12b6ce83e0a9e222e707d92f"
+    },
+    {
+      "path": "starter_loft/flat_scene.json",
+      "sha256": "fb565cb2650b1e5e84124e38d6ce5aa0a69258e2a6b7f520a66e56d2d33f077f"
+    },
+    {
+      "path": "starter_loft/source_manifest.json",
+      "sha256": "4955ee276018cb8988ceb8c4837a907db440ee1e89d48ea5cc88fc58f35481a8"
+    },
+    {
+      "path": "starter_loft/assets/loft_air_fan.vox",
+      "sha256": "7e32cbf0be79e5fca642a12b37202b11d2dce17337c348843abe0edca06c9e86"
+    },
+    {
+      "path": "starter_loft/assets/loft_back_wall_neon_window_shelf.vox",
+      "sha256": "71e8e72114a8391305757c2786ce47b2d69d3814dc554e3a6a390c22dbd865d4"
+    },
+    {
+      "path": "starter_loft/assets/loft_budget_three_pot_light_rack.vox",
+      "sha256": "14b9111731725ba3c037ac6be7fd0dae8489bc10a32eafc41d56c0f4dcf6bf7d"
+    },
+    {
+      "path": "starter_loft/assets/loft_desk_chair.vox",
+      "sha256": "003ad2cb3a146cb9d57c915dea7f5e3ad85b0c80bdf33a523657ea8e23c65ae9"
+    },
+    {
+      "path": "starter_loft/assets/loft_level_one_chibi_grower.vox",
+      "sha256": "a622b3b13a43a486fe59c4aa8c84170b5d5f6fd75633eed92da28e3ae0354a9b"
+    },
+    {
+      "path": "starter_loft/assets/loft_low_dresser_and_radio.vox",
+      "sha256": "19ac75647a14c69ef919ad6815294d92568e22754d204bf7914a1645719d87d5"
+    },
+    {
+      "path": "starter_loft/assets/loft_oak_floor.vox",
+      "sha256": "185aca5f6066b3ecc77e63a56d9a926fedf9a0596b63d23ba06fffc0a38b1817"
+    },
+    {
+      "path": "starter_loft/assets/loft_original_leaf_rug.vox",
+      "sha256": "758a9fce7349b4cfa6cbd2e196a2d1e31069782d2ef3eaf175430da6baf8caf2"
+    },
+    {
+      "path": "starter_loft/assets/loft_plant_bushy_cc0_leaf.vox",
+      "sha256": "6dae8d4083fd93e88871bb31910c63c3877b37327b2ce04616a50a53ded7836f"
+    },
+    {
+      "path": "starter_loft/assets/loft_plant_medium_cc0_leaf.vox",
+      "sha256": "d3d9c3a88601680181852c750a850bcfb07d1c7675099414e85c87d803056e3c"
+    },
+    {
+      "path": "starter_loft/assets/loft_plant_small_cc0_leaf.vox",
+      "sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa"
+    },
+    {
+      "path": "starter_loft/assets/loft_rasta_single_bed.vox",
+      "sha256": "620dc5062c8afacc6a5294d87b833dd76f91c63e418eb2b2c6ddbda9b9eb7a20"
+    },
+    {
+      "path": "starter_loft/assets/loft_reused_cardboard_storage.vox",
+      "sha256": "a75d92ae94f5022ecc6cf30f96606a9ceea21ac8c957c8d15da0d4d30f278e2e"
+    },
+    {
+      "path": "starter_loft/assets/loft_slippers.vox",
+      "sha256": "00ef930f2c3ce2d1f7b5ff9050030e9eeb2beb9544f118d181b97e9cd20d5e83"
+    },
+    {
+      "path": "starter_loft/assets/loft_teal_left_wall_door_xp.vox",
+      "sha256": "5007b7e0db0894227e14d00a35f0a100e08e75b28aa3de424944c5d414a60451"
+    },
+    {
+      "path": "starter_loft/assets/loft_warm_bedside_table.vox",
+      "sha256": "0e8a7c36f05b7c5e12cbd2600227a977834433454f5f7d8de38ee801e408329f"
+    },
+    {
+      "path": "starter_loft/assets/loft_watering_can.vox",
+      "sha256": "9a08d49bf097e57979997efd23d48fff683c39888306e646751ccbcb6b18bd6f"
+    },
+    {
+      "path": "starter_loft/assets/loft_work_desk.vox",
+      "sha256": "b317b0922d1070391c64aaa35464c352395be70977efd3c544cbca7b0a0ab08f"
+    }
+  ]
+}

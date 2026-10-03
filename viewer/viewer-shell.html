@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Greenbox · Voxel Character Lab</title>
+  <title>Greenbox · Voxel World Lab</title>
   <style><!-- VIEWER_STYLE --></style>
 </head>
 <body>
@@ -15,10 +15,10 @@
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         <div>
           <p class="eyebrow">GREENBOX / ASSET STUDIO</p>
-          <h1>Voxel character lab</h1>
+          <h1>Voxel world lab</h1>
         </div>
       </div>
-      <div class="header-note"><span class="status-dot" aria-hidden="true"></span>Seven characters. Two styles. One shared palette.</div>
+      <div class="header-note"><span class="status-dot" aria-hidden="true"></span>ROOTS district · Level-one bedroom · Shared palette</div>
     </header>
 
     <main class="workspace">
@@ -48,10 +48,25 @@
           <div class="section-heading"><span class="section-index">01</span><h2>Choose your view</h2></div>
           <label class="field-label" for="asset-select">Asset collection</label>
           <select id="asset-select" data-ready-control disabled>
+            <option value="lore">Greenbox lore scenes</option>
             <option value="characters">Character collection</option>
             <option value="room">Bedroom scene</option>
             <option value="props">Grow props</option>
           </select>
+          <div id="lore-options">
+          <label class="field-label" for="lore-location">Lore location</label>
+          <select id="lore-location" data-ready-control disabled>
+            <option value="starter_loft">Level-one bedroom</option>
+            <option value="roots_street">ROOTS district</option>
+          </select>
+          <label class="field-label" for="lighting-mode">Lighting</label>
+          <select id="lighting-mode" data-ready-control disabled>
+            <option value="night">Night · neon accents</option>
+            <option value="day">Day · island sunshine</option>
+          </select>
+          <p id="lore-story" class="section-note">Level 1 · A spare bedroom, three starter pots, hand-me-down equipment, and big plans.</p>
+          </div>
+          <div id="character-options" hidden>
           <label class="field-label" for="character-style">Character style</label>
           <select id="character-style" data-ready-control disabled>
             <option value="chibi">Chibi · chunky proportions</option>
@@ -86,6 +101,7 @@
           </select>
           <label class="check-row" for="sync-cameras"><input id="sync-cameras" type="checkbox" checked data-ready-control disabled><span>Sync cameras across views</span></label>
           <p class="section-note">Switch between the chibi and original casts. Compare shows all seven; solo and lineup share the same colors.</p>
+          </div>
         </section>
 
         <section class="control-section">
@@ -100,7 +116,7 @@
             <button id="motion-toggle" class="button-accent" type="button" aria-pressed="false" data-ready-control disabled>Turntable</button>
             <button id="reset-view" type="button" data-ready-control disabled>Reset view</button>
           </div>
-          <p class="section-note">Switch to portrait to inspect faces and hair, or full body to check silhouette and proportions.</p>
+          <p id="camera-note" class="section-note">Drag to explore the room, or use the camera buttons for a different angle.</p>
         </section>
 
         <section class="control-section palette-section">

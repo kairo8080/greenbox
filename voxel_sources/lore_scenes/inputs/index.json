@@ -1,0 +1,24 @@
+{
+  "schema": "greenbox-lore-portable-source-inputs-v1",
+  "policy": "Exact input bytes are addressed by SHA-256; original logical provenance paths remain unchanged.",
+  "sources": {
+    "work/bedroom/scene.json": {
+      "logical_source_path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "bundled_path": "inputs/753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37.json",
+      "bytes": 1544165
+    },
+    "outputs/greenbox-chibi-pack/rasta_grower/rasta_grower.json": {
+      "logical_source_path": "outputs/greenbox-chibi-pack/rasta_grower/rasta_grower.json",
+      "sha256": "89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c",
+      "bundled_path": "inputs/89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c.json",
+      "bytes": 106578
+    },
+    "outputs/greenbox-chibi-pack/blonde_lady/blonde_lady.json": {
+      "logical_source_path": "outputs/greenbox-chibi-pack/blonde_lady/blonde_lady.json",
+      "sha256": "74c94702cdc920c06de8b5e9bc0034354d37896ab7896a832aec14203ec11ae0",
+      "bundled_path": "inputs/74c94702cdc920c06de8b5e9bc0034354d37896ab7896a832aec14203ec11ae0.json",
+      "bytes": 115501
+    }
+  }
+}

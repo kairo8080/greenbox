@@ -1,0 +1,546 @@
+{
+  "name": "starter_loft",
+  "description": "Original Greenbox XP 01 starter bedroom loft: an open 5.6 by 5.0 meter voxel diorama with dark navy/teal walls, oak floor, warm Rasta-striped sleep nook, original leaf rug and raised GREENBOX sign, modest desk, books/radio/storage details, three preserved CC0-leaf-derived plant props, a budget light rack, watering can and fan. A current chibi grower stands on the rug with no prop intersections. Cozy compact arcade-diorama composition takes inspiration from The Touryst while using original architecture and graphics. Game-art stages only; no real cultivation parameters or gameplay implementation.",
+  "occupied_voxels": 124615,
+  "dimensions": [
+    112,
+    100,
+    58
+  ],
+  "voxel_pitch_meters": 0.05,
+  "palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "intentional_union_overlap_cells": 0,
+  "connected_components": 1,
+  "assets": [
+    {
+      "name": "loft_oak_floor",
+      "voxels": 44800,
+      "dimensions": [
+        112,
+        100,
+        4
+      ]
+    },
+    {
+      "name": "loft_back_wall_neon_window_shelf",
+      "voxels": 23999,
+      "dimensions": [
+        112,
+        10,
+        54
+      ]
+    },
+    {
+      "name": "loft_teal_left_wall_door_xp",
+      "voxels": 19435,
+      "dimensions": [
+        6,
+        97,
+        54
+      ]
+    },
+    {
+      "name": "loft_rasta_single_bed",
+      "voxels": 14132,
+      "dimensions": [
+        29,
+        44,
+        26
+      ]
+    },
+    {
+      "name": "loft_warm_bedside_table",
+      "voxels": 1132,
+      "dimensions": [
+        10,
+        10,
+        23
+      ]
+    },
+    {
+      "name": "loft_slippers",
+      "voxels": 90,
+      "dimensions": [
+        8,
+        7,
+        3
+      ]
+    },
+    {
+      "name": "loft_work_desk",
+      "voxels": 1566,
+      "dimensions": [
+        26,
+        14,
+        29
+      ]
+    },
+    {
+      "name": "loft_desk_chair",
+      "voxels": 480,
+      "dimensions": [
+        10,
+        10,
+        17
+      ]
+    },
+    {
+      "name": "loft_low_dresser_and_radio",
+      "voxels": 5071,
+      "dimensions": [
+        21,
+        15,
+        23
+      ]
+    },
+    {
+      "name": "loft_reused_cardboard_storage",
+      "voxels": 960,
+      "dimensions": [
+        12,
+        10,
+        8
+      ]
+    },
+    {
+      "name": "loft_original_leaf_rug",
+      "voxels": 1008,
+      "dimensions": [
+        36,
+        28,
+        1
+      ]
+    },
+    {
+      "name": "loft_budget_three_pot_light_rack",
+      "voxels": 4512,
+      "dimensions": [
+        52,
+        36,
+        43
+      ]
+    },
+    {
+      "name": "loft_plant_small_cc0_leaf",
+      "voxels": 503,
+      "dimensions": [
+        21,
+        11,
+        29
+      ]
+    },
+    {
+      "name": "loft_plant_medium_cc0_leaf",
+      "voxels": 774,
+      "dimensions": [
+        19,
+        17,
+        35
+      ]
+    },
+    {
+      "name": "loft_plant_bushy_cc0_leaf",
+      "voxels": 1021,
+      "dimensions": [
+        23,
+        21,
+        37
+      ]
+    },
+    {
+      "name": "loft_watering_can",
+      "voxels": 448,
+      "dimensions": [
+        16,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "loft_air_fan",
+      "voxels": 514,
+      "dimensions": [
+        10,
+        7,
+        17
+      ]
+    },
+    {
+      "name": "loft_level_one_chibi_grower",
+      "voxels": 4170,
+      "dimensions": [
+        18,
+        15,
+        32
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "name": "loft_oak_floor",
+      "asset": "loft_oak_floor",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_back_wall_neon_window_shelf",
+      "asset": "loft_back_wall_neon_window_shelf",
+      "offset": [
+        0,
+        90,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_teal_left_wall_door_xp",
+      "asset": "loft_teal_left_wall_door_xp",
+      "offset": [
+        0,
+        0,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_rasta_single_bed",
+      "asset": "loft_rasta_single_bed",
+      "offset": [
+        9,
+        44,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_warm_bedside_table",
+      "asset": "loft_warm_bedside_table",
+      "offset": [
+        39,
+        73,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_slippers",
+      "asset": "loft_slippers",
+      "offset": [
+        15,
+        33,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_work_desk",
+      "asset": "loft_work_desk",
+      "offset": [
+        77,
+        15,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_desk_chair",
+      "asset": "loft_desk_chair",
+      "offset": [
+        85,
+        3,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_low_dresser_and_radio",
+      "asset": "loft_low_dresser_and_radio",
+      "offset": [
+        9,
+        10,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_reused_cardboard_storage",
+      "asset": "loft_reused_cardboard_storage",
+      "offset": [
+        96,
+        33,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_original_leaf_rug",
+      "asset": "loft_original_leaf_rug",
+      "offset": [
+        39,
+        24,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_budget_three_pot_light_rack",
+      "asset": "loft_budget_three_pot_light_rack",
+      "offset": [
+        58,
+        53,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_plant_small_cc0_leaf",
+      "asset": "loft_plant_small_cc0_leaf",
+      "offset": [
+        62,
+        57,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_plant_medium_cc0_leaf",
+      "asset": "loft_plant_medium_cc0_leaf",
+      "offset": [
+        86,
+        57,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_plant_bushy_cc0_leaf",
+      "asset": "loft_plant_bushy_cc0_leaf",
+      "offset": [
+        74,
+        76,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_watering_can",
+      "asset": "loft_watering_can",
+      "offset": [
+        77,
+        37,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_air_fan",
+      "asset": "loft_air_fan",
+      "offset": [
+        46,
+        88,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "loft_level_one_chibi_grower",
+      "asset": "loft_level_one_chibi_grower",
+      "offset": [
+        47,
+        31,
+        5
+      ],
+      "layer": 0,
+      "hidden": false
+    }
+  ],
+  "provenance": [
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "teal_single_bed",
+      "color_remap": {
+        "9": 9,
+        "10": 10,
+        "11": 11,
+        "12": 12,
+        "13": 13,
+        "26": 26
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "bedside_table",
+      "color_remap": {
+        "2": 2,
+        "9": 9,
+        "10": 10,
+        "11": 11,
+        "16": 16,
+        "31": 31
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "slippers",
+      "color_remap": {
+        "28": 28,
+        "13": 13
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "desk",
+      "color_remap": {
+        "32": 32,
+        "1": 1,
+        "2": 2,
+        "5": 5,
+        "9": 9,
+        "10": 10,
+        "11": 11,
+        "12": 12,
+        "13": 13,
+        "14": 14,
+        "15": 15,
+        "26": 26,
+        "28": 28,
+        "31": 31
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "chair",
+      "color_remap": {
+        "2": 2,
+        "9": 9,
+        "10": 10,
+        "12": 12,
+        "13": 13
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_small",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_medium",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_bushy",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "24": 24,
+        "28": 28,
+        "30": 30
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "watering_can",
+      "color_remap": {
+        "1": 1,
+        "2": 2,
+        "13": 13,
+        "24": 24,
+        "25": 25,
+        "31": 31
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "small_fan",
+      "color_remap": {
+        "1": 1,
+        "2": 2,
+        "13": 13,
+        "15": 15,
+        "27": 27,
+        "28": 28,
+        "31": 31
+      }
+    },
+    {
+      "path": "outputs/greenbox-chibi-pack/rasta_grower/rasta_grower.json",
+      "sha256": "89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c",
+      "source_asset": "rasta_grower",
+      "color_remap": {
+        "1": 1,
+        "34": 34,
+        "35": 35,
+        "36": 36,
+        "37": 37,
+        "38": 38,
+        "39": 39,
+        "11": 11,
+        "28": 28,
+        "62": 62
+      }
+    }
+  ],
+  "sha256": {
+    "flat_scene.json": "fb565cb2650b1e5e84124e38d6ce5aa0a69258e2a6b7f520a66e56d2d33f077f",
+    "scene.json": "76051f9f638f8086c43fc3c72e9591732bdc165d12b6ce83e0a9e222e707d92f",
+    "starter_loft.json": "131183141ee1f1040371f57a7fe08641e90f844252f1f9b8c559e08293364861",
+    "starter_loft.vox": "75b2b000407118b650b174da51d90eb1128290341e26e2184d1859e4729a82cf"
+  }
+}

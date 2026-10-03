@@ -1,0 +1,800 @@
+{
+  "schema": "independent-greenbox-lore-pack-validation-v1",
+  "status": "pass",
+  "verification": "Independent modular placement union, editable VOX bytes, provenance and exact actual GLB triangle clipping against every exposed flattened source cube face.",
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "voxel_pitch_meters": 0.05,
+  "assets_verified": 2,
+  "total_filled_voxels": 344735,
+  "total_triangles": 24970,
+  "assets": [
+    {
+      "asset": "roots_street",
+      "status": "pass",
+      "filled_voxels": 220120,
+      "dimensions_voxels": [
+        170,
+        125,
+        62
+      ],
+      "normalization_offset": [
+        0,
+        0,
+        0
+      ],
+      "voxel_pitch_meters": 0.05,
+      "height_meters": 3.1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "colors_used": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        12,
+        13,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        42,
+        43,
+        55,
+        61,
+        62
+      ],
+      "connected_components": 1,
+      "component_sizes": [
+        220120
+      ],
+      "intentional_union_overlap_cells": 0,
+      "union_overlaps_changing_color": 0,
+      "last_write_wins_union_verified_exactly": true,
+      "modular_assets": [
+        {
+          "name": "district_pavement",
+          "filled_voxels": 73100,
+          "dimensions": [
+            170,
+            125,
+            4
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            73100
+          ],
+          "vox_sha256": "9d410d313324434e9f19b0d8bc1fdef02e2687d78080fd5cb58bf3546f148fb2"
+        },
+        {
+          "name": "roots_shop",
+          "filled_voxels": 68968,
+          "dimensions": [
+            78,
+            45,
+            58
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            68968
+          ],
+          "vox_sha256": "76d6fd0948dcd4fa62b2abf955fd7f50f6a8afefb2a2bdd232cdada6085b9c2f"
+        },
+        {
+          "name": "greenbox_social_corner",
+          "filled_voxels": 59855,
+          "dimensions": [
+            77,
+            44,
+            53
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            59855
+          ],
+          "vox_sha256": "b70d89f1e0d80704f1d2994a18fb38d7531d64844cc212968c509fde2b5b59f8"
+        },
+        {
+          "name": "district_bench",
+          "filled_voxels": 732,
+          "dimensions": [
+            23,
+            9,
+            16
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            732
+          ],
+          "vox_sha256": "07fbba1fdb62c42390a6694959fc4e90eae177eb1ee4d4562779c5774c2d64b5"
+        },
+        {
+          "name": "district_lamppost",
+          "filled_voxels": 472,
+          "dimensions": [
+            6,
+            6,
+            49
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            472
+          ],
+          "vox_sha256": "ffe32a0adc2202bb6582bfc82b0bc22e35f478802647b1277311437e4f01d429"
+        },
+        {
+          "name": "roots_sandwich_board",
+          "filled_voxels": 2971,
+          "dimensions": [
+            29,
+            10,
+            26
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            2971
+          ],
+          "vox_sha256": "56e729ec5c9c5e6b6412b9dff1d2a9889209e81c1ad2c32cd4e43c7808894479"
+        },
+        {
+          "name": "urban_palm",
+          "filled_voxels": 1284,
+          "dimensions": [
+            27,
+            27,
+            38
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            1284
+          ],
+          "vox_sha256": "8b3839027323cbb021afb96109533aa7c2d7e840ecd51b8c42aa380bd33bd730"
+        },
+        {
+          "name": "district_recycling_bin",
+          "filled_voxels": 768,
+          "dimensions": [
+            8,
+            8,
+            12
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            768
+          ],
+          "vox_sha256": "b2461b7c9654fd98038addc42b15c0abaaa4b48061de657093cf1b21d1ad266d"
+        },
+        {
+          "name": "cc0_derived_small_plant",
+          "filled_voxels": 503,
+          "dimensions": [
+            21,
+            11,
+            29
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            503
+          ],
+          "vox_sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa"
+        },
+        {
+          "name": "chibi_rasta_grower",
+          "filled_voxels": 4170,
+          "dimensions": [
+            18,
+            15,
+            32
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            4170
+          ],
+          "vox_sha256": "a622b3b13a43a486fe59c4aa8c84170b5d5f6fd75633eed92da28e3ae0354a9b"
+        },
+        {
+          "name": "chibi_blonde_neighbour",
+          "filled_voxels": 4504,
+          "dimensions": [
+            18,
+            14,
+            30
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            4504
+          ],
+          "vox_sha256": "e79af10984667f247ed611a3a00f068e2c9edad857119e25c5557797932eeb94"
+        }
+      ],
+      "modular_instance_count": 15,
+      "reused_sources": [
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "cannabis_plant_small",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "outputs/greenbox-chibi-pack/rasta_grower/rasta_grower.json",
+          "source_asset": "rasta_grower",
+          "sha256": "89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "outputs/greenbox-chibi-pack/blonde_lady/blonde_lady.json",
+          "source_asset": "blonde_lady",
+          "sha256": "74c94702cdc920c06de8b5e9bc0034354d37896ab7896a832aec14203ec11ae0",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        }
+      ],
+      "source_json_sha256": "6635d67221e83e9bc1edb731c171b62f161fc7356c6c64f6ad770942ffe03492",
+      "flat_scene_sha256": "0a096fb9ae8112bc154e0983f28e7030528cc8c725a0ffba11df08db5a0b38f3",
+      "vox_sha256": "6b8b67ff8c10f0b181683b3e7f77ff00aa8bb9fa1936fd98b94a8e0540f04579",
+      "source_manifest_sha256": "c37b44cf6b6ef400e5d46f34fe00b7b6e97c1ba398f0fcbd7a12467dc920f612",
+      "glb": {
+        "path": "outputs\\greenbox-lore-pack\\roots_street\\roots_street.glb",
+        "sha256": "ef121995b22110ec9e63412254c4974fa9f3d015bcbc7b4ecc4fbb60942e834b",
+        "bytes": 773100,
+        "triangles": 11646,
+        "vertices": 21875,
+        "exposed_unit_faces_verified": 124336,
+        "emissive_triangles": 114,
+        "materials": 2,
+        "world_bounds_y_up_meters": [
+          [
+            0.0,
+            0.0,
+            -6.25
+          ],
+          [
+            8.5,
+            3.0999999046325684,
+            0.0
+          ]
+        ],
+        "exact_flat_source_surface_and_palette_coverage": true,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_axis_normals": true,
+        "source_emissive_role_mapping_preserved": true
+      },
+      "previews": {
+        "day": {
+          "width": 1440,
+          "height": 1000,
+          "bytes": 1811618,
+          "sha256": "e78d76b5ed48d8cfa9bfe115fe11b2163fbc0c83f775a77ad123392064acbb4d"
+        },
+        "night": {
+          "width": 1440,
+          "height": 1000,
+          "bytes": 1882239,
+          "sha256": "8acf1d9b995659944af2865dad9c3f9dd492c6aa3279f54293b031eacbe740bb"
+        }
+      },
+      "blend": {
+        "sha256": "fdb1c2887c5669b412fc0907d314513daabe6bd5817a7443263bc42e945178ed",
+        "bytes": 295101,
+        "verification_scope": "Nonempty saved Blender file with recognized container magic; internal scene blocks not decoded."
+      }
+    },
+    {
+      "asset": "starter_loft",
+      "status": "pass",
+      "filled_voxels": 124615,
+      "dimensions_voxels": [
+        112,
+        100,
+        58
+      ],
+      "normalization_offset": [
+        0,
+        0,
+        0
+      ],
+      "voxel_pitch_meters": 0.05,
+      "height_meters": 2.9000000000000004,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "colors_used": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        45,
+        46,
+        51,
+        62
+      ],
+      "connected_components": 1,
+      "component_sizes": [
+        124615
+      ],
+      "intentional_union_overlap_cells": 0,
+      "union_overlaps_changing_color": 0,
+      "last_write_wins_union_verified_exactly": true,
+      "modular_assets": [
+        {
+          "name": "loft_oak_floor",
+          "filled_voxels": 44800,
+          "dimensions": [
+            112,
+            100,
+            4
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            44800
+          ],
+          "vox_sha256": "185aca5f6066b3ecc77e63a56d9a926fedf9a0596b63d23ba06fffc0a38b1817"
+        },
+        {
+          "name": "loft_back_wall_neon_window_shelf",
+          "filled_voxels": 23999,
+          "dimensions": [
+            112,
+            10,
+            54
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            23999
+          ],
+          "vox_sha256": "71e8e72114a8391305757c2786ce47b2d69d3814dc554e3a6a390c22dbd865d4"
+        },
+        {
+          "name": "loft_teal_left_wall_door_xp",
+          "filled_voxels": 19435,
+          "dimensions": [
+            6,
+            97,
+            54
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            19435
+          ],
+          "vox_sha256": "5007b7e0db0894227e14d00a35f0a100e08e75b28aa3de424944c5d414a60451"
+        },
+        {
+          "name": "loft_rasta_single_bed",
+          "filled_voxels": 14132,
+          "dimensions": [
+            29,
+            44,
+            26
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            14132
+          ],
+          "vox_sha256": "620dc5062c8afacc6a5294d87b833dd76f91c63e418eb2b2c6ddbda9b9eb7a20"
+        },
+        {
+          "name": "loft_warm_bedside_table",
+          "filled_voxels": 1132,
+          "dimensions": [
+            10,
+            10,
+            23
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            1132
+          ],
+          "vox_sha256": "0e8a7c36f05b7c5e12cbd2600227a977834433454f5f7d8de38ee801e408329f"
+        },
+        {
+          "name": "loft_slippers",
+          "filled_voxels": 90,
+          "dimensions": [
+            8,
+            7,
+            3
+          ],
+          "connected_components": 2,
+          "component_sizes": [
+            45,
+            45
+          ],
+          "vox_sha256": "00ef930f2c3ce2d1f7b5ff9050030e9eeb2beb9544f118d181b97e9cd20d5e83"
+        },
+        {
+          "name": "loft_work_desk",
+          "filled_voxels": 1566,
+          "dimensions": [
+            26,
+            14,
+            29
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            1566
+          ],
+          "vox_sha256": "b317b0922d1070391c64aaa35464c352395be70977efd3c544cbca7b0a0ab08f"
+        },
+        {
+          "name": "loft_desk_chair",
+          "filled_voxels": 480,
+          "dimensions": [
+            10,
+            10,
+            17
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            480
+          ],
+          "vox_sha256": "003ad2cb3a146cb9d57c915dea7f5e3ad85b0c80bdf33a523657ea8e23c65ae9"
+        },
+        {
+          "name": "loft_low_dresser_and_radio",
+          "filled_voxels": 5071,
+          "dimensions": [
+            21,
+            15,
+            23
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            5071
+          ],
+          "vox_sha256": "19ac75647a14c69ef919ad6815294d92568e22754d204bf7914a1645719d87d5"
+        },
+        {
+          "name": "loft_reused_cardboard_storage",
+          "filled_voxels": 960,
+          "dimensions": [
+            12,
+            10,
+            8
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            960
+          ],
+          "vox_sha256": "a75d92ae94f5022ecc6cf30f96606a9ceea21ac8c957c8d15da0d4d30f278e2e"
+        },
+        {
+          "name": "loft_original_leaf_rug",
+          "filled_voxels": 1008,
+          "dimensions": [
+            36,
+            28,
+            1
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            1008
+          ],
+          "vox_sha256": "758a9fce7349b4cfa6cbd2e196a2d1e31069782d2ef3eaf175430da6baf8caf2"
+        },
+        {
+          "name": "loft_budget_three_pot_light_rack",
+          "filled_voxels": 4512,
+          "dimensions": [
+            52,
+            36,
+            43
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            4512
+          ],
+          "vox_sha256": "14b9111731725ba3c037ac6be7fd0dae8489bc10a32eafc41d56c0f4dcf6bf7d"
+        },
+        {
+          "name": "loft_plant_small_cc0_leaf",
+          "filled_voxels": 503,
+          "dimensions": [
+            21,
+            11,
+            29
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            503
+          ],
+          "vox_sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa"
+        },
+        {
+          "name": "loft_plant_medium_cc0_leaf",
+          "filled_voxels": 774,
+          "dimensions": [
+            19,
+            17,
+            35
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            774
+          ],
+          "vox_sha256": "d3d9c3a88601680181852c750a850bcfb07d1c7675099414e85c87d803056e3c"
+        },
+        {
+          "name": "loft_plant_bushy_cc0_leaf",
+          "filled_voxels": 1021,
+          "dimensions": [
+            23,
+            21,
+            37
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            1021
+          ],
+          "vox_sha256": "6dae8d4083fd93e88871bb31910c63c3877b37327b2ce04616a50a53ded7836f"
+        },
+        {
+          "name": "loft_watering_can",
+          "filled_voxels": 448,
+          "dimensions": [
+            16,
+            8,
+            13
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            448
+          ],
+          "vox_sha256": "9a08d49bf097e57979997efd23d48fff683c39888306e646751ccbcb6b18bd6f"
+        },
+        {
+          "name": "loft_air_fan",
+          "filled_voxels": 514,
+          "dimensions": [
+            10,
+            7,
+            17
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            514
+          ],
+          "vox_sha256": "7e32cbf0be79e5fca642a12b37202b11d2dce17337c348843abe0edca06c9e86"
+        },
+        {
+          "name": "loft_level_one_chibi_grower",
+          "filled_voxels": 4170,
+          "dimensions": [
+            18,
+            15,
+            32
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            4170
+          ],
+          "vox_sha256": "a622b3b13a43a486fe59c4aa8c84170b5d5f6fd75633eed92da28e3ae0354a9b"
+        }
+      ],
+      "modular_instance_count": 18,
+      "reused_sources": [
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "teal_single_bed",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 2598,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "bedside_table",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "slippers",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "desk",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "chair",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 180,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "cannabis_plant_small",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "cannabis_plant_medium",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "cannabis_plant_bushy",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "watering_can",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "small_fan",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "outputs/greenbox-chibi-pack/rasta_grower/rasta_grower.json",
+          "source_asset": "rasta_grower",
+          "sha256": "89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        }
+      ],
+      "source_json_sha256": "131183141ee1f1040371f57a7fe08641e90f844252f1f9b8c559e08293364861",
+      "flat_scene_sha256": "fb565cb2650b1e5e84124e38d6ce5aa0a69258e2a6b7f520a66e56d2d33f077f",
+      "vox_sha256": "75b2b000407118b650b174da51d90eb1128290341e26e2184d1859e4729a82cf",
+      "source_manifest_sha256": "4955ee276018cb8988ceb8c4837a907db440ee1e89d48ea5cc88fc58f35481a8",
+      "glb": {
+        "path": "outputs\\greenbox-lore-pack\\starter_loft\\starter_loft.glb",
+        "sha256": "7ae2bda606be24539895700093f69e25df7a1d5d552c0253aa12624dee25d192",
+        "bytes": 888548,
+        "triangles": 13324,
+        "vertices": 25167,
+        "exposed_unit_faces_verified": 77916,
+        "emissive_triangles": 832,
+        "materials": 2,
+        "world_bounds_y_up_meters": [
+          [
+            0.0,
+            0.0,
+            -5.0
+          ],
+          [
+            5.599999904632568,
+            2.9000000953674316,
+            0.0
+          ]
+        ],
+        "exact_flat_source_surface_and_palette_coverage": true,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_axis_normals": true,
+        "source_emissive_role_mapping_preserved": true
+      },
+      "previews": {
+        "day": {
+          "width": 1440,
+          "height": 1000,
+          "bytes": 2070424,
+          "sha256": "98704db82ee592a15d6dd9b6531c0663b1a98a35acb6d10a50544da53ca9c97b"
+        },
+        "night": {
+          "width": 1440,
+          "height": 1000,
+          "bytes": 2046090,
+          "sha256": "fe4bd9164488b3220965c8fe28a512ea7bf5c75696efe8e24fab584bf9217545"
+        }
+      },
+      "blend": {
+        "sha256": "9408fd0b0feee530b50b3db0477a460aaeda21107bac85a33047b9079becf574",
+        "bytes": 326416,
+        "verification_scope": "Nonempty saved Blender file with recognized container magic; internal scene blocks not decoded."
+      }
+    }
+  ]
+}

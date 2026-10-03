@@ -1,0 +1,59 @@
+{
+  "schema": "greenbox-lore-provenance-v1",
+  "created_date": "2026-10-03",
+  "original_art": "Original Greenbox architecture, lettering, props, decorative motifs and chibi characters.",
+  "visual_direction": {
+    "reference": "The Touryst",
+    "url": "https://thetouryst.shinen.com/deluxe/",
+    "usage": "User-supplied screenshots inform broad compact voxel diorama style only; no game artwork, assets or textures copied or bundled."
+  },
+  "reused_project_sources": [
+    {
+      "logical_source_path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "bundled_path": "inputs/753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37.json",
+      "bytes": 1544165
+    },
+    {
+      "logical_source_path": "outputs/greenbox-chibi-pack/rasta_grower/rasta_grower.json",
+      "sha256": "89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c",
+      "bundled_path": "inputs/89604e95c4a6750abfbb15bc8ceea836276a5f044b24c5e311598164039d499c.json",
+      "bytes": 106578
+    },
+    {
+      "logical_source_path": "outputs/greenbox-chibi-pack/blonde_lady/blonde_lady.json",
+      "sha256": "74c94702cdc920c06de8b5e9bc0034354d37896ab7896a832aec14203ec11ae0",
+      "bundled_path": "inputs/74c94702cdc920c06de8b5e9bc0034354d37896ab7896a832aec14203ec11ae0.json",
+      "bytes": 115501
+    }
+  ],
+  "third_party_leaf": {
+    "author": "Yughues / Nobiax",
+    "source_page": "https://opengameart.org/content/cannabis-plants",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "modification": "Existing CC0-derived leaf silhouette was voxelized and reused in the established Greenbox potted-plant sources. Those exact plant sources are reused in these scenes."
+  },
+  "preserved_source_and_license_files": [
+    {
+      "original_project_path": "greenbox/voxel_sources/source_originals/cannabis_leaf.vox",
+      "pack_path": "source_originals/cannabis_leaf.vox",
+      "sha256": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a"
+    },
+    {
+      "original_project_path": "greenbox/voxel_sources/source_originals/cannabis_leaf_provenance.json",
+      "pack_path": "source_originals/cannabis_leaf_provenance.json",
+      "sha256": "8aa7d5633a1a9c04e5e36de1dfd5a538a417dba59202c3b876c88b3957e5e6c1"
+    },
+    {
+      "original_project_path": "greenbox/voxel_sources/source_originals/original_CC0_Cannabis.7z",
+      "pack_path": "source_originals/original_CC0_Cannabis.7z",
+      "sha256": "da4a5ae4c3a93a041bde4342e94fa8b78ac6da7ae11152a7beaee1116f95b109"
+    },
+    {
+      "original_project_path": "work/third-party/cannabis/source/readme.txt",
+      "pack_path": "source_originals/original_cannabis_readme.txt",
+      "sha256": "04bd29b2a8d12f4b86700c69a8d9ddf933ec8a43913017950c9948afe34bfcc2"
+    }
+  ]
+}
