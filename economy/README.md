@@ -18,7 +18,8 @@ deliberately a plain placeholder; the point is to play-test the rules and the nu
     deployment, mints before the first pool, first liquidity, read from the Abstract explorer and the verified contract),
     then the token rules from the whitepaper and docs. Every BigCoin cell names its source; anything no reachable source
     publishes (launch price in USD, team allocation) says so instead of being estimated.
-  - **Play demo**: the game on the compressed demo schedule, with a minimal canvas view of the room.
+  - **Simulation**: the real engine on the live 420M schedule at 1×, 1 hour/s, 1 day/s or 1 week/s. One scripted grower on the left, guilds (concept: a 4.20% pot split daily at 4:20 pm, copy-grow, feed) in the middle, the whole economy on the right.
+  - **Play demo** (hidden for now, `PLAY_ENABLED` in index.html): the game on the compressed demo schedule, with a minimal canvas view of the room.
   - **Assets**: every room, strain, utility, decoration and starter pack, with category, what it adds, BUD and USD price, output, payback, supply cap, release day and forecast sales.
   - **Tasks & ROI**: manual tasks and the utilities that automate them, an automation payback calculator, hour/day/week progress for five player types, and a whole-game developer view.
   - **CFO**: launch assumptions (editable), price path, what to sell first, where revenue goes, and how much payout keeps the flywheel turning.
