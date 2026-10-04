@@ -19,6 +19,7 @@ deliberately a plain placeholder; the point is to play-test the rules and the nu
     then the token rules from the whitepaper and docs. Every BigCoin cell names its source; anything no reachable source
     publishes (launch price in USD, team allocation) says so instead of being estimated.
   - **Simulation**: the real engine on the live 420M schedule at 1×, 1 hour/s, 1 day/s or 1 week/s. One scripted grower on the left, guilds (concept: a 4.20% pot split daily at 4:20 pm, copy-grow, feed) in the middle, the whole economy on the right.
+  - **Items & Packs** (internal, not for announcement): the TCG layer from `public/economy/packs.js`. Five collectible types (room, character, pot, seed, LED) in Common 74.8% / Rare 21% / Epic 4.20%, in-game water, buds, BUD points and automation; the free Starter Kit, Standard Box and Founder Booster with exact pull odds, pity (Epic by box 20) and a pull demo; anti-bot, anti-sniper and not-pay-to-win rules; and the token recommendation (points first, token after Season 1 if its gates are met).
   - **Play demo** (hidden for now, `PLAY_ENABLED` in index.html): the game on the compressed demo schedule, with a minimal canvas view of the room.
   - **Assets**: every room, strain, utility, decoration and starter pack, with category, what it adds, BUD and USD price, output, payback, supply cap, release day and forecast sales.
   - **Tasks & ROI**: manual tasks and the utilities that automate them, an automation payback calculator, hour/day/week progress for five player types, and a whole-game developer view.
@@ -65,6 +66,8 @@ files. Every BUD price is 20× the BigCoin-scale price, so dollar results match 
 - Room upgrades go one tier at a time with a 1 hour cooldown.
 
 ## NFTs vs in-game items
+
+The Items & Packs tab proposes a new split (collectibles pulled from boxes, unlocked by play, then airdropped). Until Kairo signs off, the engine and the tabs below still use this one:
 
 NFTs (18): all 13 strains (like BigCoin's miners), the 3 limited decorations, and the 2 starter packs.
 In-game, tied to the account (15): the 9 rooms, the 4 utilities, and the 2 open decorations.
