@@ -198,6 +198,24 @@ h2 { margin: 0 0 6px; }
 .d-pitch .strip { grid-template-columns: repeat(2, 1fr); }
 .d-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
 .sides3 .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 10px; }
+.s-bar { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+.s-bar .seg { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.s-bar button.on { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.s-bar select { background: var(--panel-2); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; font: inherit; font-size: 13px; }
+.chk { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); }
+.chk select { background: var(--panel-2); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; font: inherit; font-size: 13px; }
+.s-bar .clock { margin-left: auto; font: 600 14px var(--mono); }
+.s-bar .clock b { color: var(--accent); }
+.kpis4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-bottom: 8px; }
+.kpis4 div { background: var(--panel-2); border-radius: 6px; padding: 6px 10px; min-width: 0; }
+.kpis4 > div > span { display: block; font: 600 10px var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kpis4 b { font: 700 20px var(--mono); white-space: nowrap; }
+.kpis4 em { display: block; font-style: normal; font-size: 11px; color: var(--muted); }
+.chart2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sim .lc { min-height: 110px; }
+.sim tr.you td { color: var(--accent); }
+.pay { margin: 4px 0; }
+.pay .bar { height: 8px; }
 .lore .tagline { font: 700 clamp(22px, 2.2vw, 32px)/1.15 var(--display); margin: 0 0 10px; color: var(--accent); }
 .lore .tagline em { font-style: normal; color: var(--gold); }
 .lore .story p { margin: 0 0 8px; font-size: 14px; line-height: 1.45; }
@@ -234,6 +252,12 @@ h2 { margin: 0 0 6px; }
   .dash .pitch { font-size: clamp(28px, 2.9vw, 44px); }
   .dash .big .v { font-size: clamp(26px, 2.6vw, 40px); }
 
+  .screen.sim { grid-template-columns: 1fr 1fr 1.05fr; grid-template-rows: auto 1fr; }
+  .sim .s-bar { grid-column: 1 / -1; overflow: visible; }
+  .sim section { display: flex; flex-direction: column; }
+  .sim .s-you .log, .sim .s-guild .log { flex: 1; min-height: 60px; max-height: none; }
+  .sim .s-dev .lc { min-height: 130px; }
+  .sim .s-dev .lc.grow { flex: 1; }
   .screen.lore { grid-template-columns: 1.05fr 1.2fr .95fr; grid-template-rows: 1fr; }
   .lore section { display: flex; flex-direction: column; }
   .lore .l-eras .lc { flex: 1; min-height: 120px; }
@@ -271,9 +295,10 @@ h2 { margin: 0 0 6px; }
   <h1><b>Greenbox</b> terminal</h1>
   <nav class="tabs" role="tablist">
     <button type="button" role="tab" id="tab-dash" data-tab="dash" aria-selected="true">Dashboard</button>
+    <button type="button" role="tab" id="tab-sim" data-tab="sim" aria-selected="false">Simulation</button>
     <button type="button" role="tab" id="tab-lore" data-tab="lore" aria-selected="false">Lore &amp; 420</button>
     <button type="button" role="tab" id="tab-compare" data-tab="compare" aria-selected="false">BigCoin vs Greenbox</button>
-    <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="false">Play demo</button>
+    <button type="button" role="tab" id="tab-play" data-tab="play" aria-selected="false" hidden>Play demo</button>
     <button type="button" role="tab" id="tab-assets" data-tab="assets" aria-selected="false">Assets</button>
     <button type="button" role="tab" id="tab-tasks" data-tab="tasks" aria-selected="false">Tasks &amp; ROI</button>
     <button type="button" role="tab" id="tab-cfo" data-tab="cfo" aria-selected="false">CFO</button>
@@ -298,6 +323,54 @@ h2 { margin: 0 0 6px; }
       <section class="chart-card"><h2>Players · first 49 days (model)</h2><div class="lc" id="dash-players"></div></section>
       <section class="span-all"><h2 id="dash-items-title">Items · NFT vs in-game</h2><div id="dash-items"></div></section>
     </div>
+  </div>
+</div>
+
+<!-- ============ SIMULATION ============ -->
+<div id="view-sim" role="tabpanel" hidden>
+  <div class="screen sim">
+    <div class="s-bar">
+      <div class="seg" role="group" aria-label="Speed"><span class="muted">Speed</span>
+        <button type="button" data-simspeed="0">Pause</button>
+        <button type="button" data-simspeed="1">1×</button>
+        <button type="button" data-simspeed="3600">1 h/s</button>
+        <button type="button" data-simspeed="86400">1 day/s</button>
+        <button type="button" data-simspeed="604800">1 week/s</button></div>
+      <div class="seg"><span class="muted">You</span>
+        <select id="sim-arch" aria-label="Your start"><option value="">Free (Bagseed)</option><option value="founder">Founder Pack $20</option><option value="grower">Grower Pack $75</option></select>
+        <select id="sim-every" aria-label="Check-in"><option value="1">every hour</option><option value="12">every 12 h</option><option value="24" selected>once a day</option></select>
+        <label class="chk"><input type="checkbox" id="sim-auto" checked> automate</label>
+        <button type="button" id="sim-reset">Restart</button></div>
+      <div class="clock" id="sim-clock"></div>
+    </div>
+    <section class="s-you">
+      <h2>You · single grower</h2>
+      <div class="kpis4" id="sim-you-kpis"></div>
+      <div id="sim-you-pay"></div>
+      <h2 style="margin-top:10px">Your harvest in USD vs what you paid</h2><div class="lc" id="sim-you-chart"></div>
+      <h2 style="margin-top:10px">What you did</h2><div class="log scroll" id="sim-you-log"></div>
+    </section>
+    <section class="s-guild">
+      <div class="row" style="justify-content:space-between"><h2 style="margin:0">Guilds · grow circles</h2><span class="tag new">Concept</span></div>
+      <p class="note">Growers team up. Members chip <b class="good">4.20%</b> of harvests into a guild pot that splits evenly every day at <b>4:20 pm</b>: small growers gain, big ones buy loyalty.</p>
+      <label class="chk" style="margin-bottom:6px">Your guild <select id="sim-guild"></select></label>
+      <div class="scroll"><table id="sim-guilds"></table></div>
+      <div id="sim-guild-you"></div>
+      <h2 style="margin-top:10px">Top growers · copy-grow</h2>
+      <p class="note">Follow a top grower and mirror their buys; they earn a 4.20% tip on what you harvest. Not modelled yet.</p>
+      <div class="scroll"><table id="sim-top"></table></div>
+      <h2 style="margin-top:10px">Grow feed</h2><div class="log scroll" id="sim-feed"></div>
+    </section>
+    <section class="s-dev">
+      <h2>Dev view · whole economy</h2>
+      <div class="kpis4" id="sim-dev-kpis"></div>
+      <div class="chart2">
+        <div><h2>BUD price</h2><div class="lc" id="sim-price"></div></div>
+        <div><h2>Players</h2><div class="lc" id="sim-players"></div></div>
+      </div>
+      <h2 style="margin-top:10px">Flywheel</h2><div class="scroll"><table id="sim-flows"></table></div>
+      <h2 style="margin-top:10px">Flywheel over time · payouts vs pack payback need</h2><div class="lc grow" id="sim-cov"></div>
+    </section>
   </div>
 </div>
 
@@ -440,6 +513,7 @@ h2 { margin: 0 0 6px; }
 import { ROOMS, STRAINS, COSMETICS, UTILITIES, BADGES, TOKEN, LORE } from './content.js';
 import * as G from './engine.js';
 import { DEFAULT_ASSUMPTIONS, PACKS, runModel, priceAt } from './cfo.js';
+import { checkIn, grantPack } from './strategy.js';
 
 const SAVE_KEY = 'greenbox-economy-v2';
 const byStrain = Object.fromEntries(STRAINS.map((s) => [s.id, s]));
@@ -474,9 +548,10 @@ let tab = 'dash';
 function showTab(name) {
   tab = name;
   for (const b of document.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === name));
-  for (const v of ['dash', 'lore', 'compare', 'play', 'assets', 'tasks', 'cfo']) $('view-' + v).hidden = v !== name;
+  for (const v of ['dash', 'sim', 'lore', 'compare', 'play', 'assets', 'tasks', 'cfo']) $('view-' + v).hidden = v !== name;
   try { history.replaceState(null, '', '#' + name); } catch (e) { /* sandboxed */ }
   if (name !== 'play') renderAnalysis();
+  if (name === 'sim') renderSim(true);
 }
 
 // ---------------- Play demo ----------------
@@ -484,6 +559,7 @@ let state = load();
 let speed = 1;
 let carry = 0;
 let last = performance.now();
+const PLAY_ENABLED = false; // the Play demo tab is hidden for now (Kairo, 4 Oct 2026); its code stays
 
 function load() {
   try {
@@ -1022,6 +1098,173 @@ function renderCfo() {
     { color: css('--gold'), fx: (x) => `day ${Math.round(x * 10) / 10}`, fy: (y) => usd(y), ticks: [0, 3, 7, 14] });
 }
 
+// ---------------- Simulation tab ----------------
+// Runs the real engine on the live 420M schedule in the browser: one scripted grower (you) inside the simulated network.
+const GUILDS = ['4:20 Club', 'Emerald Triangle', 'Croptober Crew', 'Sea of Green', 'Kief Collective', 'Mother Plant Co.'];
+const GUILD_POT = 0.042;
+const SIM_SEED = 20261003;
+const SIM_END_DAYS = 365;
+let SIM = null;
+let simSpeed = 3600;
+let simLastDraw = 0;
+
+function simSample() {
+  const st = SIM.state, t = st.token;
+  SIM.hourly.push({ hour: st.height / 3600, players: st.stats.players, minted: t.minted, burned: t.burned, treasury: t.treasury,
+    spoiled: t.spoiled, bought: st.market.bought, sold: st.market.sold, packs: { ...st.stats.packs },
+    you: (st.player.earnedTotal || 0) });
+}
+
+function newSim() {
+  const arch = $('sim-arch').value;
+  const state = G.createGame(SIM_SEED, G.LIVE_CONFIG);
+  if (arch) grantPack(state, G.LIVE_CONFIG.packs.find((x) => x.id === arch));
+  SIM = { state, arch, every: Number($('sim-every').value), automate: $('sim-auto').checked, guild: SIM?.guild ?? 0,
+    hourly: [], feed: [], log: [], rooms: [], nextCheck: 0, model: null };
+  simSample();
+}
+
+function simAdvance(seconds) {
+  const st = SIM.state, end = SIM_END_DAYS * 86400;
+  let left = Math.min(Math.floor(seconds), end - st.height);
+  const t0 = performance.now();
+  while (left > 0) {
+    if (performance.now() - t0 > 120) break; // keep the page responsive; fast modes run as fast as the browser allows
+    const nextHour = (Math.floor(st.height / 3600) + 1) * 3600;
+    const k = Math.min(left, nextHour - st.height, Math.max(1, SIM.nextCheck - st.height));
+    G.advance(st, k);
+    left -= k;
+    if (st.height % 3600 === 0) simSample();
+    if (st.height >= SIM.nextCheck) {
+      checkIn(st, { automate: SIM.automate, onEvent: (e) => SIM.log.unshift({ h: st.height, e }) });
+      if (SIM.log.length > 40) SIM.log.length = 40;
+      SIM.nextCheck += SIM.every * 3600;
+    }
+  }
+  if (st.height >= end) simSpeed = 0;
+}
+
+function simFrame() {
+  if (!SIM) newSim();
+  const now = performance.now();
+  SIM.acc = (SIM.acc || 0) + simSpeed * Math.min(1, (now - (SIM.t || now)) / 1000);
+  SIM.t = now;
+  const whole = Math.floor(SIM.acc);
+  SIM.acc -= whole;
+  if (whole > 0) simAdvance(whole);
+  renderSim(now - simLastDraw > 900);
+}
+
+const clockOf = (height) => {
+  const t = (16 * 3600 + 20 * 60 + height) % 86400; // launch is 4:20 pm UTC
+  const hh = String(Math.floor(t / 3600)).padStart(2, '0'), mm = String(Math.floor((t % 3600) / 60)).padStart(2, '0');
+  return { day: Math.floor(height / 86400), time: `${hh}:${mm}` };
+};
+
+function renderSim(withCharts) {
+  if (!SIM) newSim();
+  const st = SIM.state, cfg = st.cfg, a = assumptions, p = st.player, t = st.token, s = G.summary(st);
+  for (const b of document.querySelectorAll('[data-simspeed]')) b.classList.toggle('on', Number(b.dataset.simspeed) === simSpeed);
+  const era = Math.min(s.era, LORE.eras.length - 1);
+  const c = clockOf(st.height);
+  $('sim-clock').innerHTML = `Day <b>${c.day}</b> · ${c.time} UTC · ${LORE.eras[era].name} · next 4:20 halving in ${s.nextHalvingIn > 2 * 86400 ? `${Math.floor(s.nextHalvingIn / 86400)}d ${Math.floor((s.nextHalvingIn % 86400) / 3600)}h` : dur(s.nextHalvingIn)}`;
+  if (SIM.hourly.length > 1 && (withCharts || !SIM.model)) SIM.model = runModel(SIM.hourly, a);
+  const m = SIM.model, price = m ? m.price : a.launchPrice;
+  const paid = SIM.arch ? a[PACKS.find((x) => x.id === SIM.arch).priceKey] : 0;
+  const earnedUsd = (p.earnedTotal || 0) * price;
+  const youDay = s.perHour * 24;
+
+  put('sim-you-kpis', [
+    ['Wallet', `${fmt(p.wallet + p.pending, 0)}`, `${usd((p.wallet + p.pending) * price)} · BUD`],
+    ['Harvest / day', `<span class="good">${fmt(youDay, 0)}</span>`, `${usd(youDay * price)} a day`],
+    ['Network share', s.share > 0 && s.share < 0.0001 ? `1 in ${fmt(1 / s.share, 0)}` : pct(s.share, s.share < 0.01 ? 3 : 2), `${fmt(s.potency, 0)} potency`],
+    ['Room', s.room.name, `${s.slotsUsed}/${s.room.slots} pots · ${p.utilities.length} utilities`],
+  ].map(([k, v, d]) => `<div><span>${k}</span><b>${v}</b><em>${d}</em></div>`).join(''));
+  const pctPaid = paid ? Math.min(1, earnedUsd / paid) : 1;
+  put('sim-you-pay', paid
+    ? `<div class="pay"><div class="row" style="justify-content:space-between"><span>Pack paid back</span><b class="${pctPaid >= 1 ? 'good' : 'gold'}">${usd(earnedUsd)} of ${usd(paid)}</b></div><div class="bar"><i style="width:${(pctPaid * 100).toFixed(1)}%"></i></div></div>`
+    : `<p class="note">Free start: everything you harvest is profit. Earned so far <b class="good">${usd(earnedUsd)}</b>.</p>`);
+  put('sim-you-log', SIM.log.slice(0, 30).map((x) => { const k = clockOf(x.h); return `<div><span class="muted num">d${k.day} ${k.time}</span> ${x.e}</div>`; }).join('') || '<p class="note">Your scripted grower checks in on schedule, harvests, waters and reinvests.</p>');
+
+  // Guilds: every simulated grower cohort belongs to one guild; you join the one you pick.
+  const net = s.networkPotency || 1, perPot = (s.reward * 86400 * (1 - cfg.seedlingPool)) / net;
+  const G6 = GUILDS.map((name, i) => ({ name, i, members: 0, potency: 0 }));
+  st.bots.forEach((b, i) => {
+    if (!b.active) return;
+    const g = G6[i % GUILDS.length];
+    g.members += b.count; g.potency += b.potency * b.count;
+    if (SIM.rooms[i] !== undefined && b.room > SIM.rooms[i]) SIM.feed.unshift({ h: st.height, e: `<b>${b.name}</b> moved into ${ROOMS[b.room].name} · ${g.name}` });
+    SIM.rooms[i] = b.room;
+  });
+  if (SIM.feed.length > 40) SIM.feed.length = 40;
+  const mine = G6[SIM.guild];
+  mine.members += 1; mine.potency += s.potency;
+  const ranked = [...G6].sort((x, y) => y.potency - x.potency);
+  const sel = $('sim-guild');
+  if (!sel.options.length) sel.innerHTML = GUILDS.map((g, i) => `<option value="${i}">${g}</option>`).join('');
+  put('sim-guilds', `<tr><th>Guild</th><th class="r">Growers</th><th class="r">Share</th><th class="r">BUD/day</th><th class="r">Pot</th></tr>` +
+    ranked.map((g) => `<tr class="${g.i === SIM.guild ? 'you' : ''}"><td>${g.name}</td><td class="r">${fmt(g.members, 0)}</td>
+      <td class="r">${pct(g.potency / net, 1)}</td><td class="r gold">${fmt(g.potency * perPot, 0)}</td><td class="r good">${fmt(g.potency * perPot * GUILD_POT, 0)}</td></tr>`).join(''));
+  const avg = (mine.potency * perPot) / Math.max(1, mine.members);
+  const delta = GUILD_POT * (avg - youDay);
+  put('sim-guild-you', `<p class="callout ${delta >= 0 ? '' : 'risk'}">Guild pot for you: <b class="${delta >= 0 ? 'good' : 'bad'}">${delta >= 0 ? '+' : ''}${fmt(delta, 1)} BUD/day</b>
+    (${delta >= 0 ? 'you harvest less than the guild average, so pooling pays you' : 'you out-grow the average, so you pay in'}).</p>`);
+  const top = st.bots.map((b, i) => ({ b, i })).filter((x) => x.b.active).sort((x, y) => y.b.potency - x.b.potency).slice(0, 5);
+  put('sim-top', `<tr><th>Grower</th><th>Room</th><th class="r">BUD/day</th></tr>` +
+    top.map(({ b, i }) => `<tr><td class="w">${b.name}<span class="sub">${GUILDS[i % GUILDS.length]}</span></td><td class="w">${ROOMS[b.room].name}</td><td class="r gold">${fmt(b.potency * perPot, 0)}</td></tr>`).join(''));
+  put('sim-feed', SIM.feed.slice(0, 30).map((x) => { const k = clockOf(x.h); return `<div><span class="muted num">d${k.day} ${k.time}</span> ${x.e}</div>`; }).join('') || '<p class="note">Room upgrades across the network show up here.</p>');
+
+  // Dev view
+  const founders = st.stats.packs.founder || 0, growers = st.stats.packs.grower || 0;
+  const needed = (founders * a.founderPrice + growers * a.growerPrice) / a.paybackDays;
+  const cov = (s.reward * 86400 * price) / Math.max(1, needed);
+  const mined = G.supplyCap(cfg);
+  put('sim-dev-kpis', [
+    ['Players', fmt(st.stats.players, 0), `${fmt(s.activeGrowers, 0)} active`],
+    ['BUD price', `<span class="gold">${usd(price)}</span>`, `${price >= a.launchPrice ? '+' : ''}${pct(price / a.launchPrice - 1, 0)} vs launch`],
+    ['Grown', fmt(t.minted, 0), `${pct(t.minted / mined, 2)} of ${fmt(mined, 0)}`],
+    ['Blazed', `<span class="good">${pct(t.burned / Math.max(1, t.minted), 0)}</span>`, `${fmt(t.burned, 0)} BUD burned`],
+    ['Stash', `<span class="gold">${fmt(t.treasury, 0)}</span>`, 'treasury BUD'],
+    ['Flywheel', `<span class="${cov >= 1 ? 'good' : 'bad'}">${cov.toFixed(1)}×</span>`, `payouts vs ${a.paybackDays}-day pack payback`],
+    ['Pool', `<span class="good">${usd(m ? m.poolUsd : a.lpUsd)}</span>`, 'USD side'],
+    ['Packs sold', `<span class="gold">${usd(m ? m.packUsd : 0)}</span>`, `${fmt(founders, 0)} Founder · ${fmt(growers, 0)} Grower`],
+  ].map(([k, v, d]) => `<div><span>${k}</span><b>${v}</b><em>${d}</em></div>`).join(''));
+  put('sim-flows', `<tr><th>Flow</th><th class="r">So far</th><th>Where it goes</th></tr>
+    <tr><td>Pack sales</td><td class="r gold">${usd(m ? m.packUsd : 0)}</td><td class="w">${a.buybackPct}% buy back + blaze · ${a.lpPct}% pool · rest ops</td></tr>
+    <tr><td>Bought back</td><td class="r good">${fmt(m ? m.buybackBurned : 0, 0)} BUD</td><td class="w">blazed from the pool</td></tr>
+    <tr><td>Growers sold</td><td class="r bad">${usd(m ? m.sellerUsd : 0)}</td><td class="w">${pct(cfg.sellShare, 0)} of harvests, pushes price down</td></tr>
+    <tr><td>Newcomers bought</td><td class="r good">${usd(m ? m.buyerUsd : 0)}</td><td class="w">pushes price up</td></tr>
+    <tr><td>Spoiled</td><td class="r bad">${fmt(t.spoiled, 0)} BUD</td><td class="w">full drying racks</td></tr>`);
+
+  if (withCharts && m && SIM.hourly.length > 1) {
+    simLastDraw = performance.now();
+    const days = SIM.hourly.at(-1).hour / 24;
+    const stride = Math.max(1, Math.floor(SIM.hourly.length / 300));
+    const ticks = days < 2 ? undefined : [0, Math.round(days / 2), Math.round(days)];
+    const fx = (x) => (days < 2 ? `h${Math.round(x * 24)}` : `day ${Math.round(x * 10) / 10}`);
+    const pick = (arr) => arr.filter((_, i) => i % stride === 0 || i === arr.length - 1);
+    lineChart('sim-price', pick(m.path).map((q) => ({ x: q.hour / 24, y: q.price })), { color: css('--gold'), fx, fy: (y) => usd(y), ticks });
+    lineChart('sim-players', pick(SIM.hourly).map((q) => ({ x: q.hour / 24, y: q.players })), { color: css('--accent'), fx, fy: (y) => fmt(y, 0), ticks });
+    lineChart('sim-you-chart', pick(SIM.hourly).map((q, i) => ({ x: q.hour / 24, y: q.you * priceAt(m, q.hour) })),
+      { color: css('--accent'), fx, fy: (y) => usd(y), ticks, ref: paid ? { y: paid, label: `paid ${usd(paid)}` } : undefined });
+    const covPts = pick(SIM.hourly).filter((q) => q.hour >= 24).map((q) => {
+      const need = ((q.packs.founder || 0) * a.founderPrice + (q.packs.grower || 0) * a.growerPrice) / a.paybackDays;
+      return { x: q.hour / 24, y: (G.rewardAt(cfg, q.hour * 3600) * 86400 * priceAt(m, q.hour)) / Math.max(1, need) };
+    });
+    if (covPts.length > 1) lineChart('sim-cov', covPts, { color: css('--warn'), fx, fy: (y) => `${y.toFixed(1)}×`, ticks, ref: { y: 1, label: 'break-even 1×' } });
+  }
+}
+
+document.addEventListener('click', (e) => {
+  const b = e.target.closest?.('[data-simspeed]');
+  if (b) { simSpeed = Number(b.dataset.simspeed); SIM && (SIM.t = performance.now()); renderSim(true); }
+  if (e.target.id === 'sim-reset') { newSim(); simSpeed = simSpeed || 3600; renderSim(true); }
+});
+document.addEventListener('change', (e) => {
+  if (['sim-arch', 'sim-every', 'sim-auto'].includes(e.target.id)) { newSim(); renderSim(true); }
+  if (e.target.id === 'sim-guild') { SIM.guild = Number(e.target.value); renderSim(false); }
+});
+
 // Lore tab: the story, the 4:20 calendar and the halving eras, from LORE in content.js and the live schedule.
 function renderLore() {
   const cfg = LIVE(), a = assumptions;
@@ -1217,8 +1460,9 @@ setInterval(() => {
   carry += dt * speed;
   const blocks = Math.floor(carry);
   carry -= blocks;
-  if (blocks) G.advance(state, blocks);
+  if (blocks && PLAY_ENABLED) G.advance(state, blocks);
   if (tab === 'play') renderPlay();
+  if (tab === 'sim') simFrame();
   sinceSave += dt;
   if (sinceSave > 5) { sinceSave = 0; save(); }
 }, 250);
@@ -1226,7 +1470,8 @@ addEventListener('pagehide', save);
 const initial = location.hash.slice(1);
 renderPlay();
 loadForecast();
-if (['dash', 'lore', 'compare', 'play', 'assets', 'tasks', 'cfo'].includes(initial)) showTab(initial);
+if (['dash', 'sim', 'lore', 'compare', 'assets', 'tasks', 'cfo'].includes(initial)) showTab(initial);
+else if (initial === 'play') showTab('sim');
 </script>
 </body>
 </html>
