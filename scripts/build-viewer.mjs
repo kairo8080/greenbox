@@ -59,9 +59,22 @@ const gardenBase = 'voxel_sources/garden_scenes/seedling_garden/seedling_garden'
 const gardenSource = JSON.parse(await fs.readFile(path.join(root, `${gardenBase}.json`), 'utf8'));
 const gardenScene = JSON.parse(await fs.readFile(path.join(root, 'voxel_sources/garden_scenes/seedling_garden/scene.json'), 'utf8'));
 models.push(await asset('seedling_garden', 'Seedling garden', 'lore', `${gardenBase}.glb`, `${gardenBase}.vox`, gardenSource, { loreLights: gardenScene.lights ?? [] }));
+const neighborhoodBase = 'voxel_sources/neighborhood/neighbor_commons/neighbor_commons';
+const neighborhoodSource = JSON.parse(await fs.readFile(path.join(root, `${neighborhoodBase}.json`), 'utf8'));
+models.push(await asset('neighbor_commons', 'Neighbor commons', 'lore', `${neighborhoodBase}.glb`, `${neighborhoodBase}.vox`, neighborhoodSource, { loreLights: [] }));
+const collectibles = [
+  ['grower_toybox', 'Grower toybox'], ['mystery_standard', 'Standard mystery box'], ['mystery_420_founder', '420 Founder mystery box'],
+  ['booster_common', 'Common booster'], ['booster_rare', 'Rare booster'], ['booster_epic', 'Epic booster'],
+  ['card_common', 'Common · watering can'], ['card_rare', 'Rare · grow light'], ['card_epic', 'Epic · greenhouse key'],
+];
+for (const [id, label] of collectibles) {
+  const base = `voxel_sources/collectibles/${id}/${id}`;
+  const source = JSON.parse(await fs.readFile(path.join(root, `${base}.json`), 'utf8'));
+  models.push(await asset(id, label, 'collectible', `${base}.glb`, `${base}.vox`, source));
+}
 const result = await esbuild.build({ entryPoints: [path.join(root, 'viewer/viewer.js')], bundle: true, write: false, format: 'iife', target: ['es2022'], minify: true, legalComments: 'inline', sourcemap: false });
 const [shell, css] = await Promise.all(['viewer-shell.html', 'viewer.css'].map(file => fs.readFile(path.join(root, 'viewer', file), 'utf8')));
-const embedded = JSON.stringify({ schema: 'greenbox-viewer-v4', catalog, models }).replaceAll('<', '\\u003c');
+const embedded = JSON.stringify({ schema: 'greenbox-viewer-v5', catalog, models }).replaceAll('<', '\\u003c');
 const script = result.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
 const license = await fs.readFile(path.join(root, 'viewer/node_modules/three/LICENSE'), 'utf8');
 const html = shell.replace('<!-- VIEWER_STYLE -->', () => css).replace('<!-- VIEWER_DATA -->', () => embedded).replace('<!-- VIEWER_SCRIPT -->', () => script)

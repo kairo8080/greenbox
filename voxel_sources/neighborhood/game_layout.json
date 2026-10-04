@@ -1,0 +1,305 @@
+{
+  "schema": "greenbox-neighborhood-layout-v1",
+  "assetId": "neighbor_commons",
+  "voxelPitchMeters": 0.05,
+  "sourceRootPivotNative": [
+    120,
+    100,
+    0
+  ],
+  "coordinateConvention": "GLB Y up, front +Z. World [X,Y,Z] = [(nativeX-120)*.05,nativeZ*.05,-(nativeY-100)*.05]. All characters use a feet-at-origin root.",
+  "bounds": {
+    "minX": -6,
+    "maxX": 6,
+    "minZ": -5,
+    "maxZ": 5
+  },
+  "floorY": 0.2,
+  "walkArea": {
+    "minX": -5.7,
+    "maxX": 5.7,
+    "minZ": -4.7,
+    "maxZ": 4.7
+  },
+  "player": {
+    "spawn": [
+      0,
+      0.2,
+      3.3
+    ],
+    "radius": 0.24,
+    "speed": 2.6
+  },
+  "blockers": [
+    {
+      "id": "chef_home",
+      "minX": -5.4,
+      "maxX": -3.1,
+      "minZ": -4.75,
+      "maxZ": -2.1,
+      "nativeBounds": [
+        12,
+        142,
+        58,
+        195
+      ]
+    },
+    {
+      "id": "artist_home",
+      "minX": -2.7,
+      "maxX": -0.4,
+      "minZ": -4.75,
+      "maxZ": -2.1,
+      "nativeBounds": [
+        66,
+        142,
+        112,
+        195
+      ]
+    },
+    {
+      "id": "robot_lab",
+      "minX": 0.3,
+      "maxX": 2.6,
+      "minZ": -4.75,
+      "maxZ": -2.1,
+      "nativeBounds": [
+        126,
+        142,
+        172,
+        195
+      ]
+    },
+    {
+      "id": "party_home",
+      "minX": 3.0,
+      "maxX": 5.4,
+      "minZ": -4.75,
+      "maxZ": -2.1,
+      "nativeBounds": [
+        180,
+        142,
+        228,
+        195
+      ]
+    },
+    {
+      "id": "night_market",
+      "minX": -5.1,
+      "maxX": -2.5,
+      "minZ": 1.75,
+      "maxZ": 3.8,
+      "nativeBounds": [
+        18,
+        24,
+        70,
+        65
+      ]
+    },
+    {
+      "id": "courtyard_bench",
+      "minX": -0.75,
+      "maxX": 1.0,
+      "minZ": 1.2,
+      "maxZ": 1.9,
+      "nativeBounds": [
+        105,
+        62,
+        140,
+        76
+      ]
+    },
+    {
+      "id": "tree_left_trunk",
+      "minX": -5.65,
+      "maxX": -5.45,
+      "minZ": 0.3,
+      "maxZ": 0.5,
+      "nativeBounds": [
+        7,
+        90,
+        11,
+        94
+      ]
+    },
+    {
+      "id": "tree_right_trunk",
+      "minX": 5.45,
+      "maxX": 5.65,
+      "minZ": 0.1,
+      "maxZ": 0.3,
+      "nativeBounds": [
+        229,
+        94,
+        233,
+        98
+      ]
+    },
+    {
+      "id": "lamp_left",
+      "minX": -2.2,
+      "maxX": -1.8,
+      "minZ": -0.35,
+      "maxZ": 0.05,
+      "nativeBounds": [
+        76,
+        99,
+        84,
+        107
+      ]
+    },
+    {
+      "id": "lamp_right",
+      "minX": 2.0,
+      "maxX": 2.4,
+      "minZ": -0.35,
+      "maxZ": 0.05,
+      "nativeBounds": [
+        160,
+        99,
+        168,
+        107
+      ]
+    },
+    {
+      "id": "pot_market",
+      "minX": -2.25,
+      "maxX": -1.2,
+      "minZ": 2.45,
+      "maxZ": 3.0,
+      "nativeBounds": [
+        75,
+        40,
+        96,
+        51
+      ]
+    },
+    {
+      "id": "pot_court",
+      "minX": 2.5,
+      "maxX": 3.55,
+      "minZ": 1.35,
+      "maxZ": 1.9,
+      "nativeBounds": [
+        170,
+        62,
+        191,
+        73
+      ]
+    }
+  ],
+  "neighbors": [
+    {
+      "id": "chef",
+      "name": "Miso",
+      "characterId": "chef",
+      "position": [
+        -4.25,
+        0.2,
+        -1.5
+      ],
+      "yaw": 0,
+      "dialogue": [
+        "Welcome to the Commons! I trade recipes and grow-room snacks.",
+        "Try the Night Market for a lucky seed card."
+      ],
+      "interactionRadius": 1.8
+    },
+    {
+      "id": "artist",
+      "name": "Sunny",
+      "characterId": "blonde_lady",
+      "position": [
+        -1.55,
+        0.2,
+        -1.5
+      ],
+      "yaw": 0,
+      "dialogue": [
+        "Every little garden deserves a bright corner.",
+        "Send me a happy emoji if you like our new colors!"
+      ],
+      "interactionRadius": 1.8
+    },
+    {
+      "id": "robot",
+      "name": "BUD-01",
+      "characterId": "robot",
+      "position": [
+        1.45,
+        0.2,
+        -1.5
+      ],
+      "yaw": 0,
+      "dialogue": [
+        "Greeting received. Neighbor connection: online.",
+        "Rare gear makes my collection circuits very happy."
+      ],
+      "interactionRadius": 1.8
+    },
+    {
+      "id": "party",
+      "name": "Zee",
+      "characterId": "party_woman",
+      "position": [
+        4.2,
+        0.2,
+        -1.5
+      ],
+      "yaw": 0,
+      "dialogue": [
+        "The courtyard is our tiny after-party.",
+        "Got a spare card? The Night Market swaps collectibles."
+      ],
+      "interactionRadius": 1.8
+    }
+  ],
+  "market": {
+    "id": "night_market",
+    "name": "Night Market",
+    "position": [
+      -3.8,
+      0.2,
+      4.2
+    ],
+    "radius": 1.8,
+    "description": "Fictional neighborhood exchange for in-game cards, boxes and gear."
+  },
+  "displaySpots": [
+    {
+      "id": "common_card",
+      "position": [
+        -4.5,
+        1.4,
+        3.15
+      ]
+    },
+    {
+      "id": "rare_card",
+      "position": [
+        -3.9,
+        1.4,
+        3.15
+      ]
+    },
+    {
+      "id": "epic_card",
+      "position": [
+        -3.3,
+        1.4,
+        3.15
+      ]
+    }
+  ],
+  "miniMap": {
+    "north": "negative Z",
+    "background": "leaf_light",
+    "path": "linen",
+    "showNeighbors": true,
+    "showMarket": true
+  },
+  "sourceVoxSha256": "ccb00ad9ff7d4c17c4e421eeb1d978f8c1080c3e92d96ba86ec0f170477735a5",
+  "sourceSceneSha256": "4816bb2d373b433544c53cb6e2714b99a2a4b27d7390a3bc94538c5a41b3dbc3",
+  "environmentIncludesStaticCharacters": false,
+  "authoredDate": "2026-10-04"
+}

@@ -1,0 +1,267 @@
+{
+  "schema": "greenbox-collectibles-catalog-v1",
+  "voxel_pitch_meters": 0.05,
+  "assets": [
+    {
+      "id": "grower_toybox",
+      "label": "Grower toybox",
+      "kind": "collectible",
+      "rarity": "collectible",
+      "vox": "grower_toybox/grower_toybox.vox",
+      "json": "grower_toybox/grower_toybox.json",
+      "glb": "grower_toybox/grower_toybox.glb",
+      "blend": "grower_toybox/grower_toybox.blend",
+      "preview": "grower_toybox/rendered.png",
+      "dimensions_voxels": [
+        32,
+        29,
+        48
+      ],
+      "filled_voxels": 28911,
+      "triangles": 644,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        16.0,
+        14.5,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "2b849edf4299a8491a3b0e5a8241728ed2fbc9cbf98a268a3edaef5667257e7b",
+      "glb_sha256": "ad9c28716cc9d067bc6d2c43fd36921b092bdb8a8d5dfb39942b663c3ac6669f"
+    },
+    {
+      "id": "mystery_standard",
+      "label": "Standard mystery box",
+      "kind": "collectible",
+      "rarity": "standard",
+      "vox": "mystery_standard/mystery_standard.vox",
+      "json": "mystery_standard/mystery_standard.json",
+      "glb": "mystery_standard/mystery_standard.glb",
+      "blend": "mystery_standard/mystery_standard.blend",
+      "preview": "mystery_standard/rendered.png",
+      "dimensions_voxels": [
+        28,
+        29,
+        29
+      ],
+      "filled_voxels": 22041,
+      "triangles": 346,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        14.0,
+        14.5,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "98efb8a41698e223303173cc472597066da7c1bbb30a6f2d75ceb96cf3cc2fe0",
+      "glb_sha256": "71eeee39f674cb93deff2c0448c2c9030e8de0627f432244e99393fd8315664c"
+    },
+    {
+      "id": "mystery_420_founder",
+      "label": "420 Founder mystery box",
+      "kind": "collectible",
+      "rarity": "founder",
+      "vox": "mystery_420_founder/mystery_420_founder.vox",
+      "json": "mystery_420_founder/mystery_420_founder.json",
+      "glb": "mystery_420_founder/mystery_420_founder.glb",
+      "blend": "mystery_420_founder/mystery_420_founder.blend",
+      "preview": "mystery_420_founder/rendered.png",
+      "dimensions_voxels": [
+        28,
+        29,
+        29
+      ],
+      "filled_voxels": 22090,
+      "triangles": 628,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        14.0,
+        14.5,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "3d96b7ae71769a79e95c5735c567452fe51596e4c2b63e2f34372bf0e0df1982",
+      "glb_sha256": "e1dbd59fb86cad8509defc8f2681f4772e411e087ee4e733357bf6ff48026e97"
+    },
+    {
+      "id": "booster_common",
+      "label": "Common booster pack",
+      "kind": "collectible",
+      "rarity": "common",
+      "vox": "booster_common/booster_common.vox",
+      "json": "booster_common/booster_common.json",
+      "glb": "booster_common/booster_common.glb",
+      "blend": "booster_common/booster_common.blend",
+      "preview": "booster_common/rendered.png",
+      "dimensions_voxels": [
+        26,
+        10,
+        38
+      ],
+      "filled_voxels": 6949,
+      "triangles": 662,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        13.0,
+        5.0,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "f8cb5337fee3718f99a112bdb2db926d7d90ff99dac492e15e9fd509a5c2229d",
+      "glb_sha256": "5502bc8b776c2c941d57c0e7ccdc0d5f12a564dcc80b1f6f032b53b6163f5626"
+    },
+    {
+      "id": "booster_rare",
+      "label": "Rare booster pack",
+      "kind": "collectible",
+      "rarity": "rare",
+      "vox": "booster_rare/booster_rare.vox",
+      "json": "booster_rare/booster_rare.json",
+      "glb": "booster_rare/booster_rare.glb",
+      "blend": "booster_rare/booster_rare.blend",
+      "preview": "booster_rare/rendered.png",
+      "dimensions_voxels": [
+        26,
+        10,
+        38
+      ],
+      "filled_voxels": 6918,
+      "triangles": 780,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        13.0,
+        5.0,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "1526a36fc102cb20795c76296a4c381f957e924f416de313a40d8ed04efd8369",
+      "glb_sha256": "2a9f4e0155f69fbe1cb262c3c1fd6bf5c12103c9f2c9ce155394a06bd084c677"
+    },
+    {
+      "id": "booster_epic",
+      "label": "Epic booster pack",
+      "kind": "collectible",
+      "rarity": "epic",
+      "vox": "booster_epic/booster_epic.vox",
+      "json": "booster_epic/booster_epic.json",
+      "glb": "booster_epic/booster_epic.glb",
+      "blend": "booster_epic/booster_epic.blend",
+      "preview": "booster_epic/rendered.png",
+      "dimensions_voxels": [
+        26,
+        10,
+        38
+      ],
+      "filled_voxels": 6916,
+      "triangles": 682,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        13.0,
+        5.0,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "242cd2f5fb08ea647f191c38f44bc7ed5c0a9cbb3039e8d66ca88199e6b9a137",
+      "glb_sha256": "7146641aed94091bd533a5cadd884a2b4c8743b9cef007633d9b15bc04c2a3fd"
+    },
+    {
+      "id": "card_common",
+      "label": "Common / Watering can",
+      "kind": "collectible",
+      "rarity": "common",
+      "vox": "card_common/card_common.vox",
+      "json": "card_common/card_common.json",
+      "glb": "card_common/card_common.glb",
+      "blend": "card_common/card_common.blend",
+      "preview": "card_common/rendered.png",
+      "dimensions_voxels": [
+        26,
+        5,
+        38
+      ],
+      "filled_voxels": 2557,
+      "triangles": 510,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        13.0,
+        2.5,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "f667f9b3dbf1799ab4ee3b1ee613d9e90d59ea9feb3d5584219d8b23c02be329",
+      "glb_sha256": "031f905b0d51f50e4770fd18ae7a2635fc93d46b74befe2833394a1671d47607"
+    },
+    {
+      "id": "card_rare",
+      "label": "Rare / Grow light",
+      "kind": "collectible",
+      "rarity": "rare",
+      "vox": "card_rare/card_rare.vox",
+      "json": "card_rare/card_rare.json",
+      "glb": "card_rare/card_rare.glb",
+      "blend": "card_rare/card_rare.blend",
+      "preview": "card_rare/rendered.png",
+      "dimensions_voxels": [
+        26,
+        5,
+        38
+      ],
+      "filled_voxels": 2526,
+      "triangles": 628,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        13.0,
+        2.5,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "68c1442eba0c2a417f41eff2693bcbdaf71532b59d7d60bc70e3331d9dc5b5a8",
+      "glb_sha256": "b63c90c9de65baf079db89399e25f680fd6a87bf4efb249b94f5dc814df0810f"
+    },
+    {
+      "id": "card_epic",
+      "label": "Epic / Greenhouse key",
+      "kind": "collectible",
+      "rarity": "epic",
+      "vox": "card_epic/card_epic.vox",
+      "json": "card_epic/card_epic.json",
+      "glb": "card_epic/card_epic.glb",
+      "blend": "card_epic/card_epic.blend",
+      "preview": "card_epic/rendered.png",
+      "dimensions_voxels": [
+        26,
+        5,
+        38
+      ],
+      "filled_voxels": 2524,
+      "triangles": 530,
+      "voxel_pitch_meters": 0.05,
+      "pivot": "centered ground",
+      "source_ground_pivot_voxels": [
+        13.0,
+        2.5,
+        0
+      ],
+      "axes": "GLB Y up, front +Z",
+      "scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use.",
+      "vox_sha256": "8fe0c95d0707009d4be025392c147799dc1826b5c75ef4f8e39df8c9bddb26c3",
+      "glb_sha256": "b33511da79bff2d8853d26266f95bd1cafeebe98b83634b0474ae07c746172c8"
+    }
+  ]
+}

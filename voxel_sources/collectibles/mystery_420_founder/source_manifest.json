@@ -1,0 +1,29 @@
+{
+  "id": "mystery_420_founder",
+  "label": "420 Founder mystery box",
+  "rarity": "founder",
+  "description": "Dark Founder mystery crate, golden corner rails, raised 420 number and original lime/gold leaf crest. Founder is an art rarity label, with no token or financial promise.",
+  "dimensions_voxels": [
+    28,
+    29,
+    29
+  ],
+  "occupied_voxels": 22090,
+  "connected_components": 1,
+  "voxel_pitch_meters": 0.05,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "source_normalization_offset": [
+    0,
+    -1,
+    0
+  ],
+  "source_ground_pivot_voxels": [
+    14.0,
+    14.5,
+    0
+  ],
+  "sha256": {
+    "mystery_420_founder.json": "3772ab649812b40895180bab3cf5effaadd6182279e99fa5d7946e5f34ef153c",
+    "mystery_420_founder.vox": "3d96b7ae71769a79e95c5735c567452fe51596e4c2b63e2f34372bf0e0df1982"
+  }
+}

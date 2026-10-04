@@ -1,0 +1,27 @@
+{
+  "schema": "greenbox-collectible-provenance-v1",
+  "created": "2026-10-04",
+  "artwork": "Original occupied-cell collectible designs authored for Greenbox",
+  "external_geometry_or_textures_imported": false,
+  "internal_reuse": {
+    "asset": "Garden rasta_grower",
+    "bundled_source": "inputs/rasta_grower.json",
+    "source_sha256": "ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8",
+    "placement": "Native normalized character cells translated by [5,4,6] into the original open-front toy display",
+    "occupied_cells": 7318,
+    "exact_geometry_and_indexed_colors_preserved": true
+  },
+  "method": "Deterministic Python solid cubic-cell construction; Blender flat outward greedy exposed-face export; actual geometry preview renders",
+  "reference_use": "User-supplied toy display and compact voxel references informed broad forms and Garden colors. The toybox, GB badge, leaf motif, sealed wrappers, item reliefs, rarity frames and source geometry are original Greenbox designs. No screenshot pixels, branded cabinet markings, external game character models or trading-card illustrations were copied.",
+  "source_palette_origin": "Existing original Greenbox canonical indexed palette, preserved without quantization or edits",
+  "source_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "preview_palette": "Portable preview_theme.json snapshot of the Greenbox Garden theme; used after canonical GLB export",
+  "source_authoring": "tools/build_collectibles.py",
+  "mesh_export": "tools/export_collectibles.py",
+  "independent_verification": "tools/verify_collectibles.py and tools/verify_cast.py parse actual binary files without importing authoring or export functions",
+  "source_manifests": "Per-asset source_manifest.json records exact JSON and VOX hashes",
+  "reproducibility": "reproducibility.json covers all nine native sources and manifests",
+  "preview_method": "Blender renders of actual occupied-cube surfaces, combined into a contact sheet",
+  "palette_role_and_units_helpers": "Copied portable internal Greenbox common.py, character_common.py and lore_common.py",
+  "third_party_asset_licenses": "No external third-party model or texture is included in this collectible pack. Reused grower is original internal Greenbox artwork."
+}

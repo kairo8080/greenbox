@@ -1,0 +1,27 @@
+{
+  "schema": "greenbox-neighborhood-browser-validation-v1",
+  "status": "pass",
+  "date": "2026-10-04",
+  "browser": "Codex in-app browser",
+  "url": "http://127.0.0.1:8097/neighborhood/",
+  "final_html_sha256": "66adbe41e9ca1bb9f7fbc592a35412f303ef64bc6e9c4d10ca7d66ada868259b",
+  "final_html_bytes": 1655217,
+  "checks": [
+    "Actual voxel map and five character GLBs rendered, with readable NPC labels and player position on the mini-map.",
+    "Visible directional controls moved the player from spawn to Night Market and around a courtyard lamp to Zee; blocked movement respected the lamp.",
+    "Rare-card preview followed by Cancel kept 60 coins. Epic-card purchase changed balance to 28 and inventory to one Epic. Selling a seed token changed balance to 34, seed tokens to two and trade count to two.",
+    "Fresh-visit confirmation restored spawn, 60 coins, three seed tokens, no cards and no trades.",
+    "Zee conversation advanced from page one to page two. Escape closed the native dialogue and the nearby interaction button remained available.",
+    "A nearby heart reaction produced the visible activity message: Zee returned your heart.",
+    "Shared Pastel theme visibly recolored the whole neighborhood. Zoom-in enlarged the scene, Garden theme and Reset camera restored default presentation.",
+    "After loading the final bundle, Common purchase reduced stock from eight to seven, coins from 60 to 52, and added one Common card. The street activity displayed: Trade complete. Added one common card; 52 game coins remain.",
+    "No captured browser console warnings or errors."
+  ],
+  "static_checks": "neighborhood/validation.json",
+  "independent_review": "docs/neighborhood-code-review.json",
+  "limits": [
+    "Single-player NPC prototype; local visit inventory resets on reload. No network players, payments or persistent trade backend.",
+    "No measured frame-rate claim or broad device compatibility claim. Physical touch hardware and narrow-screen framing were not exercised in the browser.",
+    "Keyboard held-input and all-five-station reachability are covered by code review and deterministic checks; live navigation used the visible directional controls."
+  ]
+}

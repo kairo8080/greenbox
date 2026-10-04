@@ -1,0 +1,29 @@
+{
+  "id": "booster_common",
+  "label": "Common booster pack",
+  "rarity": "common",
+  "description": "Sealed common booster wrapper, raised Greenbox badge, 1 rarity blocks and matching original item relief. No randomized opening mechanic is included.",
+  "dimensions_voxels": [
+    26,
+    10,
+    38
+  ],
+  "occupied_voxels": 6949,
+  "connected_components": 1,
+  "voxel_pitch_meters": 0.05,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "source_normalization_offset": [
+    0,
+    -1,
+    0
+  ],
+  "source_ground_pivot_voxels": [
+    13.0,
+    5.0,
+    0
+  ],
+  "sha256": {
+    "booster_common.json": "a80364573c38d79dfb9510f04db0ea425f32e16616a1987c1e8c2e8e067a976c",
+    "booster_common.vox": "f8cb5337fee3718f99a112bdb2db926d7d90ff99dac492e15e9fd509a5c2229d"
+  }
+}

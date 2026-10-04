@@ -8,11 +8,13 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { buildPalette, writeVoxPalette, writeGlbPalette } from './palette-core.mjs';
 
 const data = JSON.parse(document.getElementById('viewer-data').textContent);
-const ui = Object.fromEntries(['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats', 'scene-labels', 'asset-select', 'lore-location', 'lighting-mode', 'lore-story', 'character-style', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle', 'reset-view', 'palette-select', 'protect-identity', 'palette-swatches', 'palette-status', 'export-palette', 'export-vox', 'export-glb'].map(id => [id, document.getElementById(id)]));
-const state = { selected: 'rasta_grower', style: 'garden', collection: 'lore', location: 'seedling_garden', lighting: 'day', mode: 'compare', framing: 'body', synced: true, spinning: false, theme: 'garden', protected: true, overrides: {} };
+const ui = Object.fromEntries(['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats', 'scene-labels', 'asset-select', 'lore-location', 'lighting-mode', 'lore-story', 'collectible-select', 'collectible-layout', 'character-style', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle', 'reset-view', 'palette-select', 'protect-identity', 'palette-swatches', 'palette-status', 'export-palette', 'export-vox', 'export-glb'].map(id => [id, document.getElementById(id)]));
+const state = { selected: 'rasta_grower', style: 'garden', collection: 'lore', location: 'seedling_garden', collectible: 'grower_toybox', collectibleMode: 'compare', lighting: 'day', mode: 'compare', framing: 'body', synced: true, spinning: false, theme: 'garden', protected: true, overrides: {} };
 const initial = new URLSearchParams(location.search);
-if (['characters','lore','room','props'].includes(initial.get('collection'))) state.collection = initial.get('collection');
-if (['roots_street','starter_loft','seedling_garden'].includes(initial.get('location'))) state.location = initial.get('location');
+if (['characters','lore','room','props','collectibles'].includes(initial.get('collection'))) state.collection = initial.get('collection');
+if (['roots_street','starter_loft','seedling_garden','neighbor_commons'].includes(initial.get('location'))) state.location = initial.get('location');
+if (data.models.some(model => model.kind === 'collectible' && model.id === initial.get('collectible'))) state.collectible = initial.get('collectible');
+if (['compare','solo'].includes(initial.get('collectibleLayout'))) state.collectibleMode = initial.get('collectibleLayout');
 if (['day','night'].includes(initial.get('lighting'))) state.lighting = initial.get('lighting');
 if (['garden','chibi','original'].includes(initial.get('style'))) state.style = initial.get('style');
 if (Object.hasOwn(data.catalog.presets, initial.get('palette'))) state.theme = initial.get('palette');
@@ -36,6 +38,7 @@ const decode = value => Uint8Array.from(atob(value), character => character.char
 const selectedModelId = () => state.style === 'original' ? state.selected : `${state.selected}_${state.style}`;
 const styleLabel = () => state.style === 'garden' ? 'Garden chibi' : state.style === 'chibi' ? 'Chibi' : 'Original';
 const characterModels = () => data.models.filter(model => model.kind === 'character' && model.style === state.style);
+const selectedVisibleId = () => state.collection === 'collectibles' ? state.collectible : selectedModelId();
 
 function updatePalette() {
   palette = buildPalette(data.catalog, state.theme, state.protected, state.overrides);
@@ -104,13 +107,14 @@ function modelClone(record) {
 
 function highlightSelection() {
   for (const view of views) {
-    const selected = view.ids.includes(selectedModelId());
-    view.panel.classList.toggle('is-selected', selected && state.collection === 'characters');
-    view.label.classList.toggle('is-selected', selected && state.collection === 'characters');
+    const selected = view.ids.includes(selectedVisibleId());
+    view.panel.classList.toggle('is-selected', selected && ['characters','collectibles'].includes(state.collection));
+    view.label.classList.toggle('is-selected', selected && ['characters','collectibles'].includes(state.collection));
   }
   const selected = currentRecord();
   ui['selected-label'].textContent = selected.label + (state.collection === 'characters' ? ` · ${styleLabel()}${state.mode === 'compare' ? ' · comparing seven' : ''}` : '');
   ui['character-select'].value = state.selected;
+  ui['collectible-select'].value = state.collectible;
   ui['export-vox'].disabled = !selected.voxBytes;
   ui['export-vox'].title = selected.voxBytes ? 'Download the current palette in the editable voxel source' : 'Props have separate VOX sources; download the original prop library as GLB';
   document.querySelector('.export-note').textContent = `Download ${selected.label.toLowerCase()} with the current palette.`;
@@ -118,7 +122,7 @@ function highlightSelection() {
 }
 
 function currentRecord() {
-  return records.get(state.collection === 'characters' ? selectedModelId() : state.collection === 'lore' ? state.location : state.collection === 'room' ? 'bedroom' : 'props');
+  return records.get(state.collection === 'characters' ? selectedModelId() : state.collection === 'collectibles' ? state.collectible : state.collection === 'lore' ? state.location : state.collection === 'room' ? 'bedroom' : 'props');
 }
 
 function chooseDriver(view) {
@@ -135,6 +139,10 @@ function chooseDriver(view) {
   }
   if (state.collection === 'characters' && view.ids.length === 1) {
     state.selected = records.get(view.ids[0]).characterId;
+    highlightSelection();
+  }
+  if (state.collection === 'collectibles' && view.ids.length === 1) {
+    state.collectible = view.ids[0];
     highlightSelection();
   }
 }
@@ -288,11 +296,11 @@ function frameView(view, resetAngle = true) {
   view.defaultTarget.copy(center);
   view.controls.minDistance = Math.max(0.12, view.height * 0.15);
   view.controls.maxDistance = Math.max(view.frameDistance * 10, view.height * 12);
-  if (resetAngle) setAngle(view, ['room','lore'].includes(state.collection) ? Math.PI / 4 : -Math.PI / 4, defaultElevation());
+  if (resetAngle) setAngle(view, state.collection === 'collectibles' ? Math.PI / 6 : ['room','lore'].includes(state.collection) ? Math.PI / 4 : -Math.PI / 4, defaultElevation());
 }
 
 function defaultElevation() {
-  return THREE.MathUtils.degToRad(['lore','room'].includes(state.collection) ? 28 : state.collection === 'props' ? 15 : state.style === 'garden' ? 14 : 4);
+  return THREE.MathUtils.degToRad(['lore','room'].includes(state.collection) ? 28 : ['props','collectibles'].includes(state.collection) ? 15 : state.style === 'garden' ? 14 : 4);
 }
 
 function setAngle(view, azimuth, elevation) {
@@ -319,20 +327,23 @@ function rebuildViews() {
   }
   views = []; driver = null;
   panels.replaceChildren(); ui['scene-labels'].replaceChildren();
-  const compare = state.collection === 'characters' && state.mode === 'compare';
+  const compare = state.collection === 'characters' && state.mode === 'compare' || state.collection === 'collectibles' && state.collectibleMode === 'compare';
   panels.classList.toggle('compare', compare);
-  if (compare) views = characterModels().map(model => makeView([model.id], model.label));
+  panels.classList.toggle('collectibles', state.collection === 'collectibles');
+  if (compare) views = (state.collection === 'collectibles' ? data.models.filter(model => model.kind === 'collectible') : characterModels()).map(model => makeView([model.id], model.label));
   else if (state.collection === 'characters' && state.mode === 'lineup') views = [makeView(characterModels().map(model => model.id), `All seven ${styleLabel()} characters`)];
   else { const record = currentRecord(); views = [makeView([record.id], record.label)]; }
-  driver = views.find(view => view.ids.includes(selectedModelId())) ?? views[0];
+  driver = views.find(view => view.ids.includes(selectedVisibleId())) ?? views[0];
   for (const view of views) frameView(view);
   ui['view-mode'].disabled = state.collection !== 'characters';
   document.getElementById('character-options').hidden = state.collection !== 'characters';
   document.getElementById('lore-options').hidden = state.collection !== 'lore';
+  document.getElementById('collectible-options').hidden = state.collection !== 'collectibles';
+  ui['collectible-select'].disabled = ui['collectible-layout'].disabled = state.collection !== 'collectibles';
   document.getElementById('camera-note').textContent = state.collection === 'characters' ? 'Switch to portrait to inspect faces and hair, or full body to check silhouette and proportions.' : 'Drag to explore the scene, or use the camera buttons for a different angle.';
   ui['lore-location'].disabled = ui['lighting-mode'].disabled = state.collection !== 'lore';
   ui['lore-story'].hidden = state.collection !== 'lore';
-  ui['lore-story'].textContent = state.location === 'seedling_garden' ? 'Seedling commons · A lime-green pocket garden, warm soil terraces, turquoise water, and a new grower.' : state.location === 'starter_loft' ? 'Level 1 · A spare bedroom, three starter pots, hand-me-down equipment, and big plans.' : 'ROOTS district · A neighborhood seed co-op, grow supplies, and a Greenbox social corner.';
+  ui['lore-story'].textContent = state.location === 'neighbor_commons' ? 'Meet the neighbors · Colorful homes, a shared courtyard, and a tucked-away Night Market. Visit the neighborhood to walk and interact.' : state.location === 'seedling_garden' ? 'Seedling commons · A lime-green pocket garden, warm soil terraces, turquoise water, and a new grower.' : state.location === 'starter_loft' ? 'Level 1 · A spare bedroom, three starter pots, hand-me-down equipment, and big plans.' : 'ROOTS district · A neighborhood seed co-op, grow supplies, and a Greenbox social corner.';
   ui['character-style'].disabled = state.collection !== 'characters';
   ui['character-select'].disabled = state.collection !== 'characters';
   ui['framing'].disabled = state.collection !== 'characters';
@@ -428,6 +439,12 @@ function reportError(error) {
 
 function wireControls() {
   ui['asset-select'].addEventListener('change', event => { state.collection = event.target.value; rebuildViews(); });
+  ui['collectible-layout'].addEventListener('change', event => { state.collectibleMode = event.target.value; rebuildViews(); });
+  ui['collectible-select'].addEventListener('change', event => {
+    state.collectible = event.target.value;
+    if (state.collectibleMode === 'solo') rebuildViews();
+    else { chooseDriver(views.find(view => view.ids.includes(state.collectible)) ?? driver); highlightSelection(); }
+  });
   ui['lore-location'].addEventListener('change', event => { state.location = event.target.value; rebuildViews(); });
   ui['lighting-mode'].addEventListener('change', event => { state.lighting = event.target.value; rebuildViews(); });
   ui['view-mode'].addEventListener('change', event => { state.mode = event.target.value; rebuildViews(); });
@@ -485,6 +502,8 @@ async function start() {
   ui['lighting-mode'].value = state.lighting;
   ui['character-style'].value = state.style;
   ui['palette-select'].value = state.theme;
+  ui['collectible-select'].value = state.collectible;
+  ui['collectible-layout'].value = state.collectibleMode;
   document.querySelectorAll('[data-ready-control]').forEach(control => { control.disabled = false; });
   rebuildViews(); resize();
   ui['loading-status'].textContent = '';

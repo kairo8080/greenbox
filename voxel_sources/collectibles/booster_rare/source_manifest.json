@@ -1,0 +1,29 @@
+{
+  "id": "booster_rare",
+  "label": "Rare booster pack",
+  "rarity": "rare",
+  "description": "Sealed rare booster wrapper, raised Greenbox badge, 2 rarity blocks and matching original item relief. No randomized opening mechanic is included.",
+  "dimensions_voxels": [
+    26,
+    10,
+    38
+  ],
+  "occupied_voxels": 6918,
+  "connected_components": 1,
+  "voxel_pitch_meters": 0.05,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "source_normalization_offset": [
+    0,
+    -1,
+    0
+  ],
+  "source_ground_pivot_voxels": [
+    13.0,
+    5.0,
+    0
+  ],
+  "sha256": {
+    "booster_rare.json": "0b80c0f377cd0f7563cb4e6d836842aedd8ea859e2afa5a7c27d72ab8e944db7",
+    "booster_rare.vox": "1526a36fc102cb20795c76296a4c381f957e924f416de313a40d8ed04efd8369"
+  }
+}

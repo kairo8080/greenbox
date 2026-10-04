@@ -1,0 +1,29 @@
+{
+  "id": "card_rare",
+  "label": "Rare / Grow light",
+  "rarity": "rare",
+  "description": "Rare voxel TCG item card with a raised grow light icon, rarity marks, cream face and original GB back. All art is actual 1-cell relief, not an image plane.",
+  "dimensions_voxels": [
+    26,
+    5,
+    38
+  ],
+  "occupied_voxels": 2526,
+  "connected_components": 1,
+  "voxel_pitch_meters": 0.05,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "source_normalization_offset": [
+    0,
+    -1,
+    0
+  ],
+  "source_ground_pivot_voxels": [
+    13.0,
+    2.5,
+    0
+  ],
+  "sha256": {
+    "card_rare.json": "5bb962854e1110a8104df58faec0bd80c2d84e7b2ca8cabc4899e7900baa71d5",
+    "card_rare.vox": "68c1442eba0c2a417f41eff2693bcbdaf71532b59d7d60bc70e3331d9dc5b5a8"
+  }
+}

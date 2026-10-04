@@ -1,0 +1,2 @@
+# Preserve the exact bundled page bytes, including embedded third-party shaders.
+** -text -whitespace

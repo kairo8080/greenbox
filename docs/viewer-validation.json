@@ -1,11 +1,11 @@
 {
-  "schema": "greenbox-viewer-validation-v4",
+  "schema": "greenbox-viewer-validation-v5",
   "lore_palette_exports": "docs/lore-palette-validation.json: Both scenes passed targeted Neon/identity-protected VOX and GLB export checks, preserving occupancy, indices, geometry bytes, nodes, accessors, transforms, signed zeros and static/emissive material split. Matching recolored textures were checked independently in memory.",
   "date": "2026-10-04",
-  "embedded_assets": 26,
+  "embedded_assets": 36,
   "character_voxels": 90462,
   "character_triangles": 12556,
-  "static_delivery": "Passed npm run build: existing browser exports and independent v4 HTML validation for 26 real models, GLB buffers/accessors/bounds, native VOX occupancy, all 256 canonical palette colors, three character styles, three lore scenes, Garden theme defaults and inline syntax. Five targeted malformed v4 fixtures rejected; see docs/garden-viewer-verification.json.",
+  "static_delivery": "Passed npm run build: existing Godot and Unity browser exports, independent v5 HTML validation for 36 real models and the new neighborhood gameplay verifier. Four targeted malformed expansion fixtures rejected; see docs/expansion-viewer-verification.json.",
   "palette_exports": "Earlier original cast checks passed (335 properties). New chibi checks passed 70 asset/preset/protection combinations, covering 140 VOX and 140 GLB outputs with unknown-chunk probes; geometry, occupancy, palette indices and joints preserved.",
   "browser_limitations": [
     "The automated in-app browser prohibits file:// navigation; the self-contained local file was validated statically, and interactive rendering was checked over HTTP.",
@@ -35,7 +35,7 @@
     }
   },
   "default_character_style": "garden",
-  "html_sha256": "825df85b8fe4aa9b5547aac1e5bbf95dec2e69b0024fa8e4821710b88fba20ab",
+  "html_sha256": "9939f30147255656f2a198bd77fc5b41874f8c9702221d0619d263f08bfdadce",
   "lighting": {
     "shadow_type": "PCFShadowMap",
     "character_map_pixels": 512,
@@ -63,12 +63,12 @@
       "triangles": 13324,
       "modular_assets": 18
     },
-    "total_voxels": 604184,
-    "total_triangles": 32020,
+    "total_voxels": 983156,
+    "total_triangles": 38738,
     "source_validation": "voxel_sources/lore_scenes/pack_validation.json",
     "reproducibility": "voxel_sources/lore_scenes/reproducibility.json",
     "magicavoxel_mcp_reads": "Earlier ROOTS district and starter loft assembled VOX dimensions and cell counts matched the MCP reader. New Seedling garden was validated independently from native file bytes.",
-    "gameplay": "Static art preview compositions; no new playable level or character locomotion in the viewer.",
+    "gameplay": "Viewer scenes are art previews. A separate playable single-player browser neighborhood is delivered at /neighborhood/.",
     "seedling_garden": {
       "voxels": 259449,
       "triangles": 7050,
@@ -76,6 +76,15 @@
       "instances": 26,
       "source_validation": "voxel_sources/garden_scenes/pack_validation.json",
       "reproducibility": "voxel_sources/garden_scenes/reproducibility.json",
+      "magicavoxel_mcp_reads": "Not run for this new scene; independent native VOX and exposed-face GLB byte validation passed."
+    },
+    "neighbor_commons": {
+      "voxels": 378972,
+      "triangles": 6718,
+      "modular_assets": 12,
+      "instances": 21,
+      "source_validation": "voxel_sources/neighborhood/pack_validation.json",
+      "reproducibility": "voxel_sources/neighborhood/reproducibility.json",
       "magicavoxel_mcp_reads": "Not run for this new scene; independent native VOX and exposed-face GLB byte validation passed."
     }
   },
@@ -100,13 +109,31 @@
     "Lore controls and character controls appear only for their corresponding collection.",
     "ROOTS Neon VOX and GLB export generation produced correctly named Save links without runtime error."
   ],
-  "browser_checked": [
+  "collectibles": {
+    "assets": 9,
+    "voxels": 101432,
+    "triangles": 5410,
+    "source_validation": "voxel_sources/collectibles/pack_validation.json",
+    "reproducibility": "voxel_sources/collectibles/reproducibility.json",
+    "default_camera_degrees": {
+      "azimuth": 30,
+      "elevation": 15
+    }
+  },
+  "expansion_palette_exports": "docs/expansion-palette-validation.json: Actual palette-core functions exported all nine collectibles and the neighborhood map. Independent byte parsers verified unchanged native occupancy/non-RGBA bytes and GLB geometry, hierarchy, accessors, transforms, signed zeros, material/sampler semantics, all 256 replacement atlas colors and 17 protected identity slots. Source files remained unchanged.",
+  "prior_garden_browser_checks": [
     "All seven Garden chibi characters rendered from their actual GLBs in Compare layout with the shared Greenbox Garden theme.",
     "Garden grower Solo and Portrait framing inspected visually; Garden/earlier Chibi switching preserves the shared theme.",
     "Garden grower VOX and GLB export buttons generated correctly named Save links without runtime errors; disk download not exercised.",
     "Seedling garden default Day framing includes terrain and full tree canopy; Night mode rendered successfully.",
     "Seedling garden drag orbit changed angle from 45 to -7 degrees and wheel zoom reached 193 percent; Reset view restored 45 degrees and 100 percent.",
     "The Greenbox Garden theme also rendered on the Level-one bedroom and ROOTS district.",
+    "No captured browser console warnings or errors during the new local HTTP checks."
+  ],
+  "browser_checked": [
+    "All nine collectibles rendered from actual embedded GLBs in the local HTTP viewer; original voxel relief, Founder 420 glyphs and open-front grower toybox inspected visually.",
+    "Compare and Solo controls worked; grower toybox Front view showed the contained character. Default 30-degree collectible camera reloaded successfully.",
+    "Epic card Solo used the shared Pastel theme and generated correctly named card_epic_pastel.vox and card_epic_pastel.glb Save links; disk download not exercised.",
     "No captured browser console warnings or errors during the new local HTTP checks."
   ]
 }

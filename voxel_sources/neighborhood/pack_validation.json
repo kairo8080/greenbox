@@ -1,0 +1,303 @@
+{
+  "schema": "independent-greenbox-lore-pack-validation-v1",
+  "status": "pass",
+  "verification": "Independent modular placement union, editable VOX bytes, provenance and exact actual GLB triangle clipping against every exposed flattened source cube face.",
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "voxel_pitch_meters": 0.05,
+  "assets_verified": 1,
+  "total_filled_voxels": 378972,
+  "total_triangles": 6718,
+  "assets": [
+    {
+      "asset": "neighbor_commons",
+      "status": "pass",
+      "filled_voxels": 378972,
+      "dimensions_voxels": [
+        240,
+        200,
+        70
+      ],
+      "normalization_offset": [
+        0,
+        0,
+        0
+      ],
+      "voxel_pitch_meters": 0.05,
+      "height_meters": 3.5,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "colors_used": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27,
+        29,
+        30,
+        33,
+        35,
+        51,
+        62
+      ],
+      "connected_components": 1,
+      "component_sizes": [
+        378972
+      ],
+      "intentional_union_overlap_cells": 0,
+      "union_overlaps_changing_color": 0,
+      "last_write_wins_union_verified_exactly": true,
+      "modular_assets": [
+        {
+          "name": "commons_layered_ground",
+          "filled_voxels": 192000,
+          "dimensions": [
+            240,
+            200,
+            4
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            192000
+          ],
+          "vox_sha256": "20295cdf88ea9ddf81b2fdcbd39a2790ead0c31f63c0cbfda96492cf04f46eb2"
+        },
+        {
+          "name": "commons_chef_home",
+          "filled_voxels": 31930,
+          "dimensions": [
+            46,
+            53,
+            55
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            31930
+          ],
+          "vox_sha256": "4eb96581d74edb3e4d8170382407dbfeba11caf9c068d734644e1970e7c47e84"
+        },
+        {
+          "name": "commons_artist_home",
+          "filled_voxels": 31915,
+          "dimensions": [
+            46,
+            53,
+            55
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            31915
+          ],
+          "vox_sha256": "78f315c12a5d019f2c441ddf0de1434c907a48272c5fea10f4ab327ea7812708"
+        },
+        {
+          "name": "commons_robot_lab",
+          "filled_voxels": 31917,
+          "dimensions": [
+            46,
+            53,
+            55
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            31917
+          ],
+          "vox_sha256": "49fe949e9b5e49a20975893366aac50e9529c21cf3e0c805ec42f811b3c2e379"
+        },
+        {
+          "name": "commons_party_home",
+          "filled_voxels": 32915,
+          "dimensions": [
+            48,
+            53,
+            55
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            32915
+          ],
+          "vox_sha256": "9137c04045c8bf3ee543803561cde661a03bff18fae6cd835ffc6a0195845092"
+        },
+        {
+          "name": "commons_lime_tree_left",
+          "filled_voxels": 10912,
+          "dimensions": [
+            18,
+            18,
+            66
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            10912
+          ],
+          "vox_sha256": "cdab58492744e9f694b28b5fef895ace8a9c7a9eee642a2675e78c2dcdb733bf"
+        },
+        {
+          "name": "commons_lime_tree_right",
+          "filled_voxels": 8968,
+          "dimensions": [
+            18,
+            18,
+            60
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            8968
+          ],
+          "vox_sha256": "a21d57ff5d49d6812fb596abe3899c085fffdbcce4d810f3459332995ce4ec49"
+        },
+        {
+          "name": "commons_oak_bench",
+          "filled_voxels": 2514,
+          "dimensions": [
+            35,
+            14,
+            22
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            2514
+          ],
+          "vox_sha256": "71f0edc5655d54d699b71be107a4188ca2d60da4788f24f6525d5787303cb6c9"
+        },
+        {
+          "name": "commons_night_market_stall",
+          "filled_voxels": 33191,
+          "dimensions": [
+            52,
+            41,
+            44
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            33191
+          ],
+          "vox_sha256": "4936ab0385a4cc5b7c3620ec99134b767bae26e2ffa4844072787d648f6a5a37"
+        },
+        {
+          "name": "commons_courtyard_lamp",
+          "filled_voxels": 756,
+          "dimensions": [
+            8,
+            8,
+            43
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            756
+          ],
+          "vox_sha256": "0b84280d6a54a12036240e618a93501a05b668ec0fd19ebfdae9d68efde79fec"
+        },
+        {
+          "name": "commons_plant_small_cc0_leaf",
+          "filled_voxels": 503,
+          "dimensions": [
+            21,
+            11,
+            29
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            503
+          ],
+          "vox_sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa"
+        },
+        {
+          "name": "commons_square_flower",
+          "filled_voxels": 24,
+          "dimensions": [
+            5,
+            5,
+            4
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            24
+          ],
+          "vox_sha256": "4151d056c988702d98e22612d3620a38c74a2b869d53b6fc9ffb730e9241745e"
+        }
+      ],
+      "modular_instance_count": 21,
+      "reused_sources": [
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "cannabis_plant_small",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        }
+      ],
+      "source_json_sha256": "e693db29809fd625e0e097cf397fd114e716cf816f1de90eaca456a74650e815",
+      "flat_scene_sha256": "ab893c7e8e43ceb5b2042e3ee4e98e2ba734a6858c713b244bbae4b242575784",
+      "vox_sha256": "ccb00ad9ff7d4c17c4e421eeb1d978f8c1080c3e92d96ba86ec0f170477735a5",
+      "source_manifest_sha256": "718944ce410e38364f69a891c9ef16e00124e94e38886ad84952d97dd1fc2ddd",
+      "glb": {
+        "path": "neighbor_commons\\neighbor_commons.glb",
+        "sha256": "04092e59e896fc4583ba2650b0feacdf4c7af902539149d10d2f21a79c9a7369",
+        "bytes": 442532,
+        "triangles": 6718,
+        "vertices": 12470,
+        "exposed_unit_faces_verified": 225146,
+        "emissive_triangles": 184,
+        "materials": 2,
+        "world_bounds_y_up_meters": [
+          [
+            -6.0,
+            0.0,
+            -5.0
+          ],
+          [
+            6.0,
+            3.5,
+            5.0
+          ]
+        ],
+        "exact_flat_source_surface_and_palette_coverage": true,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_axis_normals": true,
+        "source_emissive_role_mapping_preserved": true
+      },
+      "previews": {
+        "day": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 1005578,
+          "sha256": "bee42338b1d649e565b396a15f5c008d6852c00ecda05b970a3fdc19ff137f86"
+        },
+        "night": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 1252404,
+          "sha256": "e71c8b317ecbe631af59219822f072a9ada96a08f398a9b2e2d17e40877bef8c"
+        }
+      },
+      "blend": {
+        "sha256": "2f43c58ca6f2b4fafa3187104eff126affe38570dc24c711f28a340dc0be680d",
+        "bytes": 206763,
+        "verification_scope": "Nonempty saved Blender file with recognized container magic; internal scene blocks not decoded."
+      }
+    }
+  ]
+}

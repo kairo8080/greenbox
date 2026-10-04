@@ -1,0 +1,42 @@
+{
+  "schema": "greenbox-expansion-viewer-verification-v1",
+  "status": "pass",
+  "date": "2026-10-04",
+  "html_sha256": "9939f30147255656f2a198bd77fc5b41874f8c9702221d0619d263f08bfdadce",
+  "bytes": 14530959,
+  "schema_version": "greenbox-viewer-v5",
+  "models": 36,
+  "new_assets": 10,
+  "checks": [
+    "36 embedded model IDs and actual GLB accessors",
+    "canonical indexed palette and source occupancy",
+    "new assets bound to independent source hashes and counts",
+    "collectible and neighborhood controls",
+    "standalone script syntax"
+  ],
+  "tamper_probes": [
+    {
+      "case": "missing_founder",
+      "status": "rejected_as_expected",
+      "diagnostic": "Error: Viewer must embed three seven-character casts, bedroom, props, four lore locations and nine collectibles."
+    },
+    {
+      "case": "wrong_card_count",
+      "status": "rejected_as_expected",
+      "diagnostic": "Error: card_epic: declared 532 triangles, actual scene has 530."
+    },
+    {
+      "case": "missing_collectible_menu",
+      "status": "rejected_as_expected",
+      "diagnostic": "Error: Required viewer control/region is missing: collectible-select."
+    },
+    {
+      "case": "missing_map_option",
+      "status": "rejected_as_expected",
+      "diagnostic": "Error: lore-location is missing a required option."
+    }
+  ],
+  "limits": [
+    "Static integrity checks do not establish browser rendering or game performance."
+  ]
+}

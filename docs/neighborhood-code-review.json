@@ -1,0 +1,210 @@
+{
+  "schema": "greenbox-neighborhood-independent-code-review-v1",
+  "status": "pass",
+  "reviewedDate": "2026-10-04",
+  "sourceBindings": [
+    {
+      "path": "neighborhood/game-core.mjs",
+      "bytes": 7011,
+      "sha256": "9d1abb1990c9a2cc38dee53925da8d6d086c54d9c763b618e5c9a4ccfbcffa95"
+    },
+    {
+      "path": "neighborhood/neighborhood.js",
+      "bytes": 26142,
+      "sha256": "c7baa331121e82f8812b4caeb1a4f508fbf88678d0f4544113a18b8df51d9d3b"
+    },
+    {
+      "path": "neighborhood/neighborhood-shell.html",
+      "bytes": 5537,
+      "sha256": "3dd68a665c807f66530f89579308aed1b9067baf76950cd37861ea4121799029"
+    },
+    {
+      "path": "neighborhood/neighborhood.css",
+      "bytes": 12321,
+      "sha256": "1c7e074ec2ab42bf45c70327055da56aaef65d4c16960b0d9db21a82b345f841"
+    },
+    {
+      "path": "scripts/build-neighborhood.mjs",
+      "bytes": 5533,
+      "sha256": "7392cde999e0e9940794d6a4390f42230dccd3cca88d9cf8a9e26fd4b0ec42de"
+    },
+    {
+      "path": "scripts/verify-neighborhood.mjs",
+      "bytes": 10510,
+      "sha256": "39bf3df775ea6e9393a9596539e77dfbd0e9874af7e51b1cae17f197f4f8063a"
+    },
+    {
+      "path": "voxel_sources/neighborhood/game_layout.json",
+      "bytes": 5479,
+      "sha256": "4c4a30119bf254185c9ebc96730727c50a199742326767e89100ca38fdce01e0"
+    },
+    {
+      "path": "public/neighborhood/index.html",
+      "bytes": 1655217,
+      "sha256": "66adbe41e9ca1bb9f7fbc592a35412f303ef64bc6e9c4d10ca7d66ada868259b"
+    }
+  ],
+  "scope": "Read-only review of final deterministic game core, renderer/input/dialogue code, build/verification code and authored map layout; one independent edge probe against the final embedded runtime layout.",
+  "unresolvedFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "avatar-geometry-colliders",
+      "problem": "The initial 0.24 m player radius and 0.23 m NPC half-width allowed oversized Garden heads to intersect neighbors and source walls.",
+      "resolution": "Final build derives footprints from actual GLB node-transformed position bounds. Player envelope rotates with validated yaw; NPC circles use the full model circumradius plus 1 cm. Independent checks matched all five model bounds to actual occupied source geometry and proved all five interaction stations remain reachable."
+    },
+    {
+      "id": "physical-key-release",
+      "problem": "Direction-based held-key Set dropped a direction when one of two equivalent physical bindings was released.",
+      "resolution": "Final input tracks event.code, so W plus ArrowUp remain independently held and released. Blur, hidden-document, modal-open and modal-close clear input state."
+    },
+    {
+      "id": "interpolated-turn-envelope",
+      "problem": "Interpolating a visual 0-to-90 degree heading could pass through a wider 45 degree head footprint even when endpoint headings fit.",
+      "resolution": "Rendered player yaw matches validated state yaw immediately; unsafe desired turns are deferred in movement. Player idle head yaw is zero. NPC turning and head sway remain inside conservative circumradius."
+    }
+  ],
+  "reviewedBehaviors": {
+    "movement": "Normalized diagonal speed, capped/substepped frames, wall sliding, map containment, actual yaw-aware player footprint, conservative NPC footprints, reachable conversation and market stations.",
+    "input": "Physical key-code release; modal/blur/visibility clearing; pointer capture plus pointer-up/cancel/lost-capture clearing; pointer cancellation performs no extra step; short taps and keyboard controls have explicit step paths.",
+    "conversations": "Native modal dialog stops player movement. Conversation pages and nearby emoji handlers are attached to the selected station. Close/Escape reaches the dialog close listener, clears session/input and restores a connected prior focus target.",
+    "transactions": "Offer preview is pure. Confirm passes current layout into core and rechecks market range. Successful trades return fresh nested inventory/stock/player state; coin/item/stock updates are atomic. Failed offers preserve prior state. Cancellation returns to market without a commit. Reset rebuilds initial coins, inventory, stock and spawn.",
+    "paletteAndAnimation": "Shared canonical palette atlas is replaced consistently on base and emissive materials; identity-protected Garden theme uses the same catalog. Five loaded characters require the actual six exported rigid pivots; arm and leg gait rotates those joints. Reduced-motion path suppresses gait bob/sway."
+  },
+  "independentEdgeProbe": {
+    "status": "pass",
+    "checks": [
+      "physics bounds independently match actual occupied source geometry",
+      "full depleted-seed/depleted-stock transaction sequence",
+      "state preservation on preview and failed trades",
+      "out-of-range commit rejection",
+      "fresh reset",
+      "long frame containment",
+      "all final-layout interaction targets accessible"
+    ],
+    "reachableGridPoints": 11691,
+    "reachableTargets": [
+      {
+        "id": "chef",
+        "witness": {
+          "x": -3.2,
+          "y": 0.2,
+          "z": -0.05,
+          "yaw": 0
+        }
+      },
+      {
+        "id": "artist",
+        "witness": {
+          "x": -0.5,
+          "y": 0.2,
+          "z": -0.05,
+          "yaw": 0
+        }
+      },
+      {
+        "id": "robot",
+        "witness": {
+          "x": 1.4500000000000002,
+          "y": 0.2,
+          "z": 0.30000000000000004,
+          "yaw": 0
+        }
+      },
+      {
+        "id": "party",
+        "witness": {
+          "x": 3.1500000000000004,
+          "y": 0.2,
+          "z": -0.05,
+          "yaw": 0
+        }
+      },
+      {
+        "id": "night_market",
+        "witness": {
+          "x": -2.0500000000000003,
+          "y": 0.2,
+          "z": 4.3500000000000005,
+          "yaw": 0
+        }
+      }
+    ],
+    "playerHalfExtents": [
+      0.51,
+      0.45999998807907105
+    ],
+    "physicsSourceChecks": [
+      {
+        "id": "rasta_grower",
+        "halfExtentsMeters": [
+          0.5,
+          0.45
+        ],
+        "boundsMatchActualSource": true
+      },
+      {
+        "id": "chef",
+        "halfExtentsMeters": [
+          0.5,
+          0.45
+        ],
+        "boundsMatchActualSource": true
+      },
+      {
+        "id": "blonde_lady",
+        "halfExtentsMeters": [
+          0.5,
+          0.45
+        ],
+        "boundsMatchActualSource": true
+      },
+      {
+        "id": "robot",
+        "halfExtentsMeters": [
+          0.5,
+          0.5
+        ],
+        "boundsMatchActualSource": true
+      },
+      {
+        "id": "party_woman",
+        "halfExtentsMeters": [
+          0.5,
+          0.45
+        ],
+        "boundsMatchActualSource": true
+      }
+    ]
+  },
+  "finalBundleValidation": {
+    "path": "neighborhood/validation.json",
+    "htmlSha256": "66adbe41e9ca1bb9f7fbc592a35412f303ef64bc6e9c4d10ca7d66ada868259b",
+    "models": 9,
+    "triangles": 10216,
+    "checks": [
+      "embedded original GLB bytes and source hashes",
+      "embedded layout and full palette catalog match sources",
+      "six actual rigid pivots for all five characters",
+      "no external GLB resources",
+      "bundled script syntax",
+      "normalized diagonal speed",
+      "wall collision and sliding",
+      "terrain boundary containment",
+      "no input stops movement",
+      "four NPC and market ranges",
+      "out-of-range trade rejection",
+      "preview/cancel preserves state",
+      "atomic trade coin/item/stock conservation",
+      "insufficient coins and inventory rejection",
+      "sold-out and unknown offer rejection",
+      "reset restores initial visit",
+      "actual model footprints and yaw rotation",
+      "head envelope wall-safe turning",
+      "all five stations reachable with larger avatar envelope"
+    ]
+  },
+  "limitations": [
+    "This report does not claim live browser gesture, focus or frame-rate measurement. The coordinator performs live UI validation separately.",
+    "Environment collision is a deliberate conservative axis-aligned approximation of source-derived character-height solids."
+  ]
+}

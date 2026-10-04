@@ -1,0 +1,29 @@
+{
+  "id": "grower_toybox",
+  "label": "Grower toybox",
+  "rarity": "collectible",
+  "description": "Open-front teal and cream toy display with the original Garden grower, raised original GB badge and lime interior. Static connected collectible prop; the separately supplied character keeps its six movable parts.",
+  "dimensions_voxels": [
+    32,
+    29,
+    48
+  ],
+  "occupied_voxels": 28911,
+  "connected_components": 1,
+  "voxel_pitch_meters": 0.05,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "source_normalization_offset": [
+    0,
+    -1,
+    0
+  ],
+  "source_ground_pivot_voxels": [
+    16.0,
+    14.5,
+    0
+  ],
+  "sha256": {
+    "grower_toybox.json": "41cb3397638599f228501389520d9cc781b0825130e33ea986a4780ae735d05e",
+    "grower_toybox.vox": "2b849edf4299a8491a3b0e5a8241728ed2fbc9cbf98a268a3edaef5667257e7b"
+  }
+}

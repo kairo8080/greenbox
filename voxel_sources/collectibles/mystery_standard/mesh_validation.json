@@ -1,0 +1,102 @@
+{
+  "schema": "greenbox-collectible-mesh-v1",
+  "id": "mystery_standard",
+  "source_sha256": "b930179e902de87374d38ed2d5249595040413adcb12977240221cea7c60436b",
+  "source_vox_sha256": "98efb8a41698e223303173cc472597066da7c1bbb30a6f2d75ceb96cf3cc2fe0",
+  "voxel_pitch_meters": 0.05,
+  "mesh": {
+    "name": "mystery_standard",
+    "dimensions_voxels": [
+      28,
+      29,
+      29
+    ],
+    "filled_voxels": 22041,
+    "exposed_unit_faces": 4860,
+    "greedy_quads": 173,
+    "triangles": 346,
+    "vertices": 228,
+    "ordinary_quads": 173,
+    "emissive_quads": 0,
+    "surfaces_used": 1,
+    "occupied_bounds_min": [
+      0,
+      0,
+      0
+    ],
+    "occupied_bounds_max_exclusive": [
+      28,
+      29,
+      29
+    ],
+    "mesh_dimensions_meters": [
+      1.4000000000000001,
+      1.4500000000000002,
+      1.4500000000000002
+    ],
+    "ground_pivot_source_voxels": [
+      14.0,
+      14.5,
+      0
+    ],
+    "colors_used": [
+      11,
+      12,
+      13,
+      20
+    ],
+    "surface_area_by_palette_index": {
+      "11": 2916,
+      "12": 1068,
+      "13": 727,
+      "20": 149
+    },
+    "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+    "metadata": {
+      "description": "Standard turquoise mystery crate with cream corner rails, raised question mark and original leaf crest.",
+      "voxel_pitch_meters": 0.05,
+      "source_axes": "Z up, front -Y",
+      "glb_axes": "Y up, front +Z",
+      "source_ground_pivot_voxels": [
+        14.0,
+        14.5,
+        0
+      ],
+      "connected_components": 1,
+      "rarity": "standard",
+      "grid_scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use."
+    },
+    "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+  },
+  "glb": {
+    "bytes": 23880,
+    "nodes": 1,
+    "unique_meshes": 1,
+    "materials": 1,
+    "emissive_material_count": 0,
+    "triangles_unique_mesh_data": 346,
+    "source_palette_png_embedded_exactly": true,
+    "max_surface_primitives_per_mesh": 1,
+    "nearest_palette_sampling": true,
+    "preview_objects_excluded": true,
+    "sha256": "71eeee39f674cb93deff2c0448c2c9030e8de0627f432244e99393fd8315664c"
+  },
+  "palette_png_sha256": "ba773b8d60433c4d48d5409f4d28006cd193e071b341ddc5a4dcc41d4b811f58",
+  "preview_palette_png_sha256": "8849af40eda931266eeeccd249216cc04e068cefb9152b671c1c696179407444",
+  "canonical_export_before_preview_theme": true,
+  "source_ground_pivot_voxels": [
+    14.0,
+    14.5,
+    0
+  ],
+  "source_axes": "Z up, front -Y",
+  "glb_axes": "Y up, front +Z",
+  "preview_geometry": "Actual exact occupied-cube surface",
+  "preview_theme": "Greenbox Garden",
+  "preview_resolution": [
+    640,
+    800
+  ],
+  "blender": "5.1.2",
+  "preview_camera_lights_and_ground_excluded_from_glb": true
+}

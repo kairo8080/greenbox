@@ -1,6 +1,6 @@
 # Greenbox voxel viewer
 
-Explore three Greenbox lore scenes, seven characters in Garden chibi, Chibi, and Original proportions, the original bedroom, and grow props: 26 embedded models in one 3D viewer. A shared indexed palette keeps color changes consistent across the cast and scenery. The lore locations are static art previews; the playable Unity and Godot prototypes are separate.
+Explore four Greenbox lore scenes, nine collectibles, seven characters in Garden chibi, Chibi, and Original proportions, the original bedroom, and grow props: 36 embedded models in one 3D viewer. A shared indexed palette keeps color changes consistent across the cast and scenery. The viewer shows art assets. [Visit the neighborhood](https://greenbox-pi.vercel.app/neighborhood/) for movement, NPC conversations, emoji reactions and local game-coin trades; the earlier Unity and Godot prototypes are separate.
 
 ## Open or build
 
@@ -17,12 +17,13 @@ npm run build:viewer
 
 ## Inspect assets
 
-- Choose **Greenbox lore scenes**, **Character collection**, **Bedroom scene**, or **Grow props**.
-- Lore scenes offer **Seedling garden**, **Level-one bedroom**, and **ROOTS district**, each with **Day** or **Night** lighting. Warm lamps, cyan/magenta accents, soft shadows, and bloom establish the scene's mood; bloom is stronger at night.
+- Choose **Greenbox lore scenes**, **Character collection**, **Bedroom scene**, **Grow props**, or **Toyboxes, packs & cards**.
+- Lore scenes offer **Seedling garden**, **Level-one bedroom**, **ROOTS district**, and the bare **Neighbor commons** environment, each with **Day** or **Night** lighting. NPCs are separate movable assets in the neighborhood game.
+- Collectibles support **Compare all nine** and **Solo**. The **Collectible** menu or a clicked comparison panel selects the export asset. [Open all nine](https://greenbox-pi.vercel.app/viewer/?collection=collectibles), or [inspect the toybox alone](https://greenbox-pi.vercel.app/viewer/?collection=collectibles&collectible=grower_toybox&collectibleLayout=solo).
 - **Character style** switches all seven between **Garden chibi** (the default), **Chibi**, and **Original**. The selected character and global color edits persist across the switch.
 - Characters support **Compare all seven**, **Solo**, and **Lineup**, with **Full body** or **Portrait** framing.
 - Drag to orbit, scroll to zoom, and right-drag to pan. Use **Front**, **Right**, **Left**, and **Back** for repeatable views.
-- **Reset view** restores Garden chibi characters to a 45° view at 14° elevation, showing the stepped hats and hair. Earlier characters retain their low 4° elevation. Lore scenes and the original bedroom use 28°; props use 15°. **Sync cameras across views** keeps comparison views aligned.
+- **Reset view** restores Garden chibi characters to a 45° view at 14° elevation, showing the stepped hats and hair. Earlier characters retain their low 4° elevation. Lore scenes and the original bedroom use 28°; props use 15°. Collectibles use a front-facing 30° angle at 15° elevation, revealing card relief and the toybox opening. **Sync cameras across views** keeps comparison views aligned.
 - **Turntable** orbits the camera around the asset. It does not animate a character's walking pose.
 
 The characters are Rasta grower, Corporate boss, Robot, Chef, Blonde lady, Party woman, and Skeleton. The viewer changes camera framing and colors; it does not edit meshes or poses.
@@ -38,6 +39,10 @@ The chibi cast and lore scenes take broad art direction from the supplied [The T
 Both use a 0.05 m voxel grid and the same canonical palette. [Editable lore sources and provenance](../voxel_sources/lore_scenes/README.md) document the modular assets, placements, and exports. The chibi cast totals 4,030 triangles and the original cast 5,954; mesh counts alone do not establish a frame rate.
 
 The new [Garden chibi cast](../voxel_sources/garden_cast/README.md) follows the four newer user references with larger cube heads, tiny bodies, layered hair and hats, and sparse corner accents. Its seven characters total 46,336 occupied cubes and 2,572 surfaced triangles, with six movable rigid parts each. The [Seedling garden](../voxel_sources/garden_scenes/README.md) adds lime trees, layered soil, turquoise water, fish, flowers, the new grower, and source-derived potted plants: 259,449 occupied cubes and 7,050 triangles. The water is opaque voxel geometry. [Garden art direction](../docs/garden-art-direction.md) records the palette and shape rules.
+
+[Collectibles](../voxel_sources/collectibles/README.md) add an original GB toybox with the unchanged Garden grower, a teal/cream Standard mystery box, a black/gold 420 Founder box, and three sealed booster packs with matching Common watering-can, Rare grow-light and Epic greenhouse-key cards. Nine assets use 101,432 occupied cubes and 5,410 triangles. Card illustrations, rarity borders, lettering and corner chips are raised voxel geometry. Cards and packs are enlarged for inspection at the shared source scale; uniformly scale their game instances for hand-held use.
+
+[Neighbor Commons](../voxel_sources/neighborhood/README.md) has four colorful homes, a courtyard, trees, lamps, a bench, source-derived plants and a tucked-away Market stall. Its bare environment uses 378,972 cubes and 6,718 triangles. The [neighborhood prototype](../neighborhood/README.md) places the grower, four neighbors and three collectible cards as separate game objects. The viewer's environment export contains no NPCs.
 
 ## Use one palette everywhere
 
@@ -61,6 +66,6 @@ Exports start from the embedded source assets and create new download files. The
 
 ## Validation
 
-Palette/export checks cover both seven-character casts across five themes, the original bedroom, and props. They verify stable color indices, immutable inputs, preserved VOX occupancy and unknown chunks, and preserved GLB geometry, hierarchy, and pivots. Each chibi and lore GLB is independently compared against its exact source cube surfaces and canonical palette atlas. Lore checks also verify the modular placement union, source provenance, emissive roles, world bounds, and both day/night preview images.
+Earlier palette/export checks cover the original and chibi casts across five themes, the original bedroom, props, and representative Garden assets. New [expansion palette checks](../docs/expansion-palette-validation.json) exercise all nine collectibles and Neighbor Commons under the Garden theme, preserving source occupancy, non-palette bytes, GLB geometry and hierarchy, and all 256 replacement atlas colors. Independent source checks compare actual exported triangles against exact occupied cube surfaces. Neighborhood checks also validate modular placements, game layout coordinates, source-derived colliders and reachability.
 
-`npm run build` checks the committed viewer's v4 schema, all 26 embedded models, declared mesh/voxel counts and lore heights, required controls and defaults, embedded palette pixels, and inline script syntax. Garden character exports are bound to independently verified source hashes and counts. These static checks do not establish browser performance or successful disk downloads.
+`npm run build` checks the committed viewer's v5 schema, all 36 embedded models, declared mesh/voxel counts and heights, required controls and defaults, embedded palette pixels, and inline script syntax. Garden characters, collectibles and the new neighborhood exports are bound to independently verified source hashes and counts. It also runs the separate neighborhood delivery and game-rule checks. These static checks do not establish browser performance or successful disk downloads.

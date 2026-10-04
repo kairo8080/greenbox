@@ -1,0 +1,117 @@
+{
+  "schema": "greenbox-collectible-native-reproducibility-v1",
+  "status": "pass",
+  "assets": 9,
+  "files_compared": 27,
+  "method": "Copied this pack tools and the bundled exact grower input into an isolated child directory; rebuilt all nine occupied-cell JSON, native VOX and source manifests; compared accepted bytes exactly.",
+  "files": [
+    {
+      "path": "grower_toybox/grower_toybox.json",
+      "sha256": "41cb3397638599f228501389520d9cc781b0825130e33ea986a4780ae735d05e"
+    },
+    {
+      "path": "grower_toybox/grower_toybox.vox",
+      "sha256": "2b849edf4299a8491a3b0e5a8241728ed2fbc9cbf98a268a3edaef5667257e7b"
+    },
+    {
+      "path": "grower_toybox/source_manifest.json",
+      "sha256": "3cf826888f01d0c098d2657233cfc316bac2cbdef0c135977bb0351d7cddd631"
+    },
+    {
+      "path": "mystery_standard/mystery_standard.json",
+      "sha256": "b930179e902de87374d38ed2d5249595040413adcb12977240221cea7c60436b"
+    },
+    {
+      "path": "mystery_standard/mystery_standard.vox",
+      "sha256": "98efb8a41698e223303173cc472597066da7c1bbb30a6f2d75ceb96cf3cc2fe0"
+    },
+    {
+      "path": "mystery_standard/source_manifest.json",
+      "sha256": "d4a52a7ec2048928f0487a0a7348e560582f53a033b753eceb4adba64b2ff116"
+    },
+    {
+      "path": "mystery_420_founder/mystery_420_founder.json",
+      "sha256": "3772ab649812b40895180bab3cf5effaadd6182279e99fa5d7946e5f34ef153c"
+    },
+    {
+      "path": "mystery_420_founder/mystery_420_founder.vox",
+      "sha256": "3d96b7ae71769a79e95c5735c567452fe51596e4c2b63e2f34372bf0e0df1982"
+    },
+    {
+      "path": "mystery_420_founder/source_manifest.json",
+      "sha256": "4d902153bd431d6b357ac1b115e262edaa499c3cfcee8fcd2a38065c3a89ae33"
+    },
+    {
+      "path": "booster_common/booster_common.json",
+      "sha256": "a80364573c38d79dfb9510f04db0ea425f32e16616a1987c1e8c2e8e067a976c"
+    },
+    {
+      "path": "booster_common/booster_common.vox",
+      "sha256": "f8cb5337fee3718f99a112bdb2db926d7d90ff99dac492e15e9fd509a5c2229d"
+    },
+    {
+      "path": "booster_common/source_manifest.json",
+      "sha256": "54d3b8fbf66fcf8764f3e4f4c84cb91db0cb87ae65157b064455d28ddac96778"
+    },
+    {
+      "path": "booster_rare/booster_rare.json",
+      "sha256": "0b80c0f377cd0f7563cb4e6d836842aedd8ea859e2afa5a7c27d72ab8e944db7"
+    },
+    {
+      "path": "booster_rare/booster_rare.vox",
+      "sha256": "1526a36fc102cb20795c76296a4c381f957e924f416de313a40d8ed04efd8369"
+    },
+    {
+      "path": "booster_rare/source_manifest.json",
+      "sha256": "efee837f32fef3b2546fdda729a2fcf52509f6887a3253dd7173723fdc166610"
+    },
+    {
+      "path": "booster_epic/booster_epic.json",
+      "sha256": "c95000a6ef5ebc958e77d01ec091ce9f70bb9788b6b0ae2971d26c6019db62a8"
+    },
+    {
+      "path": "booster_epic/booster_epic.vox",
+      "sha256": "242cd2f5fb08ea647f191c38f44bc7ed5c0a9cbb3039e8d66ca88199e6b9a137"
+    },
+    {
+      "path": "booster_epic/source_manifest.json",
+      "sha256": "a665c382718a28401dee511573a8019783c1000a27bea3e947873670a39c7c20"
+    },
+    {
+      "path": "card_common/card_common.json",
+      "sha256": "c81905b8a12ef5d052ea62c3f43b41cc2ac9ee6bada35aa0db6c71d7f877c743"
+    },
+    {
+      "path": "card_common/card_common.vox",
+      "sha256": "f667f9b3dbf1799ab4ee3b1ee613d9e90d59ea9feb3d5584219d8b23c02be329"
+    },
+    {
+      "path": "card_common/source_manifest.json",
+      "sha256": "3c6f6d0951255d56a9c5a138d3fd12fd4185f54365fe90664afed7c7874f49ec"
+    },
+    {
+      "path": "card_rare/card_rare.json",
+      "sha256": "5bb962854e1110a8104df58faec0bd80c2d84e7b2ca8cabc4899e7900baa71d5"
+    },
+    {
+      "path": "card_rare/card_rare.vox",
+      "sha256": "68c1442eba0c2a417f41eff2693bcbdaf71532b59d7d60bc70e3331d9dc5b5a8"
+    },
+    {
+      "path": "card_rare/source_manifest.json",
+      "sha256": "ed5aec20f1dbff9f40621462dbcb890b01a26a750f0f7d5f69741bfec2a2280b"
+    },
+    {
+      "path": "card_epic/card_epic.json",
+      "sha256": "adce032685b265eb74c249a6dff850d5349024254336d917041d9c1bd633447c"
+    },
+    {
+      "path": "card_epic/card_epic.vox",
+      "sha256": "8fe0c95d0707009d4be025392c147799dc1826b5c75ef4f8e39df8c9bddb26c3"
+    },
+    {
+      "path": "card_epic/source_manifest.json",
+      "sha256": "632580f965bae1bafe7fe636d1f650c0c2e6c4d3b0acb079ec99b8aa1bac2da7"
+    }
+  ]
+}

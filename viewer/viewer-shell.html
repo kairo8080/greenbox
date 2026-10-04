@@ -18,7 +18,7 @@
           <h1>Voxel world lab</h1>
         </div>
       </div>
-      <div class="header-note"><span class="status-dot" aria-hidden="true"></span>Seedling garden · Garden chibi cast · Shared palette</div>
+      <div class="header-actions"><div class="header-note"><span class="status-dot" aria-hidden="true"></span>Characters · Collectibles · Shared palette</div><a class="header-play" href="/neighborhood/">Visit neighborhood →</a></div>
     </header>
 
     <main class="workspace">
@@ -52,6 +52,7 @@
             <option value="characters">Character collection</option>
             <option value="room">Bedroom scene</option>
             <option value="props">Grow props</option>
+            <option value="collectibles">Toyboxes, packs &amp; cards</option>
           </select>
           <div id="lore-options">
           <label class="field-label" for="lore-location">Lore location</label>
@@ -59,6 +60,7 @@
             <option value="seedling_garden">Seedling garden</option>
             <option value="starter_loft">Level-one bedroom</option>
             <option value="roots_street">ROOTS district</option>
+            <option value="neighbor_commons">Neighbor commons</option>
           </select>
           <label class="field-label" for="lighting-mode">Lighting</label>
           <select id="lighting-mode" data-ready-control disabled>
@@ -66,6 +68,26 @@
             <option value="night">Night · neon accents</option>
           </select>
           <p id="lore-story" class="section-note">Seedling commons · A lime-green pocket garden, warm soil terraces, turquoise water, and a new grower.</p>
+          </div>
+          <div id="collectible-options" hidden>
+            <label class="field-label" for="collectible-select">Collectible</label>
+            <select id="collectible-select" data-ready-control disabled>
+              <option value="grower_toybox">Grower toybox</option>
+              <option value="mystery_standard">Standard mystery box</option>
+              <option value="mystery_420_founder">420 Founder mystery box</option>
+              <option value="booster_common">Common booster</option>
+              <option value="booster_rare">Rare booster</option>
+              <option value="booster_epic">Epic booster</option>
+              <option value="card_common">Common · watering can</option>
+              <option value="card_rare">Rare · grow light</option>
+              <option value="card_epic">Epic · greenhouse key</option>
+            </select>
+            <label class="field-label" for="collectible-layout">Collection layout</label>
+            <select id="collectible-layout" data-ready-control disabled>
+              <option value="compare">Compare all nine</option>
+              <option value="solo">Solo</option>
+            </select>
+            <p class="section-note">Original Greenbox toys and raised voxel cards. Select a panel, or switch to Solo to inspect its details.</p>
           </div>
           <div id="character-options" hidden>
           <label class="field-label" for="character-style">Character style</label>

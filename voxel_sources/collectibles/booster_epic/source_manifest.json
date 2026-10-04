@@ -1,0 +1,29 @@
+{
+  "id": "booster_epic",
+  "label": "Epic booster pack",
+  "rarity": "epic",
+  "description": "Sealed epic booster wrapper, raised Greenbox badge, 3 rarity blocks and matching original item relief. No randomized opening mechanic is included.",
+  "dimensions_voxels": [
+    26,
+    10,
+    38
+  ],
+  "occupied_voxels": 6916,
+  "connected_components": 1,
+  "voxel_pitch_meters": 0.05,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "source_normalization_offset": [
+    0,
+    -1,
+    0
+  ],
+  "source_ground_pivot_voxels": [
+    13.0,
+    5.0,
+    0
+  ],
+  "sha256": {
+    "booster_epic.json": "c95000a6ef5ebc958e77d01ec091ce9f70bb9788b6b0ae2971d26c6019db62a8",
+    "booster_epic.vox": "242cd2f5fb08ea647f191c38f44bc7ed5c0a9cbb3039e8d66ca88199e6b9a137"
+  }
+}

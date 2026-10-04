@@ -1,0 +1,462 @@
+{
+  "schema": "independent-greenbox-collectibles-validation-v1",
+  "status": "pass",
+  "assets_verified": 9,
+  "verification": "Independent binary VOX and GLB parsing; actual triangle clipping against every exposed source cube face; all 256 canonical palette texels; exact reused grower; real open window; centered ground bounds; actual rendered previews.",
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "voxel_pitch_meters": 0.05,
+  "total_filled_voxels": 101432,
+  "total_triangles": 5410,
+  "assets": [
+    {
+      "asset": "grower_toybox",
+      "id": "grower_toybox",
+      "status": "pass",
+      "filled_voxels": 28911,
+      "dimensions_voxels": [
+        32,
+        29,
+        48
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "2b849edf4299a8491a3b0e5a8241728ed2fbc9cbf98a268a3edaef5667257e7b",
+      "source_json_sha256": "41cb3397638599f228501389520d9cc781b0825130e33ea986a4780ae735d05e",
+      "glb": {
+        "sha256": "ad9c28716cc9d067bc6d2c43fd36921b092bdb8a8d5dfb39942b663c3ac6669f",
+        "triangles": 644,
+        "vertices": 1200,
+        "bytes": 44416,
+        "world_bounds_y_up_meters": [
+          [
+            -0.800000011920929,
+            0.0,
+            -0.7250000238418579
+          ],
+          [
+            0.800000011920929,
+            2.4000000953674316,
+            0.7250000238418579
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 13368,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 597651,
+        "sha256": "a45d3afdb0bdfdd0430de710270ce2dc6a80a89ab65ae7b213789143815e8f5e"
+      },
+      "blend": {
+        "sha256": "7f0f359ca29d5b05d9177240c6f69e09c525a1fa09092eac6321cf5afb2c8e5c",
+        "bytes": 104571
+      }
+    },
+    {
+      "asset": "mystery_standard",
+      "id": "mystery_standard",
+      "status": "pass",
+      "filled_voxels": 22041,
+      "dimensions_voxels": [
+        28,
+        29,
+        29
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "98efb8a41698e223303173cc472597066da7c1bbb30a6f2d75ceb96cf3cc2fe0",
+      "source_json_sha256": "b930179e902de87374d38ed2d5249595040413adcb12977240221cea7c60436b",
+      "glb": {
+        "sha256": "71eeee39f674cb93deff2c0448c2c9030e8de0627f432244e99393fd8315664c",
+        "triangles": 346,
+        "vertices": 614,
+        "bytes": 23880,
+        "world_bounds_y_up_meters": [
+          [
+            -0.699999988079071,
+            0.0,
+            -0.7250000238418579
+          ],
+          [
+            0.699999988079071,
+            1.4500000476837158,
+            0.7250000238418579
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 4860,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 549415,
+        "sha256": "54e37883bfd421c30750c728bde88349ae4366d4d9fcd1ecc1ee989278d99e10"
+      },
+      "blend": {
+        "sha256": "3f7fc2c146c0b48219fdff1d460075fcaf816e6641d7c2776f2d3baee5dbc108",
+        "bytes": 99226
+      }
+    },
+    {
+      "asset": "mystery_420_founder",
+      "id": "mystery_420_founder",
+      "status": "pass",
+      "filled_voxels": 22090,
+      "dimensions_voxels": [
+        28,
+        29,
+        29
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "3d96b7ae71769a79e95c5735c567452fe51596e4c2b63e2f34372bf0e0df1982",
+      "source_json_sha256": "3772ab649812b40895180bab3cf5effaadd6182279e99fa5d7946e5f34ef153c",
+      "glb": {
+        "sha256": "e1dbd59fb86cad8509defc8f2681f4772e411e087ee4e733357bf6ff48026e97",
+        "triangles": 628,
+        "vertices": 1124,
+        "bytes": 41904,
+        "world_bounds_y_up_meters": [
+          [
+            -0.699999988079071,
+            0.0,
+            -0.7250000238418579
+          ],
+          [
+            0.699999988079071,
+            1.4500000476837158,
+            0.7250000238418579
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 4998,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 605444,
+        "sha256": "3782a06789601a5c8cc2651c55beab0690fad6056d1ad15e9b50dbd61516f1fb"
+      },
+      "blend": {
+        "sha256": "6b79c7075167f0bea46c87970cb102d925b5df0a1cb94e5c0a2453143c65581a",
+        "bytes": 103303
+      }
+    },
+    {
+      "asset": "booster_common",
+      "id": "booster_common",
+      "status": "pass",
+      "filled_voxels": 6949,
+      "dimensions_voxels": [
+        26,
+        10,
+        38
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "f8cb5337fee3718f99a112bdb2db926d7d90ff99dac492e15e9fd509a5c2229d",
+      "source_json_sha256": "a80364573c38d79dfb9510f04db0ea425f32e16616a1987c1e8c2e8e067a976c",
+      "glb": {
+        "sha256": "5502bc8b776c2c941d57c0e7ccdc0d5f12a564dcc80b1f6f032b53b6163f5626",
+        "triangles": 662,
+        "vertices": 1217,
+        "bytes": 45040,
+        "world_bounds_y_up_meters": [
+          [
+            -0.6499999761581421,
+            0.0,
+            -0.25
+          ],
+          [
+            0.6499999761581421,
+            1.899999976158142,
+            0.25
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 3126,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 588839,
+        "sha256": "262f4f00ac9290b000e76c7d54c4ccaf1573156f924005ac63ab815ac8851e4c"
+      },
+      "blend": {
+        "sha256": "a198019d5df03dbbaf7cd957ee3fc5e7d6c1159339ca65f43e81fe74d63b18fc",
+        "bytes": 104237
+      }
+    },
+    {
+      "asset": "booster_rare",
+      "id": "booster_rare",
+      "status": "pass",
+      "filled_voxels": 6918,
+      "dimensions_voxels": [
+        26,
+        10,
+        38
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "1526a36fc102cb20795c76296a4c381f957e924f416de313a40d8ed04efd8369",
+      "source_json_sha256": "0b80c0f377cd0f7563cb4e6d836842aedd8ea859e2afa5a7c27d72ab8e944db7",
+      "glb": {
+        "sha256": "2a9f4e0155f69fbe1cb262c3c1fd6bf5c12103c9f2c9ce155394a06bd084c677",
+        "triangles": 780,
+        "vertices": 1431,
+        "bytes": 52592,
+        "world_bounds_y_up_meters": [
+          [
+            -0.6499999761581421,
+            0.0,
+            -0.25
+          ],
+          [
+            0.6499999761581421,
+            1.899999976158142,
+            0.25
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 3186,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 607340,
+        "sha256": "bc0c579b2c3e43b48ec63f62d79581a11d2b145790268f0d53a36510373aebcb"
+      },
+      "blend": {
+        "sha256": "703d7f924ae1475431d2497075aa5e8d245d3bb875ea3799e174a611c64c3be2",
+        "bytes": 105950
+      }
+    },
+    {
+      "asset": "booster_epic",
+      "id": "booster_epic",
+      "status": "pass",
+      "filled_voxels": 6916,
+      "dimensions_voxels": [
+        26,
+        10,
+        38
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "242cd2f5fb08ea647f191c38f44bc7ed5c0a9cbb3039e8d66ca88199e6b9a137",
+      "source_json_sha256": "c95000a6ef5ebc958e77d01ec091ce9f70bb9788b6b0ae2971d26c6019db62a8",
+      "glb": {
+        "sha256": "7146641aed94091bd533a5cadd884a2b4c8743b9cef007633d9b15bc04c2a3fd",
+        "triangles": 682,
+        "vertices": 1252,
+        "bytes": 46276,
+        "world_bounds_y_up_meters": [
+          [
+            -0.6499999761581421,
+            0.0,
+            -0.25
+          ],
+          [
+            0.6499999761581421,
+            1.899999976158142,
+            0.25
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 3166,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 594327,
+        "sha256": "c0c70bca7067b00472a658b94b4fb63448c03f4c5dc8fe1e5ec5633e189a5fb6"
+      },
+      "blend": {
+        "sha256": "53df4a121d296e6a429fa04102e0d7b68bac1f91f9130f5f2694dc85cb07f805",
+        "bytes": 104382
+      }
+    },
+    {
+      "asset": "card_common",
+      "id": "card_common",
+      "status": "pass",
+      "filled_voxels": 2557,
+      "dimensions_voxels": [
+        26,
+        5,
+        38
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "f667f9b3dbf1799ab4ee3b1ee613d9e90d59ea9feb3d5584219d8b23c02be329",
+      "source_json_sha256": "c81905b8a12ef5d052ea62c3f43b41cc2ac9ee6bada35aa0db6c71d7f877c743",
+      "glb": {
+        "sha256": "031f905b0d51f50e4770fd18ae7a2635fc93d46b74befe2833394a1671d47607",
+        "triangles": 510,
+        "vertices": 926,
+        "bytes": 34808,
+        "world_bounds_y_up_meters": [
+          [
+            -0.6499999761581421,
+            0.0,
+            -0.125
+          ],
+          [
+            0.6499999761581421,
+            1.899999976158142,
+            0.125
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 2652,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 593647,
+        "sha256": "dc1a24afda97af42fb343d2fb2a79552f7ad8e5fe44da5cbbd0147b07c6bbfbb"
+      },
+      "blend": {
+        "sha256": "ea28835cf2fd92f351a61c2387e3b9f7bdf61bc3cca39dda35d1d0ec8193ab42",
+        "bytes": 102026
+      }
+    },
+    {
+      "asset": "card_rare",
+      "id": "card_rare",
+      "status": "pass",
+      "filled_voxels": 2526,
+      "dimensions_voxels": [
+        26,
+        5,
+        38
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "68c1442eba0c2a417f41eff2693bcbdaf71532b59d7d60bc70e3331d9dc5b5a8",
+      "source_json_sha256": "5bb962854e1110a8104df58faec0bd80c2d84e7b2ca8cabc4899e7900baa71d5",
+      "glb": {
+        "sha256": "b63c90c9de65baf079db89399e25f680fd6a87bf4efb249b94f5dc814df0810f",
+        "triangles": 628,
+        "vertices": 1139,
+        "bytes": 42328,
+        "world_bounds_y_up_meters": [
+          [
+            -0.6499999761581421,
+            0.0,
+            -0.125
+          ],
+          [
+            0.6499999761581421,
+            1.899999976158142,
+            0.125
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 2712,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 607912,
+        "sha256": "ef47bb7cf8f545e397f3f1bd9f48a1da9ee742d5a38a351ca7912021bcb77a80"
+      },
+      "blend": {
+        "sha256": "ee104b7c4b2e9893fe499fd90e0614f6086c91dbc4ceb0e1f0a6b0d6fb34861f",
+        "bytes": 103766
+      }
+    },
+    {
+      "asset": "card_epic",
+      "id": "card_epic",
+      "status": "pass",
+      "filled_voxels": 2524,
+      "dimensions_voxels": [
+        26,
+        5,
+        38
+      ],
+      "voxel_pitch_meters": 0.05,
+      "connected_components": 1,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "vox_sha256": "8fe0c95d0707009d4be025392c147799dc1826b5c75ef4f8e39df8c9bddb26c3",
+      "source_json_sha256": "adce032685b265eb74c249a6dff850d5349024254336d917041d9c1bd633447c",
+      "glb": {
+        "sha256": "b33511da79bff2d8853d26266f95bd1cafeebe98b83634b0474ae07c746172c8",
+        "triangles": 530,
+        "vertices": 959,
+        "bytes": 35976,
+        "world_bounds_y_up_meters": [
+          [
+            -0.6499999761581421,
+            0.0,
+            -0.125
+          ],
+          [
+            0.6499999761581421,
+            1.899999976158142,
+            0.125
+          ]
+        ],
+        "exact_source_surface_and_palette_coverage": true,
+        "exposed_unit_faces_verified": 2692,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_normals": true,
+        "pivot": "centered ground",
+        "materials": 1
+      },
+      "preview": {
+        "width": 640,
+        "height": 800,
+        "bytes": 585634,
+        "sha256": "d65413443b66b2b108f9b48b205dc98929f6722aad2edf09fb5de045cf2838dc"
+      },
+      "blend": {
+        "sha256": "15a7e93f4336a83994a759a765be0eb72fe72158be1ab58cbe893ba4f70c3e73",
+        "bytes": 102442
+      }
+    }
+  ]
+}

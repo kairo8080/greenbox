@@ -1,0 +1,29 @@
+{
+  "id": "mystery_standard",
+  "label": "Standard mystery box",
+  "rarity": "standard",
+  "description": "Standard turquoise mystery crate with cream corner rails, raised question mark and original leaf crest.",
+  "dimensions_voxels": [
+    28,
+    29,
+    29
+  ],
+  "occupied_voxels": 22041,
+  "connected_components": 1,
+  "voxel_pitch_meters": 0.05,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "source_normalization_offset": [
+    0,
+    -1,
+    0
+  ],
+  "source_ground_pivot_voxels": [
+    14.0,
+    14.5,
+    0
+  ],
+  "sha256": {
+    "mystery_standard.json": "b930179e902de87374d38ed2d5249595040413adcb12977240221cea7c60436b",
+    "mystery_standard.vox": "98efb8a41698e223303173cc472597066da7c1bbb30a6f2d75ceb96cf3cc2fe0"
+  }
+}

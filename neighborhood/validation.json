@@ -1,0 +1,191 @@
+{
+  "schema": "greenbox-neighborhood-validation-v1",
+  "status": "pass",
+  "html": {
+    "path": "public/neighborhood/index.html",
+    "bytes": 1655217,
+    "sha256": "66adbe41e9ca1bb9f7fbc592a35412f303ef64bc6e9c4d10ca7d66ada868259b"
+  },
+  "layoutSha256": "4c4a30119bf254185c9ebc96730727c50a199742326767e89100ca38fdce01e0",
+  "modelCount": 9,
+  "triangles": 10216,
+  "models": [
+    {
+      "id": "neighbor_commons",
+      "bytes": 442532,
+      "triangles": 6718,
+      "sha256": "04092e59e896fc4583ba2650b0feacdf4c7af902539149d10d2f21a79c9a7369"
+    },
+    {
+      "id": "rasta_grower",
+      "bytes": 31760,
+      "triangles": 376,
+      "sha256": "699d5fea78f24a2ce406af88c92173df605826076dfa4866cb7b8e73c910a94f"
+    },
+    {
+      "id": "chef",
+      "bytes": 28788,
+      "triangles": 334,
+      "sha256": "4a53bfa9586012d17816b6a5ee840578c35bb046c2a536f8d5bb184592a65885"
+    },
+    {
+      "id": "blonde_lady",
+      "bytes": 29232,
+      "triangles": 340,
+      "sha256": "8ff7eb42b9d525f86daa7e6c88595276134a317d1457e21eb9fb4fad6ac897c2"
+    },
+    {
+      "id": "robot",
+      "bytes": 31012,
+      "triangles": 374,
+      "sha256": "7063f454ad77900debc9f69acf39d9078605d7e7850107b5ceb71dc6b3004dbb"
+    },
+    {
+      "id": "party_woman",
+      "bytes": 33560,
+      "triangles": 406,
+      "sha256": "b83c784a4a34fb5c32c54bef63f4d6e8c84cb92c2b627e821b471f6ade61daac"
+    },
+    {
+      "id": "common_card",
+      "bytes": 34808,
+      "triangles": 510,
+      "sha256": "031f905b0d51f50e4770fd18ae7a2635fc93d46b74befe2833394a1671d47607"
+    },
+    {
+      "id": "rare_card",
+      "bytes": 42328,
+      "triangles": 628,
+      "sha256": "b63c90c9de65baf079db89399e25f680fd6a87bf4efb249b94f5dc814df0810f"
+    },
+    {
+      "id": "epic_card",
+      "bytes": 35976,
+      "triangles": 530,
+      "sha256": "b33511da79bff2d8853d26266f95bd1cafeebe98b83634b0474ae07c746172c8"
+    }
+  ],
+  "physics": {
+    "schema": "greenbox-actual-avatar-footprints-v1",
+    "models": {
+      "rasta_grower": {
+        "min": [
+          -0.5,
+          0,
+          -0.44999998807907104
+        ],
+        "max": [
+          0.5,
+          1.550000011920929,
+          0.44999998807907104
+        ],
+        "halfExtents": [
+          0.5,
+          0.44999998807907104
+        ],
+        "radius": 0.6726811943790045
+      },
+      "chef": {
+        "min": [
+          -0.5,
+          0,
+          -0.44999998807907104
+        ],
+        "max": [
+          0.5,
+          1.6500000357627869,
+          0.44999998807907104
+        ],
+        "halfExtents": [
+          0.5,
+          0.44999998807907104
+        ],
+        "radius": 0.6726811943790045
+      },
+      "blonde_lady": {
+        "min": [
+          -0.5,
+          0,
+          -0.44999998807907104
+        ],
+        "max": [
+          0.5,
+          1.4999999403953552,
+          0.44999998807907104
+        ],
+        "halfExtents": [
+          0.5,
+          0.44999998807907104
+        ],
+        "radius": 0.6726811943790045
+      },
+      "robot": {
+        "min": [
+          -0.5,
+          0,
+          -0.3999999761581421
+        ],
+        "max": [
+          0.5,
+          1.6500000357627869,
+          0.5
+        ],
+        "halfExtents": [
+          0.5,
+          0.5
+        ],
+        "radius": 0.7071067811865476
+      },
+      "party_woman": {
+        "min": [
+          -0.5,
+          0,
+          -0.44999998807907104
+        ],
+        "max": [
+          0.5,
+          1.4999999403953552,
+          0.44999998807907104
+        ],
+        "halfExtents": [
+          0.5,
+          0.44999998807907104
+        ],
+        "radius": 0.6726811943790045
+      }
+    }
+  },
+  "reachableStations": [
+    "night_market",
+    "robot",
+    "party",
+    "artist",
+    "chef"
+  ],
+  "reachableCells": 2863,
+  "checks": [
+    "embedded original GLB bytes and source hashes",
+    "embedded layout and full palette catalog match sources",
+    "six actual rigid pivots for all five characters",
+    "no external GLB resources",
+    "bundled script syntax",
+    "normalized diagonal speed",
+    "wall collision and sliding",
+    "terrain boundary containment",
+    "no input stops movement",
+    "four NPC and market ranges",
+    "out-of-range trade rejection",
+    "preview/cancel preserves state",
+    "atomic trade coin/item/stock conservation",
+    "insufficient coins and inventory rejection",
+    "sold-out and unknown offer rejection",
+    "reset restores initial visit",
+    "actual model footprints and yaw rotation",
+    "head envelope wall-safe turning",
+    "all five stations reachable with larger avatar envelope"
+  ],
+  "limits": [
+    "Browser movement, rendered models, dialogue, reactions and touch interaction require live browser validation.",
+    "This is a single-player local session; inventory is reset on reload and no network exchange exists."
+  ]
+}

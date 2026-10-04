@@ -1,0 +1,381 @@
+{
+  "name": "neighbor_commons",
+  "description": "Original Greenbox Neighbor Commons. A 12 by 10 meter level voxel neighborhood with four compact colorful closed house fronts, wide sandy and cream courtyard paths, bright cuboid lime trees, oak bench, two street lamps, preserved CC0-leaf-derived potted plants and a tucked-away fictional Night Market collectible trade stall. Bare environment only: game supplies separate movable characters. Palette remains canonical; Garden theme is a presentation remap.",
+  "occupied_voxels": 378972,
+  "dimensions": [
+    240,
+    200,
+    70
+  ],
+  "voxel_pitch_meters": 0.05,
+  "palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "intentional_union_overlap_cells": 0,
+  "connected_components": 1,
+  "assets": [
+    {
+      "name": "commons_layered_ground",
+      "voxels": 192000,
+      "dimensions": [
+        240,
+        200,
+        4
+      ]
+    },
+    {
+      "name": "commons_chef_home",
+      "voxels": 31930,
+      "dimensions": [
+        46,
+        53,
+        55
+      ]
+    },
+    {
+      "name": "commons_artist_home",
+      "voxels": 31915,
+      "dimensions": [
+        46,
+        53,
+        55
+      ]
+    },
+    {
+      "name": "commons_robot_lab",
+      "voxels": 31917,
+      "dimensions": [
+        46,
+        53,
+        55
+      ]
+    },
+    {
+      "name": "commons_party_home",
+      "voxels": 32915,
+      "dimensions": [
+        48,
+        53,
+        55
+      ]
+    },
+    {
+      "name": "commons_lime_tree_left",
+      "voxels": 10912,
+      "dimensions": [
+        18,
+        18,
+        66
+      ]
+    },
+    {
+      "name": "commons_lime_tree_right",
+      "voxels": 8968,
+      "dimensions": [
+        18,
+        18,
+        60
+      ]
+    },
+    {
+      "name": "commons_oak_bench",
+      "voxels": 2514,
+      "dimensions": [
+        35,
+        14,
+        22
+      ]
+    },
+    {
+      "name": "commons_night_market_stall",
+      "voxels": 33191,
+      "dimensions": [
+        52,
+        41,
+        44
+      ]
+    },
+    {
+      "name": "commons_courtyard_lamp",
+      "voxels": 756,
+      "dimensions": [
+        8,
+        8,
+        43
+      ]
+    },
+    {
+      "name": "commons_plant_small_cc0_leaf",
+      "voxels": 503,
+      "dimensions": [
+        21,
+        11,
+        29
+      ]
+    },
+    {
+      "name": "commons_square_flower",
+      "voxels": 24,
+      "dimensions": [
+        5,
+        5,
+        4
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "name": "commons_layered_ground",
+      "asset": "commons_layered_ground",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_chef_home",
+      "asset": "commons_chef_home",
+      "offset": [
+        12,
+        142,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_artist_home",
+      "asset": "commons_artist_home",
+      "offset": [
+        66,
+        142,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_robot_lab",
+      "asset": "commons_robot_lab",
+      "offset": [
+        126,
+        142,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_party_home",
+      "asset": "commons_party_home",
+      "offset": [
+        180,
+        142,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_lime_tree_left",
+      "asset": "commons_lime_tree_left",
+      "offset": [
+        0,
+        83,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_lime_tree_right",
+      "asset": "commons_lime_tree_right",
+      "offset": [
+        222,
+        87,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_oak_bench",
+      "asset": "commons_oak_bench",
+      "offset": [
+        105,
+        62,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_night_market_stall",
+      "asset": "commons_night_market_stall",
+      "offset": [
+        18,
+        24,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "courtyard_lamp_left",
+      "asset": "commons_courtyard_lamp",
+      "offset": [
+        76,
+        99,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "courtyard_lamp_right",
+      "asset": "commons_courtyard_lamp",
+      "offset": [
+        160,
+        99,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "market_leaf_pot",
+      "asset": "commons_plant_small_cc0_leaf",
+      "offset": [
+        75,
+        40,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "courtyard_leaf_pot",
+      "asset": "commons_plant_small_cc0_leaf",
+      "offset": [
+        170,
+        62,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_0",
+      "asset": "commons_square_flower",
+      "offset": [
+        2,
+        27,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_1",
+      "asset": "commons_square_flower",
+      "offset": [
+        231,
+        26,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_2",
+      "asset": "commons_square_flower",
+      "offset": [
+        6,
+        174,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_3",
+      "asset": "commons_square_flower",
+      "offset": [
+        231,
+        178,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_4",
+      "asset": "commons_square_flower",
+      "offset": [
+        6,
+        124,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_5",
+      "asset": "commons_square_flower",
+      "offset": [
+        227,
+        70,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_6",
+      "asset": "commons_square_flower",
+      "offset": [
+        60,
+        192,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "commons_flower_7",
+      "asset": "commons_square_flower",
+      "offset": [
+        175,
+        192,
+        4
+      ],
+      "layer": 0,
+      "hidden": false
+    }
+  ],
+  "provenance": [
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_small",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    }
+  ],
+  "sha256": {
+    "flat_scene.json": "ab893c7e8e43ceb5b2042e3ee4e98e2ba734a6858c713b244bbae4b242575784",
+    "neighbor_commons.json": "e693db29809fd625e0e097cf397fd114e716cf816f1de90eaca456a74650e815",
+    "neighbor_commons.vox": "ccb00ad9ff7d4c17c4e421eeb1d978f8c1080c3e92d96ba86ec0f170477735a5",
+    "scene.json": "4816bb2d373b433544c53cb6e2714b99a2a4b27d7390a3bc94538c5a41b3dbc3"
+  }
+}

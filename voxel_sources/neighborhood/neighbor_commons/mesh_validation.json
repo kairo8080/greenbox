@@ -1,0 +1,178 @@
+{
+  "schema": "greenbox-lore-mesh-v1",
+  "source_sha256": "ab893c7e8e43ceb5b2042e3ee4e98e2ba734a6858c713b244bbae4b242575784",
+  "source_vox_sha256": "ccb00ad9ff7d4c17c4e421eeb1d978f8c1080c3e92d96ba86ec0f170477735a5",
+  "voxel_pitch_meters": 0.05,
+  "assets": [
+    {
+      "name": "neighbor_commons",
+      "dimensions_voxels": [
+        240,
+        200,
+        70
+      ],
+      "filled_voxels": 378972,
+      "exposed_unit_faces": 225146,
+      "greedy_quads": 3359,
+      "triangles": 6718,
+      "vertices": 4500,
+      "ordinary_quads": 3267,
+      "emissive_quads": 92,
+      "surfaces_used": 2,
+      "occupied_bounds_min": [
+        0,
+        0,
+        0
+      ],
+      "occupied_bounds_max_exclusive": [
+        240,
+        200,
+        70
+      ],
+      "mesh_dimensions_meters": [
+        12.0,
+        10.0,
+        3.5
+      ],
+      "ground_pivot_source_voxels": [
+        120.0,
+        100.0,
+        0
+      ],
+      "colors_used": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27,
+        29,
+        30,
+        33,
+        35,
+        51,
+        62
+      ],
+      "surface_area_by_palette_index": {
+        "1": 3694,
+        "2": 248,
+        "3": 25700,
+        "4": 34446,
+        "5": 1009,
+        "6": 1760,
+        "7": 50260,
+        "8": 12528,
+        "9": 10171,
+        "10": 4442,
+        "11": 16756,
+        "12": 5518,
+        "13": 2347,
+        "14": 3990,
+        "15": 2351,
+        "16": 336,
+        "17": 1112,
+        "18": 3584,
+        "19": 18644,
+        "20": 1500,
+        "21": 144,
+        "22": 854,
+        "23": 162,
+        "24": 7984,
+        "26": 1247,
+        "27": 285,
+        "29": 8332,
+        "30": 220,
+        "33": 2792,
+        "35": 327,
+        "51": 2355,
+        "62": 48
+      },
+      "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+      "metadata": {
+        "description": "Original Greenbox Neighbor Commons. A 12 by 10 meter level voxel neighborhood with four compact colorful closed house fronts, wide sandy and cream courtyard paths, bright cuboid lime trees, oak bench, two street lamps, preserved CC0-leaf-derived potted plants and a tucked-away fictional Night Market collectible trade stall. Bare environment only: game supplies separate movable characters. Palette remains canonical; Garden theme is a presentation remap.",
+        "voxel_pitch_meters": 0.05,
+        "source_axes": "X/Y horizontal, Z up; front -Y",
+        "intentional_union_overlap_cells": 0,
+        "connected_components": 1,
+        "original_art": true,
+        "provenance": [
+          {
+            "path": "work/bedroom/scene.json",
+            "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+            "source_asset": "cannabis_plant_small",
+            "color_remap": {
+              "9": 9,
+              "17": 17,
+              "18": 18,
+              "19": 19,
+              "20": 20,
+              "21": 21,
+              "22": 22,
+              "23": 23,
+              "30": 30
+            }
+          }
+        ]
+      },
+      "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+    }
+  ],
+  "glb": {
+    "bytes": 442532,
+    "nodes": 1,
+    "unique_meshes": 1,
+    "materials": 2,
+    "emissive_material_count": 1,
+    "triangles_unique_mesh_data": 6718,
+    "source_palette_png_embedded_exactly": true,
+    "max_surface_primitives_per_mesh": 2,
+    "nearest_palette_sampling": true,
+    "preview_objects_excluded": true
+  },
+  "bounds_centered_native_meters": {
+    "min": [
+      -6.0,
+      -5.0,
+      0.0
+    ],
+    "max": [
+      6.0,
+      5.0,
+      3.5
+    ]
+  },
+  "source_root_pivot": [
+    120,
+    100,
+    0
+  ],
+  "palette_png_sha256": "ba773b8d60433c4d48d5409f4d28006cd193e071b341ddc5a4dcc41d4b811f58",
+  "preview_palette_png_sha256": "8849af40eda931266eeeccd249216cc04e068cefb9152b671c1c696179407444",
+  "preview_theme": "Garden",
+  "preview_palette_sha256": "ae94fcdc6dd13e36e7a3bda431b2ec11012d9be2ec5f7416978c2aa5c2cb3e77",
+  "source_axes": "Z up, front -Y",
+  "glb_axes": "Y up, front +Z",
+  "preview_geometry": "Actual exact occupied-cube surfaced union; Garden palette preview remap only; no smoothed geometry or copied reference assets",
+  "lights_and_camera_excluded_from_glb": true,
+  "blender": "5.1.2"
+}

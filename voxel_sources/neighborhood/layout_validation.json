@@ -1,0 +1,268 @@
+{
+  "schema": "independent-greenbox-neighborhood-layout-validation-v1",
+  "status": "pass",
+  "layoutSha256": "4c4a30119bf254185c9ebc96730727c50a199742326767e89100ca38fdce01e0",
+  "sourceVoxSha256": "ccb00ad9ff7d4c17c4e421eeb1d978f8c1080c3e92d96ba86ec0f170477735a5",
+  "sourceSceneSha256": "4816bb2d373b433544c53cb6e2714b99a2a4b27d7390a3bc94538c5a41b3dbc3",
+  "floorY": 0.2,
+  "worldBounds": {
+    "minX": -6,
+    "maxX": 6,
+    "minZ": -5,
+    "maxZ": 5
+  },
+  "collisionSourceSlabNativeZ": [
+    4,
+    37
+  ],
+  "collisionCharacterHeightMeters": 1.65,
+  "sourceRootPivotNative": [
+    120,
+    100,
+    0
+  ],
+  "blockers": [
+    {
+      "id": "chef_home",
+      "nativeBounds": [
+        12,
+        142,
+        58,
+        195
+      ],
+      "worldBounds": [
+        -5.4,
+        -3.1,
+        -4.75,
+        -2.1
+      ],
+      "sourceInstance": "commons_chef_home"
+    },
+    {
+      "id": "artist_home",
+      "nativeBounds": [
+        66,
+        142,
+        112,
+        195
+      ],
+      "worldBounds": [
+        -2.7,
+        -0.4,
+        -4.75,
+        -2.1
+      ],
+      "sourceInstance": "commons_artist_home"
+    },
+    {
+      "id": "robot_lab",
+      "nativeBounds": [
+        126,
+        142,
+        172,
+        195
+      ],
+      "worldBounds": [
+        0.3,
+        2.6,
+        -4.75,
+        -2.1
+      ],
+      "sourceInstance": "commons_robot_lab"
+    },
+    {
+      "id": "party_home",
+      "nativeBounds": [
+        180,
+        142,
+        228,
+        195
+      ],
+      "worldBounds": [
+        3.0,
+        5.4,
+        -4.75,
+        -2.1
+      ],
+      "sourceInstance": "commons_party_home"
+    },
+    {
+      "id": "night_market",
+      "nativeBounds": [
+        18,
+        24,
+        70,
+        65
+      ],
+      "worldBounds": [
+        -5.1,
+        -2.5,
+        1.75,
+        3.8
+      ],
+      "sourceInstance": "commons_night_market_stall"
+    },
+    {
+      "id": "courtyard_bench",
+      "nativeBounds": [
+        105,
+        62,
+        140,
+        76
+      ],
+      "worldBounds": [
+        -0.75,
+        1.0,
+        1.2,
+        1.9
+      ],
+      "sourceInstance": "commons_oak_bench"
+    },
+    {
+      "id": "tree_left_trunk",
+      "nativeBounds": [
+        7,
+        90,
+        11,
+        94
+      ],
+      "worldBounds": [
+        -5.65,
+        -5.45,
+        0.3,
+        0.5
+      ],
+      "sourceInstance": "commons_lime_tree_left"
+    },
+    {
+      "id": "tree_right_trunk",
+      "nativeBounds": [
+        229,
+        94,
+        233,
+        98
+      ],
+      "worldBounds": [
+        5.45,
+        5.65,
+        0.1,
+        0.3
+      ],
+      "sourceInstance": "commons_lime_tree_right"
+    },
+    {
+      "id": "lamp_left",
+      "nativeBounds": [
+        76,
+        99,
+        84,
+        107
+      ],
+      "worldBounds": [
+        -2.2,
+        -1.8,
+        -0.35,
+        0.05
+      ],
+      "sourceInstance": "courtyard_lamp_left"
+    },
+    {
+      "id": "lamp_right",
+      "nativeBounds": [
+        160,
+        99,
+        168,
+        107
+      ],
+      "worldBounds": [
+        2.0,
+        2.4,
+        -0.35,
+        0.05
+      ],
+      "sourceInstance": "courtyard_lamp_right"
+    },
+    {
+      "id": "pot_market",
+      "nativeBounds": [
+        75,
+        40,
+        96,
+        51
+      ],
+      "worldBounds": [
+        -2.25,
+        -1.2,
+        2.45,
+        3.0
+      ],
+      "sourceInstance": "market_leaf_pot"
+    },
+    {
+      "id": "pot_court",
+      "nativeBounds": [
+        170,
+        62,
+        191,
+        73
+      ],
+      "worldBounds": [
+        2.5,
+        3.55,
+        1.35,
+        1.9
+      ],
+      "sourceInstance": "courtyard_leaf_pot"
+    }
+  ],
+  "reachableTargets": [
+    {
+      "id": "chef",
+      "position": [
+        -4.25,
+        0.2,
+        -1.5
+      ],
+      "reachableFromSpawnWithPlayerRadius": true
+    },
+    {
+      "id": "artist",
+      "position": [
+        -1.55,
+        0.2,
+        -1.5
+      ],
+      "reachableFromSpawnWithPlayerRadius": true
+    },
+    {
+      "id": "robot",
+      "position": [
+        1.45,
+        0.2,
+        -1.5
+      ],
+      "reachableFromSpawnWithPlayerRadius": true
+    },
+    {
+      "id": "party",
+      "position": [
+        4.2,
+        0.2,
+        -1.5
+      ],
+      "reachableFromSpawnWithPlayerRadius": true
+    },
+    {
+      "id": "night_market",
+      "position": [
+        -3.8,
+        0.2,
+        4.2
+      ],
+      "reachableFromSpawnWithPlayerRadius": true
+    }
+  ],
+  "reachableGridPoints": 22183,
+  "playerRadiusMeters": 0.24,
+  "reachabilityScope": "50 mm grid flood fill with player radius around source-derived axis-aligned blockers. Runtime movement and interactions tested by game integration separately."
+}

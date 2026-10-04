@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dce6d5">
+  <meta name="description" content="Visit your voxel neighbors, share a reaction, and trade collectibles with game coins in the Greenbox neighborhood.">
+  <title>Greenbox · Neighborhood</title>
+  <style>/* NEIGHBORHOOD_STYLE */</style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/viewer/">GREEN<span>BOX</span><i aria-hidden="true"></i></a>
+      <nav aria-label="Greenbox"><a href="/viewer/?collection=collectibles">Asset studio</a><a class="active" href="/neighborhood/" aria-current="page">Neighborhood</a><a href="/unity/">Grow game</a></nav>
+      <div class="balance" aria-label="Game coin balance"><span aria-hidden="true">●</span> <strong id="coin-count">60</strong> <small>game coins</small></div>
+    </header>
+    <main class="play-layout">
+      <section class="world-card" aria-label="Neighborhood game">
+        <div class="world-heading"><div><span class="eyebrow">GREENBOX COMMONS</span><h1>A little street. Big connections.</h1></div><span class="local-badge">Single-player demo</span></div>
+        <div id="world-wrap">
+          <canvas id="world-canvas" tabindex="0" aria-label="Greenbox 3D neighborhood. Move with W A S D or arrow keys. Press E to interact with a nearby neighbor or market."></canvas>
+          <div id="world-labels" aria-hidden="true"></div>
+          <div id="reaction-labels" aria-hidden="true"></div>
+          <div id="loading" role="status">Unpacking the neighborhood…</div>
+          <div id="error-banner" role="alert" hidden></div>
+          <div class="location-tag"><span aria-hidden="true">✦</span> Seedling Lane <small>Level 1</small></div>
+          <div class="minimap-card"><div><strong>Your neighborhood</strong><small>YOU <span class="map-dot"></span></small></div><canvas id="minimap" width="230" height="185" aria-label="Mini-map showing your position, four neighbors, and the game market."></canvas><p id="map-position" class="sr-only"></p></div>
+          <div class="touch-pad" role="group" aria-label="Move your character"><button type="button" data-move="up" aria-label="Move north">↑</button><button type="button" data-move="left" aria-label="Move west">←</button><button type="button" data-move="down" aria-label="Move south">↓</button><button type="button" data-move="right" aria-label="Move east">→</button></div>
+          <div class="world-tools"><button type="button" id="zoom-in" aria-label="Zoom in">＋</button><button type="button" id="zoom-out" aria-label="Zoom out">−</button><button type="button" id="camera-reset" aria-label="Reset camera">↺</button></div>
+          <button type="button" id="interact" class="interact-button" disabled>Walk up to a neighbor <kbd>E</kbd></button>
+        </div>
+        <div class="control-strip"><span><kbd>W A S D</kbd> / <kbd>↑ ↓ ← →</kbd> Move <span class="separator">·</span> <kbd>E</kbd> Talk / trade</span><span>Drag to orbit <span class="separator">·</span> Scroll to zoom</span></div>
+      </section>
+      <aside class="sidebar" aria-label="Neighborhood activity and inventory">
+        <section class="welcome-card"><span class="eyebrow">YOUR FIRST NEIGHBORHOOD</span><h2>Make yourself at home.</h2><p>Meet four neighbors, send a little good energy, and discover the after-hours exchange.</p><div class="goal-list"><span><i aria-hidden="true">1</i> Walk to a neighbor</span><span><i aria-hidden="true">2</i> Say hello or react</span><span><i aria-hidden="true">3</i> Trade a collectible</span></div></section>
+        <section class="reactions-card"><div class="card-heading"><h2>Say it with an emoji</h2><small>Nearby neighbors react too</small></div><div class="reactions" role="group" aria-label="Choose a reaction"><button type="button" data-emoji="wave" aria-label="Wave">👋</button><button type="button" data-emoji="heart" aria-label="Send a heart">💚</button><button type="button" data-emoji="sparkles" aria-label="Send sparkles">✨</button><button type="button" data-emoji="smile" aria-label="Smile">😄</button></div></section>
+        <section class="inventory-card"><div class="card-heading"><h2>Your pocket</h2><small>Collect &amp; trade</small></div><ul id="inventory"></ul><p class="trade-count" id="trade-count">No trades yet. A new collection awaits.</p></section>
+        <section class="settings-card"><label for="palette-select">Neighborhood palette</label><select id="palette-select"></select><button type="button" id="reset-demo">Start a fresh visit</button><p>Game coins &amp; items stay in this visit. No payments or online players.</p></section>
+        <p id="activity-status" role="status" aria-live="polite">Find a neighbor and press E to say hello.</p>
+      </aside>
+    </main>
+    <footer>Original Greenbox voxel world <span>Four neighbors · Shared palette · Local game inventory</span></footer>
+  </div>
+  <dialog id="interaction-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><div><span class="eyebrow" id="dialog-eyebrow">NEIGHBOR</span><h2 id="dialog-title"></h2></div><button type="button" id="dialog-close" aria-label="Close conversation or trade">×</button></div><div id="dialog-body"></div><div id="dialog-actions"></div></dialog>
+  <script id="neighborhood-data" type="application/json">/* NEIGHBORHOOD_DATA */</script>
+  <script>/* NEIGHBORHOOD_SCRIPT */</script>
+</body>
+</html>

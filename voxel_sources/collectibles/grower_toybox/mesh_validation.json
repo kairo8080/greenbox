@@ -1,0 +1,151 @@
+{
+  "schema": "greenbox-collectible-mesh-v1",
+  "id": "grower_toybox",
+  "source_sha256": "41cb3397638599f228501389520d9cc781b0825130e33ea986a4780ae735d05e",
+  "source_vox_sha256": "2b849edf4299a8491a3b0e5a8241728ed2fbc9cbf98a268a3edaef5667257e7b",
+  "voxel_pitch_meters": 0.05,
+  "mesh": {
+    "name": "grower_toybox",
+    "dimensions_voxels": [
+      32,
+      29,
+      48
+    ],
+    "filled_voxels": 28911,
+    "exposed_unit_faces": 13368,
+    "greedy_quads": 322,
+    "triangles": 644,
+    "vertices": 441,
+    "ordinary_quads": 322,
+    "emissive_quads": 0,
+    "surfaces_used": 1,
+    "occupied_bounds_min": [
+      0,
+      0,
+      0
+    ],
+    "occupied_bounds_max_exclusive": [
+      32,
+      29,
+      48
+    ],
+    "mesh_dimensions_meters": [
+      1.6,
+      1.4500000000000002,
+      2.4000000000000004
+    ],
+    "ground_pivot_source_voxels": [
+      16.0,
+      14.5,
+      0
+    ],
+    "colors_used": [
+      1,
+      11,
+      12,
+      13,
+      17,
+      19,
+      20,
+      28,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "surface_area_by_palette_index": {
+      "1": 158,
+      "11": 1614,
+      "12": 6372,
+      "13": 1101,
+      "17": 832,
+      "19": 612,
+      "20": 62,
+      "28": 56,
+      "34": 154,
+      "35": 198,
+      "36": 701,
+      "37": 750,
+      "38": 746,
+      "39": 12
+    },
+    "verification": "Exact exposed-cell coverage and outward winding checked for every coplanar color group",
+    "metadata": {
+      "reused_character": {
+        "path": "inputs/rasta_grower.json",
+        "sha256": "ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8",
+        "asset": "rasta_grower",
+        "offset_voxels": [
+          5,
+          4,
+          6
+        ],
+        "cells_preserved_exactly": true,
+        "reused_cells": 7318
+      },
+      "display_window": {
+        "axis": "front -Y",
+        "transparent_surface": false,
+        "opening_native_voxels": [
+          [
+            3,
+            0,
+            6
+          ],
+          [
+            29,
+            25,
+            39
+          ]
+        ],
+        "description": "Frame edges surround an actual air opening; original character occupies only its preserved source cells inside."
+      },
+      "description": "Open-front teal and cream toy display with the original Garden grower, raised original GB badge and lime interior. Static connected collectible prop; the separately supplied character keeps its six movable parts.",
+      "voxel_pitch_meters": 0.05,
+      "source_axes": "Z up, front -Y",
+      "glb_axes": "Y up, front +Z",
+      "source_ground_pivot_voxels": [
+        16.0,
+        14.5,
+        0
+      ],
+      "connected_components": 1,
+      "rarity": "collectible",
+      "grid_scale_note": "0.05 m per occupied cell. Cards and packs are enlarged collectible art at source scale; uniformly resize their game instances for hand-held use."
+    },
+    "palette_uv": "Index minus one; every face corner samples the same nearest texel center"
+  },
+  "glb": {
+    "bytes": 44416,
+    "nodes": 1,
+    "unique_meshes": 1,
+    "materials": 1,
+    "emissive_material_count": 0,
+    "triangles_unique_mesh_data": 644,
+    "source_palette_png_embedded_exactly": true,
+    "max_surface_primitives_per_mesh": 1,
+    "nearest_palette_sampling": true,
+    "preview_objects_excluded": true,
+    "sha256": "ad9c28716cc9d067bc6d2c43fd36921b092bdb8a8d5dfb39942b663c3ac6669f"
+  },
+  "palette_png_sha256": "ba773b8d60433c4d48d5409f4d28006cd193e071b341ddc5a4dcc41d4b811f58",
+  "preview_palette_png_sha256": "8849af40eda931266eeeccd249216cc04e068cefb9152b671c1c696179407444",
+  "canonical_export_before_preview_theme": true,
+  "source_ground_pivot_voxels": [
+    16.0,
+    14.5,
+    0
+  ],
+  "source_axes": "Z up, front -Y",
+  "glb_axes": "Y up, front +Z",
+  "preview_geometry": "Actual exact occupied-cube surface",
+  "preview_theme": "Greenbox Garden",
+  "preview_resolution": [
+    640,
+    800
+  ],
+  "blender": "5.1.2",
+  "preview_camera_lights_and_ground_excluded_from_glb": true
+}

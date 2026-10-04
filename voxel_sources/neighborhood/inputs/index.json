@@ -1,0 +1,10 @@
+{
+  "schema": "greenbox-lore-portable-source-inputs-v1",
+  "policy": "Exact input bytes addressed by SHA-256; logical source provenance remains unchanged.",
+  "sources": {
+    "work/bedroom/scene.json": {
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "bundled_path": "inputs/753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37.json"
+    }
+  }
+}

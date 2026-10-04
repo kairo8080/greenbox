@@ -1,0 +1,2 @@
+# Preserve source bytes used by the independent review bindings.
+** -text whitespace=cr-at-eol

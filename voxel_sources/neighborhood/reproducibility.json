@@ -1,0 +1,109 @@
+{
+  "schema": "greenbox-neighborhood-native-reproducibility-v1",
+  "status": "pass",
+  "method": "Copied only portable authoring tools, SHA-addressed inputs and preview theme to an isolated new pack folder; reran builder without original repo paths and compared every generated native source, modular manifest and layout byte-for-byte. Mesh export reproducibility is outside this source-byte test; actual GLB is independently checked in pack_validation.json.",
+  "files_verified": 19,
+  "files": [
+    {
+      "path": "game_layout.json",
+      "bytes": 5479,
+      "sha256": "4c4a30119bf254185c9ebc96730727c50a199742326767e89100ca38fdce01e0"
+    },
+    {
+      "path": "neighbor_commons/flat_scene.json",
+      "bytes": 5270495,
+      "sha256": "ab893c7e8e43ceb5b2042e3ee4e98e2ba734a6858c713b244bbae4b242575784"
+    },
+    {
+      "path": "neighbor_commons/game_layout.json",
+      "bytes": 5479,
+      "sha256": "4c4a30119bf254185c9ebc96730727c50a199742326767e89100ca38fdce01e0"
+    },
+    {
+      "path": "neighbor_commons/neighbor_commons.json",
+      "bytes": 5266417,
+      "sha256": "e693db29809fd625e0e097cf397fd114e716cf816f1de90eaca456a74650e815"
+    },
+    {
+      "path": "neighbor_commons/scene.json",
+      "bytes": 4916190,
+      "sha256": "4816bb2d373b433544c53cb6e2714b99a2a4b27d7390a3bc94538c5a41b3dbc3"
+    },
+    {
+      "path": "neighbor_commons/source_manifest.json",
+      "bytes": 7279,
+      "sha256": "718944ce410e38364f69a891c9ef16e00124e94e38886ad84952d97dd1fc2ddd"
+    },
+    {
+      "path": "neighbor_commons/neighbor_commons.vox",
+      "bytes": 1516984,
+      "sha256": "ccb00ad9ff7d4c17c4e421eeb1d978f8c1080c3e92d96ba86ec0f170477735a5"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_artist_home.vox",
+      "bytes": 128756,
+      "sha256": "78f315c12a5d019f2c441ddf0de1434c907a48272c5fea10f4ab327ea7812708"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_chef_home.vox",
+      "bytes": 128816,
+      "sha256": "4eb96581d74edb3e4d8170382407dbfeba11caf9c068d734644e1970e7c47e84"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_courtyard_lamp.vox",
+      "bytes": 4120,
+      "sha256": "0b84280d6a54a12036240e618a93501a05b668ec0fd19ebfdae9d68efde79fec"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_layered_ground.vox",
+      "bytes": 769096,
+      "sha256": "20295cdf88ea9ddf81b2fdcbd39a2790ead0c31f63c0cbfda96492cf04f46eb2"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_lime_tree_left.vox",
+      "bytes": 44744,
+      "sha256": "cdab58492744e9f694b28b5fef895ace8a9c7a9eee642a2675e78c2dcdb733bf"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_lime_tree_right.vox",
+      "bytes": 36968,
+      "sha256": "a21d57ff5d49d6812fb596abe3899c085fffdbcce4d810f3459332995ce4ec49"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_night_market_stall.vox",
+      "bytes": 133860,
+      "sha256": "4936ab0385a4cc5b7c3620ec99134b767bae26e2ffa4844072787d648f6a5a37"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_oak_bench.vox",
+      "bytes": 11152,
+      "sha256": "71f0edc5655d54d699b71be107a4188ca2d60da4788f24f6525d5787303cb6c9"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_party_home.vox",
+      "bytes": 132756,
+      "sha256": "9137c04045c8bf3ee543803561cde661a03bff18fae6cd835ffc6a0195845092"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_plant_small_cc0_leaf.vox",
+      "bytes": 3108,
+      "sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_robot_lab.vox",
+      "bytes": 128764,
+      "sha256": "49fe949e9b5e49a20975893366aac50e9529c21cf3e0c805ec42f811b3c2e379"
+    },
+    {
+      "path": "neighbor_commons/assets/commons_square_flower.vox",
+      "bytes": 1192,
+      "sha256": "4151d056c988702d98e22612d3620a38c74a2b869d53b6fc9ffb730e9241745e"
+    }
+  ],
+  "source_originals_preserved": {
+    "cannabis_leaf.vox": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a",
+    "cannabis_leaf_provenance.json": "8aa7d5633a1a9c04e5e36de1dfd5a538a417dba59202c3b876c88b3957e5e6c1",
+    "original_CC0_Cannabis.7z": "da4a5ae4c3a93a041bde4342e94fa8b78ac6da7ae11152a7beaee1116f95b109",
+    "readme.txt": "04bd29b2a8d12f4b86700c69a8d9ddf933ec8a43913017950c9948afe34bfcc2"
+  }
+}

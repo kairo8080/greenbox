@@ -12,8 +12,10 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "node scripts/verify-web.mjs && node scripts/verify-unity-web.mjs public/unity && node scripts/verify-viewer.mjs",
+    "build": "node scripts/verify-web.mjs && node scripts/verify-unity-web.mjs public/unity && node scripts/verify-viewer.mjs && node scripts/verify-neighborhood.mjs",
     "build:viewer": "node scripts/build-viewer.mjs",
+    "build:neighborhood": "node scripts/build-neighborhood.mjs",
+    "verify:neighborhood": "node scripts/verify-neighborhood.mjs",
     "verify:viewer": "node scripts/verify-viewer.mjs",
     "verify:web": "node scripts/verify-web.mjs",
     "verify:unity": "node scripts/verify-unity-web.mjs public/unity",
