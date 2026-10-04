@@ -9,11 +9,13 @@ import { buildPalette, writeVoxPalette, writeGlbPalette } from './palette-core.m
 
 const data = JSON.parse(document.getElementById('viewer-data').textContent);
 const ui = Object.fromEntries(['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats', 'scene-labels', 'asset-select', 'lore-location', 'lighting-mode', 'lore-story', 'character-style', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle', 'reset-view', 'palette-select', 'protect-identity', 'palette-swatches', 'palette-status', 'export-palette', 'export-vox', 'export-glb'].map(id => [id, document.getElementById(id)]));
-const state = { selected: 'rasta_grower', style: 'chibi', collection: 'lore', location: 'starter_loft', lighting: 'night', mode: 'compare', framing: 'body', synced: true, spinning: false, theme: 'original', protected: true, overrides: {} };
+const state = { selected: 'rasta_grower', style: 'garden', collection: 'lore', location: 'seedling_garden', lighting: 'day', mode: 'compare', framing: 'body', synced: true, spinning: false, theme: 'garden', protected: true, overrides: {} };
 const initial = new URLSearchParams(location.search);
 if (['characters','lore','room','props'].includes(initial.get('collection'))) state.collection = initial.get('collection');
-if (['roots_street','starter_loft'].includes(initial.get('location'))) state.location = initial.get('location');
+if (['roots_street','starter_loft','seedling_garden'].includes(initial.get('location'))) state.location = initial.get('location');
 if (['day','night'].includes(initial.get('lighting'))) state.lighting = initial.get('lighting');
+if (['garden','chibi','original'].includes(initial.get('style'))) state.style = initial.get('style');
+if (Object.hasOwn(data.catalog.presets, initial.get('palette'))) state.theme = initial.get('palette');
 const records = new Map();
 const panels = document.createElement('div');
 panels.id = 'view-panels';
@@ -31,7 +33,8 @@ let previousTime = 0, statsTime = 0;
 const number = value => value.toLocaleString('en-US');
 const hex = color => '#' + color.slice(0, 3).map(value => value.toString(16).padStart(2, '0')).join('');
 const decode = value => Uint8Array.from(atob(value), character => character.charCodeAt(0));
-const selectedModelId = () => state.style === 'chibi' ? `${state.selected}_chibi` : state.selected;
+const selectedModelId = () => state.style === 'original' ? state.selected : `${state.selected}_${state.style}`;
+const styleLabel = () => state.style === 'garden' ? 'Garden chibi' : state.style === 'chibi' ? 'Chibi' : 'Original';
 const characterModels = () => data.models.filter(model => model.kind === 'character' && model.style === state.style);
 
 function updatePalette() {
@@ -64,7 +67,7 @@ function applyMaterials(root, style) {
     if (!object.isMesh) return;
     object.castShadow = true;
     // Broad chibi faces stay clean while the models cast ground shadows.
-    object.receiveShadow = style !== 'chibi';
+    object.receiveShadow = !['chibi','garden'].includes(style);
     const materials = Array.isArray(object.material) ? object.material : [object.material];
     for (const material of materials) {
       if (material.map) material.map = paletteTexture;
@@ -106,7 +109,7 @@ function highlightSelection() {
     view.label.classList.toggle('is-selected', selected && state.collection === 'characters');
   }
   const selected = currentRecord();
-  ui['selected-label'].textContent = selected.label + (state.collection === 'characters' ? ` · ${state.style === 'chibi' ? 'chibi' : 'original'}${state.mode === 'compare' ? ' · comparing seven' : ''}` : '');
+  ui['selected-label'].textContent = selected.label + (state.collection === 'characters' ? ` · ${styleLabel()}${state.mode === 'compare' ? ' · comparing seven' : ''}` : '');
   ui['character-select'].value = state.selected;
   ui['export-vox'].disabled = !selected.voxBytes;
   ui['export-vox'].title = selected.voxBytes ? 'Download the current palette in the editable voxel source' : 'Props have separate VOX sources; download the original prop library as GLB';
@@ -289,7 +292,7 @@ function frameView(view, resetAngle = true) {
 }
 
 function defaultElevation() {
-  return THREE.MathUtils.degToRad(['lore','room'].includes(state.collection) ? 28 : state.collection === 'props' ? 15 : 4);
+  return THREE.MathUtils.degToRad(['lore','room'].includes(state.collection) ? 28 : state.collection === 'props' ? 15 : state.style === 'garden' ? 14 : 4);
 }
 
 function setAngle(view, azimuth, elevation) {
@@ -319,7 +322,7 @@ function rebuildViews() {
   const compare = state.collection === 'characters' && state.mode === 'compare';
   panels.classList.toggle('compare', compare);
   if (compare) views = characterModels().map(model => makeView([model.id], model.label));
-  else if (state.collection === 'characters' && state.mode === 'lineup') views = [makeView(characterModels().map(model => model.id), `All seven ${state.style} characters`)];
+  else if (state.collection === 'characters' && state.mode === 'lineup') views = [makeView(characterModels().map(model => model.id), `All seven ${styleLabel()} characters`)];
   else { const record = currentRecord(); views = [makeView([record.id], record.label)]; }
   driver = views.find(view => view.ids.includes(selectedModelId())) ?? views[0];
   for (const view of views) frameView(view);
@@ -329,7 +332,7 @@ function rebuildViews() {
   document.getElementById('camera-note').textContent = state.collection === 'characters' ? 'Switch to portrait to inspect faces and hair, or full body to check silhouette and proportions.' : 'Drag to explore the scene, or use the camera buttons for a different angle.';
   ui['lore-location'].disabled = ui['lighting-mode'].disabled = state.collection !== 'lore';
   ui['lore-story'].hidden = state.collection !== 'lore';
-  ui['lore-story'].textContent = state.location === 'starter_loft' ? 'Level 1 · A spare bedroom, three starter pots, hand-me-down equipment, and big plans.' : 'ROOTS district · A neighborhood seed co-op, grow supplies, and a Greenbox social corner.';
+  ui['lore-story'].textContent = state.location === 'seedling_garden' ? 'Seedling commons · A lime-green pocket garden, warm soil terraces, turquoise water, and a new grower.' : state.location === 'starter_loft' ? 'Level 1 · A spare bedroom, three starter pots, hand-me-down equipment, and big plans.' : 'ROOTS district · A neighborhood seed co-op, grow supplies, and a Greenbox social corner.';
   ui['character-style'].disabled = state.collection !== 'characters';
   ui['character-select'].disabled = state.collection !== 'characters';
   ui['framing'].disabled = state.collection !== 'characters';
@@ -480,6 +483,8 @@ async function start() {
   ui['asset-select'].value = state.collection;
   ui['lore-location'].value = state.location;
   ui['lighting-mode'].value = state.lighting;
+  ui['character-style'].value = state.style;
+  ui['palette-select'].value = state.theme;
   document.querySelectorAll('[data-ready-control]').forEach(control => { control.disabled = false; });
   rebuildViews(); resize();
   ui['loading-status'].textContent = '';

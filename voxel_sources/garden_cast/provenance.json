@@ -1,0 +1,21 @@
+{
+  "schema": "greenbox-garden-character-provenance-v1",
+  "created": "2026-10-04",
+  "artwork": "Original occupied-cell designs authored for Greenbox",
+  "external_geometry_or_textures_imported": false,
+  "method": "Deterministic Python solid cubic-cell construction, six rigid non-overlapping parts, exact indexed palette, exposed-face greedy mesh export in Blender",
+  "reference_use": "The four images supplied by the user informed broad proportions, layered panel forms and a limited coherent palette. No screenshot pixels, game models, logos or branded cabinet markings were copied.",
+  "reference_files": [
+    "codex-clipboard-07a3ffb3-c849-4200-9d15-cfff83d93697.png",
+    "codex-clipboard-41c5c3e7-bc83-4649-9f12-87037fdb584f.png",
+    "codex-clipboard-0740c70f-4a0e-422b-bf73-c22ee4c6263e.png",
+    "codex-clipboard-154c799f-1fbc-4346-8202-ff5b3b80f353.png"
+  ],
+  "palette_origin": "Existing original Greenbox 256-entry collection palette, preserved without quantization or changes",
+  "palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "preview_palette": "Portable preview_theme.json snapshot of the shared Greenbox Garden theme; applied only after canonical GLB export",
+  "source_authoring": "tools/build_garden.py and tools/garden_common.py",
+  "source_manifests": "Per-character source_manifest.json covers actual JSON and assembled/part VOX hashes",
+  "mesh_verification": "pack_validation.json independently checks actual GLB buffer geometry against exposed source cells",
+  "preview_method": "Blender renders of actual occupied-cell surfaced geometry; the contact sheet combines those renders"
+}

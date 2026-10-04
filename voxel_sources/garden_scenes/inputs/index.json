@@ -1,0 +1,14 @@
+{
+  "schema": "greenbox-lore-portable-source-inputs-v1",
+  "policy": "Exact input bytes addressed by SHA-256; logical source provenance remains unchanged.",
+  "sources": {
+    "work/bedroom/scene.json": {
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "bundled_path": "inputs/753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37.json"
+    },
+    "voxel_sources/garden_cast/rasta_grower/rasta_grower.json": {
+      "sha256": "ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8",
+      "bundled_path": "inputs/ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8.json"
+    }
+  }
+}

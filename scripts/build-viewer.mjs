@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url';
 import esbuild from '../viewer/node_modules/esbuild/lib/main.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const workspace = path.dirname(root);
 const catalog = JSON.parse(await fs.readFile(path.join(root, 'viewer/palettes.json'), 'utf8'));
 const cast = [
   ['rasta_grower', 'Rasta grower'], ['corporate_boss', 'Corporate boss'], ['robot', 'Robot'],
@@ -43,6 +42,11 @@ for (const [id, label] of cast) {
   const source = JSON.parse(await fs.readFile(path.join(root, `${base}.json`), 'utf8'));
   models.push(await asset(`${id}_chibi`, label, 'character', `${base}.glb`, `${base}.vox`, source, { style: 'chibi', characterId: id }));
 }
+for (const [id, label] of cast) {
+  const base = `voxel_sources/garden_cast/${id}/${id}`;
+  const source = JSON.parse(await fs.readFile(path.join(root, `${base}.json`), 'utf8'));
+  models.push(await asset(`${id}_garden`, label, 'character', `${base}.glb`, `${base}.vox`, source, { style: 'garden', characterId: id }));
+}
 models.push(await asset('bedroom', 'Rasta bedroom', 'room', 'game/assets/rasta_bedroom.glb', 'voxel_sources/rasta_room/rasta_bedroom.vox'));
 models.push(await asset('props', 'Grow props', 'props', 'game/assets/starter_props.glb', null));
 for (const [id, label] of [['starter_loft','Level-one bedroom'],['roots_street','ROOTS district']]) {
@@ -51,15 +55,19 @@ for (const [id, label] of [['starter_loft','Level-one bedroom'],['roots_street',
   const scene = JSON.parse(await fs.readFile(path.join(root, `voxel_sources/lore_scenes/${id}/scene.json`), 'utf8'));
   models.push(await asset(id, label, 'lore', `${base}.glb`, `${base}.vox`, source, { loreLights: scene.lights }));
 }
+const gardenBase = 'voxel_sources/garden_scenes/seedling_garden/seedling_garden';
+const gardenSource = JSON.parse(await fs.readFile(path.join(root, `${gardenBase}.json`), 'utf8'));
+const gardenScene = JSON.parse(await fs.readFile(path.join(root, 'voxel_sources/garden_scenes/seedling_garden/scene.json'), 'utf8'));
+models.push(await asset('seedling_garden', 'Seedling garden', 'lore', `${gardenBase}.glb`, `${gardenBase}.vox`, gardenSource, { loreLights: gardenScene.lights ?? [] }));
 const result = await esbuild.build({ entryPoints: [path.join(root, 'viewer/viewer.js')], bundle: true, write: false, format: 'iife', target: ['es2022'], minify: true, legalComments: 'inline', sourcemap: false });
 const [shell, css] = await Promise.all(['viewer-shell.html', 'viewer.css'].map(file => fs.readFile(path.join(root, 'viewer', file), 'utf8')));
-const embedded = JSON.stringify({ schema: 'greenbox-viewer-v3', catalog, models }).replaceAll('<', '\\u003c');
+const embedded = JSON.stringify({ schema: 'greenbox-viewer-v4', catalog, models }).replaceAll('<', '\\u003c');
 const script = result.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
 const license = await fs.readFile(path.join(root, 'viewer/node_modules/three/LICENSE'), 'utf8');
 const html = shell.replace('<!-- VIEWER_STYLE -->', () => css).replace('<!-- VIEWER_DATA -->', () => embedded).replace('<!-- VIEWER_SCRIPT -->', () => script)
   .replace('</body>', () => `<!-- Bundled Three.js 0.186.1 license\n${license}\n-->\n</body>`);
 const destination = path.join(root, 'public/viewer/index.html');
-const portable = path.join(workspace, 'outputs/greenbox-character-viewer.html');
+const portable = path.join(root, 'outputs/greenbox-character-viewer.html');
 await fs.mkdir(path.dirname(destination), { recursive: true });
 await fs.mkdir(path.dirname(portable), { recursive: true });
 await fs.writeFile(destination, html);

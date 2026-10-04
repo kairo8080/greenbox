@@ -1,0 +1,108 @@
+{
+  "schema": "greenbox-garden-portable-reproducibility-v1",
+  "status": "pass",
+  "source_files_byte_identical": 20,
+  "files": [
+    {
+      "path": "seedling_garden/flat_scene.json",
+      "sha256": "b2058f615feeb70870dfd11742cb1ad411681e5ab992b35c647f59552f319fec",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/scene.json",
+      "sha256": "ff87f8fef14344a8d03dc36a1930e1a431763f783fad29127a3b032eaa272904",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/seedling_garden.json",
+      "sha256": "e0f6e0664549d06606e17336d8b37a8415aab5bdb96df750ca7491b459f054d9",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/seedling_garden.vox",
+      "sha256": "5905a6d74fed8fd4dc3757324d3204b56b34845dc971d6de8427464891eff28c",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/source_manifest.json",
+      "sha256": "7eaec6b66d0ea5476e214917690fbfce470b053ac9d52ff0d9fda1eca3666a1c",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_cream_flower.vox",
+      "sha256": "4151d056c988702d98e22612d3620a38c74a2b869d53b6fc9ffb730e9241745e",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_grass_tuft.vox",
+      "sha256": "ad2d80e39299bfc858a5e51843cb748cc9a1ada26f88cb1b491d538da0fafd26",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_greenbox_seedling_sign.vox",
+      "sha256": "0f412709ff3936507bfce6a0735312cd708d2b4d2b52cf23ae0f150846e2454c",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_layered_terrain.vox",
+      "sha256": "af3495fa122099f01517db9ce91b31046711698f3fb0d824fc81449780e09167",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_lily_pad.vox",
+      "sha256": "7c2b1b2f28355ac1e693e45ea31463f14463122fd0178a25620a12db6fca9669",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_oak_bench.vox",
+      "sha256": "580d924e8703d85155049a91cec95601f466a3e3227465940cb398de132b9a3b",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_plant_medium_cc0_leaf.vox",
+      "sha256": "d3d9c3a88601680181852c750a850bcfb07d1c7675099414e85c87d803056e3c",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_plant_small_cc0_leaf.vox",
+      "sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_pond_reeds.vox",
+      "sha256": "e3fc1330a56ae171f8d695cc7041fa7a0cdd7cabe9d73a4eb41c65d289f3053c",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_rasta_grower.vox",
+      "sha256": "a61ca0ca88c49814751bdde38623877417a9414a0e54cd7dc82cc034df406ae4",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_short_plank_fence.vox",
+      "sha256": "49ee24e5cdb51d879b68ab13a90591abefbe4853e58151938c101bc7660dcd5d",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_small_lime_tree.vox",
+      "sha256": "591a63ae347785f0d14e6fa922fad983ea2b4bcf1ea9446688347e0a68c2c364",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_tall_lime_tree.vox",
+      "sha256": "f56903a0385c37bad76c98aa0db85c71751850764e2126b4b57c675c6efb0cf1",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_teal_fish.vox",
+      "sha256": "fe95738b4b0eb3abae98dfcb9923d143530affe08fd0f7d2ab1dae5ac9af40b0",
+      "byte_identical": true
+    },
+    {
+      "path": "seedling_garden/assets/garden_teal_watering_can.vox",
+      "sha256": "9a08d49bf097e57979997efd23d48fff683c39888306e646751ccbcb6b18bd6f",
+      "byte_identical": true
+    }
+  ],
+  "verification": "Regenerated all authoritative JSON and modular/assembled VOX sources in an isolated copy of tools plus bundled inputs, then compared every byte."
+}

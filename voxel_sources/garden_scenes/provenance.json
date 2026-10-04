@@ -1,0 +1,90 @@
+{
+  "schema": "greenbox-garden-provenance-v1",
+  "created": "2026-10-04",
+  "authoring": "Original occupied-cube Greenbox scenery; user reference images informed broad visual direction only.",
+  "external_leaf_source": {
+    "author": "Yughues / Nobiax",
+    "title": "Cannabis plants",
+    "page": "https://opengameart.org/content/cannabis-plants",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_files_sha256": {
+      "cannabis_leaf.vox": "7c1b60d0222e31e87121f863e07856def8c75a9decd676213afc19082af74f4a",
+      "cannabis_leaf_provenance.json": "8aa7d5633a1a9c04e5e36de1dfd5a538a417dba59202c3b876c88b3957e5e6c1",
+      "original_CC0_Cannabis.7z": "da4a5ae4c3a93a041bde4342e94fa8b78ac6da7ae11152a7beaee1116f95b109",
+      "readme.txt": "04bd29b2a8d12f4b86700c69a8d9ddf933ec8a43913017950c9948afe34bfcc2"
+    },
+    "author_readme_extracted_unchanged_from_original_archive": true,
+    "existing_source_files_preserved_byte_for_byte": true
+  },
+  "reused_inputs": [
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_small",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_medium",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "watering_can",
+      "color_remap": {
+        "1": 1,
+        "2": 2,
+        "13": 13,
+        "24": 24,
+        "25": 25,
+        "31": 31
+      }
+    },
+    {
+      "path": "voxel_sources/garden_cast/rasta_grower/rasta_grower.json",
+      "sha256": "ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8",
+      "source_asset": "rasta_grower",
+      "color_remap": {
+        "1": 1,
+        "34": 34,
+        "35": 35,
+        "36": 36,
+        "37": 37,
+        "38": 38,
+        "39": 39,
+        "19": 19,
+        "20": 20,
+        "28": 28
+      }
+    }
+  ],
+  "imported_geometry_and_colors_preserved_exactly": true,
+  "source_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "voxel_pitch_meters": 0.05,
+  "presentation_palette": "Garden global theme; source palette unchanged",
+  "source_axes": "Z up, front -Y",
+  "game_export_axes": "Y up, front +Z"
+}

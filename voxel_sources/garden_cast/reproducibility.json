@@ -1,0 +1,261 @@
+{
+  "schema": "greenbox-garden-native-reproducibility-v1",
+  "status": "pass",
+  "method": "Run copied portable authoring tools in an isolated pack under this directory; compare every assembled and part VOX, source JSON and manifest byte.",
+  "assets": 7,
+  "files_compared": 63,
+  "files": [
+    {
+      "path": "rasta_grower/arm_left.vox",
+      "sha256": "0c7adc0fbaa6da07645c928aa5380ae8b21a18a7ef71ce531af94bddba9764d7"
+    },
+    {
+      "path": "rasta_grower/arm_right.vox",
+      "sha256": "0c7adc0fbaa6da07645c928aa5380ae8b21a18a7ef71ce531af94bddba9764d7"
+    },
+    {
+      "path": "rasta_grower/head.vox",
+      "sha256": "faa4a43bbb8d3ffcc2abc29b8c050776ca8e4016525989cd7c5e1175aed2fbe6"
+    },
+    {
+      "path": "rasta_grower/leg_left.vox",
+      "sha256": "eee394f0fc72201d824767a10fe447a711e5db0fc4dc0edea120deff0a8ef8a3"
+    },
+    {
+      "path": "rasta_grower/leg_right.vox",
+      "sha256": "eee394f0fc72201d824767a10fe447a711e5db0fc4dc0edea120deff0a8ef8a3"
+    },
+    {
+      "path": "rasta_grower/rasta_grower.vox",
+      "sha256": "a61ca0ca88c49814751bdde38623877417a9414a0e54cd7dc82cc034df406ae4"
+    },
+    {
+      "path": "rasta_grower/torso.vox",
+      "sha256": "c5492e021b434d1099df9ea56319016c82ad1e806b9ef18f1ad3fed6429e8b37"
+    },
+    {
+      "path": "rasta_grower/rasta_grower.json",
+      "sha256": "ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8"
+    },
+    {
+      "path": "rasta_grower/source_manifest.json",
+      "sha256": "147860d993f9851ccd8a1155e12beb43d11844d4829375f6900fb695edd60d93"
+    },
+    {
+      "path": "corporate_boss/arm_left.vox",
+      "sha256": "27264050fd3ab6f3e314b72a8781662f889fc4faab23c3f71ba94e252eb8df00"
+    },
+    {
+      "path": "corporate_boss/arm_right.vox",
+      "sha256": "9e358d100e693f87b19fcb666071ef12f882a27e314083490dd02cc1737a2c4b"
+    },
+    {
+      "path": "corporate_boss/corporate_boss.vox",
+      "sha256": "b54443ee4347e15763ed113cfd054e7ee4cddd2331676d2756b320e6600b7b69"
+    },
+    {
+      "path": "corporate_boss/head.vox",
+      "sha256": "e5ad629c58a24be8b334c683a7641779091363db345ed1b13a048676bae7127d"
+    },
+    {
+      "path": "corporate_boss/leg_left.vox",
+      "sha256": "812377f40a0dda4555dc6cf232674cd29d27b4ae13cfe753474d632b31abdc22"
+    },
+    {
+      "path": "corporate_boss/leg_right.vox",
+      "sha256": "812377f40a0dda4555dc6cf232674cd29d27b4ae13cfe753474d632b31abdc22"
+    },
+    {
+      "path": "corporate_boss/torso.vox",
+      "sha256": "bec32d3b9c22b9578a9afa7ed35daeb9db782b03b2d8279f57f9a5541843356b"
+    },
+    {
+      "path": "corporate_boss/corporate_boss.json",
+      "sha256": "3a2b0c49973ba3fcacb967be0e1f47257393c1c705c3db30350f79a5b6323ea8"
+    },
+    {
+      "path": "corporate_boss/source_manifest.json",
+      "sha256": "7a33772430a1238d1d8baa1f2f163308dc4c885a6efe9be77b3d4e9978bf14ca"
+    },
+    {
+      "path": "robot/arm_left.vox",
+      "sha256": "44396324249e4ff4c8b0f21baf955dd09a9bc62ce1e7ce9bde72d3a256543d8d"
+    },
+    {
+      "path": "robot/arm_right.vox",
+      "sha256": "44396324249e4ff4c8b0f21baf955dd09a9bc62ce1e7ce9bde72d3a256543d8d"
+    },
+    {
+      "path": "robot/head.vox",
+      "sha256": "fc56fca044d8d9fb799c8063b97a885ce5cb4d7e2f04c6c42389869ae10c8a54"
+    },
+    {
+      "path": "robot/leg_left.vox",
+      "sha256": "b841899d3197e9e92d069ffec6a71fd596ea65dfea9a46a601b23bb3ca574e6c"
+    },
+    {
+      "path": "robot/leg_right.vox",
+      "sha256": "b841899d3197e9e92d069ffec6a71fd596ea65dfea9a46a601b23bb3ca574e6c"
+    },
+    {
+      "path": "robot/robot.vox",
+      "sha256": "4692a8458dbc2916e62242794339963b83a48c4d0cf2d5692c7d2759885c5d60"
+    },
+    {
+      "path": "robot/torso.vox",
+      "sha256": "ba701f008d20a289481c60743aae3ff27330fa5bf50afbf507e0ac2d65444c39"
+    },
+    {
+      "path": "robot/robot.json",
+      "sha256": "ed351da249bbe51555d057db6b8deb216adbfe8efa528f98c78a887e41333463"
+    },
+    {
+      "path": "robot/source_manifest.json",
+      "sha256": "55fc6f6b319f04540e85a82841f8191e00d9959971722a17db4cba25a8a8be4f"
+    },
+    {
+      "path": "chef/arm_left.vox",
+      "sha256": "a334e91152518bbc731ba93d350126f5e31f1d13d1628f0a28ee192baf6d0bc4"
+    },
+    {
+      "path": "chef/arm_right.vox",
+      "sha256": "a334e91152518bbc731ba93d350126f5e31f1d13d1628f0a28ee192baf6d0bc4"
+    },
+    {
+      "path": "chef/chef.vox",
+      "sha256": "ed93637b6ea49a6a5e720105d257832de3ee540152410c0d56d49487d41ad3ee"
+    },
+    {
+      "path": "chef/head.vox",
+      "sha256": "04f6bd9271dae4821c04b74e8fe38620a077d71a198a3e130ce8b7af0528a651"
+    },
+    {
+      "path": "chef/leg_left.vox",
+      "sha256": "228e03ff5498029bc7a54a04d6e971179190ec0eed78a212b75e5b53f9459de6"
+    },
+    {
+      "path": "chef/leg_right.vox",
+      "sha256": "228e03ff5498029bc7a54a04d6e971179190ec0eed78a212b75e5b53f9459de6"
+    },
+    {
+      "path": "chef/torso.vox",
+      "sha256": "8e3e2a9b4a7a91a1b5649ae518a96012cc8dcfad3086a5698a88b289d6228961"
+    },
+    {
+      "path": "chef/chef.json",
+      "sha256": "1143f75ffef9b5adcb666078eb2e7b054a7bef989c2b2f11d62cb4b8e1c8f35b"
+    },
+    {
+      "path": "chef/source_manifest.json",
+      "sha256": "610dd9a7bd4d0162d4d7ee81a68990244335d278b11232b6fe8150116fdf84a5"
+    },
+    {
+      "path": "blonde_lady/arm_left.vox",
+      "sha256": "0f7cdfc4825cd8f3c9b19569afe3c1abf06c1e08c733799ce695dba0265be29a"
+    },
+    {
+      "path": "blonde_lady/arm_right.vox",
+      "sha256": "0f7cdfc4825cd8f3c9b19569afe3c1abf06c1e08c733799ce695dba0265be29a"
+    },
+    {
+      "path": "blonde_lady/blonde_lady.vox",
+      "sha256": "45dfa969eddb97b7fea23da400d8e81d20174c77cc0b27816c900994c765b349"
+    },
+    {
+      "path": "blonde_lady/head.vox",
+      "sha256": "c3ed31a958e8c6d076f4f6dca568a63cc4f20c9e80e2adaa55d606d81ea3c93d"
+    },
+    {
+      "path": "blonde_lady/leg_left.vox",
+      "sha256": "4b430591d97be3e9268f85745d89d81c964333166403aec51b1d47c353f164a7"
+    },
+    {
+      "path": "blonde_lady/leg_right.vox",
+      "sha256": "4b430591d97be3e9268f85745d89d81c964333166403aec51b1d47c353f164a7"
+    },
+    {
+      "path": "blonde_lady/torso.vox",
+      "sha256": "9991a11e7b306c2c9e7504a347021b82b3be4ce60a31b49f15404b03bd48c900"
+    },
+    {
+      "path": "blonde_lady/blonde_lady.json",
+      "sha256": "13d3c56576009a05bcefd60ceee93782ca3c476f999cefc30582d96648b939df"
+    },
+    {
+      "path": "blonde_lady/source_manifest.json",
+      "sha256": "b27d2af42349653d29fa0505bda0adaf5df83057fc8725edce7fca7b83c90a86"
+    },
+    {
+      "path": "party_woman/arm_left.vox",
+      "sha256": "b4940285feaf5af9fc820c8ba7ef24bd51eaf28c49a5ae2d42b457727cfec3c5"
+    },
+    {
+      "path": "party_woman/arm_right.vox",
+      "sha256": "b1e721480d06a85cbaaa503fce5087e12b8dad198f7afd2912b90288f92b475d"
+    },
+    {
+      "path": "party_woman/head.vox",
+      "sha256": "64650875522e720f1b2dd7e0889576d9be72e8ff980961280c2f29a807dcd42b"
+    },
+    {
+      "path": "party_woman/leg_left.vox",
+      "sha256": "cf6c4df490f6b5a100a7ac9e9b59a41321585a80ba7030eb2daff7a9b2a018d7"
+    },
+    {
+      "path": "party_woman/leg_right.vox",
+      "sha256": "cf6c4df490f6b5a100a7ac9e9b59a41321585a80ba7030eb2daff7a9b2a018d7"
+    },
+    {
+      "path": "party_woman/party_woman.vox",
+      "sha256": "2ec19602355eb3739a77340a9b268db57605a178b1fbdeabb4364d587a31d147"
+    },
+    {
+      "path": "party_woman/torso.vox",
+      "sha256": "21ddc0c14f1b6f2228453c0d13a32d5f9ae53b0ca50cb91760bdfb31eb475f2e"
+    },
+    {
+      "path": "party_woman/party_woman.json",
+      "sha256": "feab80190532906cc7ea9299f1d25ceafbce6f974564a41bdb96726f2c0dc8ca"
+    },
+    {
+      "path": "party_woman/source_manifest.json",
+      "sha256": "19165dfa7fa7c5609f1c667f68f086bb6e451d2340d3f376c4c33650824527ec"
+    },
+    {
+      "path": "skeleton/arm_left.vox",
+      "sha256": "5878395556afde2243cac285c81fe66b3dd125ad514b09c390ebb3d9a2aa6824"
+    },
+    {
+      "path": "skeleton/arm_right.vox",
+      "sha256": "5878395556afde2243cac285c81fe66b3dd125ad514b09c390ebb3d9a2aa6824"
+    },
+    {
+      "path": "skeleton/head.vox",
+      "sha256": "a2e2e4f4858b76682177689fb0c17b280112a076d75f3208627774361f66f361"
+    },
+    {
+      "path": "skeleton/leg_left.vox",
+      "sha256": "040a408a946d45b07be91aa5495d82942c98b414ad1fa7c5f88703100f7ad5c0"
+    },
+    {
+      "path": "skeleton/leg_right.vox",
+      "sha256": "040a408a946d45b07be91aa5495d82942c98b414ad1fa7c5f88703100f7ad5c0"
+    },
+    {
+      "path": "skeleton/skeleton.vox",
+      "sha256": "628b09f60fe0975b67edb897361f19a0db7b07ea83c0c84579430ed7027c3e6e"
+    },
+    {
+      "path": "skeleton/torso.vox",
+      "sha256": "8beda10823a0a235553a690dff59fa60245403bb6ff9f05518885ab79038c90a"
+    },
+    {
+      "path": "skeleton/skeleton.json",
+      "sha256": "29e7e2e9e53065bb85d3f26270e2697e64c92281746c1c0da226cfdb1e92dfa9"
+    },
+    {
+      "path": "skeleton/source_manifest.json",
+      "sha256": "aa9e5d39dcd5cb225a2c95fe4502bf6efa2e4ead7767de96c28929ee3d6fdb39"
+    }
+  ]
+}

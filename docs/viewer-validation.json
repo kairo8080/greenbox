@@ -1,11 +1,11 @@
 {
-  "schema": "greenbox-viewer-validation-v3",
+  "schema": "greenbox-viewer-validation-v4",
   "lore_palette_exports": "docs/lore-palette-validation.json: Both scenes passed targeted Neon/identity-protected VOX and GLB export checks, preserving occupancy, indices, geometry bytes, nodes, accessors, transforms, signed zeros and static/emissive material split. Matching recolored textures were checked independently in memory.",
-  "date": "2026-10-03",
-  "embedded_assets": 18,
-  "character_voxels": 44126,
-  "character_triangles": 9984,
-  "static_delivery": "Passed final npm run build: both existing browser exports and independent v3 HTML validation for 18 real models, GLB buffers/accessors/bounds, native VOX occupancy, 256 canonical palette colors, lore controls/defaults and inline syntax. Eight malformed v3 delivery cases rejected in the independent verifier review.",
+  "date": "2026-10-04",
+  "embedded_assets": 26,
+  "character_voxels": 90462,
+  "character_triangles": 12556,
+  "static_delivery": "Passed npm run build: existing browser exports and independent v4 HTML validation for 26 real models, GLB buffers/accessors/bounds, native VOX occupancy, all 256 canonical palette colors, three character styles, three lore scenes, Garden theme defaults and inline syntax. Five targeted malformed v4 fixtures rejected; see docs/garden-viewer-verification.json.",
   "palette_exports": "Earlier original cast checks passed (335 properties). New chibi checks passed 70 asset/preset/protection combinations, covering 140 VOX and 140 GLB outputs with unknown-chunk probes; geometry, occupancy, palette indices and joints preserved.",
   "browser_limitations": [
     "The automated in-app browser prohibits file:// navigation; the self-contained local file was validated statically, and interactive rendering was checked over HTTP.",
@@ -27,10 +27,15 @@
       "assets": 7,
       "voxels": 28071,
       "triangles": 4030
+    },
+    "garden": {
+      "assets": 7,
+      "voxels": 46336,
+      "triangles": 2572
     }
   },
-  "default_character_style": "chibi",
-  "html_sha256": "fe42e659589bd127aee7c7aa3256d7e3b17ca00dbd6e9d4a9f85839ef0facbce",
+  "default_character_style": "garden",
+  "html_sha256": "825df85b8fe4aa9b5547aac1e5bbf95dec2e69b0024fa8e4821710b88fba20ab",
   "lighting": {
     "shadow_type": "PCFShadowMap",
     "character_map_pixels": 512,
@@ -41,11 +46,12 @@
     "lore_bloom": {
       "day_strength": 0.12,
       "night_strength": 0.38
-    }
+    },
+    "garden_self_shadows": false
   },
   "default_collection": "lore",
-  "default_location": "starter_loft",
-  "default_lighting": "night",
+  "default_location": "seedling_garden",
+  "default_lighting": "day",
   "lore_scenes": {
     "roots_street": {
       "voxels": 220120,
@@ -57,12 +63,21 @@
       "triangles": 13324,
       "modular_assets": 18
     },
-    "total_voxels": 344735,
-    "total_triangles": 24970,
+    "total_voxels": 604184,
+    "total_triangles": 32020,
     "source_validation": "voxel_sources/lore_scenes/pack_validation.json",
     "reproducibility": "voxel_sources/lore_scenes/reproducibility.json",
-    "magicavoxel_mcp_reads": "Both assembled VOX dimensions and occupied-cell counts matched the authoritative source and independent verification.",
-    "gameplay": "Static art preview compositions; no new playable level or character locomotion in the viewer."
+    "magicavoxel_mcp_reads": "Earlier ROOTS district and starter loft assembled VOX dimensions and cell counts matched the MCP reader. New Seedling garden was validated independently from native file bytes.",
+    "gameplay": "Static art preview compositions; no new playable level or character locomotion in the viewer.",
+    "seedling_garden": {
+      "voxels": 259449,
+      "triangles": 7050,
+      "modular_assets": 15,
+      "instances": 26,
+      "source_validation": "voxel_sources/garden_scenes/pack_validation.json",
+      "reproducibility": "voxel_sources/garden_scenes/reproducibility.json",
+      "magicavoxel_mcp_reads": "Not run for this new scene; independent native VOX and exposed-face GLB byte validation passed."
+    }
   },
   "prior_character_browser_checks": [
     "All seven chibi characters rendered from actual GLBs, with bright lighting and cached ground shadows",
@@ -75,12 +90,23 @@
     "Bedroom cutaway and props; character controls disabled appropriately",
     "Chibi skeleton VOX/GLB and palette export generation produced correct Save filenames with no runtime error"
   ],
-  "browser_checked": [
+  "garden_palette_exports": "docs/garden-palette-validation.json: Actual palette-core functions ran on Garden grower and seedling scene. Independent byte parsers verified all native non-RGBA bytes, occupancy and indices, GLB original BIN prefix, geometry, six-part hierarchy, nodes, accessors, transforms, signed zeros, static/emissive materials, all 256 replacement atlas colors and 17 protected identity slots. Browser canvas encoding and disk downloads remain untested.",
+  "default_palette": "garden",
+  "prior_lore_browser_checks": [
     "Both lore GLBs rendered in the live HTTP viewer under day and night lighting, with accent lights and bloom.",
     "Default lore camera fits all bounding-box corners in perspective; whole floor and road visible at 100 percent zoom.",
     "Room drag orbit changed angle from 45 to -4 degrees, wheel zoom reached 206 percent, and Reset view restored framing.",
     "Neon palette applies to ROOTS scene and persists when switching to all seven chibi characters.",
     "Lore controls and character controls appear only for their corresponding collection.",
     "ROOTS Neon VOX and GLB export generation produced correctly named Save links without runtime error."
+  ],
+  "browser_checked": [
+    "All seven Garden chibi characters rendered from their actual GLBs in Compare layout with the shared Greenbox Garden theme.",
+    "Garden grower Solo and Portrait framing inspected visually; Garden/earlier Chibi switching preserves the shared theme.",
+    "Garden grower VOX and GLB export buttons generated correctly named Save links without runtime errors; disk download not exercised.",
+    "Seedling garden default Day framing includes terrain and full tree canopy; Night mode rendered successfully.",
+    "Seedling garden drag orbit changed angle from 45 to -7 degrees and wheel zoom reached 193 percent; Reset view restored 45 degrees and 100 percent.",
+    "The Greenbox Garden theme also rendered on the Level-one bedroom and ROOTS district.",
+    "No captured browser console warnings or errors during the new local HTTP checks."
   ]
 }

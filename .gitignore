@@ -19,6 +19,12 @@ npm-debug.log*
 Thumbs.db
 Desktop.ini
 
+# Local generated previews and staging helpers.
+outputs/
+work/
+__pycache__/
+*.pyc
+
 # Unity generated files. Keep Assets, Packages, ProjectSettings and .meta files.
 unity/**/Library/
 unity/**/Temp/

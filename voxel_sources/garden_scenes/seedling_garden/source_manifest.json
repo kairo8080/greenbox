@@ -1,0 +1,509 @@
+{
+  "name": "seedling_garden",
+  "description": "Original Greenbox seedling garden: a warm layered 6 by 5.2 meter outdoor voxel tile with broad lime and olive cube tree canopies, a stepped sand path, a turquoise pond, fish, lily pads, square reeds, an oak bench, flowers, plank fence, SEED marker, a new compact Rasta grower, preserved CC0-leaf-derived potted plant assets and a watering can. Source shapes are occupied cubes and colors remain the canonical indexed Greenbox palette. Garden theme is a global presentation remap. Static game art diorama only.",
+  "occupied_voxels": 259449,
+  "dimensions": [
+    120,
+    104,
+    82
+  ],
+  "voxel_pitch_meters": 0.05,
+  "palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "intentional_union_overlap_cells": 0,
+  "connected_components": 1,
+  "assets": [
+    {
+      "name": "garden_layered_terrain",
+      "voxels": 206470,
+      "dimensions": [
+        120,
+        104,
+        22
+      ]
+    },
+    {
+      "name": "garden_tall_lime_tree",
+      "voxels": 29088,
+      "dimensions": [
+        28,
+        28,
+        60
+      ]
+    },
+    {
+      "name": "garden_small_lime_tree",
+      "voxels": 7020,
+      "dimensions": [
+        18,
+        18,
+        43
+      ]
+    },
+    {
+      "name": "garden_short_plank_fence",
+      "voxels": 1548,
+      "dimensions": [
+        45,
+        4,
+        19
+      ]
+    },
+    {
+      "name": "garden_oak_bench",
+      "voxels": 1923,
+      "dimensions": [
+        33,
+        12,
+        19
+      ]
+    },
+    {
+      "name": "garden_greenbox_seedling_sign",
+      "voxels": 2799,
+      "dimensions": [
+        31,
+        7,
+        28
+      ]
+    },
+    {
+      "name": "garden_pond_reeds",
+      "voxels": 272,
+      "dimensions": [
+        13,
+        4,
+        23
+      ]
+    },
+    {
+      "name": "garden_lily_pad",
+      "voxels": 107,
+      "dimensions": [
+        11,
+        11,
+        3
+      ]
+    },
+    {
+      "name": "garden_teal_fish",
+      "voxels": 184,
+      "dimensions": [
+        12,
+        6,
+        4
+      ]
+    },
+    {
+      "name": "garden_cream_flower",
+      "voxels": 24,
+      "dimensions": [
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "name": "garden_grass_tuft",
+      "voxels": 112,
+      "dimensions": [
+        8,
+        5,
+        7
+      ]
+    },
+    {
+      "name": "garden_plant_small_cc0_leaf",
+      "voxels": 503,
+      "dimensions": [
+        21,
+        11,
+        29
+      ]
+    },
+    {
+      "name": "garden_plant_medium_cc0_leaf",
+      "voxels": 774,
+      "dimensions": [
+        19,
+        17,
+        35
+      ]
+    },
+    {
+      "name": "garden_teal_watering_can",
+      "voxels": 448,
+      "dimensions": [
+        16,
+        8,
+        13
+      ]
+    },
+    {
+      "name": "garden_rasta_grower",
+      "voxels": 7318,
+      "dimensions": [
+        20,
+        18,
+        31
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "name": "garden_layered_terrain",
+      "asset": "garden_layered_terrain",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_tall_lime_tree",
+      "asset": "garden_tall_lime_tree",
+      "offset": [
+        7,
+        71,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_small_lime_tree",
+      "asset": "garden_small_lime_tree",
+      "offset": [
+        42,
+        83,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_short_plank_fence",
+      "asset": "garden_short_plank_fence",
+      "offset": [
+        72,
+        98,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_oak_bench",
+      "asset": "garden_oak_bench",
+      "offset": [
+        4,
+        51,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_greenbox_seedling_sign",
+      "asset": "garden_greenbox_seedling_sign",
+      "offset": [
+        88,
+        53,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_pond_reeds",
+      "asset": "garden_pond_reeds",
+      "offset": [
+        11,
+        20,
+        7
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "pond_lily_left",
+      "asset": "garden_lily_pad",
+      "offset": [
+        37,
+        8,
+        7
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "pond_lily_right",
+      "asset": "garden_lily_pad",
+      "offset": [
+        77,
+        23,
+        7
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "pond_fish_left",
+      "asset": "garden_teal_fish",
+      "offset": [
+        49,
+        19,
+        7
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "pond_fish_right",
+      "asset": "garden_teal_fish",
+      "offset": [
+        71,
+        5,
+        7
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_cream_flower_0",
+      "asset": "garden_cream_flower",
+      "offset": [
+        40,
+        56,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_cream_flower_1",
+      "asset": "garden_cream_flower",
+      "offset": [
+        49,
+        69,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_cream_flower_2",
+      "asset": "garden_cream_flower",
+      "offset": [
+        80,
+        47,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_cream_flower_3",
+      "asset": "garden_cream_flower",
+      "offset": [
+        104,
+        26,
+        17
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_cream_flower_4",
+      "asset": "garden_cream_flower",
+      "offset": [
+        8,
+        91,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_cream_flower_5",
+      "asset": "garden_cream_flower",
+      "offset": [
+        109,
+        69,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "grass_cluster_0",
+      "asset": "garden_grass_tuft",
+      "offset": [
+        38,
+        92,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "grass_cluster_1",
+      "asset": "garden_grass_tuft",
+      "offset": [
+        45,
+        49,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "grass_cluster_2",
+      "asset": "garden_grass_tuft",
+      "offset": [
+        73,
+        92,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "grass_cluster_3",
+      "asset": "garden_grass_tuft",
+      "offset": [
+        94,
+        23,
+        17
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "grass_cluster_4",
+      "asset": "garden_grass_tuft",
+      "offset": [
+        13,
+        44,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_plant_small_cc0_leaf",
+      "asset": "garden_plant_small_cc0_leaf",
+      "offset": [
+        77,
+        83,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_plant_medium_cc0_leaf",
+      "asset": "garden_plant_medium_cc0_leaf",
+      "offset": [
+        100,
+        79,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_teal_watering_can",
+      "asset": "garden_teal_watering_can",
+      "offset": [
+        83,
+        69,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    },
+    {
+      "name": "garden_rasta_grower",
+      "asset": "garden_rasta_grower",
+      "offset": [
+        65,
+        52,
+        22
+      ],
+      "layer": 0,
+      "hidden": false
+    }
+  ],
+  "provenance": [
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_small",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "cannabis_plant_medium",
+      "color_remap": {
+        "9": 9,
+        "17": 17,
+        "18": 18,
+        "19": 19,
+        "20": 20,
+        "21": 21,
+        "22": 22,
+        "23": 23,
+        "30": 30
+      }
+    },
+    {
+      "path": "work/bedroom/scene.json",
+      "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+      "source_asset": "watering_can",
+      "color_remap": {
+        "1": 1,
+        "2": 2,
+        "13": 13,
+        "24": 24,
+        "25": 25,
+        "31": 31
+      }
+    },
+    {
+      "path": "voxel_sources/garden_cast/rasta_grower/rasta_grower.json",
+      "sha256": "ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8",
+      "source_asset": "rasta_grower",
+      "color_remap": {
+        "1": 1,
+        "34": 34,
+        "35": 35,
+        "36": 36,
+        "37": 37,
+        "38": 38,
+        "39": 39,
+        "19": 19,
+        "20": 20,
+        "28": 28
+      }
+    }
+  ],
+  "sha256": {
+    "flat_scene.json": "b2058f615feeb70870dfd11742cb1ad411681e5ab992b35c647f59552f319fec",
+    "scene.json": "ff87f8fef14344a8d03dc36a1930e1a431763f783fad29127a3b032eaa272904",
+    "seedling_garden.json": "e0f6e0664549d06606e17336d8b37a8415aab5bdb96df750ca7491b459f054d9",
+    "seedling_garden.vox": "5905a6d74fed8fd4dc3757324d3204b56b34845dc971d6de8427464891eff28c"
+  }
+}

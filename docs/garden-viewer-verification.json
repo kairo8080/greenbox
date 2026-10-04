@@ -1,0 +1,86 @@
+{
+  "schema": "greenbox-garden-viewer-verification-v1",
+  "status": "pass",
+  "client_date": "2026-10-04",
+  "delivered_file": "public/viewer/index.html",
+  "delivered_bytes": 10868458,
+  "delivered_sha256": "825df85b8fe4aa9b5547aac1e5bbf95dec2e69b0024fa8e4821710b88fba20ab",
+  "data_schema": "greenbox-viewer-v4",
+  "embedded_models": 26,
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "preset_ids": [
+    "original",
+    "island",
+    "pastel",
+    "neon",
+    "mono",
+    "garden"
+  ],
+  "required_defaults": {
+    "collection": "lore",
+    "location": "seedling_garden",
+    "lighting": "day",
+    "character_style": "garden",
+    "palette": "garden"
+  },
+  "independently_verified_garden_source_report": {
+    "path": "voxel_sources/garden_cast/pack_validation.json",
+    "sha256": "53c75e6fb02c04aa06cf193a69ac81e6d14503af454a2e8589c5acd2dc36774c",
+    "status": "pass",
+    "assets": 7,
+    "actual_triangles": 2572,
+    "occupied_voxel_cells": 46336
+  },
+  "measured_cast_totals": {
+    "original": {
+      "triangles": 5954,
+      "voxels": 16055
+    },
+    "chibi": {
+      "triangles": 4030,
+      "voxels": 28071
+    },
+    "garden": {
+      "triangles": 2572,
+      "voxels": 46336
+    },
+    "all": {
+      "triangles": 12556,
+      "voxels": 90462
+    }
+  },
+  "ordinary_delivered_byte_validation": "pass",
+  "tamper_probes": [
+    {
+      "case": "missing_garden_model",
+      "status": "rejected_as_expected",
+      "diagnostic": "Viewer must embed seven characters in each of three styles"
+    },
+    {
+      "case": "wrong_garden_source_atlas",
+      "status": "rejected_as_expected",
+      "diagnostic": "embedded atlas differs from canonical palette slot 255"
+    },
+    {
+      "case": "wrong_default_palette",
+      "status": "rejected_as_expected",
+      "diagnostic": "palette-select must default to garden"
+    },
+    {
+      "case": "missing_garden_style_option",
+      "status": "rejected_as_expected",
+      "diagnostic": "character-style is missing a required option"
+    },
+    {
+      "case": "missing_seedling_scene_option",
+      "status": "rejected_as_expected",
+      "diagnostic": "lore-location is missing a required option"
+    }
+  ],
+  "verified": "Actual embedded GLB headers/chunks/accessors, mesh indices, UV palette use, all 256 Garden/chibi/lore atlas pixels and VOX colors, VOX unique occupancy and bounds, Garden/lore height, complete model and control options/defaults, inline script syntax and absence of external resources. Each Garden GLB/VOX hash and actual count also matches its passed independent source report.",
+  "limits": [
+    "Static byte validation does not establish browser interaction or game-engine performance.",
+    "No claim is made here about file:// rendering or browser download completion.",
+    "Scene previews are art assets; gameplay systems require separate integration."
+  ]
+}

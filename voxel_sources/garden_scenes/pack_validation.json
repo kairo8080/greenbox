@@ -1,0 +1,375 @@
+{
+  "schema": "independent-greenbox-lore-pack-validation-v1",
+  "status": "pass",
+  "verification": "Independent modular placement union, editable VOX bytes, provenance and exact actual GLB triangle clipping against every exposed flattened source cube face.",
+  "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+  "voxel_pitch_meters": 0.05,
+  "assets_verified": 1,
+  "total_filled_voxels": 259449,
+  "total_triangles": 7050,
+  "assets": [
+    {
+      "asset": "seedling_garden",
+      "status": "pass",
+      "filled_voxels": 259449,
+      "dimensions_voxels": [
+        120,
+        104,
+        82
+      ],
+      "normalization_offset": [
+        0,
+        0,
+        0
+      ],
+      "voxel_pitch_meters": 0.05,
+      "height_meters": 4.1000000000000005,
+      "canonical_palette_sha256": "09cb38d6cb39613d53228591ed2d7cdefc47a98cbdb81f78ab19b65dd3c36293",
+      "colors_used": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        30,
+        31,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "connected_components": 1,
+      "component_sizes": [
+        259449
+      ],
+      "intentional_union_overlap_cells": 0,
+      "union_overlaps_changing_color": 0,
+      "last_write_wins_union_verified_exactly": true,
+      "modular_assets": [
+        {
+          "name": "garden_layered_terrain",
+          "filled_voxels": 206470,
+          "dimensions": [
+            120,
+            104,
+            22
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            206470
+          ],
+          "vox_sha256": "af3495fa122099f01517db9ce91b31046711698f3fb0d824fc81449780e09167"
+        },
+        {
+          "name": "garden_tall_lime_tree",
+          "filled_voxels": 29088,
+          "dimensions": [
+            28,
+            28,
+            60
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            29088
+          ],
+          "vox_sha256": "f56903a0385c37bad76c98aa0db85c71751850764e2126b4b57c675c6efb0cf1"
+        },
+        {
+          "name": "garden_small_lime_tree",
+          "filled_voxels": 7020,
+          "dimensions": [
+            18,
+            18,
+            43
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            7020
+          ],
+          "vox_sha256": "591a63ae347785f0d14e6fa922fad983ea2b4bcf1ea9446688347e0a68c2c364"
+        },
+        {
+          "name": "garden_short_plank_fence",
+          "filled_voxels": 1548,
+          "dimensions": [
+            45,
+            4,
+            19
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            1548
+          ],
+          "vox_sha256": "49ee24e5cdb51d879b68ab13a90591abefbe4853e58151938c101bc7660dcd5d"
+        },
+        {
+          "name": "garden_oak_bench",
+          "filled_voxels": 1923,
+          "dimensions": [
+            33,
+            12,
+            19
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            1923
+          ],
+          "vox_sha256": "580d924e8703d85155049a91cec95601f466a3e3227465940cb398de132b9a3b"
+        },
+        {
+          "name": "garden_greenbox_seedling_sign",
+          "filled_voxels": 2799,
+          "dimensions": [
+            31,
+            7,
+            28
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            2799
+          ],
+          "vox_sha256": "0f412709ff3936507bfce6a0735312cd708d2b4d2b52cf23ae0f150846e2454c"
+        },
+        {
+          "name": "garden_pond_reeds",
+          "filled_voxels": 272,
+          "dimensions": [
+            13,
+            4,
+            23
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            272
+          ],
+          "vox_sha256": "e3fc1330a56ae171f8d695cc7041fa7a0cdd7cabe9d73a4eb41c65d289f3053c"
+        },
+        {
+          "name": "garden_lily_pad",
+          "filled_voxels": 107,
+          "dimensions": [
+            11,
+            11,
+            3
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            107
+          ],
+          "vox_sha256": "7c2b1b2f28355ac1e693e45ea31463f14463122fd0178a25620a12db6fca9669"
+        },
+        {
+          "name": "garden_teal_fish",
+          "filled_voxels": 184,
+          "dimensions": [
+            12,
+            6,
+            4
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            184
+          ],
+          "vox_sha256": "fe95738b4b0eb3abae98dfcb9923d143530affe08fd0f7d2ab1dae5ac9af40b0"
+        },
+        {
+          "name": "garden_cream_flower",
+          "filled_voxels": 24,
+          "dimensions": [
+            5,
+            5,
+            4
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            24
+          ],
+          "vox_sha256": "4151d056c988702d98e22612d3620a38c74a2b869d53b6fc9ffb730e9241745e"
+        },
+        {
+          "name": "garden_grass_tuft",
+          "filled_voxels": 112,
+          "dimensions": [
+            8,
+            5,
+            7
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            112
+          ],
+          "vox_sha256": "ad2d80e39299bfc858a5e51843cb748cc9a1ada26f88cb1b491d538da0fafd26"
+        },
+        {
+          "name": "garden_plant_small_cc0_leaf",
+          "filled_voxels": 503,
+          "dimensions": [
+            21,
+            11,
+            29
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            503
+          ],
+          "vox_sha256": "a5a7fda565d7ae699b11528da72442dcc30a96842ad990ec8fb6e9cd925028aa"
+        },
+        {
+          "name": "garden_plant_medium_cc0_leaf",
+          "filled_voxels": 774,
+          "dimensions": [
+            19,
+            17,
+            35
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            774
+          ],
+          "vox_sha256": "d3d9c3a88601680181852c750a850bcfb07d1c7675099414e85c87d803056e3c"
+        },
+        {
+          "name": "garden_teal_watering_can",
+          "filled_voxels": 448,
+          "dimensions": [
+            16,
+            8,
+            13
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            448
+          ],
+          "vox_sha256": "9a08d49bf097e57979997efd23d48fff683c39888306e646751ccbcb6b18bd6f"
+        },
+        {
+          "name": "garden_rasta_grower",
+          "filled_voxels": 7318,
+          "dimensions": [
+            20,
+            18,
+            31
+          ],
+          "connected_components": 1,
+          "component_sizes": [
+            7318
+          ],
+          "vox_sha256": "a61ca0ca88c49814751bdde38623877417a9414a0e54cd7dc82cc034df406ae4"
+        }
+      ],
+      "modular_instance_count": 26,
+      "reused_sources": [
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "cannabis_plant_small",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "cannabis_plant_medium",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "work/bedroom/scene.json",
+          "source_asset": "watering_can",
+          "sha256": "753310bf24d4662f8a360e27182e23d1da5e376144ef1df74de52db0409c3e37",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        },
+        {
+          "path": "voxel_sources/garden_cast/rasta_grower/rasta_grower.json",
+          "source_asset": "rasta_grower",
+          "sha256": "ef2d689c6d31494f6cc3b0dae83ade667ed141797d44bd4ac7cc02d931d2f8b8",
+          "exact_occupied_geometry_preserved_up_to_documented_grid_rotation": true,
+          "documented_rotation_degrees": 0,
+          "documented_palette_edits_cells": 0,
+          "source_rgba_preserved_outside_documented_palette_edits": true,
+          "voxel_pitch_meters": 0.05
+        }
+      ],
+      "source_json_sha256": "e0f6e0664549d06606e17336d8b37a8415aab5bdb96df750ca7491b459f054d9",
+      "flat_scene_sha256": "b2058f615feeb70870dfd11742cb1ad411681e5ab992b35c647f59552f319fec",
+      "vox_sha256": "5905a6d74fed8fd4dc3757324d3204b56b34845dc971d6de8427464891eff28c",
+      "source_manifest_sha256": "7eaec6b66d0ea5476e214917690fbfce470b053ac9d52ff0d9fda1eca3666a1c",
+      "glb": {
+        "path": "seedling_garden\\seedling_garden.glb",
+        "sha256": "4a186259a19f42b4a7c563bc7ea0aea6ad72f2d9f6731605fd22c61422e3317b",
+        "bytes": 470140,
+        "triangles": 7050,
+        "vertices": 13268,
+        "exposed_unit_faces_verified": 56534,
+        "emissive_triangles": 20,
+        "materials": 2,
+        "world_bounds_y_up_meters": [
+          [
+            0.0,
+            0.0,
+            -5.199999809265137
+          ],
+          [
+            6.0,
+            4.099999904632568,
+            0.0
+          ]
+        ],
+        "exact_flat_source_surface_and_palette_coverage": true,
+        "all_vertices_on_source_cube_grid": true,
+        "flat_outward_axis_normals": true,
+        "source_emissive_role_mapping_preserved": true
+      },
+      "previews": {
+        "day": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 1160593,
+          "sha256": "f7d56bd34283f8e23fef3f5daf2f1fa8703ae64708701ab17bc5861dd55cd0e4"
+        },
+        "night": {
+          "width": 1200,
+          "height": 900,
+          "bytes": 1223565,
+          "sha256": "cc9aec4071ebb242a8ad14ff6d1c741d85bf8216f81e67b9656d1b59a71a9520"
+        }
+      },
+      "blend": {
+        "sha256": "6d05d76209dc8e370d0e5778d7f1b4a33d504f5c2feb107ad844fdf05e72d28b",
+        "bytes": 211425,
+        "verification_scope": "Nonempty saved Blender file with recognized container magic; internal scene blocks not decoded."
+      }
+    }
+  ]
+}

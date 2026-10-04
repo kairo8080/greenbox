@@ -18,7 +18,7 @@
           <h1>Voxel world lab</h1>
         </div>
       </div>
-      <div class="header-note"><span class="status-dot" aria-hidden="true"></span>ROOTS district · Level-one bedroom · Shared palette</div>
+      <div class="header-note"><span class="status-dot" aria-hidden="true"></span>Seedling garden · Garden chibi cast · Shared palette</div>
     </header>
 
     <main class="workspace">
@@ -56,19 +56,21 @@
           <div id="lore-options">
           <label class="field-label" for="lore-location">Lore location</label>
           <select id="lore-location" data-ready-control disabled>
+            <option value="seedling_garden">Seedling garden</option>
             <option value="starter_loft">Level-one bedroom</option>
             <option value="roots_street">ROOTS district</option>
           </select>
           <label class="field-label" for="lighting-mode">Lighting</label>
           <select id="lighting-mode" data-ready-control disabled>
-            <option value="night">Night · neon accents</option>
             <option value="day">Day · island sunshine</option>
+            <option value="night">Night · neon accents</option>
           </select>
-          <p id="lore-story" class="section-note">Level 1 · A spare bedroom, three starter pots, hand-me-down equipment, and big plans.</p>
+          <p id="lore-story" class="section-note">Seedling commons · A lime-green pocket garden, warm soil terraces, turquoise water, and a new grower.</p>
           </div>
           <div id="character-options" hidden>
           <label class="field-label" for="character-style">Character style</label>
           <select id="character-style" data-ready-control disabled>
+            <option value="garden">Garden chibi · toy proportions</option>
             <option value="chibi">Chibi · chunky proportions</option>
             <option value="original">Original · taller proportions</option>
           </select>
@@ -100,7 +102,7 @@
             <option value="skeleton">Skeleton</option>
           </select>
           <label class="check-row" for="sync-cameras"><input id="sync-cameras" type="checkbox" checked data-ready-control disabled><span>Sync cameras across views</span></label>
-          <p class="section-note">Switch between the chibi and original casts. Compare shows all seven; solo and lineup share the same colors.</p>
+          <p class="section-note">Choose Garden chibi, Chibi, or Original. Compare shows all seven; solo and lineup share the same colors.</p>
           </div>
         </section>
 
@@ -123,6 +125,7 @@
           <div class="section-heading"><span class="section-index">03</span><h2>Change the palette</h2><span class="global-tag">GLOBAL</span></div>
           <label class="field-label" for="palette-select">Color direction</label>
           <select id="palette-select" data-ready-control disabled>
+            <option value="garden">Greenbox Garden</option>
             <option value="original">Original colors</option>
             <option value="island">Island warmth</option>
             <option value="pastel">Soft pastel</option>

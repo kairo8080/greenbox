@@ -12,10 +12,14 @@ const filename = process.argv[2] ? resolve(process.argv[2]) : join(repository, '
 const failures = [];
 const characterIds = ['rasta_grower', 'corporate_boss', 'robot', 'chef', 'blonde_lady', 'party_woman', 'skeleton'];
 const chibiIds = characterIds.map(id => `${id}_chibi`);
+const gardenIds = characterIds.map(id => `${id}_garden`);
+const loreIds = ['roots_street', 'starter_loft', 'seedling_garden'];
 // Chibi totals independently measured from real GLB accessors and source VOX.
 // See outputs/greenbox-chibi-pack/pack_validation.json and work/chibi/verify_chibi.py.
 const expectedStyleTotals = { original: { triangles: 5954, voxels: 16055 }, chibi: { triangles: 4030, voxels: 28071 } };
-const styleTotals = { original: { triangles: 0, voxels: 0, models: 0 }, chibi: { triangles: 0, voxels: 0, models: 0 } };
+// Garden expectations are loaded from the independently verified source pack,
+// then bound to delivered GLB/VOX hashes and actual parsed geometry counts.
+const styleTotals = Object.fromEntries(['original', 'chibi', 'garden'].map(style => [style, { triangles: 0, voxels: 0, models: 0 }]));
 const requiredIds = ['viewer-canvas', 'canvas-wrap', 'loading-status', 'error-banner', 'selected-label', 'stats',
   'scene-labels', 'asset-select', 'character-style', 'lore-location', 'lighting-mode', 'view-mode', 'character-select', 'framing', 'sync-cameras', 'motion-toggle',
   'reset-view', 'camera-front', 'camera-right', 'camera-left', 'camera-back', 'palette-select', 'protect-identity',
@@ -84,13 +88,20 @@ function validateCatalog(catalog) {
     && new Set(identity).size === identity.length
     && JSON.stringify([...identity].sort((a, b) => a - b)) === JSON.stringify([...catalog.identityIndices].sort((a, b) => a - b)),
     'Identity role names and protected indices must agree without duplicates.');
-  for (const name of ['original', 'island', 'pastel', 'neon', 'mono']) {
+  const presetNames = ['original', 'island', 'pastel', 'neon', 'mono', 'garden'];
+  check(Object.keys(catalog.presets ?? {}).length === presetNames.length, 'Palette catalog must contain exactly six required presets.');
+  for (const name of presetNames) {
     const preset = catalog.presets?.[name];
     requireValue(validColors(preset?.colors), `Palette preset ${name} needs 256 RGBA colors.`);
     check(typeof preset.label === 'string' && preset.label.length > 0, `Palette preset ${name} needs a label.`);
-    check(preset.colors[0][3] === 0, `Palette preset ${name} must preserve transparent air.`);
+    check(sameColor(preset.colors[0], catalog.original[0]), `Palette preset ${name} must preserve transparent air.`);
+    check(preset.colors.slice(1).every(color => color[3] === 255), `Palette preset ${name} must preserve opaque non-air slots.`);
   }
   check(JSON.stringify(catalog.presets.original.colors) === JSON.stringify(catalog.original), 'Original preset must match the canonical palette.');
+  for (const index of catalog.identityIndices) check(sameColor(catalog.presets.garden.colors[index], catalog.original[index]),
+    `Garden preset must retain protected identity palette slot ${index}.`);
+  check(JSON.stringify(catalog.presets.garden.colors.slice(64)) === JSON.stringify(catalog.original.slice(64)),
+    'Garden preset must preserve unused slots 64–255.');
 }
 
 const crcTable = Uint32Array.from({ length: 256 }, (_, value) => {
@@ -195,7 +206,7 @@ function validateGlb(bytes, model, palette) {
   const images = (json.images ?? []).map((image, index) => {
     requireValue(image.mimeType === 'image/png' || image.uri?.startsWith('data:image/png;'), `${label}: image ${index} must be an embedded PNG.`);
     const pixels = palettePng(image.uri === undefined ? view(image.bufferView).bytes : embeddedUri(image.uri, `${label} image ${index}`), `${label} image ${index}`);
-    if (model.style === 'chibi' || model.kind === 'lore') for (let texel = 0; texel < 256; texel++)
+    if (['chibi', 'garden'].includes(model.style) || model.kind === 'lore') for (let texel = 0; texel < 256; texel++)
       requireValue(sameColor([...pixels.subarray(texel * 4, texel * 4 + 4)], palette[(texel + 1) % 256]),
         `${label}: embedded atlas differs from canonical palette slot ${(texel + 1) % 256}.`);
     return pixels;
@@ -292,13 +303,14 @@ function validateGlb(bytes, model, palette) {
   }
   const triangles = scene.nodes.reduce((sum, node) => sum + visit(node), 0);
   check(triangles === model.triangles, `${label}: declared ${model.triangles} triangles, actual scene has ${triangles}.`);
-  if (model.kind === 'lore') check(Math.abs((bounds[1][1] - bounds[0][1]) - model.height) < 1e-5,
+  if (model.kind === 'lore' || model.style === 'garden') check(Math.abs((bounds[1][1] - bounds[0][1]) - model.height) < 1e-5,
     `${label}: declared height ${model.height} differs from actual world mesh height ${bounds[1][1] - bounds[0][1]}.`);
   return triangles;
 }
 
 function validateVox(bytes, model, palette) {
   const label = model.id;
+  const tightlyBounded = model.kind === 'lore' || model.style === 'garden';
   requireValue(bytes.length >= 20 && bytes.toString('ascii', 0, 4) === 'VOX '
     && [150, 200].includes(bytes.readUInt32LE(4)) && bytes.toString('ascii', 8, 12) === 'MAIN'
     && bytes.readUInt32LE(12) === 0 && bytes.readUInt32LE(16) === bytes.length - 20, `${label}: invalid VOX header/MAIN size.`);
@@ -323,12 +335,12 @@ function validateVox(bytes, model, palette) {
         const cells = bytes.readUInt32LE(content);
         requireValue(cells > 0 && length === 4 + cells * 4, `${label}: XYZI length does not match its cell count.`);
         const occupied = new Set();
-        if (model.kind === 'lore') loreDimensions = size.slice();
+        if (tightlyBounded) loreDimensions = size.slice();
         for (let index = 0; index < cells; index++) {
           const offset = content + 4 + index * 4, x = bytes[offset], y = bytes[offset + 1], z = bytes[offset + 2], color = bytes[offset + 3];
           requireValue(x < size[0] && y < size[1] && z < size[2] && color !== 0, `${label}: invalid voxel coordinate/color.`);
           colorsUsed.add(color);
-          if (model.kind === 'lore') for (const [axis, value] of [x, y, z].entries()) {
+          if (tightlyBounded) for (const [axis, value] of [x, y, z].entries()) {
             occupiedBounds[0][axis] = Math.min(occupiedBounds[0][axis], value);
             occupiedBounds[1][axis] = Math.max(occupiedBounds[1][axis], value);
           }
@@ -346,17 +358,17 @@ function validateVox(bytes, model, palette) {
   }
   chunks(20, bytes.length);
   requireValue(models > 0 && !size && (pack === undefined || pack === models), `${label}: incomplete/mismatched VOX models.`);
-  if (model.kind === 'lore') {
+  if (tightlyBounded) {
     requireValue(models === 1 && occupiedBounds[0].every(value => value === 0)
       && loreDimensions.every((value, axis) => value === occupiedBounds[1][axis] + 1),
-    `${label}: lore VOX must be one flattened, tightly bounded source model.`);
+    `${label}: lore/Garden VOX must be one flattened, tightly bounded source model.`);
     check(Math.abs(loreDimensions[2] * 0.05 - model.height) < 1e-5,
       `${label}: declared height ${model.height} differs from occupied VOX height ${loreDimensions[2] * 0.05}.`);
   }
   if (model.kind === 'character' || model.kind === 'lore') {
     requireValue(rgba, `${label}: editable character/lore VOX needs its canonical RGBA palette.`);
     // Older assets legitimately leave newer, unused semantic slots black.
-    const indices = model.style === 'chibi' || model.kind === 'lore' ? Array.from({ length: 256 }, (_, index) => index) : colorsUsed;
+    const indices = ['chibi', 'garden'].includes(model.style) || model.kind === 'lore' ? Array.from({ length: 256 }, (_, index) => index) : colorsUsed;
     for (const index of indices) {
       const texel = (index + 255) % 256;
       requireValue(sameColor([...rgba.subarray(texel * 4, texel * 4 + 4)], palette[index]), `${label}: VOX palette slot ${index} is not canonical.`);
@@ -384,16 +396,16 @@ try {
     check(tags.some(tag => tag.name === 'input' && tag.attrs.get('id') === id && tag.attrs.get('type') === 'checkbox'), `${id} must be a checkbox.`);
   check(tags.some(tag => tag.name === 'canvas' && tag.attrs.get('id') === 'viewer-canvas'), 'viewer-canvas must be a canvas element.');
   const optionSets = { 'asset-select': ['lore', 'characters', 'room', 'props'], 'view-mode': ['compare', 'solo', 'lineup'],
-    'lore-location': ['starter_loft', 'roots_street'], 'lighting-mode': ['day', 'night'],
-    'character-style': ['chibi', 'original'], 'framing': ['body', 'portrait'], 'character-select': characterIds,
-    'palette-select': ['original', 'island', 'pastel', 'neon', 'mono'] };
+    'lore-location': ['starter_loft', 'roots_street', 'seedling_garden'], 'lighting-mode': ['day', 'night'],
+    'character-style': ['chibi', 'original', 'garden'], 'framing': ['body', 'portrait'], 'character-select': characterIds,
+    'palette-select': ['original', 'island', 'pastel', 'neon', 'mono', 'garden'] };
   for (const match of dom.matchAll(/<select\b([^>]*)>([\s\S]*?)<\/select\s*>/gi)) {
     const id = attributes(match[1]).get('id'), expected = optionSets[id];
     if (!expected) continue;
     const options = [...match[2].matchAll(/<option\b[^>]*>/gi)];
     const values = options.map(option => attributes(option[0]).get('value'));
     check(expected.every(value => values.includes(value)), `${id} is missing a required option.`);
-    const defaults = { 'asset-select': 'lore', 'character-style': 'chibi', 'lore-location': 'starter_loft', 'lighting-mode': 'night' };
+    const defaults = { 'asset-select': 'lore', 'character-style': 'garden', 'lore-location': 'seedling_garden', 'lighting-mode': 'day', 'palette-select': 'garden' };
     if (id in defaults) {
       check(values.length === expected.length && new Set(values).size === expected.length, `${id} must offer exactly its required options.`);
       const selected = options.filter(option => /\sselected(?:\s*=|\s|>)/i.test(option[0]));
@@ -431,28 +443,53 @@ try {
       check(inertHttpReference(match[2], url.index, url[0]), `Viewer bundle contains an executable HTTP reference: ${url[0]}.`);
   }
   const data = JSON.parse(dataScripts[0][2]);
-  requireValue(data.schema === 'greenbox-viewer-v3', 'Unrecognized viewer data schema.');
+  requireValue(data.schema === 'greenbox-viewer-v4', 'Unrecognized viewer data schema.');
   validateCatalog(data.catalog);
-  requireValue(Array.isArray(data.models) && data.models.length === 18, 'Viewer must embed seven original characters, seven chibi characters, bedroom, props, and two lore locations.');
+  requireValue(Array.isArray(data.models) && data.models.length === 26, 'Viewer must embed seven characters in each of three styles, bedroom, props, and three lore locations.');
   const modelIds = data.models.map(model => model.id);
-  check(new Set(modelIds).size === 18, 'Embedded model IDs must be unique.');
-  for (const id of [...characterIds, ...chibiIds, 'bedroom', 'props', 'roots_street', 'starter_loft']) check(modelIds.includes(id), `Missing embedded model: ${id}.`);
+  check(new Set(modelIds).size === 26, 'Embedded model IDs must be unique.');
+  for (const id of [...characterIds, ...chibiIds, ...gardenIds, 'bedroom', 'props', ...loreIds]) check(modelIds.includes(id), `Missing embedded model: ${id}.`);
+  const gardenReport = JSON.parse(await readFile(join(repository, 'voxel_sources', 'garden_cast', 'pack_validation.json'), 'utf8'));
+  requireValue(gardenReport.schema === 'independent-greenbox-garden-pack-validation-v1' && gardenReport.status === 'pass'
+    && gardenReport.style === 'garden' && gardenReport.assets_verified === 7 && Array.isArray(gardenReport.assets)
+    && gardenReport.assets.length === 7 && gardenReport.canonical_palette_sha256 === canonicalPaletteHash,
+  'Garden cast requires its passed independent source/GLB validation report.');
+  const gardenSources = new Map(gardenReport.assets.map(asset => [asset.asset, asset]));
+  requireValue(gardenSources.size === 7 && characterIds.every(id => gardenSources.has(id)), 'Garden validation report must verify each of the seven character identities once.');
+  requireValue(gardenReport.assets.every(asset => asset.status === 'pass' && integer(asset.filled_voxels, 1)
+    && integer(asset.glb?.triangles, 1) && /^[\da-f]{64}$/i.test(asset.vox_sha256) && /^[\da-f]{64}$/i.test(asset.glb?.sha256)),
+  'Garden validation report contains incomplete passed asset measurements.');
+  requireValue(gardenReport.total_filled_voxels === gardenReport.assets.reduce((sum, asset) => sum + asset.filled_voxels, 0)
+    && gardenReport.total_triangles === gardenReport.assets.reduce((sum, asset) => sum + asset.glb.triangles, 0),
+  'Garden validation report totals differ from its actual asset measurements.');
+  expectedStyleTotals.garden = { triangles: gardenReport.total_triangles, voxels: gardenReport.total_filled_voxels };
   for (const model of data.models) {
     try {
-      const expectedStyle = characterIds.includes(model.id) ? 'original' : chibiIds.includes(model.id) ? 'chibi' : null;
+      const expectedStyle = characterIds.includes(model.id) ? 'original' : chibiIds.includes(model.id) ? 'chibi' : gardenIds.includes(model.id) ? 'garden' : null;
       const expectedKind = expectedStyle ? 'character' : model.id === 'bedroom' ? 'room' : model.id === 'props' ? 'props'
-        : ['roots_street', 'starter_loft'].includes(model.id) ? 'lore' : null;
+        : loreIds.includes(model.id) ? 'lore' : null;
       requireValue(expectedKind && model.kind === expectedKind, `${model.id}: invalid asset kind.`);
       if (expectedStyle) requireValue(model.style === expectedStyle
-        && model.characterId === (expectedStyle === 'chibi' ? model.id.slice(0, -6) : model.id),
+        && model.characterId === (expectedStyle === 'original' ? model.id : model.id.slice(0, -(expectedStyle.length + 1))),
         `${model.id}: character style or identity mapping is incorrect.`);
       requireValue(typeof model.label === 'string' && model.label.trim().length > 0 && integer(model.triangles, 1)
         && (integer(model.voxels, 1) || (!['character', 'lore'].includes(model.kind) && model.voxels === null))
         && ((Number.isFinite(model.height) && model.height > 0) || (!['character', 'lore'].includes(model.kind) && model.height === null)),
       `${model.id}: invalid asset label/statistics.`);
-      const triangles = validateGlb(base64(model.glb, `${model.id} GLB`), model, data.catalog.original);
+      const glbBytes = base64(model.glb, `${model.id} GLB`);
+      const triangles = validateGlb(glbBytes, model, data.catalog.original);
       requireValue(!['character', 'lore'].includes(model.kind) || model.vox !== null, `${model.id}: editable character/lore VOX is missing.`);
-      const voxels = model.vox === null ? null : validateVox(base64(model.vox, `${model.id} VOX`), model, data.catalog.original);
+      const voxBytes = model.vox === null ? null : base64(model.vox, `${model.id} VOX`);
+      const voxels = voxBytes === null ? null : validateVox(voxBytes, model, data.catalog.original);
+      if (expectedStyle === 'garden') {
+        const source = gardenSources.get(model.characterId);
+        check(createHash('sha256').update(glbBytes).digest('hex') === source.glb.sha256,
+          `${model.id}: delivered GLB differs from its independently verified source.`);
+        check(createHash('sha256').update(voxBytes).digest('hex') === source.vox_sha256,
+          `${model.id}: delivered VOX differs from its independently verified source.`);
+        check(triangles === source.glb.triangles && voxels === source.filled_voxels,
+          `${model.id}: delivered geometry counts differ from independently measured source counts.`);
+      }
       if (model.kind === 'character') {
         triangleTotal += triangles; voxelTotal += voxels;
         styleTotals[expectedStyle].triangles += triangles;
